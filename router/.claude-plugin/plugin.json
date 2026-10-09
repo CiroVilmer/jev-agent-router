@@ -1,0 +1,98 @@
+{
+  "name": "agent-router",
+  "version": "0.1.0",
+  "description": "Picks the model and effort of every subagent from its task type, and raises them when the 5-hour window resets with usage to spare",
+  "author": {
+    "name": "Ciro Vilmer",
+    "url": "https://github.com/CiroVilmer"
+  },
+  "homepage": "https://github.com/CiroVilmer/jev-agent-router#readme",
+  "repository": "https://github.com/CiroVilmer/jev-agent-router",
+  "license": "MIT",
+  "keywords": [
+    "subagents",
+    "model-routing",
+    "effort",
+    "mod",
+    "jev"
+  ],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "fuegoMinutos": {
+      "type": "number",
+      "title": "🔥 minutos al reset",
+      "description": "Sube dos niveles cuando faltan estos minutos o menos para el reset de 5h (y el uso no pasa el umbral 🔥)",
+      "default": 60
+    },
+    "fuegoUsado": {
+      "type": "number",
+      "title": "🔥 % usado máximo",
+      "description": "Porcentaje de la ventana de 5h usado, como máximo, para el modo 🔥",
+      "default": 70
+    },
+    "sobraMinutos": {
+      "type": "number",
+      "title": "⬆️ minutos al reset",
+      "description": "Sube un nivel cuando faltan estos minutos o menos para el reset de 5h (y el uso no pasa el umbral ⬆️)",
+      "default": 120
+    },
+    "sobraUsado": {
+      "type": "number",
+      "title": "⬆️ % usado máximo",
+      "description": "Porcentaje de la ventana de 5h usado, como máximo, para el modo ⬆️",
+      "default": 80
+    },
+    "clasificador": {
+      "type": "string",
+      "title": "Clasificador",
+      "description": "Quién decide el tipo cuando las reglas no alcanzan y, si es jev, también las reviews por description: reglas (sin modelo), haiku o jev",
+      "options": [
+        "reglas",
+        "haiku",
+        "jev"
+      ],
+      "default": "reglas"
+    },
+    "sombra": {
+      "type": "string",
+      "title": "Modo sombra",
+      "description": "Corre otro clasificador en paralelo, sin afectar la decisión, y guarda las dos respuestas para comparar",
+      "options": [
+        "off",
+        "haiku",
+        "jev"
+      ],
+      "default": "off"
+    },
+    "jevApiKey": {
+      "type": "string",
+      "title": "API key de Jev",
+      "description": "Key de TypeSafe. Si falta, se usa la variable de entorno JEV_API_KEY",
+      "sensitive": true
+    },
+    "jevUmbral": {
+      "type": "number",
+      "title": "Umbral de confianza de Jev",
+      "description": "En la talla de los builds, con menos confianza que esto decide el respaldo; con clasificador jev, también decide las reviews por description (con menos confianza queda la regla). Sin regla, decide Jev igual y el motivo lo marca (sin umbral). Entre 0 y 1; 0.7 sale del banco del 2026-10-07",
+      "default": 0.7
+    },
+    "topeMs": {
+      "type": "number",
+      "title": "Tope por clasificación (ms)",
+      "description": "Si el clasificador tarda más, decide el respaldo (entre 50 y 8000)",
+      "default": 1000
+    },
+    "avisarAClaude": {
+      "type": "boolean",
+      "title": "Avisarle a Claude",
+      "description": "Cuando el router reasigna un subagente, Claude ve una línea corta en el resultado de Agent con el modelo elegido y el motivo",
+      "default": false
+    },
+    "ensenarConvencion": {
+      "type": "boolean",
+      "title": "Enseñarle la convención a Claude",
+      "description": "Cuando ninguna regla reconoce la description de un subagente, Claude ve una línea en el resultado de Agent con cómo nombrarlos",
+      "default": true
+    }
+  }
+}

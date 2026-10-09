@@ -1,0 +1,40 @@
+name: Bug report
+description: Something in the router doesn't work as documented
+labels: [bug]
+body:
+  - type: textarea
+    id: que-paso
+    attributes:
+      label: What happened
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: decisiones
+    attributes:
+      label: Router decisions
+      description: Paste the relevant lines from the /router panel or `/router historial` (type, requested → chosen, reasons). Remove anything private.
+      render: text
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Claude Code version
+      placeholder: "2.1.293"
+    validations:
+      required: true
+  - type: dropdown
+    id: clasificador
+    attributes:
+      label: Classifier
+      options: [reglas, haiku, jev]
+  - type: input
+    id: so
+    attributes:
+      label: OS
+      placeholder: "Windows 11 / macOS 15 / Ubuntu 24.04"

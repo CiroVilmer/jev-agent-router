@@ -1,0 +1,112 @@
+import { describe, expect, test } from 'claude-code/testing'
+import { clasificarPorReglas } from '../src/reglas'
+
+const CASOS: readonly [string, string, string | null][] = [
+  // [descripción, subagentType, tipo esperado]
+  ['Final whole-branch review', 'general-purpose', 'review-final'],
+  ['Final whole-branch review (opus)', 'general-purpose', 'review-final'],
+  ['Final whole-branch review tanda 1', 'general-purpose', 'review-final'],
+  ['Final review of the login branch', 'revisor-final-opus-xhigh', 'review-final'],
+  ['Revisión final de la rama', 'revisor-final-opus-xhigh', 'review-final'],
+  ['Review final de la rama C2', 'general-purpose', 'review-final'],
+  ['Review final de la rama 5.2', 'general-purpose', 'review-final'],
+  ['Review Task 2 (spec + quality)', 'general-purpose', 'review'],
+  ['Review Task 8b (spec + quality)', 'general-purpose', 'review'],
+  ['Review T4 registro', 'general-purpose', 'review'],
+  ['Revisión de la tarea 4', 'general-purpose', 'review'],
+  ['Revision de la Tarea 11', 'general-purpose', 'review'],
+  ['Revisar T3 (spec + calidad)', 'general-purpose', 'review'],
+  ['Revisar T10 (funcional)', 'general-purpose', 'review'],
+  ['Code review del trabajo de la 5.3', 'general-purpose', 'review'],
+  ['Code review of the Datos tab', 'general-purpose', 'review'],
+  ['Review the master integration', 'general-purpose', 'review'],
+  ['Review VM fix 2', 'general-purpose', 'review'],
+  ['Review Task 5 (Jev script)', 'general-purpose', 'review'],
+  ['Re-review Task 1 fix round 1', 'general-purpose', 're-review'],
+  ['Re-review Task 8 fix round 2', 'general-purpose', 're-review'],
+  ['Scoped re-review of Task 4 fix round 2', 'general-purpose', 're-review'],
+  ['Re-revisión acotada del fix 2', 'general-purpose', 're-review'],
+  ['Re-revision de T10, rondas 2 y 3', 'general-purpose', 're-review'],
+  ['Re-revisar T1 ronda 4', 'general-purpose', 're-review'],
+  ['Re-review Tarea 3 fix round 2', 'general-purpose', 're-review'],
+  ['Fix V5: fecha y trimestre en el prompt', 'general-purpose', 'fix'],
+  ['Fix wave de la revision final de rama', 'general-purpose', 'fix'],
+  ['Fix wave grupo 3: tabla y tests e2e', 'general-purpose', 'fix'],
+  ['Fix Salud review findings', 'general-purpose', 'fix'],
+  ['Ola de arreglos del review final', 'general-purpose', 'fix'],
+  ['Arreglos del review final', 'general-purpose', 'fix'],
+  ['Corregir formularios A (Sonnet)', 'general-purpose', 'fix'],
+  ['Research Jev and best practices', 'general-purpose', 'research'],
+  ['Research numeric guardrails and clarification', 'general-purpose', 'research'],
+  ['Investigar timeout de la P5-2', 'general-purpose', 'research'],
+  ['Relevar código de cobranzas/pagos', 'Explore', 'explore'],
+  ['Explore: lectura, contraste y aclaración', 'Explore', 'explore'],
+  ['Explore pedido side for tercero', 'Explore', 'explore'],
+  ['Map ingesta path for new models', 'general-purpose', 'explore'],
+  ['Relevar el repo para la consola', 'general-purpose', 'explore'],
+  ['Redactar el resumen del bloque 6', 'general-purpose', 'write'],
+  ['Bitácora: lo que se midió', 'general-purpose', 'write'],
+  ['Migrar bitácoras y prompts a la vault', 'general-purpose', 'write'],
+  ['Implement Task 11: el compilador', 'general-purpose', 'build'],
+  ['Implement Task 5: carga, frases, línea', 'general-purpose', 'build'],
+  ['Implement ingest page size fix', 'general-purpose', 'build'],
+  ['Implementar la Tarea 13', 'general-purpose', 'build'],
+  ['Implementar T1: filtro de tercero', 'general-purpose', 'build'],
+  ['Implement Tarea 7: first admin command', 'general-purpose', 'build'],
+  ['Tarea 1: frontera de exactitud', 'general-purpose', 'build'],
+  ['Task 1c: casos sellado y reservado', 'general-purpose', 'build'],
+  ['T3 la cola', 'general-purpose', 'build'],
+  ['T3: el compilador de dos niveles', 'general-purpose', 'build'],
+  ['Propuesta de formularios por servicio', 'general-purpose', null],
+  ['Verificar formularios: familia D', 'general-purpose', 'review'],
+  ['Agregar --excluir al corredor', 'general-purpose', null],
+  ['Real data for Inicio', 'general-purpose', null],
+  ['DDL completo de los esquemas', 'general-purpose', null],
+  ['Naming de categoría en ops', 'general-purpose', null],
+  ['Fixture loader for tests', 'general-purpose', null],
+  ['Fixtures de e2e', 'general-purpose', null],
+  ['Implement vault sync', 'general-purpose', 'build'],
+  ['Task 3: vault export', 'general-purpose', 'build'],
+  ['verif: kubernetes', 'general-purpose', 'review'],
+  ['Verify Task 3: kubernetes', 'general-purpose', 'review'],
+  ['Verificar el formulario de backup', 'general-purpose', 'review'],
+  ['Verificación de la KB de nube-publica', 'general-purpose', 'review'],
+  ['Validar la KB de nube-publica', 'general-purpose', 'review'],
+  ['Validate Task 2 output', 'general-purpose', 'review'],
+  ['Audit the store writes', 'general-purpose', 'review'],
+  ['Auditar los permisos', 'general-purpose', 'review'],
+  ['Check Task 2 against the spec', 'general-purpose', 'review'],
+  ['Write Task 4: bitácora', 'general-purpose', 'write'],
+  ['Write the release notes', 'general-purpose', 'write'],
+  ['Write tests for the parser', 'general-purpose', null],
+  ['Write unit tests for reglas.ts', 'general-purpose', null],
+  ['Write the tests for the parser', 'general-purpose', null],
+  ['Write a test for tareaDe', 'general-purpose', null],
+  ['Write failing tests for reglas', 'general-purpose', null],
+  ['Write a migration script', 'general-purpose', null],
+  ['Write the parser for fechas', 'general-purpose', null],
+  ['Write the vault bitácora', 'general-purpose', 'write'],
+  ['Write the block note', 'general-purpose', 'write'],
+  ['Write the ADR and 30-Knowledge', 'general-purpose', 'write'],
+  ['v2: kubernetes', 'general-purpose', null],
+  ['Re-verify Task 3', 'general-purpose', null],
+]
+
+describe('reglas', () => {
+  for (const [descripcion, subagentType, esperado] of CASOS) {
+    test(`${descripcion} → ${esperado ?? 'ninguna'}`, () => {
+      expect(clasificarPorReglas(descripcion, subagentType)?.tipo ?? null).toBe(esperado)
+    })
+  }
+
+  test('cada resultado dice qué regla aplicó', () => {
+    expect(clasificarPorReglas('Re-review Task 1 fix round 1', 'general-purpose')).toEqual({
+      tipo: 're-review',
+      regla: 're-review',
+    })
+    expect(clasificarPorReglas('cualquier cosa', 'Explore')).toEqual({
+      tipo: 'explore',
+      regla: 'subagentType Explore',
+    })
+  })
+})

@@ -1,0 +1,5 @@
+.claude/worktrees/
+.superpowers/
+router/tsconfig.json
+node_modules/
+router/.claude-plugin/types/

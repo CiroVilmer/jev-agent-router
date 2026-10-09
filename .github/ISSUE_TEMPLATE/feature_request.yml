@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest an idea or a change to the routing
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: The problem
+      description: What are you trying to do, and what gets in the way?
+    validations:
+      required: true
+  - type: textarea
+    id: propuesta
+    attributes:
+      label: Proposal
+      description: How would you like the router to behave? If it changes routing, what data supports it?
+    validations:
+      required: true
+  - type: textarea
+    id: alternativas
+    attributes:
+      label: Alternatives considered

@@ -1,0 +1,4409 @@
+{
+ "fecha": "2026-10-07T13:32:20.597Z",
+ "clasificadores": [
+  "haiku",
+  "jev"
+ ],
+ "resultados": [
+  {
+   "id": "c0002",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.68,
+   "ms": 249,
+   "error": null
+  },
+  {
+   "id": "c0007",
+   "fuente": "jev",
+   "tipo": "write",
+   "confianza": 0.72,
+   "ms": 249,
+   "error": null
+  },
+  {
+   "id": "c0002",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 595,
+   "error": null
+  },
+  {
+   "id": "c0007",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 635,
+   "error": null
+  },
+  {
+   "id": "c0008",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 296,
+   "error": null
+  },
+  {
+   "id": "c0008",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 660,
+   "error": null
+  },
+  {
+   "id": "c0009",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.49,
+   "ms": 266,
+   "error": null
+  },
+  {
+   "id": "c0009",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 641,
+   "error": null
+  },
+  {
+   "id": "c0010",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.99,
+   "ms": 253,
+   "error": null
+  },
+  {
+   "id": "c0015",
+   "fuente": "jev",
+   "tipo": "review",
+   "confianza": 0.73,
+   "ms": 247,
+   "error": null
+  },
+  {
+   "id": "c0010",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0015",
+   "fuente": "haiku",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 638,
+   "error": null
+  },
+  {
+   "id": "c0016",
+   "fuente": "jev",
+   "tipo": "review",
+   "confianza": 0.74,
+   "ms": 288,
+   "error": null
+  },
+  {
+   "id": "c0017",
+   "fuente": "jev",
+   "tipo": "review",
+   "confianza": 0.7,
+   "ms": 264,
+   "error": null
+  },
+  {
+   "id": "c0016",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 771,
+   "error": null
+  },
+  {
+   "id": "c0017",
+   "fuente": "haiku",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 625,
+   "error": null
+  },
+  {
+   "id": "c0018",
+   "fuente": "jev",
+   "tipo": "review",
+   "confianza": 0.71,
+   "ms": 262,
+   "error": null
+  },
+  {
+   "id": "c0023",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 261,
+   "error": null
+  },
+  {
+   "id": "c0018",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 639,
+   "error": null
+  },
+  {
+   "id": "c0023",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 647,
+   "error": null
+  },
+  {
+   "id": "c0025",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 249,
+   "error": null
+  },
+  {
+   "id": "c0027",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 279,
+   "error": null
+  },
+  {
+   "id": "c0025",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 745,
+   "error": null
+  },
+  {
+   "id": "c0027",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 614,
+   "error": null
+  },
+  {
+   "id": "c0030",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 271,
+   "error": null
+  },
+  {
+   "id": "c0030",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 660,
+   "error": null
+  },
+  {
+   "id": "c0032",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.4,
+   "ms": 255,
+   "error": null
+  },
+  {
+   "id": "c0032",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0035",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.86,
+   "ms": 305,
+   "error": null
+  },
+  {
+   "id": "c0037",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.7,
+   "ms": 284,
+   "error": null
+  },
+  {
+   "id": "c0035",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 630,
+   "error": null
+  },
+  {
+   "id": "c0037",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 616,
+   "error": null
+  },
+  {
+   "id": "c0039",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 261,
+   "error": null
+  },
+  {
+   "id": "c0044",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 273,
+   "error": null
+  },
+  {
+   "id": "c0039",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 638,
+   "error": null
+  },
+  {
+   "id": "c0044",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 606,
+   "error": null
+  },
+  {
+   "id": "c0046",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 1,
+   "ms": 287,
+   "error": null
+  },
+  {
+   "id": "c0046",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 655,
+   "error": null
+  },
+  {
+   "id": "c0048",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 274,
+   "error": null
+  },
+  {
+   "id": "c0054",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 250,
+   "error": null
+  },
+  {
+   "id": "c0048",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 645,
+   "error": null
+  },
+  {
+   "id": "c0055",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 269,
+   "error": null
+  },
+  {
+   "id": "c0054",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 609,
+   "error": null
+  },
+  {
+   "id": "c0055",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 601,
+   "error": null
+  },
+  {
+   "id": "c0056",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.86,
+   "ms": 283,
+   "error": null
+  },
+  {
+   "id": "c0057",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 299,
+   "error": null
+  },
+  {
+   "id": "c0056",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 632,
+   "error": null
+  },
+  {
+   "id": "c0065",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.54,
+   "ms": 239,
+   "error": null
+  },
+  {
+   "id": "c0057",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 631,
+   "error": null
+  },
+  {
+   "id": "c0066",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 277,
+   "error": null
+  },
+  {
+   "id": "c0065",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 640,
+   "error": null
+  },
+  {
+   "id": "c0066",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 614,
+   "error": null
+  },
+  {
+   "id": "c0067",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.7,
+   "ms": 260,
+   "error": null
+  },
+  {
+   "id": "c0071",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.56,
+   "ms": 265,
+   "error": null
+  },
+  {
+   "id": "c0067",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 651,
+   "error": null
+  },
+  {
+   "id": "c0080",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.98,
+   "ms": 249,
+   "error": null
+  },
+  {
+   "id": "c0071",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 641,
+   "error": null
+  },
+  {
+   "id": "c0080",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 622,
+   "error": null
+  },
+  {
+   "id": "c0083",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.86,
+   "ms": 273,
+   "error": null
+  },
+  {
+   "id": "c0084",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.78,
+   "ms": 269,
+   "error": null
+  },
+  {
+   "id": "c0083",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 601,
+   "error": null
+  },
+  {
+   "id": "c0088",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.62,
+   "ms": 248,
+   "error": null
+  },
+  {
+   "id": "c0084",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 636,
+   "error": null
+  },
+  {
+   "id": "c0090",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.74,
+   "ms": 245,
+   "error": null
+  },
+  {
+   "id": "c0088",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 619,
+   "error": null
+  },
+  {
+   "id": "c0093",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.86,
+   "ms": 268,
+   "error": null
+  },
+  {
+   "id": "c0090",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 640,
+   "error": null
+  },
+  {
+   "id": "c0096",
+   "fuente": "jev",
+   "tipo": "review-final",
+   "confianza": 0.51,
+   "ms": 264,
+   "error": null
+  },
+  {
+   "id": "c0093",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 600,
+   "error": null
+  },
+  {
+   "id": "c0097",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.73,
+   "ms": 262,
+   "error": null
+  },
+  {
+   "id": "c0096",
+   "fuente": "haiku",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 661,
+   "error": null
+  },
+  {
+   "id": "c0097",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 627,
+   "error": null
+  },
+  {
+   "id": "c0103",
+   "fuente": "jev",
+   "tipo": "write",
+   "confianza": 0.76,
+   "ms": 283,
+   "error": null
+  },
+  {
+   "id": "c0105",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.1,
+   "ms": 276,
+   "error": null
+  },
+  {
+   "id": "c0103",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 678,
+   "error": null
+  },
+  {
+   "id": "c0108",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.48,
+   "ms": 265,
+   "error": null
+  },
+  {
+   "id": "c0105",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 721,
+   "error": null
+  },
+  {
+   "id": "c0109",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.6,
+   "ms": 246,
+   "error": null
+  },
+  {
+   "id": "c0108",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 934,
+   "error": null
+  },
+  {
+   "id": "c0109",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 748,
+   "error": null
+  },
+  {
+   "id": "c0114",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.66,
+   "ms": 266,
+   "error": null
+  },
+  {
+   "id": "c0114",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 633,
+   "error": null
+  },
+  {
+   "id": "c0115",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.76,
+   "ms": 261,
+   "error": null
+  },
+  {
+   "id": "c0115",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 598,
+   "error": null
+  },
+  {
+   "id": "c0119",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.22,
+   "ms": 278,
+   "error": null
+  },
+  {
+   "id": "c0119",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 602,
+   "error": null
+  },
+  {
+   "id": "c0120",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.66,
+   "ms": 242,
+   "error": null
+  },
+  {
+   "id": "c0127",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.98,
+   "ms": 247,
+   "error": null
+  },
+  {
+   "id": "c0120",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 625,
+   "error": null
+  },
+  {
+   "id": "c0132",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.98,
+   "ms": 244,
+   "error": null
+  },
+  {
+   "id": "c0127",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 682,
+   "error": null
+  },
+  {
+   "id": "c0135",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.82,
+   "ms": 269,
+   "error": null
+  },
+  {
+   "id": "c0132",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 663,
+   "error": null
+  },
+  {
+   "id": "c0135",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 622,
+   "error": null
+  },
+  {
+   "id": "c0137",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.42,
+   "ms": 275,
+   "error": null
+  },
+  {
+   "id": "c0139",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.34,
+   "ms": 286,
+   "error": null
+  },
+  {
+   "id": "c0137",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 672,
+   "error": null
+  },
+  {
+   "id": "c0139",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 630,
+   "error": null
+  },
+  {
+   "id": "c0141",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.28,
+   "ms": 278,
+   "error": null
+  },
+  {
+   "id": "c0144",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 267,
+   "error": null
+  },
+  {
+   "id": "c0141",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 623,
+   "error": null
+  },
+  {
+   "id": "c0148",
+   "fuente": "jev",
+   "tipo": "fix",
+   "confianza": 0.58,
+   "ms": 286,
+   "error": null
+  },
+  {
+   "id": "c0144",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 675,
+   "error": null
+  },
+  {
+   "id": "c0148",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 610,
+   "error": null
+  },
+  {
+   "id": "c0151",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 304,
+   "error": null
+  },
+  {
+   "id": "c0151",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 657,
+   "error": null
+  },
+  {
+   "id": "c0152",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 278,
+   "error": null
+  },
+  {
+   "id": "c0152",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 640,
+   "error": null
+  },
+  {
+   "id": "c0156",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 292,
+   "error": null
+  },
+  {
+   "id": "c0157",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.8,
+   "ms": 263,
+   "error": null
+  },
+  {
+   "id": "c0156",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 616,
+   "error": null
+  },
+  {
+   "id": "c0161",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 298,
+   "error": null
+  },
+  {
+   "id": "c0157",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 645,
+   "error": null
+  },
+  {
+   "id": "c0163",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 242,
+   "error": null
+  },
+  {
+   "id": "c0161",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 683,
+   "error": null
+  },
+  {
+   "id": "c0164",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.62,
+   "ms": 273,
+   "error": null
+  },
+  {
+   "id": "c0163",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 670,
+   "error": null
+  },
+  {
+   "id": "c0164",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 663,
+   "error": null
+  },
+  {
+   "id": "c0168",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.86,
+   "ms": 313,
+   "error": null
+  },
+  {
+   "id": "c0171",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 250,
+   "error": null
+  },
+  {
+   "id": "c0168",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 673,
+   "error": null
+  },
+  {
+   "id": "c0172",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.72,
+   "ms": 330,
+   "error": null
+  },
+  {
+   "id": "c0171",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 684,
+   "error": null
+  },
+  {
+   "id": "c0172",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 658,
+   "error": null
+  },
+  {
+   "id": "c0176",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.82,
+   "ms": 274,
+   "error": null
+  },
+  {
+   "id": "c0182",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 265,
+   "error": null
+  },
+  {
+   "id": "c0176",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 690,
+   "error": null
+  },
+  {
+   "id": "c0182",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 649,
+   "error": null
+  },
+  {
+   "id": "c0183",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 258,
+   "error": null
+  },
+  {
+   "id": "c0183",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 644,
+   "error": null
+  },
+  {
+   "id": "c0184",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 270,
+   "error": null
+  },
+  {
+   "id": "c0188",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 293,
+   "error": null
+  },
+  {
+   "id": "c0184",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 659,
+   "error": null
+  },
+  {
+   "id": "c0188",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 652,
+   "error": null
+  },
+  {
+   "id": "c0190",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.86,
+   "ms": 260,
+   "error": null
+  },
+  {
+   "id": "c0193",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 292,
+   "error": null
+  },
+  {
+   "id": "c0190",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 685,
+   "error": null
+  },
+  {
+   "id": "c0193",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 640,
+   "error": null
+  },
+  {
+   "id": "c0195",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 320,
+   "error": null
+  },
+  {
+   "id": "c0195",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 643,
+   "error": null
+  },
+  {
+   "id": "c0197",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 260,
+   "error": null
+  },
+  {
+   "id": "c0199",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 316,
+   "error": null
+  },
+  {
+   "id": "c0197",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 645,
+   "error": null
+  },
+  {
+   "id": "c0199",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 654,
+   "error": null
+  },
+  {
+   "id": "c0203",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 352,
+   "error": null
+  },
+  {
+   "id": "c0203",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 633,
+   "error": null
+  },
+  {
+   "id": "c0205",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 314,
+   "error": null
+  },
+  {
+   "id": "c0216",
+   "fuente": "jev",
+   "tipo": "fix",
+   "confianza": 0.89,
+   "ms": 294,
+   "error": null
+  },
+  {
+   "id": "c0205",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 803,
+   "error": null
+  },
+  {
+   "id": "c0216",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 648,
+   "error": null
+  },
+  {
+   "id": "c0225",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 305,
+   "error": null
+  },
+  {
+   "id": "c0225",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 640,
+   "error": null
+  },
+  {
+   "id": "c0226",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.98,
+   "ms": 272,
+   "error": null
+  },
+  {
+   "id": "c0226",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 649,
+   "error": null
+  },
+  {
+   "id": "c0227",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.64,
+   "ms": 289,
+   "error": null
+  },
+  {
+   "id": "c0230",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.66,
+   "ms": 238,
+   "error": null
+  },
+  {
+   "id": "c0227",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 628,
+   "error": null
+  },
+  {
+   "id": "c0231",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.78,
+   "ms": 295,
+   "error": null
+  },
+  {
+   "id": "c0230",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 659,
+   "error": null
+  },
+  {
+   "id": "c0233",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.7,
+   "ms": 276,
+   "error": null
+  },
+  {
+   "id": "c0231",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 658,
+   "error": null
+  },
+  {
+   "id": "c0237",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.98,
+   "ms": 286,
+   "error": null
+  },
+  {
+   "id": "c0233",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 692,
+   "error": null
+  },
+  {
+   "id": "c0237",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 605,
+   "error": null
+  },
+  {
+   "id": "c0238",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 285,
+   "error": null
+  },
+  {
+   "id": "c0242",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.98,
+   "ms": 272,
+   "error": null
+  },
+  {
+   "id": "c0238",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 655,
+   "error": null
+  },
+  {
+   "id": "c0242",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 657,
+   "error": null
+  },
+  {
+   "id": "c0243",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 286,
+   "error": null
+  },
+  {
+   "id": "c0252",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 284,
+   "error": null
+  },
+  {
+   "id": "c0252",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 642,
+   "error": null
+  },
+  {
+   "id": "c0243",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 968,
+   "error": null
+  },
+  {
+   "id": "c0253",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 635,
+   "error": null
+  },
+  {
+   "id": "c0253",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.8,
+   "ms": 283,
+   "error": null
+  },
+  {
+   "id": "c0254",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 304,
+   "error": null
+  },
+  {
+   "id": "c0254",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 638,
+   "error": null
+  },
+  {
+   "id": "c0255",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 277,
+   "error": null
+  },
+  {
+   "id": "c0255",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 694,
+   "error": null
+  },
+  {
+   "id": "c0256",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.76,
+   "ms": 299,
+   "error": null
+  },
+  {
+   "id": "c0256",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 715,
+   "error": null
+  },
+  {
+   "id": "c0257",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.74,
+   "ms": 304,
+   "error": null
+  },
+  {
+   "id": "c0257",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 639,
+   "error": null
+  },
+  {
+   "id": "c0267",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.68,
+   "ms": 266,
+   "error": null
+  },
+  {
+   "id": "c0267",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 634,
+   "error": null
+  },
+  {
+   "id": "c0274",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.97,
+   "ms": 277,
+   "error": null
+  },
+  {
+   "id": "c0274",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 657,
+   "error": null
+  },
+  {
+   "id": "c0276",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.97,
+   "ms": 453,
+   "error": null
+  },
+  {
+   "id": "c0276",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 702,
+   "error": null
+  },
+  {
+   "id": "c0278",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 319,
+   "error": null
+  },
+  {
+   "id": "c0278",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 633,
+   "error": null
+  },
+  {
+   "id": "c0279",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.8,
+   "ms": 277,
+   "error": null
+  },
+  {
+   "id": "c0279",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0280",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.66,
+   "ms": 306,
+   "error": null
+  },
+  {
+   "id": "c0280",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 637,
+   "error": null
+  },
+  {
+   "id": "c0281",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.86,
+   "ms": 273,
+   "error": null
+  },
+  {
+   "id": "c0286",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.8,
+   "ms": 304,
+   "error": null
+  },
+  {
+   "id": "c0281",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 705,
+   "error": null
+  },
+  {
+   "id": "c0287",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.86,
+   "ms": 259,
+   "error": null
+  },
+  {
+   "id": "c0286",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 824,
+   "error": null
+  },
+  {
+   "id": "c0291",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.97,
+   "ms": 283,
+   "error": null
+  },
+  {
+   "id": "c0287",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 722,
+   "error": null
+  },
+  {
+   "id": "c0292",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.42,
+   "ms": 262,
+   "error": null
+  },
+  {
+   "id": "c0291",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 687,
+   "error": null
+  },
+  {
+   "id": "c0292",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 679,
+   "error": null
+  },
+  {
+   "id": "c0297",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.95,
+   "ms": 352,
+   "error": null
+  },
+  {
+   "id": "c0297",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 704,
+   "error": null
+  },
+  {
+   "id": "c0298",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 290,
+   "error": null
+  },
+  {
+   "id": "c0299",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 266,
+   "error": null
+  },
+  {
+   "id": "c0298",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 616,
+   "error": null
+  },
+  {
+   "id": "c0301",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 299,
+   "error": null
+  },
+  {
+   "id": "c0299",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 616,
+   "error": null
+  },
+  {
+   "id": "c0304",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 304,
+   "error": null
+  },
+  {
+   "id": "c0301",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 658,
+   "error": null
+  },
+  {
+   "id": "c0307",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 261,
+   "error": null
+  },
+  {
+   "id": "c0304",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 689,
+   "error": null
+  },
+  {
+   "id": "c0307",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 633,
+   "error": null
+  },
+  {
+   "id": "c0309",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 292,
+   "error": null
+  },
+  {
+   "id": "c0309",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 661,
+   "error": null
+  },
+  {
+   "id": "c0311",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.61,
+   "ms": 278,
+   "error": null
+  },
+  {
+   "id": "c0311",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 627,
+   "error": null
+  },
+  {
+   "id": "c0312",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.97,
+   "ms": 355,
+   "error": null
+  },
+  {
+   "id": "c0313",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 283,
+   "error": null
+  },
+  {
+   "id": "c0312",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 664,
+   "error": null
+  },
+  {
+   "id": "c0317",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.76,
+   "ms": 272,
+   "error": null
+  },
+  {
+   "id": "c0313",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 648,
+   "error": null
+  },
+  {
+   "id": "c0318",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.98,
+   "ms": 259,
+   "error": null
+  },
+  {
+   "id": "c0317",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 649,
+   "error": null
+  },
+  {
+   "id": "c0319",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 283,
+   "error": null
+  },
+  {
+   "id": "c0318",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 688,
+   "error": null
+  },
+  {
+   "id": "c0321",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 279,
+   "error": null
+  },
+  {
+   "id": "c0319",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 664,
+   "error": null
+  },
+  {
+   "id": "c0322",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 278,
+   "error": null
+  },
+  {
+   "id": "c0321",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 621,
+   "error": null
+  },
+  {
+   "id": "c0328",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.67,
+   "ms": 274,
+   "error": null
+  },
+  {
+   "id": "c0322",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 674,
+   "error": null
+  },
+  {
+   "id": "c0328",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 650,
+   "error": null
+  },
+  {
+   "id": "c0329",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.8,
+   "ms": 275,
+   "error": null
+  },
+  {
+   "id": "c0329",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 631,
+   "error": null
+  },
+  {
+   "id": "c0330",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.79,
+   "ms": 289,
+   "error": null
+  },
+  {
+   "id": "c0331",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 326,
+   "error": null
+  },
+  {
+   "id": "c0330",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 681,
+   "error": null
+  },
+  {
+   "id": "c0331",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 672,
+   "error": null
+  },
+  {
+   "id": "c0334",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 286,
+   "error": null
+  },
+  {
+   "id": "c0334",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 631,
+   "error": null
+  },
+  {
+   "id": "c0336",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 349,
+   "error": null
+  },
+  {
+   "id": "c0339",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 261,
+   "error": null
+  },
+  {
+   "id": "c0336",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 717,
+   "error": null
+  },
+  {
+   "id": "c0341",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 248,
+   "error": null
+  },
+  {
+   "id": "c0339",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 676,
+   "error": null
+  },
+  {
+   "id": "c0343",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 272,
+   "error": null
+  },
+  {
+   "id": "c0341",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 699,
+   "error": null
+  },
+  {
+   "id": "c0346",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 290,
+   "error": null
+  },
+  {
+   "id": "c0343",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 662,
+   "error": null
+  },
+  {
+   "id": "c0346",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 607,
+   "error": null
+  },
+  {
+   "id": "c0349",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 292,
+   "error": null
+  },
+  {
+   "id": "c0352",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 293,
+   "error": null
+  },
+  {
+   "id": "c0349",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 623,
+   "error": null
+  },
+  {
+   "id": "c0352",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 647,
+   "error": null
+  },
+  {
+   "id": "c0355",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.96,
+   "ms": 301,
+   "error": null
+  },
+  {
+   "id": "c0356",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.94,
+   "ms": 298,
+   "error": null
+  },
+  {
+   "id": "c0355",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 624,
+   "error": null
+  },
+  {
+   "id": "c0362",
+   "fuente": "jev",
+   "tipo": "write",
+   "confianza": 0.62,
+   "ms": 283,
+   "error": null
+  },
+  {
+   "id": "c0356",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 614,
+   "error": null
+  },
+  {
+   "id": "c0363",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.63,
+   "ms": 266,
+   "error": null
+  },
+  {
+   "id": "c0362",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 936,
+   "error": null
+  },
+  {
+   "id": "c0363",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 669,
+   "error": null
+  },
+  {
+   "id": "c0365",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.68,
+   "ms": 278,
+   "error": null
+  },
+  {
+   "id": "c0365",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 659,
+   "error": null
+  },
+  {
+   "id": "c0366",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.79,
+   "ms": 300,
+   "error": null
+  },
+  {
+   "id": "c0366",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 647,
+   "error": null
+  },
+  {
+   "id": "c0367",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 264,
+   "error": null
+  },
+  {
+   "id": "c0367",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 699,
+   "error": null
+  },
+  {
+   "id": "c0368",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 296,
+   "error": null
+  },
+  {
+   "id": "c0368",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 675,
+   "error": null
+  },
+  {
+   "id": "c0369",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.82,
+   "ms": 299,
+   "error": null
+  },
+  {
+   "id": "c0369",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 674,
+   "error": null
+  },
+  {
+   "id": "c0370",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.79,
+   "ms": 262,
+   "error": null
+  },
+  {
+   "id": "c0371",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 311,
+   "error": null
+  },
+  {
+   "id": "c0370",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 674,
+   "error": null
+  },
+  {
+   "id": "c0371",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0372",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.82,
+   "ms": 307,
+   "error": null
+  },
+  {
+   "id": "c0378",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 296,
+   "error": null
+  },
+  {
+   "id": "c0372",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0378",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 626,
+   "error": null
+  },
+  {
+   "id": "c0379",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 273,
+   "error": null
+  },
+  {
+   "id": "c0382",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.74,
+   "ms": 296,
+   "error": null
+  },
+  {
+   "id": "c0379",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 665,
+   "error": null
+  },
+  {
+   "id": "c0382",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 626,
+   "error": null
+  },
+  {
+   "id": "c0383",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.76,
+   "ms": 289,
+   "error": null
+  },
+  {
+   "id": "c0384",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 281,
+   "error": null
+  },
+  {
+   "id": "c0383",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 648,
+   "error": null
+  },
+  {
+   "id": "c0391",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 284,
+   "error": null
+  },
+  {
+   "id": "c0384",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 688,
+   "error": null
+  },
+  {
+   "id": "c0394",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 259,
+   "error": null
+  },
+  {
+   "id": "c0391",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 710,
+   "error": null
+  },
+  {
+   "id": "c0396",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 266,
+   "error": null
+  },
+  {
+   "id": "c0394",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 676,
+   "error": null
+  },
+  {
+   "id": "c0402",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 277,
+   "error": null
+  },
+  {
+   "id": "c0396",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 643,
+   "error": null
+  },
+  {
+   "id": "c0405",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.04,
+   "ms": 282,
+   "error": null
+  },
+  {
+   "id": "c0402",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 645,
+   "error": null
+  },
+  {
+   "id": "c0406",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.96,
+   "ms": 288,
+   "error": null
+  },
+  {
+   "id": "c0405",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 663,
+   "error": null
+  },
+  {
+   "id": "c0409",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 262,
+   "error": null
+  },
+  {
+   "id": "c0406",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 615,
+   "error": null
+  },
+  {
+   "id": "c0409",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 690,
+   "error": null
+  },
+  {
+   "id": "c0410",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 409,
+   "error": null
+  },
+  {
+   "id": "c0410",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 641,
+   "error": null
+  },
+  {
+   "id": "c0413",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.96,
+   "ms": 275,
+   "error": null
+  },
+  {
+   "id": "c0417",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.56,
+   "ms": 289,
+   "error": null
+  },
+  {
+   "id": "c0413",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 648,
+   "error": null
+  },
+  {
+   "id": "c0417",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 642,
+   "error": null
+  },
+  {
+   "id": "c0418",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 277,
+   "error": null
+  },
+  {
+   "id": "c0419",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 271,
+   "error": null
+  },
+  {
+   "id": "c0418",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 657,
+   "error": null
+  },
+  {
+   "id": "c0419",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 619,
+   "error": null
+  },
+  {
+   "id": "c0427",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 265,
+   "error": null
+  },
+  {
+   "id": "c0429",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 271,
+   "error": null
+  },
+  {
+   "id": "c0427",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 622,
+   "error": null
+  },
+  {
+   "id": "c0440",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 300,
+   "error": null
+  },
+  {
+   "id": "c0429",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 701,
+   "error": null
+  },
+  {
+   "id": "c0440",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0443",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 434,
+   "error": null
+  },
+  {
+   "id": "c0443",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 631,
+   "error": null
+  },
+  {
+   "id": "c0446",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.91,
+   "ms": 299,
+   "error": null
+  },
+  {
+   "id": "c0446",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 640,
+   "error": null
+  },
+  {
+   "id": "c0447",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.7,
+   "ms": 300,
+   "error": null
+  },
+  {
+   "id": "c0447",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 651,
+   "error": null
+  },
+  {
+   "id": "c0448",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.78,
+   "ms": 319,
+   "error": null
+  },
+  {
+   "id": "c0448",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 642,
+   "error": null
+  },
+  {
+   "id": "c0449",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.95,
+   "ms": 275,
+   "error": null
+  },
+  {
+   "id": "c0449",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 635,
+   "error": null
+  },
+  {
+   "id": "c0450",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.98,
+   "ms": 274,
+   "error": null
+  },
+  {
+   "id": "c0450",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 654,
+   "error": null
+  },
+  {
+   "id": "c0453",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 314,
+   "error": null
+  },
+  {
+   "id": "c0454",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.76,
+   "ms": 259,
+   "error": null
+  },
+  {
+   "id": "c0453",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 633,
+   "error": null
+  },
+  {
+   "id": "c0457",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.12,
+   "ms": 297,
+   "error": null
+  },
+  {
+   "id": "c0454",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 665,
+   "error": null
+  },
+  {
+   "id": "c0463",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.98,
+   "ms": 273,
+   "error": null
+  },
+  {
+   "id": "c0457",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 621,
+   "error": null
+  },
+  {
+   "id": "c0463",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 620,
+   "error": null
+  },
+  {
+   "id": "c0465",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.6,
+   "ms": 339,
+   "error": null
+  },
+  {
+   "id": "c0475",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.81,
+   "ms": 312,
+   "error": null
+  },
+  {
+   "id": "c0465",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 665,
+   "error": null
+  },
+  {
+   "id": "c0475",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 670,
+   "error": null
+  },
+  {
+   "id": "c0476",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 303,
+   "error": null
+  },
+  {
+   "id": "c0479",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 289,
+   "error": null
+  },
+  {
+   "id": "c0476",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 635,
+   "error": null
+  },
+  {
+   "id": "c0481",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.06,
+   "ms": 267,
+   "error": null
+  },
+  {
+   "id": "c0479",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 630,
+   "error": null
+  },
+  {
+   "id": "c0484",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.64,
+   "ms": 249,
+   "error": null
+  },
+  {
+   "id": "c0481",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 671,
+   "error": null
+  },
+  {
+   "id": "c0484",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 657,
+   "error": null
+  },
+  {
+   "id": "c0487",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.02,
+   "ms": 302,
+   "error": null
+  },
+  {
+   "id": "c0487",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 705,
+   "error": null
+  },
+  {
+   "id": "c0490",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.98,
+   "ms": 322,
+   "error": null
+  },
+  {
+   "id": "c0493",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.98,
+   "ms": 305,
+   "error": null
+  },
+  {
+   "id": "c0490",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 648,
+   "error": null
+  },
+  {
+   "id": "c0496",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.98,
+   "ms": 307,
+   "error": null
+  },
+  {
+   "id": "c0493",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 684,
+   "error": null
+  },
+  {
+   "id": "c0496",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 643,
+   "error": null
+  },
+  {
+   "id": "c0499",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.98,
+   "ms": 291,
+   "error": null
+  },
+  {
+   "id": "c0499",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 629,
+   "error": null
+  },
+  {
+   "id": "c0502",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 271,
+   "error": null
+  },
+  {
+   "id": "c0502",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 628,
+   "error": null
+  },
+  {
+   "id": "c0507",
+   "fuente": "jev",
+   "tipo": "research",
+   "confianza": 0.33,
+   "ms": 333,
+   "error": null
+  },
+  {
+   "id": "c0508",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 283,
+   "error": null
+  },
+  {
+   "id": "c0507",
+   "fuente": "haiku",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 621,
+   "error": null
+  },
+  {
+   "id": "c0510",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.72,
+   "ms": 282,
+   "error": null
+  },
+  {
+   "id": "c0508",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 616,
+   "error": null
+  },
+  {
+   "id": "c0511",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 273,
+   "error": null
+  },
+  {
+   "id": "c0510",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 696,
+   "error": null
+  },
+  {
+   "id": "c0511",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 631,
+   "error": null
+  },
+  {
+   "id": "c0512",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 291,
+   "error": null
+  },
+  {
+   "id": "c0512",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 613,
+   "error": null
+  },
+  {
+   "id": "c0513",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 267,
+   "error": null
+  },
+  {
+   "id": "c0518",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.74,
+   "ms": 255,
+   "error": null
+  },
+  {
+   "id": "c0513",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 762,
+   "error": null
+  },
+  {
+   "id": "c0518",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 645,
+   "error": null
+  },
+  {
+   "id": "c0520",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.8,
+   "ms": 284,
+   "error": null
+  },
+  {
+   "id": "c0520",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 621,
+   "error": null
+  },
+  {
+   "id": "c0524",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.24,
+   "ms": 273,
+   "error": null
+  },
+  {
+   "id": "c0529",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.7,
+   "ms": 255,
+   "error": null
+  },
+  {
+   "id": "c0524",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 626,
+   "error": null
+  },
+  {
+   "id": "c0529",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 637,
+   "error": null
+  },
+  {
+   "id": "c0531",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 306,
+   "error": null
+  },
+  {
+   "id": "c0535",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.84,
+   "ms": 247,
+   "error": null
+  },
+  {
+   "id": "c0531",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 610,
+   "error": null
+  },
+  {
+   "id": "c0536",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 266,
+   "error": null
+  },
+  {
+   "id": "c0535",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 632,
+   "error": null
+  },
+  {
+   "id": "c0539",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.68,
+   "ms": 250,
+   "error": null
+  },
+  {
+   "id": "c0536",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 654,
+   "error": null
+  },
+  {
+   "id": "c0541",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.7,
+   "ms": 259,
+   "error": null
+  },
+  {
+   "id": "c0539",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 672,
+   "error": null
+  },
+  {
+   "id": "c0545",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 248,
+   "error": null
+  },
+  {
+   "id": "c0541",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 651,
+   "error": null
+  },
+  {
+   "id": "c0545",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 598,
+   "error": null
+  },
+  {
+   "id": "c0550",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.94,
+   "ms": 275,
+   "error": null
+  },
+  {
+   "id": "c0551",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 238,
+   "error": null
+  },
+  {
+   "id": "c0550",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 643,
+   "error": null
+  },
+  {
+   "id": "c0551",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 647,
+   "error": null
+  },
+  {
+   "id": "c0553",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.16,
+   "ms": 275,
+   "error": null
+  },
+  {
+   "id": "c0555",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.68,
+   "ms": 246,
+   "error": null
+  },
+  {
+   "id": "c0553",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 674,
+   "error": null
+  },
+  {
+   "id": "c0558",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.55,
+   "ms": 268,
+   "error": null
+  },
+  {
+   "id": "c0555",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 624,
+   "error": null
+  },
+  {
+   "id": "c0559",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.9,
+   "ms": 241,
+   "error": null
+  },
+  {
+   "id": "c0558",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 621,
+   "error": null
+  },
+  {
+   "id": "c0562",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 276,
+   "error": null
+  },
+  {
+   "id": "c0559",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 637,
+   "error": null
+  },
+  {
+   "id": "c0564",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.7,
+   "ms": 286,
+   "error": null
+  },
+  {
+   "id": "c0562",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0567",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 258,
+   "error": null
+  },
+  {
+   "id": "c0564",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 636,
+   "error": null
+  },
+  {
+   "id": "c0570",
+   "fuente": "jev",
+   "tipo": "fix",
+   "confianza": 0.78,
+   "ms": 286,
+   "error": null
+  },
+  {
+   "id": "c0567",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 663,
+   "error": null
+  },
+  {
+   "id": "c0570",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 597,
+   "error": null
+  },
+  {
+   "id": "c0573",
+   "fuente": "jev",
+   "tipo": "fix",
+   "confianza": 0.79,
+   "ms": 315,
+   "error": null
+  },
+  {
+   "id": "c0573",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 582,
+   "error": null
+  },
+  {
+   "id": "c0575",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.79,
+   "ms": 313,
+   "error": null
+  },
+  {
+   "id": "c0575",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 633,
+   "error": null
+  },
+  {
+   "id": "c0577",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 607,
+   "error": null
+  },
+  {
+   "id": "c0577",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.92,
+   "ms": 681,
+   "error": null
+  },
+  {
+   "id": "c0581",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 235,
+   "error": null
+  },
+  {
+   "id": "c0581",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 688,
+   "error": null
+  },
+  {
+   "id": "c0584",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 272,
+   "error": null
+  },
+  {
+   "id": "c0584",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 630,
+   "error": null
+  },
+  {
+   "id": "c0586",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.98,
+   "ms": 452,
+   "error": null
+  },
+  {
+   "id": "c0586",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 563,
+   "error": null
+  },
+  {
+   "id": "c0589",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 284,
+   "error": null
+  },
+  {
+   "id": "c0589",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 640,
+   "error": null
+  },
+  {
+   "id": "c0592",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 257,
+   "error": null
+  },
+  {
+   "id": "c0592",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 698,
+   "error": null
+  },
+  {
+   "id": "c0595",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 260,
+   "error": null
+  },
+  {
+   "id": "c0597",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 241,
+   "error": null
+  },
+  {
+   "id": "c0595",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 632,
+   "error": null
+  },
+  {
+   "id": "c0597",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 588,
+   "error": null
+  },
+  {
+   "id": "c0600",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 244,
+   "error": null
+  },
+  {
+   "id": "c0601",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.9,
+   "ms": 270,
+   "error": null
+  },
+  {
+   "id": "c0600",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 634,
+   "error": null
+  },
+  {
+   "id": "c0606",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 246,
+   "error": null
+  },
+  {
+   "id": "c0601",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 692,
+   "error": null
+  },
+  {
+   "id": "c0609",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 236,
+   "error": null
+  },
+  {
+   "id": "c0606",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 734,
+   "error": null
+  },
+  {
+   "id": "c0610",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 246,
+   "error": null
+  },
+  {
+   "id": "c0609",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 749,
+   "error": null
+  },
+  {
+   "id": "c0610",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 630,
+   "error": null
+  },
+  {
+   "id": "c0613",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 1,
+   "ms": 263,
+   "error": null
+  },
+  {
+   "id": "c0618",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.97,
+   "ms": 272,
+   "error": null
+  },
+  {
+   "id": "c0613",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 638,
+   "error": null
+  },
+  {
+   "id": "c0618",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 601,
+   "error": null
+  },
+  {
+   "id": "c0620",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.53,
+   "ms": 281,
+   "error": null
+  },
+  {
+   "id": "c0621",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.82,
+   "ms": 273,
+   "error": null
+  },
+  {
+   "id": "c0620",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 632,
+   "error": null
+  },
+  {
+   "id": "c0622",
+   "fuente": "jev",
+   "tipo": "review",
+   "confianza": 0.72,
+   "ms": 248,
+   "error": null
+  },
+  {
+   "id": "c0621",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 631,
+   "error": null
+  },
+  {
+   "id": "c0624",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 248,
+   "error": null
+  },
+  {
+   "id": "c0622",
+   "fuente": "haiku",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 618,
+   "error": null
+  },
+  {
+   "id": "c0625",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.98,
+   "ms": 248,
+   "error": null
+  },
+  {
+   "id": "c0624",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 630,
+   "error": null
+  },
+  {
+   "id": "c0626",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.95,
+   "ms": 256,
+   "error": null
+  },
+  {
+   "id": "c0625",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 646,
+   "error": null
+  },
+  {
+   "id": "c0630",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 245,
+   "error": null
+  },
+  {
+   "id": "c0626",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 620,
+   "error": null
+  },
+  {
+   "id": "c0631",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 268,
+   "error": null
+  },
+  {
+   "id": "c0630",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 661,
+   "error": null
+  },
+  {
+   "id": "c0634",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 238,
+   "error": null
+  },
+  {
+   "id": "c0631",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 670,
+   "error": null
+  },
+  {
+   "id": "c0634",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 688,
+   "error": null
+  },
+  {
+   "id": "c0636",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 368,
+   "error": null
+  },
+  {
+   "id": "c0636",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 636,
+   "error": null
+  },
+  {
+   "id": "c0637",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.76,
+   "ms": 251,
+   "error": null
+  },
+  {
+   "id": "c0640",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 282,
+   "error": null
+  },
+  {
+   "id": "c0637",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 620,
+   "error": null
+  },
+  {
+   "id": "c0640",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 636,
+   "error": null
+  },
+  {
+   "id": "c0642",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 284,
+   "error": null
+  },
+  {
+   "id": "c0650",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 238,
+   "error": null
+  },
+  {
+   "id": "c0642",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 618,
+   "error": null
+  },
+  {
+   "id": "c0654",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.68,
+   "ms": 250,
+   "error": null
+  },
+  {
+   "id": "c0650",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 753,
+   "error": null
+  },
+  {
+   "id": "c0654",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 630,
+   "error": null
+  },
+  {
+   "id": "c0655",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.62,
+   "ms": 285,
+   "error": null
+  },
+  {
+   "id": "c0655",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 615,
+   "error": null
+  },
+  {
+   "id": "c0656",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 270,
+   "error": null
+  },
+  {
+   "id": "c0656",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 618,
+   "error": null
+  },
+  {
+   "id": "c0658",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.51,
+   "ms": 276,
+   "error": null
+  },
+  {
+   "id": "c0658",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 583,
+   "error": null
+  },
+  {
+   "id": "c0659",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.91,
+   "ms": 303,
+   "error": null
+  },
+  {
+   "id": "c0660",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.51,
+   "ms": 258,
+   "error": null
+  },
+  {
+   "id": "c0659",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 652,
+   "error": null
+  },
+  {
+   "id": "c0660",
+   "fuente": "haiku",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 578,
+   "error": null
+  },
+  {
+   "id": "c0661",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 433,
+   "error": null
+  },
+  {
+   "id": "c0664",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 245,
+   "error": null
+  },
+  {
+   "id": "c0661",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 722,
+   "error": null
+  },
+  {
+   "id": "c0664",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 571,
+   "error": null
+  },
+  {
+   "id": "c0667",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.78,
+   "ms": 242,
+   "error": null
+  },
+  {
+   "id": "c0670",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.72,
+   "ms": 304,
+   "error": null
+  },
+  {
+   "id": "c0667",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 644,
+   "error": null
+  },
+  {
+   "id": "c0670",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 654,
+   "error": null
+  },
+  {
+   "id": "c0674",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.52,
+   "ms": 283,
+   "error": null
+  },
+  {
+   "id": "c0679",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 281,
+   "error": null
+  },
+  {
+   "id": "c0674",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 680,
+   "error": null
+  },
+  {
+   "id": "c0679",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 608,
+   "error": null
+  },
+  {
+   "id": "c0681",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.96,
+   "ms": 270,
+   "error": null
+  },
+  {
+   "id": "c0683",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.9,
+   "ms": 268,
+   "error": null
+  },
+  {
+   "id": "c0681",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 652,
+   "error": null
+  },
+  {
+   "id": "c0683",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 621,
+   "error": null
+  },
+  {
+   "id": "c0686",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 285,
+   "error": null
+  },
+  {
+   "id": "c0686",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 673,
+   "error": null
+  },
+  {
+   "id": "c0688",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 318,
+   "error": null
+  },
+  {
+   "id": "c0688",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 619,
+   "error": null
+  },
+  {
+   "id": "c0690",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.82,
+   "ms": 271,
+   "error": null
+  },
+  {
+   "id": "c0692",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.94,
+   "ms": 252,
+   "error": null
+  },
+  {
+   "id": "c0690",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 628,
+   "error": null
+  },
+  {
+   "id": "c0692",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 659,
+   "error": null
+  },
+  {
+   "id": "c0694",
+   "fuente": "jev",
+   "tipo": "build-large",
+   "confianza": 0.16,
+   "ms": 303,
+   "error": null
+  },
+  {
+   "id": "c0694",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 639,
+   "error": null
+  },
+  {
+   "id": "c0697",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 311,
+   "error": null
+  },
+  {
+   "id": "c0697",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 637,
+   "error": null
+  },
+  {
+   "id": "c0699",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.86,
+   "ms": 247,
+   "error": null
+  },
+  {
+   "id": "c0704",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.98,
+   "ms": 244,
+   "error": null
+  },
+  {
+   "id": "c0699",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 631,
+   "error": null
+  },
+  {
+   "id": "c0704",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 646,
+   "error": null
+  },
+  {
+   "id": "c0706",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 261,
+   "error": null
+  },
+  {
+   "id": "c0709",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.78,
+   "ms": 248,
+   "error": null
+  },
+  {
+   "id": "c0706",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 616,
+   "error": null
+  },
+  {
+   "id": "c0711",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 266,
+   "error": null
+  },
+  {
+   "id": "c0709",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 750,
+   "error": null
+  },
+  {
+   "id": "c0711",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 655,
+   "error": null
+  },
+  {
+   "id": "c0714",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.78,
+   "ms": 244,
+   "error": null
+  },
+  {
+   "id": "c0714",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 624,
+   "error": null
+  },
+  {
+   "id": "c0717",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.92,
+   "ms": 274,
+   "error": null
+  },
+  {
+   "id": "c0722",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.84,
+   "ms": 291,
+   "error": null
+  },
+  {
+   "id": "c0717",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 706,
+   "error": null
+  },
+  {
+   "id": "c0722",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 641,
+   "error": null
+  },
+  {
+   "id": "c0723",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.66,
+   "ms": 329,
+   "error": null
+  },
+  {
+   "id": "c0723",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 622,
+   "error": null
+  },
+  {
+   "id": "c0724",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.88,
+   "ms": 242,
+   "error": null
+  },
+  {
+   "id": "c0725",
+   "fuente": "jev",
+   "tipo": "write",
+   "confianza": 0.61,
+   "ms": 269,
+   "error": null
+  },
+  {
+   "id": "c0724",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 662,
+   "error": null
+  },
+  {
+   "id": "c0725",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 592,
+   "error": null
+  },
+  {
+   "id": "c0726",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.78,
+   "ms": 268,
+   "error": null
+  },
+  {
+   "id": "c0727",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.93,
+   "ms": 298,
+   "error": null
+  },
+  {
+   "id": "c0726",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 651,
+   "error": null
+  },
+  {
+   "id": "c0727",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 602,
+   "error": null
+  },
+  {
+   "id": "c0728",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.71,
+   "ms": 267,
+   "error": null
+  },
+  {
+   "id": "c0729",
+   "fuente": "jev",
+   "tipo": "build-small",
+   "confianza": 0.79,
+   "ms": 297,
+   "error": null
+  },
+  {
+   "id": "c0728",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 645,
+   "error": null
+  },
+  {
+   "id": "c0729",
+   "fuente": "haiku",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 716,
+   "error": null
+  }
+ ]
+}

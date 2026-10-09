@@ -1,0 +1,3078 @@
+{
+  "c0001": {
+    "tipo": "research",
+    "seguro": true
+  },
+  "c0002": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; traducir un catálogo es redactar"
+  },
+  "c0003": {
+    "tipo": "research",
+    "seguro": true
+  },
+  "c0004": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0005": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0006": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0007": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; extraer lecciones a la vault es redactar notas"
+  },
+  "c0008": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; sigue la serie de migraciones a la vault"
+  },
+  "c0009": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "\"Generador de KB\" puede ser un script (build) o redactar la KB (write)"
+  },
+  "c0010": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; una propuesta es un documento"
+  },
+  "c0011": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0012": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0013": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0014": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0015": {
+    "tipo": "review",
+    "seguro": true,
+    "nota": "regla null; verificar formularios ya redactados es revisar"
+  },
+  "c0016": {
+    "tipo": "review",
+    "seguro": true,
+    "nota": "regla null; verificar formularios ya redactados es revisar"
+  },
+  "c0017": {
+    "tipo": "review",
+    "seguro": true,
+    "nota": "regla null; verificar formularios ya redactados es revisar"
+  },
+  "c0018": {
+    "tipo": "review",
+    "seguro": true,
+    "nota": "regla null; verificar formularios ya redactados es revisar"
+  },
+  "c0019": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0020": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0021": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0022": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0023": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0024": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0025": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0026": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0027": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0028": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0029": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0030": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0031": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0032": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "4.7k y 8 archivos: en el borde"
+  },
+  "c0033": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0034": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0035": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "7 archivos pero prompt de 3.5k y parece acotado (YAML)"
+  },
+  "c0036": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0037": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.6k pero 10 archivos"
+  },
+  "c0038": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0039": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "Task de plan cuyo contenido es docs: write o build-small"
+  },
+  "c0040": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0041": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0042": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "la regla dice review-final pero es la ola de arreglos de la review final"
+  },
+  "c0043": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0044": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "regla build, pero \"E2E fix\" es arreglar un bug puntual"
+  },
+  "c0045": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0046": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "regla build, pero es arreglar un bug puntual"
+  },
+  "c0047": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0048": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "regla build, pero \"E2E fix\" es arreglar un bug puntual"
+  },
+  "c0049": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0050": {
+    "tipo": "research",
+    "seguro": true
+  },
+  "c0051": {
+    "tipo": "research",
+    "seguro": true
+  },
+  "c0052": {
+    "tipo": "research",
+    "seguro": true
+  },
+  "c0053": {
+    "tipo": "research",
+    "seguro": true
+  },
+  "c0054": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0055": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0056": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "8 archivos pero prompt de 2.9k"
+  },
+  "c0057": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "7 archivos pero prompt de 3.3k"
+  },
+  "c0058": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0059": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0060": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0061": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0062": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0063": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0064": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0065": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0066": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "9 archivos pero prompt de 3.3k"
+  },
+  "c0067": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "9 archivos pero prompt de 3.0k"
+  },
+  "c0068": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0069": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0070": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0071": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0072": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0073": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0074": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0075": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0076": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0077": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0078": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0079": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0080": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0081": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0082": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0083": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "10 archivos pero prompt de 2.9k"
+  },
+  "c0084": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.2k pero 11 archivos"
+  },
+  "c0085": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0086": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0087": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0088": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0089": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0090": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0091": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0092": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0093": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "10 archivos pero prompt de 2.8k"
+  },
+  "c0094": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0095": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0096": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "regla null; \"ola final\" es la ola de arreglos de la review final"
+  },
+  "c0097": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "regla null; \"ola final\" es la ola de arreglos de la review final"
+  },
+  "c0098": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0099": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0100": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0101": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0102": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0103": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; un resumen consolidado es redactar"
+  },
+  "c0104": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0105": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0106": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0107": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0108": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0109": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0110": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0111": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0112": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0113": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0114": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0115": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0116": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0117": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0118": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0119": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0120": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "3.8k y 8 archivos: en el borde"
+  },
+  "c0121": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0122": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0123": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0124": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0125": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "la regla dice review-final pero es la ola de arreglos de la review final"
+  },
+  "c0126": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0127": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0128": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0129": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0130": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0131": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0132": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0133": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0134": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0135": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "7 archivos pero solo los pasos 4-6 de una tarea, 3.8k"
+  },
+  "c0136": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0137": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.8k pero 13 archivos"
+  },
+  "c0138": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0139": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0140": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0141": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "4.4k y 9 archivos: en el borde"
+  },
+  "c0142": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0143": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0144": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0145": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0146": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0147": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0148": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "regla null; \"final fix wave\" es arreglar hallazgos de la review final"
+  },
+  "c0149": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0150": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0151": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "10 archivos pero prompt de 2.8k"
+  },
+  "c0152": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0153": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0154": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0155": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0156": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0157": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0158": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0159": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0160": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0161": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "3.1k y 7 archivos; \"punta a punta\" sugiere integración"
+  },
+  "c0162": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0163": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0164": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.3k pero 13 archivos y toca el compilador"
+  },
+  "c0165": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0166": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0167": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0168": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.4k pero 10 archivos"
+  },
+  "c0169": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0170": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0171": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0172": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.5k pero 13 archivos"
+  },
+  "c0173": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0174": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0175": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0176": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "3.5k y 9 archivos: en el borde"
+  },
+  "c0177": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0178": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0179": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "la regla dice review-final pero es la ola de arreglos de la review final"
+  },
+  "c0180": {
+    "tipo": "re-review",
+    "seguro": true,
+    "nota": "la regla (subagentType revisor-final) dice review-final, pero es re-revisar la ola de arreglos"
+  },
+  "c0181": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0182": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0183": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0184": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0185": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0186": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0187": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0188": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0189": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0190": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.4k pero 13 archivos"
+  },
+  "c0191": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0192": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0193": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0194": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0195": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0196": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0197": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "11 archivos pero prompt de 2.5k"
+  },
+  "c0198": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0199": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "10 archivos pero prompt de 2.9k"
+  },
+  "c0200": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0201": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0202": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0203": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0204": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0205": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.1k pero 11 archivos"
+  },
+  "c0206": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0207": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0208": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0209": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0210": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0211": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0212": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0213": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0214": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0215": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0216": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "regla null; \"VM fix\" es arreglar hallazgos"
+  },
+  "c0217": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0218": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0219": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0220": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0221": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0222": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0223": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0224": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0225": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0226": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0227": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.9k y 10 archivos: en el borde"
+  },
+  "c0228": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0229": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0230": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0231": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "3.5k y 9 archivos: en el borde"
+  },
+  "c0232": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0233": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "3.4k y 8 archivos: en el borde"
+  },
+  "c0234": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0235": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0236": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0237": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0238": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0239": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0240": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0241": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0242": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0243": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0244": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0245": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0246": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0247": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "la regla dice review-final pero es la ola de arreglos de la review final"
+  },
+  "c0248": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0249": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0250": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0251": {
+    "tipo": "research",
+    "seguro": true
+  },
+  "c0252": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0253": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0254": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0255": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0256": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0257": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0258": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0259": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0260": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0261": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0262": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0263": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0264": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0265": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0266": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0267": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.0k pero 11 archivos y es un corredor punta a punta"
+  },
+  "c0268": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0269": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0270": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0271": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0272": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0273": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0274": {
+    "tipo": "fix",
+    "seguro": false,
+    "nota": "regla null; ajustar la zona horaria parece un bug puntual, pero puede ser build-small"
+  },
+  "c0275": {
+    "tipo": "explore",
+    "seguro": false,
+    "nota": "la regla dice research, pero investigar un timeout propio es depurar código, no buscar en la web"
+  },
+  "c0276": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; agregar una opción al script"
+  },
+  "c0277": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0278": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0279": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "14 archivos pero prompt de 2.2k; un cliente nuevo puede ser grande"
+  },
+  "c0280": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0281": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0282": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0283": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0284": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0285": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0286": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.3k pero 10 archivos"
+  },
+  "c0287": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "11 archivos pero prompt de 2.9k"
+  },
+  "c0288": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0289": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0290": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0291": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "regla null; ajustar una instrucción de prompt: build-small o write"
+  },
+  "c0292": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0293": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0294": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0295": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0296": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0297": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; agregar un modo al corredor"
+  },
+  "c0298": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; cambio mecánico de un valor"
+  },
+  "c0299": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0300": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0301": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0302": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0303": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0304": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0305": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0306": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0307": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "6.0k, pero fixtures y AGENTS.md suenan a algo acotado"
+  },
+  "c0308": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0309": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "8.1k; mezcla un ADR (write) con puertas de CI"
+  },
+  "c0310": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0311": {
+    "tipo": "build-large",
+    "seguro": true,
+    "nota": "regla null; un frente de implementación de 4.8k y 13 archivos"
+  },
+  "c0312": {
+    "tipo": "build-large",
+    "seguro": true,
+    "nota": "regla null; un frente de implementación de 7.6k y 15 archivos"
+  },
+  "c0313": {
+    "tipo": "build-large",
+    "seguro": true,
+    "nota": "regla null; escribir un test de integración de 5.8k"
+  },
+  "c0314": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0315": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0316": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0317": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "4.4k y 5 archivos: en el borde"
+  },
+  "c0318": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "5.3k pero solo 6 archivos"
+  },
+  "c0319": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0320": {
+    "tipo": "explore",
+    "seguro": false,
+    "nota": "la regla dice research, pero investigar líneas de datos propios es explorar, no buscar en la web"
+  },
+  "c0321": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0322": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0323": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0324": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0325": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0326": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0327": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0328": {
+    "tipo": "fix",
+    "seguro": false,
+    "nota": "regla null; \"cabos sueltos de comentarios\" suena a arreglar hallazgos"
+  },
+  "c0329": {
+    "tipo": "explore",
+    "seguro": false,
+    "nota": "regla null; contrastar contra el ERP sin escribir nada es relevar"
+  },
+  "c0330": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "regla null; tipar un campo es acotado, pero el prompt es de 5.9k"
+  },
+  "c0331": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0332": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0333": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0334": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "5.8k pero solo 5 archivos"
+  },
+  "c0335": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0336": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0337": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0338": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0339": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0340": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0341": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0342": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0343": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0344": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0345": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0346": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0347": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0348": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0349": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0350": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0351": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0352": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0353": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0354": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0355": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "recrear la base es operar más que implementar; 7.7k pero 2 archivos"
+  },
+  "c0356": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "regla build, pero la tarea son correcciones de documentación"
+  },
+  "c0357": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0358": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0359": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0360": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0361": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0362": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; redactar una nota"
+  },
+  "c0363": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; redactar un ADR y notas"
+  },
+  "c0364": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0365": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; conectar una pantalla a datos reales"
+  },
+  "c0366": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; conectar una pantalla a datos reales"
+  },
+  "c0367": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; conectar una pantalla a datos reales"
+  },
+  "c0368": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; conectar una pantalla a datos reales"
+  },
+  "c0369": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; conectar una pantalla a datos reales"
+  },
+  "c0370": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; conectar una pantalla a datos reales"
+  },
+  "c0371": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; conectar una pantalla a datos reales"
+  },
+  "c0372": {
+    "tipo": "build-small",
+    "seguro": true,
+    "nota": "regla null; conectar una pantalla a datos reales"
+  },
+  "c0373": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0374": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0375": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0376": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0377": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0378": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0379": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0380": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0381": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0382": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "17 archivos pero prompt de 2.6k"
+  },
+  "c0383": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.2k pero 23 archivos"
+  },
+  "c0384": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0385": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0386": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0387": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0388": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0389": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0390": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0391": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.2k pero 15 archivos; pantallas y rutas"
+  },
+  "c0392": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0393": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0394": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.3k pero 12 archivos"
+  },
+  "c0395": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0396": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "20 archivos pero prompt de 2.6k; limpieza"
+  },
+  "c0397": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0398": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0399": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0400": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "la regla dice review-final pero es la ola de arreglos de la review final"
+  },
+  "c0401": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0402": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0403": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0404": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0405": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0406": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0407": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0408": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0409": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0410": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0411": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0412": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0413": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "regla build, pero la tarea son correcciones de docs"
+  },
+  "c0414": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0415": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0416": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0417": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "4.3k y 9 archivos: en el borde"
+  },
+  "c0418": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0419": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0420": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0421": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0422": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0423": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0424": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0425": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0426": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0427": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0428": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0429": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0430": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0431": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0432": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0433": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0434": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0435": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0436": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0437": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0438": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0439": {
+    "tipo": "review",
+    "seguro": false,
+    "nota": "revisa un arreglo de T8: podría ser re-review"
+  },
+  "c0440": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0441": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0442": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0443": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0444": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0445": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0446": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "regla null; agregar un filtro es acotado, pero el prompt es de 5.7k"
+  },
+  "c0447": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; redactar el contenido de AGENTS.md"
+  },
+  "c0448": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "regla null; puede ser redactar el DDL para un plan (write) o implementarlo (build)"
+  },
+  "c0449": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "regla null; puede ser redactar la sección de CI de un plan (write) o implementarla (build)"
+  },
+  "c0450": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "regla null; puede ser redactar el banco para un plan (write) o armarlo (build)"
+  },
+  "c0451": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0452": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0453": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "10 archivos pero prompt de 2.7k"
+  },
+  "c0454": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "12 archivos pero prompt de 3.0k"
+  },
+  "c0455": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0456": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0457": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0458": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0459": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0460": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0461": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0462": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0463": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0464": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0465": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; mover notas en la vault"
+  },
+  "c0466": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0467": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0468": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0469": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0470": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0471": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0472": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0473": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0474": {
+    "tipo": "research",
+    "seguro": true
+  },
+  "c0475": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; buenas prácticas, sin archivos: es investigar"
+  },
+  "c0476": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0477": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0478": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0479": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "3.6k y 9 archivos: en el borde"
+  },
+  "c0480": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0481": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.8k y 12 archivos: en el borde"
+  },
+  "c0482": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0483": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0484": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.7k y 12 archivos: en el borde"
+  },
+  "c0485": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0486": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0487": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0488": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0489": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0490": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0491": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0492": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0493": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0494": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0495": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0496": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0497": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0498": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0499": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0500": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0501": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0502": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "5.6k y 14 archivos, pero \"cierre de la tanda\" puede ser acotado"
+  },
+  "c0503": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0504": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0505": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "la regla dice review-final pero es la ola de arreglos de la review final"
+  },
+  "c0506": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0507": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; verificar literatura sin archivos es investigar"
+  },
+  "c0508": {
+    "tipo": "research",
+    "seguro": false,
+    "nota": "regla null; probar librerías puede ser research o un build de prueba"
+  },
+  "c0509": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "la regla dice explore, pero relevar un campo sin archivos del repo es investigar en la web"
+  },
+  "c0510": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "3.4k y 7 archivos: en el borde"
+  },
+  "c0511": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "12 archivos pero una migración de 3.0k"
+  },
+  "c0512": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "3.1k y 8 archivos: en el borde"
+  },
+  "c0513": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0514": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0515": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0516": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0517": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0518": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.5k pero 16 archivos"
+  },
+  "c0519": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0520": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.6k pero 14 archivos"
+  },
+  "c0521": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0522": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0523": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0524": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0525": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0526": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0527": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0528": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0529": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "regla build, pero la tarea es un ADR y AGENTS.md"
+  },
+  "c0530": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0531": {
+    "tipo": "fix",
+    "seguro": false,
+    "nota": "regla build; \"ronda 4 (implementador nuevo)\" suena a otra ronda de arreglos de T1, pero con implementador nuevo y 5.5k puede ser rehacer la tarea (build-large)"
+  },
+  "c0532": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0533": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0534": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0535": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0536": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0537": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0538": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0539": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.6k pero 13 archivos"
+  },
+  "c0540": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0541": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0542": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0543": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0544": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0545": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0546": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0547": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0548": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0549": {
+    "tipo": "explore",
+    "seguro": true
+  },
+  "c0550": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; redactar un plan de implementación"
+  },
+  "c0551": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0552": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0553": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0554": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0555": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0556": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0557": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0558": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0559": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "regla build, pero la tarea es documentación"
+  },
+  "c0560": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0561": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0562": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0563": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0564": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.7k pero 12 archivos"
+  },
+  "c0565": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0566": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0567": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0568": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0569": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0570": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "regla null; \"final fix wave\" es arreglar hallazgos de la review final"
+  },
+  "c0571": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0572": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0573": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "regla null; \"E2E fix\" es arreglar un bug puntual"
+  },
+  "c0574": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0575": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "regla null; integrar master es un merge con conflictos, no encaja bien en ningún tipo"
+  },
+  "c0576": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0577": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; redactar un plan"
+  },
+  "c0578": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0579": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0580": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0581": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0582": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0583": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0584": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "5.6k pero solo 6 archivos; un esquema YAML"
+  },
+  "c0585": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0586": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "5.9k pero solo 5 archivos"
+  },
+  "c0587": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0588": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0589": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "5.6k pero solo 6 archivos"
+  },
+  "c0590": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0591": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0592": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "7.8k pero es un archivo YAML de datos"
+  },
+  "c0593": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0594": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0595": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0596": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0597": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0598": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0599": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0600": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0601": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "regla build, pero la tarea son correcciones de documentación"
+  },
+  "c0602": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0603": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0604": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0605": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0606": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0607": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0608": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0609": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0610": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0611": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0612": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0613": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0614": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0615": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0616": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0617": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0618": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "regla null; \"marcar dos huecos\" suena acotado pero el prompt es de 5.8k y no queda claro qué hace"
+  },
+  "c0619": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0620": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; actualizar una nota de cierre"
+  },
+  "c0621": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "4.2k y 7 archivos: en el borde"
+  },
+  "c0622": {
+    "tipo": "explore",
+    "seguro": false,
+    "nota": "regla null; escanear un plan contra el repo buscando conflictos: explore o review"
+  },
+  "c0623": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0624": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0625": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0626": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0627": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0628": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0629": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0630": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0631": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0632": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0633": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0634": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0635": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0636": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0637": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0638": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0639": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0640": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0641": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0642": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "\"docs y renumerado\": build-small o write"
+  },
+  "c0643": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0644": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0645": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0646": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0647": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0648": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0649": {
+    "tipo": "re-review",
+    "seguro": true,
+    "nota": "la regla (subagentType revisor-final) dice review-final, pero es re-revisar la ola de arreglos"
+  },
+  "c0650": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "regla null; un merge de master no encaja bien en ningún tipo"
+  },
+  "c0651": {
+    "tipo": "review",
+    "seguro": false,
+    "nota": "la regla (subagentType revisor-final) dice review-final, pero revisa solo la resolución de un merge"
+  },
+  "c0652": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0653": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0654": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; redactar ADRs"
+  },
+  "c0655": {
+    "tipo": "write",
+    "seguro": true,
+    "nota": "regla null; redactar una especificación"
+  },
+  "c0656": {
+    "tipo": "write",
+    "seguro": false,
+    "nota": "regla null; parece redactar una sección de diseño (serie de ADRs y spec), pero podría ser build"
+  },
+  "c0657": {
+    "tipo": "write",
+    "seguro": true
+  },
+  "c0658": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; tema de dominio sin archivos: investigar"
+  },
+  "c0659": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; tema técnico sin archivos: investigar"
+  },
+  "c0660": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; tema técnico sin archivos: investigar"
+  },
+  "c0661": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0662": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0663": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0664": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0665": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0666": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0667": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "4.3k y 6 archivos: en el borde"
+  },
+  "c0668": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0669": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0670": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "4.4k y 6 archivos: en el borde"
+  },
+  "c0671": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0672": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0673": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0674": {
+    "tipo": "explore",
+    "seguro": false,
+    "nota": "regla build; \"relevar contra el ERP real\" puede ser correr el relevador (explore) o implementarlo"
+  },
+  "c0675": {
+    "tipo": "review-final",
+    "seguro": true,
+    "nota": "la regla dice review, pero \"review de rama completa\" es la revisión final"
+  },
+  "c0676": {
+    "tipo": "fix",
+    "seguro": true
+  },
+  "c0677": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0678": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0679": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0680": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0681": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0682": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0683": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0684": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0685": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0686": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0687": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0688": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0689": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0690": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0691": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0692": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0693": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0694": {
+    "tipo": "build-large",
+    "seguro": true
+  },
+  "c0695": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0696": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0697": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.3k pero 11 archivos"
+  },
+  "c0698": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0699": {
+    "tipo": "build-small",
+    "seguro": false,
+    "nota": "verificación en vivo: más probar y anotar que implementar"
+  },
+  "c0700": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0701": {
+    "tipo": "review-final",
+    "seguro": true
+  },
+  "c0702": {
+    "tipo": "fix",
+    "seguro": true,
+    "nota": "la regla dice review-final pero es la ola de arreglos de la review final"
+  },
+  "c0703": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0704": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0705": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0706": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0707": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0708": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0709": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0710": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0711": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0712": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0713": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0714": {
+    "tipo": "build-large",
+    "seguro": false,
+    "nota": "3.6k pero 10 archivos; integra los clasificadores"
+  },
+  "c0715": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0716": {
+    "tipo": "re-review",
+    "seguro": true
+  },
+  "c0717": {
+    "tipo": "build-small",
+    "seguro": true
+  },
+  "c0718": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0719": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0720": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0721": {
+    "tipo": "review",
+    "seguro": true
+  },
+  "c0722": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; relevar empresas del mercado es investigar en la web"
+  },
+  "c0723": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; relevar empresas del mercado es investigar en la web"
+  },
+  "c0724": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; relevar empresas del mercado es investigar en la web"
+  },
+  "c0725": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; patrones de casos de estudio: investigar"
+  },
+  "c0726": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; investigar nombres de categoría"
+  },
+  "c0727": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; investigar referencias de diseño"
+  },
+  "c0728": {
+    "tipo": "research",
+    "seguro": false,
+    "nota": "regla null; puede ser investigar o redactar propuestas de nombre (write)"
+  },
+  "c0729": {
+    "tipo": "research",
+    "seguro": true,
+    "nota": "regla null; investigar empresas o productos"
+  }
+}

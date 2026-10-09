@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/CiroVilmer/jev-agent-router/security/advisories/new
+    about: Report security issues privately, not in a public issue.
+  - name: Claude Code mods documentation
+    url: https://code.claude.com/docs/en/plugins/mods/overview
+    about: Questions about the mods API itself.

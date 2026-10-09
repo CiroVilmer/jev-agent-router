@@ -1,0 +1,2208 @@
+{
+ "fecha": "2026-10-06T19:27:14.046Z",
+ "clasificadores": [
+  "haiku"
+ ],
+ "resultados": [
+  {
+   "id": "c0002",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 635,
+   "error": null
+  },
+  {
+   "id": "c0008",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 701,
+   "error": null
+  },
+  {
+   "id": "c0007",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 721,
+   "error": null
+  },
+  {
+   "id": "c0009",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 674,
+   "error": null
+  },
+  {
+   "id": "c0010",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 633,
+   "error": null
+  },
+  {
+   "id": "c0015",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 742,
+   "error": null
+  },
+  {
+   "id": "c0017",
+   "fuente": "haiku",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 621,
+   "error": null
+  },
+  {
+   "id": "c0016",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 646,
+   "error": null
+  },
+  {
+   "id": "c0018",
+   "fuente": "haiku",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 632,
+   "error": null
+  },
+  {
+   "id": "c0023",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 667,
+   "error": null
+  },
+  {
+   "id": "c0025",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 682,
+   "error": null
+  },
+  {
+   "id": "c0027",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 649,
+   "error": null
+  },
+  {
+   "id": "c0032",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 661,
+   "error": null
+  },
+  {
+   "id": "c0030",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 729,
+   "error": null
+  },
+  {
+   "id": "c0035",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 670,
+   "error": null
+  },
+  {
+   "id": "c0037",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 678,
+   "error": null
+  },
+  {
+   "id": "c0044",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 676,
+   "error": null
+  },
+  {
+   "id": "c0039",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 762,
+   "error": null
+  },
+  {
+   "id": "c0046",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 745,
+   "error": null
+  },
+  {
+   "id": "c0054",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 642,
+   "error": null
+  },
+  {
+   "id": "c0048",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 671,
+   "error": null
+  },
+  {
+   "id": "c0055",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 656,
+   "error": null
+  },
+  {
+   "id": "c0056",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 644,
+   "error": null
+  },
+  {
+   "id": "c0057",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 704,
+   "error": null
+  },
+  {
+   "id": "c0065",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 655,
+   "error": null
+  },
+  {
+   "id": "c0066",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 651,
+   "error": null
+  },
+  {
+   "id": "c0067",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 617,
+   "error": null
+  },
+  {
+   "id": "c0080",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 630,
+   "error": null
+  },
+  {
+   "id": "c0071",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 644,
+   "error": null
+  },
+  {
+   "id": "c0083",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 686,
+   "error": null
+  },
+  {
+   "id": "c0084",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 665,
+   "error": null
+  },
+  {
+   "id": "c0090",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 633,
+   "error": null
+  },
+  {
+   "id": "c0088",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 740,
+   "error": null
+  },
+  {
+   "id": "c0096",
+   "fuente": "haiku",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 649,
+   "error": null
+  },
+  {
+   "id": "c0093",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 726,
+   "error": null
+  },
+  {
+   "id": "c0097",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 669,
+   "error": null
+  },
+  {
+   "id": "c0105",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 673,
+   "error": null
+  },
+  {
+   "id": "c0108",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 666,
+   "error": null
+  },
+  {
+   "id": "c0109",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 657,
+   "error": null
+  },
+  {
+   "id": "c0114",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 661,
+   "error": null
+  },
+  {
+   "id": "c0103",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1582,
+   "error": null
+  },
+  {
+   "id": "c0115",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 662,
+   "error": null
+  },
+  {
+   "id": "c0119",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 671,
+   "error": null
+  },
+  {
+   "id": "c0120",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 691,
+   "error": null
+  },
+  {
+   "id": "c0127",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 675,
+   "error": null
+  },
+  {
+   "id": "c0132",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 743,
+   "error": null
+  },
+  {
+   "id": "c0135",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 675,
+   "error": null
+  },
+  {
+   "id": "c0137",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 658,
+   "error": null
+  },
+  {
+   "id": "c0139",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 714,
+   "error": null
+  },
+  {
+   "id": "c0141",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 666,
+   "error": null
+  },
+  {
+   "id": "c0144",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 630,
+   "error": null
+  },
+  {
+   "id": "c0148",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 633,
+   "error": null
+  },
+  {
+   "id": "c0151",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 654,
+   "error": null
+  },
+  {
+   "id": "c0152",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 624,
+   "error": null
+  },
+  {
+   "id": "c0156",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 655,
+   "error": null
+  },
+  {
+   "id": "c0157",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 672,
+   "error": null
+  },
+  {
+   "id": "c0161",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 671,
+   "error": null
+  },
+  {
+   "id": "c0163",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 681,
+   "error": null
+  },
+  {
+   "id": "c0164",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 661,
+   "error": null
+  },
+  {
+   "id": "c0168",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 635,
+   "error": null
+  },
+  {
+   "id": "c0172",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 740,
+   "error": null
+  },
+  {
+   "id": "c0176",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 640,
+   "error": null
+  },
+  {
+   "id": "c0171",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1408,
+   "error": null
+  },
+  {
+   "id": "c0182",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 700,
+   "error": null
+  },
+  {
+   "id": "c0183",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 694,
+   "error": null
+  },
+  {
+   "id": "c0184",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 671,
+   "error": null
+  },
+  {
+   "id": "c0188",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 690,
+   "error": null
+  },
+  {
+   "id": "c0190",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 669,
+   "error": null
+  },
+  {
+   "id": "c0193",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 724,
+   "error": null
+  },
+  {
+   "id": "c0195",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 730,
+   "error": null
+  },
+  {
+   "id": "c0197",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 811,
+   "error": null
+  },
+  {
+   "id": "c0199",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 804,
+   "error": null
+  },
+  {
+   "id": "c0203",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 668,
+   "error": null
+  },
+  {
+   "id": "c0205",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 699,
+   "error": null
+  },
+  {
+   "id": "c0216",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 757,
+   "error": null
+  },
+  {
+   "id": "c0225",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 732,
+   "error": null
+  },
+  {
+   "id": "c0226",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 631,
+   "error": null
+  },
+  {
+   "id": "c0227",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 669,
+   "error": null
+  },
+  {
+   "id": "c0230",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 735,
+   "error": null
+  },
+  {
+   "id": "c0231",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 737,
+   "error": null
+  },
+  {
+   "id": "c0233",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 643,
+   "error": null
+  },
+  {
+   "id": "c0237",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 616,
+   "error": null
+  },
+  {
+   "id": "c0238",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 669,
+   "error": null
+  },
+  {
+   "id": "c0242",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 632,
+   "error": null
+  },
+  {
+   "id": "c0243",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 680,
+   "error": null
+  },
+  {
+   "id": "c0252",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 650,
+   "error": null
+  },
+  {
+   "id": "c0253",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0254",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 654,
+   "error": null
+  },
+  {
+   "id": "c0255",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 723,
+   "error": null
+  },
+  {
+   "id": "c0256",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0257",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 659,
+   "error": null
+  },
+  {
+   "id": "c0267",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 663,
+   "error": null
+  },
+  {
+   "id": "c0274",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 607,
+   "error": null
+  },
+  {
+   "id": "c0276",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 700,
+   "error": null
+  },
+  {
+   "id": "c0278",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 666,
+   "error": null
+  },
+  {
+   "id": "c0279",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 651,
+   "error": null
+  },
+  {
+   "id": "c0280",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 655,
+   "error": null
+  },
+  {
+   "id": "c0281",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 674,
+   "error": null
+  },
+  {
+   "id": "c0286",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 658,
+   "error": null
+  },
+  {
+   "id": "c0287",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 646,
+   "error": null
+  },
+  {
+   "id": "c0291",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 647,
+   "error": null
+  },
+  {
+   "id": "c0292",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 656,
+   "error": null
+  },
+  {
+   "id": "c0297",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 660,
+   "error": null
+  },
+  {
+   "id": "c0298",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 643,
+   "error": null
+  },
+  {
+   "id": "c0299",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 639,
+   "error": null
+  },
+  {
+   "id": "c0301",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 686,
+   "error": null
+  },
+  {
+   "id": "c0304",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 693,
+   "error": null
+  },
+  {
+   "id": "c0307",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 876,
+   "error": null
+  },
+  {
+   "id": "c0309",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 647,
+   "error": null
+  },
+  {
+   "id": "c0311",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 979,
+   "error": null
+  },
+  {
+   "id": "c0312",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 715,
+   "error": null
+  },
+  {
+   "id": "c0313",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 657,
+   "error": null
+  },
+  {
+   "id": "c0317",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 758,
+   "error": null
+  },
+  {
+   "id": "c0319",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 651,
+   "error": null
+  },
+  {
+   "id": "c0318",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 728,
+   "error": null
+  },
+  {
+   "id": "c0321",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 635,
+   "error": null
+  },
+  {
+   "id": "c0322",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 651,
+   "error": null
+  },
+  {
+   "id": "c0328",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 677,
+   "error": null
+  },
+  {
+   "id": "c0329",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 634,
+   "error": null
+  },
+  {
+   "id": "c0331",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 659,
+   "error": null
+  },
+  {
+   "id": "c0330",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 764,
+   "error": null
+  },
+  {
+   "id": "c0334",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 659,
+   "error": null
+  },
+  {
+   "id": "c0336",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 640,
+   "error": null
+  },
+  {
+   "id": "c0339",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 722,
+   "error": null
+  },
+  {
+   "id": "c0341",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 688,
+   "error": null
+  },
+  {
+   "id": "c0343",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 611,
+   "error": null
+  },
+  {
+   "id": "c0346",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 701,
+   "error": null
+  },
+  {
+   "id": "c0349",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 639,
+   "error": null
+  },
+  {
+   "id": "c0352",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 713,
+   "error": null
+  },
+  {
+   "id": "c0355",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1088,
+   "error": null
+  },
+  {
+   "id": "c0362",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 655,
+   "error": null
+  },
+  {
+   "id": "c0356",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 752,
+   "error": null
+  },
+  {
+   "id": "c0363",
+   "fuente": "haiku",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0366",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 656,
+   "error": null
+  },
+  {
+   "id": "c0365",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1243,
+   "error": null
+  },
+  {
+   "id": "c0367",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 657,
+   "error": null
+  },
+  {
+   "id": "c0368",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 689,
+   "error": null
+  },
+  {
+   "id": "c0369",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 693,
+   "error": null
+  },
+  {
+   "id": "c0370",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 636,
+   "error": null
+  },
+  {
+   "id": "c0371",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 643,
+   "error": null
+  },
+  {
+   "id": "c0378",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 638,
+   "error": null
+  },
+  {
+   "id": "c0379",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 650,
+   "error": null
+  },
+  {
+   "id": "c0372",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 778,
+   "error": null
+  },
+  {
+   "id": "c0382",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 674,
+   "error": null
+  },
+  {
+   "id": "c0383",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 707,
+   "error": null
+  },
+  {
+   "id": "c0384",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 659,
+   "error": null
+  },
+  {
+   "id": "c0391",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 648,
+   "error": null
+  },
+  {
+   "id": "c0394",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 641,
+   "error": null
+  },
+  {
+   "id": "c0396",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 712,
+   "error": null
+  },
+  {
+   "id": "c0402",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 662,
+   "error": null
+  },
+  {
+   "id": "c0406",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 679,
+   "error": null
+  },
+  {
+   "id": "c0409",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 614,
+   "error": null
+  },
+  {
+   "id": "c0410",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 667,
+   "error": null
+  },
+  {
+   "id": "c0413",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 639,
+   "error": null
+  },
+  {
+   "id": "c0417",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 650,
+   "error": null
+  },
+  {
+   "id": "c0405",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2229,
+   "error": null
+  },
+  {
+   "id": "c0418",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 682,
+   "error": null
+  },
+  {
+   "id": "c0419",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 736,
+   "error": null
+  },
+  {
+   "id": "c0429",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 684,
+   "error": null
+  },
+  {
+   "id": "c0427",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1075,
+   "error": null
+  },
+  {
+   "id": "c0440",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 657,
+   "error": null
+  },
+  {
+   "id": "c0443",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 743,
+   "error": null
+  },
+  {
+   "id": "c0446",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 739,
+   "error": null
+  },
+  {
+   "id": "c0447",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 679,
+   "error": null
+  },
+  {
+   "id": "c0449",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 678,
+   "error": null
+  },
+  {
+   "id": "c0448",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 727,
+   "error": null
+  },
+  {
+   "id": "c0450",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 893,
+   "error": null
+  },
+  {
+   "id": "c0454",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 664,
+   "error": null
+  },
+  {
+   "id": "c0453",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 692,
+   "error": null
+  },
+  {
+   "id": "c0457",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 671,
+   "error": null
+  },
+  {
+   "id": "c0463",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 671,
+   "error": null
+  },
+  {
+   "id": "c0465",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 679,
+   "error": null
+  },
+  {
+   "id": "c0475",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 729,
+   "error": null
+  },
+  {
+   "id": "c0476",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 805,
+   "error": null
+  },
+  {
+   "id": "c0479",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 782,
+   "error": null
+  },
+  {
+   "id": "c0481",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 892,
+   "error": null
+  },
+  {
+   "id": "c0484",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 824,
+   "error": null
+  },
+  {
+   "id": "c0487",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 691,
+   "error": null
+  },
+  {
+   "id": "c0490",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 725,
+   "error": null
+  },
+  {
+   "id": "c0493",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 653,
+   "error": null
+  },
+  {
+   "id": "c0496",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 712,
+   "error": null
+  },
+  {
+   "id": "c0499",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 686,
+   "error": null
+  },
+  {
+   "id": "c0502",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 689,
+   "error": null
+  },
+  {
+   "id": "c0507",
+   "fuente": "haiku",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 786,
+   "error": null
+  },
+  {
+   "id": "c0508",
+   "fuente": "haiku",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 727,
+   "error": null
+  },
+  {
+   "id": "c0510",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 881,
+   "error": null
+  },
+  {
+   "id": "c0511",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1047,
+   "error": null
+  },
+  {
+   "id": "c0512",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 839,
+   "error": null
+  },
+  {
+   "id": "c0513",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1062,
+   "error": null
+  },
+  {
+   "id": "c0518",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1103,
+   "error": null
+  },
+  {
+   "id": "c0520",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1150,
+   "error": null
+  },
+  {
+   "id": "c0524",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 746,
+   "error": null
+  },
+  {
+   "id": "c0529",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 837,
+   "error": null
+  },
+  {
+   "id": "c0531",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 869,
+   "error": null
+  },
+  {
+   "id": "c0535",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 825,
+   "error": null
+  },
+  {
+   "id": "c0536",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 988,
+   "error": null
+  },
+  {
+   "id": "c0539",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 762,
+   "error": null
+  },
+  {
+   "id": "c0541",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 745,
+   "error": null
+  },
+  {
+   "id": "c0550",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1082,
+   "error": null
+  },
+  {
+   "id": "c0551",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1083,
+   "error": null
+  },
+  {
+   "id": "c0545",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1094,
+   "error": null
+  },
+  {
+   "id": "c0553",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 813,
+   "error": null
+  },
+  {
+   "id": "c0555",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1463,
+   "error": null
+  },
+  {
+   "id": "c0558",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1367,
+   "error": null
+  },
+  {
+   "id": "c0559",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1222,
+   "error": null
+  },
+  {
+   "id": "c0562",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1603,
+   "error": null
+  },
+  {
+   "id": "c0564",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1603,
+   "error": null
+  },
+  {
+   "id": "c0567",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1785,
+   "error": null
+  },
+  {
+   "id": "c0573",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1038,
+   "error": null
+  },
+  {
+   "id": "c0570",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1150,
+   "error": null
+  },
+  {
+   "id": "c0575",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 931,
+   "error": null
+  },
+  {
+   "id": "c0577",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 859,
+   "error": null
+  },
+  {
+   "id": "c0581",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 859,
+   "error": null
+  },
+  {
+   "id": "c0586",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 707,
+   "error": null
+  },
+  {
+   "id": "c0584",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 908,
+   "error": null
+  },
+  {
+   "id": "c0589",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 980,
+   "error": null
+  },
+  {
+   "id": "c0592",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 697,
+   "error": null
+  },
+  {
+   "id": "c0595",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 678,
+   "error": null
+  },
+  {
+   "id": "c0597",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 783,
+   "error": null
+  },
+  {
+   "id": "c0600",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 720,
+   "error": null
+  },
+  {
+   "id": "c0601",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 906,
+   "error": null
+  },
+  {
+   "id": "c0606",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 809,
+   "error": null
+  },
+  {
+   "id": "c0609",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 943,
+   "error": null
+  },
+  {
+   "id": "c0610",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1021,
+   "error": null
+  },
+  {
+   "id": "c0613",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 897,
+   "error": null
+  },
+  {
+   "id": "c0618",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 828,
+   "error": null
+  },
+  {
+   "id": "c0620",
+   "fuente": "haiku",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 684,
+   "error": null
+  },
+  {
+   "id": "c0621",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 758,
+   "error": null
+  },
+  {
+   "id": "c0622",
+   "fuente": "haiku",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 833,
+   "error": null
+  },
+  {
+   "id": "c0624",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1710,
+   "error": null
+  },
+  {
+   "id": "c0625",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1453,
+   "error": null
+  },
+  {
+   "id": "c0626",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 3110,
+   "error": null
+  },
+  {
+   "id": "c0631",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2538,
+   "error": null
+  },
+  {
+   "id": "c0630",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2539,
+   "error": null
+  },
+  {
+   "id": "c0634",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1082,
+   "error": null
+  },
+  {
+   "id": "c0637",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1050,
+   "error": null
+  },
+  {
+   "id": "c0636",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1072,
+   "error": null
+  },
+  {
+   "id": "c0640",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 808,
+   "error": null
+  },
+  {
+   "id": "c0650",
+   "fuente": "haiku",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 876,
+   "error": null
+  },
+  {
+   "id": "c0654",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 750,
+   "error": null
+  },
+  {
+   "id": "c0642",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1273,
+   "error": null
+  },
+  {
+   "id": "c0655",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 752,
+   "error": null
+  },
+  {
+   "id": "c0656",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 829,
+   "error": null
+  },
+  {
+   "id": "c0658",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 942,
+   "error": null
+  },
+  {
+   "id": "c0659",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 845,
+   "error": null
+  },
+  {
+   "id": "c0660",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 941,
+   "error": null
+  },
+  {
+   "id": "c0661",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 966,
+   "error": null
+  },
+  {
+   "id": "c0664",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 779,
+   "error": null
+  },
+  {
+   "id": "c0667",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 856,
+   "error": null
+  },
+  {
+   "id": "c0670",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 994,
+   "error": null
+  },
+  {
+   "id": "c0674",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 916,
+   "error": null
+  },
+  {
+   "id": "c0679",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 910,
+   "error": null
+  },
+  {
+   "id": "c0681",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 965,
+   "error": null
+  },
+  {
+   "id": "c0683",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1118,
+   "error": null
+  },
+  {
+   "id": "c0686",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1200,
+   "error": null
+  },
+  {
+   "id": "c0688",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 956,
+   "error": null
+  },
+  {
+   "id": "c0690",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1697,
+   "error": null
+  },
+  {
+   "id": "c0692",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1526,
+   "error": null
+  },
+  {
+   "id": "c0694",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1667,
+   "error": null
+  },
+  {
+   "id": "c0697",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1466,
+   "error": null
+  },
+  {
+   "id": "c0699",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1648,
+   "error": null
+  },
+  {
+   "id": "c0704",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1382,
+   "error": null
+  },
+  {
+   "id": "c0706",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2427,
+   "error": null
+  },
+  {
+   "id": "c0709",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2233,
+   "error": null
+  },
+  {
+   "id": "c0711",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2381,
+   "error": null
+  },
+  {
+   "id": "c0714",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1278,
+   "error": null
+  },
+  {
+   "id": "c0717",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1229,
+   "error": null
+  },
+  {
+   "id": "c0722",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1229,
+   "error": null
+  },
+  {
+   "id": "c0723",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 994,
+   "error": null
+  },
+  {
+   "id": "c0724",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 782,
+   "error": null
+  },
+  {
+   "id": "c0725",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 782,
+   "error": null
+  },
+  {
+   "id": "c0726",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 810,
+   "error": null
+  },
+  {
+   "id": "c0728",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 922,
+   "error": null
+  },
+  {
+   "id": "c0727",
+   "fuente": "haiku",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 923,
+   "error": null
+  },
+  {
+   "id": "c0729",
+   "fuente": "haiku",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 768,
+   "error": null
+  }
+ ]
+}
