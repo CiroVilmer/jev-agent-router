@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'claude-code/testing'
 import type { Subagente } from '../types'
-import { agruparPorTarea, mediana, metricasDe, tareaDe } from '../src/registro'
+import { agruparPorTarea, mediana, metricasDe, tallaBuildDe, tareaDe } from '../src/registro'
 
 const MIN = 60_000
 const sub = (c: Partial<Subagente>): Subagente => ({
@@ -145,5 +145,24 @@ describe('mediana', () => {
     ]
     // Terminadas: 4, 12 y 90 (promedio 35.3); la activa no cuenta.
     expect(metricasDe(subs, 100 * MIN).minutosPorTarea).toBe(12)
+  })
+})
+
+describe('tallaBuildDe', () => {
+  test('toma el tipo del último build de la tarea, ignorando otros tipos y otras tareas', () => {
+    const subs = [
+      sub({ tarea: 'Tarea 3', tipo: 'build-large' }),
+      sub({ tarea: 'Tarea 3', tipo: 'build-small' }),
+      sub({ tarea: 'Tarea 3', tipo: 'review-large' }),
+      sub({ tarea: 'Tarea 4', tipo: 'build-large' }),
+    ]
+    expect(tallaBuildDe(subs, 'Tarea 3')).toBe('build-small')
+    expect(tallaBuildDe(subs, 'Tarea 4')).toBe('build-large')
+  })
+  test('sin tarea o sin build es null', () => {
+    const subs = [sub({ tarea: 'Tarea 3', tipo: 'review-small' }), sub({ tarea: null, tipo: 'build-large' })]
+    expect(tallaBuildDe(subs, 'Tarea 3')).toBe(null)
+    expect(tallaBuildDe(subs, null)).toBe(null)
+    expect(tallaBuildDe([], 'Tarea 9')).toBe(null)
   })
 })

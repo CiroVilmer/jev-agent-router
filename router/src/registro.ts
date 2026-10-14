@@ -10,6 +10,16 @@ export function tareaDe(descripcion: string): string | null {
   return p[2]!.toLowerCase().slice(0, 60)
 }
 
+/** La talla del último build de la tarea (build-large o build-small), o null si no hay tarea o build. */
+export function tallaBuildDe(subs: readonly Subagente[], tarea: string | null): 'build-large' | 'build-small' | null {
+  if (!tarea) return null
+  for (let i = subs.length - 1; i >= 0; i--) {
+    const s = subs[i]!
+    if (s.tarea === tarea && (s.tipo === 'build-large' || s.tipo === 'build-small')) return s.tipo
+  }
+  return null
+}
+
 export type ResumenTarea = {
   tarea: string
   pasos: { tipo: Tipo | null; terminado: boolean }[]

@@ -33,7 +33,7 @@ import {
 import { historialMarkdown } from '../src/historialMarkdown'
 import { aplicarComando, describirComando, LINEA_ROUTER, OVERRIDES_INICIAL, parsearComando } from '../src/overrides'
 import { lecturaDe, politicaSegunHot, umbralesDe } from '../src/politica'
-import { tareaDe } from '../src/registro'
+import { tallaBuildDe, tareaDe } from '../src/registro'
 import { clasificarPorReglas } from '../src/reglas'
 import { formatEscalon, tablaDe } from '../src/taxonomia'
 import { textoLinea } from '../src/ui/linea'
@@ -441,12 +441,15 @@ ${CONVENCION_AGENT}` }
     let decision: Decision
     let modo: Subagente['modo']
     try {
-      const [overrides, lectura, hot] = await Promise.all([read($, overridesAtom), read($, lecturaAtom), leerHot($)])
+      const [overrides, lectura, hot, subs] = await Promise.all([read($, overridesAtom), read($, lecturaAtom), leerHot($), read($, subagentesAtom)])
       const politica = politicaSegunHot(hot, lectura, ahora, umbrales)
       modo = politica.modo
       const { clasificar, jevDecideReviews } = await armarClasificador($, options, next.signal)
       decision = await decidir(
-        { descripcion: e.description, prompt: e.prompt, subagentType: e.subagentType, modeloPedido: e.model, fork: e.fork },
+        {
+          descripcion: e.description, prompt: e.prompt, subagentType: e.subagentType, modeloPedido: e.model, fork: e.fork,
+          tallaBuildDeTarea: tallaBuildDe(subs, tareaDe(e.description)),
+        },
         { overrides, politica, clasificar, jevDecideReviews, tabla },
       )
     } catch (error) {

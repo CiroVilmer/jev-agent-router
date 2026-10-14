@@ -197,6 +197,37 @@ describe('register', () => {
     expect(esfuerzo).toBe('medium')
   })
 
+  test('una review hereda la talla del build de su tarea: build grande, review-large en opus con esfuerzo xhigh', async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    let modelo: string | undefined
+    let n = 0
+    on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: `ag-rl-${n++}` } })
+    let esfuerzo: unknown = 'sin tocar'
+    on('turn.step', async function* (_$, e) { esfuerzo = e.effort; return finDePaso(e) })
+    await $.agent.spawn({ ...SPAWN, description: 'Implement Task 3: x', prompt: 'a'.repeat(6000) })
+    // Review con prompt corto: sola, por respaldo, sería review-small.
+    await $.agent.spawn({ ...SPAWN, tool_use_id: 'tu-2', description: 'Review Task 3: x', prompt: 'Revisá.', model: undefined })
+    expect(modelo).toBe('opus')
+    for await (const _ of $.turn.step({ turnId: 't-rl', index: 0, model: 'claude-opus-5-5', effort: 'medium', messageCount: 3, agentId: 'ag-rl-1' })) { /* consumir */ }
+    expect(esfuerzo).toBe('xhigh')
+  })
+
+  test('una review hereda la talla del build de su tarea: build chico, review-small en opus con esfuerzo medium', async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    let modelo: string | undefined
+    let n = 0
+    on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: `ag-rs-${n++}` } })
+    let esfuerzo: unknown = 'sin tocar'
+    on('turn.step', async function* (_$, e) { esfuerzo = e.effort; return finDePaso(e) })
+    await $.agent.spawn({ ...SPAWN, description: 'Implement Task 3: x', prompt: 'corto' })
+    await $.agent.spawn({ ...SPAWN, tool_use_id: 'tu-2', description: 'Review Task 3: x', prompt: 'a'.repeat(6000), model: undefined })
+    expect(modelo).toBe('opus')
+    for await (const _ of $.turn.step({ turnId: 't-rs', index: 0, model: 'claude-opus-5-5', effort: 'high', messageCount: 3, agentId: 'ag-rs-1' })) { /* consumir */ }
+    expect(esfuerzo).toBe('medium')
+  })
+
   test('el system prompt suma la línea del router', async ($, on) => {
     on('prompt.compose', async () => ({ sections: [{ id: 'intro', text: 'Hola', scope: 'shared' as const }] }))
     const r = await $.prompt.compose({
