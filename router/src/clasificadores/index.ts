@@ -10,13 +10,19 @@ export type Clasificador = (p: PedidoClasificacion) => Promise<Clasificacion>
 
 export const TALLAS: readonly Tipo[] = ['build-large', 'build-small']
 
-export function soloTallas(etiquetas: readonly Tipo[]): boolean {
-  return etiquetas.length === TALLAS.length && TALLAS.every(t => etiquetas.includes(t))
+export const TALLAS_REVIEW: readonly Tipo[] = ['review-large', 'review-small']
+
+const mismasEtiquetas = (etiquetas: readonly Tipo[], par: readonly Tipo[]) =>
+  etiquetas.length === par.length && par.every(t => etiquetas.includes(t))
+
+/** Una de las dos preguntas de talla: build-large/build-small o review-large/review-small. */
+export function esPreguntaDeTalla(etiquetas: readonly Tipo[]): boolean {
+  return mismasEtiquetas(etiquetas, TALLAS) || mismasEtiquetas(etiquetas, TALLAS_REVIEW)
 }
 
-/** Decide sin modelo: por tamaño si es un build; si no hubo regla, build-small. */
+/** Decide sin modelo: por tamaño en la talla de un build; review-small en la de una review; si no hubo regla, build-small. */
 export const respaldo: Clasificador = async ({ resumen, etiquetas }) => ({
-  tipo: soloTallas(etiquetas) ? tamanoPorRespaldo(resumen) : 'build-small',
+  tipo: mismasEtiquetas(etiquetas, TALLAS) ? tamanoPorRespaldo(resumen) : mismasEtiquetas(etiquetas, TALLAS_REVIEW) ? 'review-small' : 'build-small',
   ms: 0,
   fuente: 'respaldo',
 })

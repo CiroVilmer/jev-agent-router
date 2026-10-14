@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'claude-code/testing'
 import type { Clasificador } from '../src/clasificadores'
-import { limitesDe, TALLAS } from '../src/clasificadores'
+import { limitesDe, respaldo, TALLAS, TALLAS_REVIEW } from '../src/clasificadores'
 import type { Muestra } from '../src/clasificadores/sombra'
 import { agregarMuestra, conSombra, estadisticasSombra, muestrasDe } from '../src/clasificadores/sombra'
 import { conTope } from '../src/clasificadores/tope'
@@ -9,6 +9,18 @@ const GRANDE = { chars: 9000, archivos: 2, pasos: 0, mencionaSpec: false }
 const PEDIDO = { descripcion: 'Implement Task 11', resumen: GRANDE, etiquetas: TALLAS }
 const nunca: Promise<void> = new Promise(() => {})
 const yaVencio = async () => {}
+
+describe('respaldo', () => {
+  test('con las etiquetas de talla de review decide review-small', async () => {
+    const r = await respaldo({ descripcion: 'Review Task 2', resumen: GRANDE, etiquetas: TALLAS_REVIEW })
+    expect(r).toEqual({ tipo: 'review-small', ms: 0, fuente: 'respaldo' })
+  })
+
+  test('con las de build sigue por tamaño; sin regla, build-small', async () => {
+    expect((await respaldo(PEDIDO)).tipo).toBe('build-large')
+    expect((await respaldo({ ...PEDIDO, etiquetas: ['build-small', 'fix'] })).tipo).toBe('build-small')
+  })
+})
 
 describe('conTope', () => {
   test('si el clasificador responde, pasa tal cual', async () => {

@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'claude-code/testing'
-import { TALLAS } from '../src/clasificadores'
+import { TALLAS, TALLAS_REVIEW } from '../src/clasificadores'
 import { TIPOS } from '../src/taxonomia'
 import { crearJev, JEV_MODELO, JEV_URL, leerJev, pedidoJev } from '../src/clasificadores/jev'
 
@@ -64,6 +64,13 @@ describe('jev', () => {
     const jev = crearJev(async () => ({ ok: true, status: 200, text: respuesta('build-large', 0.55) }), reloj, 0.7)
     let e = ''
     try { await jev({ descripcion: 'Implement Task 2', resumen: RESUMEN, etiquetas: TALLAS }) } catch (x) { e = String(x) }
+    expect(e).toBe('Error: jev dudó (0.55)')
+  })
+
+  test('en la talla de una review, con duda, también tira jev dudó', async () => {
+    const jev = crearJev(async () => ({ ok: true, status: 200, text: respuesta('review-large', 0.55) }), reloj, 0.7)
+    let e = ''
+    try { await jev({ descripcion: 'Review Task 2', resumen: RESUMEN, etiquetas: TALLAS_REVIEW }) } catch (x) { e = String(x) }
     expect(e).toBe('Error: jev dudó (0.55)')
   })
 

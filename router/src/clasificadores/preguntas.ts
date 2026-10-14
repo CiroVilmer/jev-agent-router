@@ -40,12 +40,30 @@ export const COMO_DECIDIR_TALLA: readonly string[] = [
   'Los pasos y si menciona un spec no separan bien la talla: casi todos los builds de un plan mencionan el spec.',
 ]
 
+export const DESCRIPCION_TALLA_REVIEW: Record<'review-large' | 'review-small', string> = {
+  'review-large': DESCRIPCION['review-large'],
+  'review-small': DESCRIPCION['review-small'],
+}
+
+export const COMO_DECIDIR_TALLA_REVIEW: readonly string[] = [
+  'Elegí por el alcance de lo que se revisa, no por palabras sueltas.',
+  'review-large: un bloque, una feature, una fase, una integración, una rama o varias tareas; o un cambio que nombra muchos archivos.',
+  'review-small: una tarea de un plan, un fix o un cambio acotado.',
+]
+
 // Sin importar valores de otros módulos: bench/ importa este archivo directo desde Node.
-const esTalla = (etiquetas: readonly Tipo[]) =>
-  etiquetas.length === 2 && etiquetas.includes('build-large') && etiquetas.includes('build-small')
+const mismas = (etiquetas: readonly Tipo[], par: readonly Tipo[]) =>
+  etiquetas.length === 2 && par.every(t => etiquetas.includes(t))
+const esTalla = (etiquetas: readonly Tipo[]) => mismas(etiquetas, ['build-large', 'build-small'])
+const esTallaReview = (etiquetas: readonly Tipo[]) => mismas(etiquetas, ['review-large', 'review-small'])
 const descripcion = (etiquetas: readonly Tipo[], t: Tipo) =>
-  esTalla(etiquetas) ? DESCRIPCION_TALLA[t as 'build-large' | 'build-small'] : DESCRIPCION[t]
-const comoDecidir = (etiquetas: readonly Tipo[]) => (esTalla(etiquetas) ? COMO_DECIDIR_TALLA : COMO_DECIDIR)
+  esTalla(etiquetas)
+    ? DESCRIPCION_TALLA[t as 'build-large' | 'build-small']
+    : esTallaReview(etiquetas)
+      ? DESCRIPCION_TALLA_REVIEW[t as 'review-large' | 'review-small']
+      : DESCRIPCION[t]
+const comoDecidir = (etiquetas: readonly Tipo[]) =>
+  esTalla(etiquetas) ? COMO_DECIDIR_TALLA : esTallaReview(etiquetas) ? COMO_DECIDIR_TALLA_REVIEW : COMO_DECIDIR
 
 export function textoParaHaiku(tarea: string, etiquetas: readonly Tipo[]): string {
   const tipos = etiquetas.map(t => `- ${t}: ${descripcion(etiquetas, t)}`).join('\n')

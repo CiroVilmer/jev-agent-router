@@ -2,7 +2,7 @@ import type { Tipo } from '../../types'
 import { textoResumen } from '../resumen'
 import type { Reloj } from './haiku'
 import type { Clasificador } from './index'
-import { soloTallas } from './index'
+import { esPreguntaDeTalla } from './index'
 import { preguntaJev } from './preguntas'
 
 export const JEV_URL = 'https://api.typesafe.ai/v1/systemone'
@@ -41,7 +41,7 @@ export function crearJev(post: Post, ahora: Reloj, umbral: number): Clasificador
       // duda ahí, queda la regla). Sin regla, el respaldo siempre dice build-small y acierta menos
       // que Jev con duda. Cifras: bench/corridas/2026-10-07-1032-comparacion.md (talla y sin regla) y
       // bench/corridas/2026-10-09-1339-jev-todos-analisis.md (reviews; 0.7 simulado el 2026-10-09).
-      if (soloTallas(etiquetas)) throw new Error(`jev dudó (${confianza.toFixed(2)})`)
+      if (esPreguntaDeTalla(etiquetas)) throw new Error(`jev dudó (${confianza.toFixed(2)})`)
       return { tipo, confianza, ms, fuente: 'jev', detalle: 'sin umbral' }
     }
     return { tipo, confianza, ms, fuente: 'jev' }
