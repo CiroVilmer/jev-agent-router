@@ -18,6 +18,8 @@ Opus con esfuerzo alto, builds según su tamaño, fixes e investigación en Sonn
 notas en Haiku, que es rápido. Las reviews encuentran más, los builds van rápido, y tu uso se
 gasta donde importa.
 
+## Funciones
+
 - **Lo configurás una vez.** Basta de repetir "usá Opus para las reviews" en cada sesión: decide
   el router, siempre.
 - **Tu tabla, tus reglas.** Elegí el modelo y el esfuerzo de cada tipo de tarea en `/config`.
@@ -29,12 +31,19 @@ gasta donde importa.
 
 ## Por qué
 
-Cuando Claude orquesta subagentes, elige su modelo él mismo, y lo hace mal. En ~700 subagentes
-reales de un mes de trabajo:
+Cuando Claude orquesta subagentes, elige su modelo él mismo, y lo hace mal.
 
-- 173 code reviews corrieron en Sonnet y solo 23 en Opus, aunque se le pedía "reviews en Opus".
-- Las re-reviews corrieron en Haiku.
-- La exploración del código heredaba Opus de la sesión principal.
+### Un caso real
+
+> Un mes de trabajo real (del 1 de septiembre al 2 de octubre de 2026): **698 subagentes**
+> lanzados por Claude, aunque en cada sesión se le decía qué modelos usar ("Sonnet, y Opus para lo
+> grande").
+
+| Tarea | Lo que eligió Claude | Lo que hacía falta |
+|---|---|---|
+| Code reviews | **173 en Sonnet**, solo 23 en Opus | Opus |
+| Re-reviews | **32 en Haiku** | Opus |
+| Explorar el código | Heredaba **Opus** de la sesión principal | Haiku, que es más rápido |
 
 El router le saca esa decisión al orquestador. Cada subagente recibe un modelo y un esfuerzo
 acordes a su tarea, siempre igual, y ya no hace falta repetir "usá Opus para las reviews" en cada

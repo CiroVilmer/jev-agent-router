@@ -17,6 +17,8 @@ reviewing and fixing task after task, every role gets the model it deserves: rev
 high effort, builds sized to the job, fixes and research on Sonnet, exploration and notes on fast
 Haiku. Reviewers catch more, builders stay fast, and your usage goes where it matters.
 
+## Features
+
 - **Set it once.** No more "use Opus for reviews" in every session: the router decides, every time.
 - **Your table, your rules.** Pick the model and effort of each task type in `/config`.
 - **Rules plus a classifier.** Fast rules recognize most tasks; the optional
@@ -28,11 +30,17 @@ Haiku. Reviewers catch more, builders stay fast, and your usage goes where it ma
 ## Why
 
 When Claude orchestrates subagents, it chooses their model itself, and it is not good at it.
-In ~700 real subagents from one month of work:
 
-- 173 code reviews ran on Sonnet and only 23 on Opus, even when told "reviews on Opus".
-- Re-reviews ran on Haiku.
-- Codebase exploration inherited Opus from the parent session.
+### A real case
+
+> One month of real work (September 1 to October 2, 2026): **698 subagents** launched by Claude,
+> even though every session said which models to use ("Sonnet, and Opus for the big work").
+
+| Task | What Claude picked | What it needed |
+|---|---|---|
+| Code reviews | **173 on Sonnet**, only 23 on Opus | Opus |
+| Re-reviews | **32 on Haiku** | Opus |
+| Exploring the codebase | Inherited **Opus** from the main session | Haiku, which is faster |
 
 The router takes that decision away from the orchestrator. Every subagent gets a model and an
 effort level that fit its task, the same way every time, so you don't have to repeat "use Opus
