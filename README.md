@@ -17,6 +17,12 @@ reviewing and fixing task after task, every role gets the model it deserves: rev
 high effort, builds sized to the job, fixes and research on Sonnet, exploration and notes on fast
 Haiku. Reviewers catch more, builders stay fast, and your usage goes where it matters.
 
+**Quality and speed, not one or the other.** Each task type gets the step where it works best,
+not just the strongest model. Large builds run on Opus at medium effort: Opus-level code, and
+medium thinking keeps it fast; small ones go to Sonnet. Reviews get Opus at xhigh effort, because that's where deep thinking pays
+off. Exploration runs on Haiku, because reading code doesn't need a slower model. The default
+table was tuned with a bench of ~700 real subagents, and you can change any of it.
+
 ## Features
 
 - **Set it once.** No more "use Opus for reviews" in every session: the router decides, every time.
@@ -46,7 +52,7 @@ The router takes that decision away from the orchestrator. Every subagent gets a
 effort level that fit its task, the same way every time, so you don't have to repeat "use Opus
 for reviews" in every session.
 
-## What it does
+## Task routing
 
 | Task type | Example description | Runs on |
 |---|---|---|

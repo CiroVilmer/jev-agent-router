@@ -18,6 +18,13 @@ Opus con esfuerzo alto, builds según su tamaño, fixes e investigación en Sonn
 notas en Haiku, que es rápido. Las reviews encuentran más, los builds van rápido, y tu uso se
 gasta donde importa.
 
+**Calidad y velocidad, no una u otra.** Cada tipo de tarea va al escalón donde mejor rinde, no
+solo al modelo más fuerte. Los builds grandes corren en Opus con esfuerzo medium: código de nivel
+Opus, y el thinking medium lo mantiene rápido; los chicos van a Sonnet. Las reviews van a Opus con esfuerzo xhigh, porque ahí pensar
+a fondo rinde. La exploración corre en Haiku, porque leer código no necesita un modelo más lento.
+La tabla por defecto se ajustó con un banco de ~700 subagentes reales, y podés cambiar cualquier
+parte.
+
 ## Funciones
 
 - **Lo configurás una vez.** Basta de repetir "usá Opus para las reviews" en cada sesión: decide
@@ -49,7 +56,7 @@ El router le saca esa decisión al orquestador. Cada subagente recibe un modelo 
 acordes a su tarea, siempre igual, y ya no hace falta repetir "usá Opus para las reviews" en cada
 sesión.
 
-## Qué hace
+## Ruteo por tarea
 
 | Tipo de tarea | Description de ejemplo | Corre en |
 |---|---|---|
