@@ -31,7 +31,7 @@ describe('panel', () => {
     for (const surface of ['terminal', 'desktop'] as const) {
       const ui = await $.ui.mount({ plugin: 'agent-router', surface, component: 'Pane', requestId: 'router', props: PROPS })
       expect(await ui.find({ text: /Review Task 6/ })).toBeDefined()
-      expect(await ui.find({ text: /sonnet → opus·xhigh/ })).toBeDefined()
+      expect(await ui.find({ text: /sonnet → opus·medium/ })).toBeDefined()
       expect(await ui.find({ text: /regla review/ })).toBeDefined()
 
       await ui.press({ key: 'tab-metricas' })
@@ -54,7 +54,7 @@ describe('panel', () => {
     const ui = await $.ui.mount({
       plugin: 'agent-router', surface: 'terminal', component: 'Pane', requestId: 'router', props: { ...PROPS, bodyColumns: 60 },
     })
-    expect(await ui.find({ text: /sonnet → opus·xhigh/ })).toBeDefined()
+    expect(await ui.find({ text: /sonnet → opus·medium/ })).toBeDefined()
     expect(await ui.find({ text: /regla review/ })).toBe(undefined)
     await ui.unmount()
   })
@@ -251,7 +251,7 @@ describe('pestaña Historial', () => {
       await ui.press({ key: 'tab-historial' })
       // 4 en 7 días: el spawn de ahora y 3 del store. 2 reasignadas (el de ahora y el review).
       expect(await ui.find({ text: '4 decisiones en 7 días · 2 reasignadas · opus 2 · sonnet 1 · haiku 1' })).toBeDefined()
-      expect(await ui.find({ text: /Tarea 6 · Review Task 6 \(spec \+ quality\) · sonnet → opus·xhigh · normal/ })).toBeDefined()
+      expect(await ui.find({ text: /Tarea 6 · Review Task 6 \(spec \+ quality\) · sonnet → opus·medium · normal/ })).toBeDefined()
       expect(await ui.find({ text: /Tarea 1 · Review Task 1 · sonnet → opus·xhigh · sobra/ })).toBeDefined()
       expect(await ui.find({ text: /Implement Task 0/ })).toBeDefined()
       expect(await ui.find({ text: /— · haiku → haiku · —/ })).toBeDefined()
@@ -267,7 +267,7 @@ describe('pestaña Historial', () => {
     await $.agent.spawn(SPAWN)
     const ui = await $.ui.mount({ plugin: 'agent-router', surface: 'terminal', component: 'Pane', requestId: 'router', props: { ...PROPS, bodyColumns: 60 } })
     await ui.press({ key: 'tab-historial' })
-    expect(await ui.find({ text: /sonnet → opus·xhigh/ })).toBeDefined()
+    expect(await ui.find({ text: /sonnet → opus·medium/ })).toBeDefined()
     expect(await ui.find({ text: /regla review/ })).toBe(undefined)
     await ui.unmount()
   })

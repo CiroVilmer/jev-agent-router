@@ -25,7 +25,7 @@ const finDePaso = (e: { turnId: string; index: number }) => ({
 })
 
 describe('register', () => {
-  test('un review sale en opus y su esfuerzo xhigh llega a cada request del subagente', async ($, on) => {
+  test('un review sale en opus y su esfuerzo medium (talla chica por respaldo) llega a cada request del subagente', async ($, on) => {
     mock.clock(on, { now: AHORA })
     mock.store(on)
     let modelo: string | undefined
@@ -39,7 +39,7 @@ describe('register', () => {
 
     const paso = $.turn.step({ turnId: 't-1', index: 0, model: 'claude-opus-5-5', effort: 'medium', messageCount: 3, agentId: 'ag-1' })
     for await (const _ of paso) { /* consumir el stream */ }
-    expect(esfuerzo).toBe('xhigh')
+    expect(esfuerzo).toBe('medium')
   })
 
   test('los requests de la sesión principal no se tocan', async ($, on) => {
@@ -140,7 +140,7 @@ describe('register', () => {
     on('ui.status', async (_$, e) => { lineas.push(e.text); return { value: undefined } })
     on('agent.spawn', async (_$, e) => ({ model: e.model ?? 'inherit', agentId: 'ag-linea' }))
     await $.agent.spawn(SPAWN)
-    expect(lineas.at(-1)).toBe('router · Review Task 6 (spec + quality) → opus·xhigh · regla')
+    expect(lineas.at(-1)).toBe('router · Review Task 6 (spec + quality) → opus·medium · respaldo')
   })
 
   test('nunca bloquea: si la decisión falla, el subagente sale con lo que pidió Claude', async ($, on) => {
@@ -291,38 +291,38 @@ describe('clasificadores conectados', () => {
     return (store.get('historial:ses-rv') as { motivos: string[] }[])[0]!.motivos
   }
 
-  test('con jev y key, una review por description se la pregunta a jev con las 9 etiquetas', { options: { clasificador: 'jev' } }, async ($, on) => {
+  test('con jev y key, una review por description se la pregunta a jev con las 9 etiquetas, y la talla con las 2', { options: { clasificador: 'jev' } }, async ($, on) => {
     const reloj = mock.clock(on, { now: AHORA })
     const store = storeEnMemoria(on)
     mock.env(on, { JEV_API_KEY: 'k' })
     let pregunta: { choices?: string[] } | undefined
     on('http.fetch', async (_$, e) => {
-      pregunta = JSON.parse(e.init?.body as string).questions.tipo
+      pregunta ??= JSON.parse(e.init?.body as string).questions.tipo
       return { value: { status: 200, ok: true, headers: {}, text: respuestaJev('review', 0.98) } }
     })
-    expect(await motivosDeLaReview($, on, reloj, store)).toEqual(['regla review', 'jev → review (0.98)'])
+    expect(await motivosDeLaReview($, on, reloj, store)).toEqual(['regla review', 'jev → review (0.98)', 'respaldo (jev eligió una opción que no se pidió: review) → review-small'])
     expect(Object.keys((pregunta as { criteria: object }).criteria)).toEqual(TIPOS)
   })
 
-  test('con haiku, una review por description no consulta a haiku', { options: { clasificador: 'haiku' } }, async ($, on) => {
+  test('con haiku, una review por description lo consulta solo por la talla', { options: { clasificador: 'haiku' } }, async ($, on) => {
     const reloj = mock.clock(on, { now: AHORA })
     const store = storeEnMemoria(on)
     let clasificados = 0
-    on('model.classify', async () => { clasificados++; return { value: 'build-large' } })
-    expect(await motivosDeLaReview($, on, reloj, store)).toEqual(['regla review'])
-    expect(clasificados).toBe(0)
+    on('model.classify', async () => { clasificados++; return { value: 'review-large' } })
+    expect(await motivosDeLaReview($, on, reloj, store)).toEqual(['regla review', 'haiku → review-large'])
+    expect(clasificados).toBe(1)
   })
 
-  test('con jev y sin key, una review por description no consulta ni a haiku ni a jev', { options: { clasificador: 'jev' } }, async ($, on) => {
+  test('con jev y sin key, una review por description no le pregunta a jev: la talla la decide haiku', { options: { clasificador: 'jev' } }, async ($, on) => {
     const reloj = mock.clock(on, { now: AHORA })
     const store = storeEnMemoria(on)
     mock.env(on, {})
     let clasificados = 0
     let pedidos = 0
-    on('model.classify', async () => { clasificados++; return { value: 'build-large' } })
+    on('model.classify', async () => { clasificados++; return { value: 'review-large' } })
     on('http.fetch', async () => { pedidos++; return { value: { status: 200, ok: true, headers: {}, text: respuestaJev('review', 0.98) } } })
-    expect(await motivosDeLaReview($, on, reloj, store)).toEqual(['regla review'])
-    expect(clasificados).toBe(0)
+    expect(await motivosDeLaReview($, on, reloj, store)).toEqual(['regla review', 'haiku → review-large'])
+    expect(clasificados).toBe(1)
     expect(pedidos).toBe(0)
   })
 
@@ -403,7 +403,7 @@ describe('clasificadores conectados', () => {
     expect(lista![0]!.principal.fuente).toBe('respaldo')
   })
 
-  test('con reglas y sombra, una review por description no consulta ni deja muestra', { options: { clasificador: 'reglas', sombra: 'haiku' } }, async ($, on) => {
+  test('con reglas y sombra, una review por description consulta a la sombra solo por la talla', { options: { clasificador: 'reglas', sombra: 'haiku' } }, async ($, on) => {
     const reloj = mock.clock(on, { now: AHORA })
     const store = new Map<string, unknown>()
     on('store.get', async (_$, e) => ({ value: store.get(e.key) }))
@@ -415,8 +415,7 @@ describe('clasificadores conectados', () => {
     await $.agent.spawn(SPAWN)
     for (let i = 0; i < 5; i++) await reloj.settle()
     expect(modelo).toBe('opus')
-    expect(clasificados).toBe(0)
-    expect(store.get('sombra')).toBeUndefined()
+    expect(clasificados).toBe(1)
   })
 
   test('una sombra más lenta que topeMs guarda su tipo, sus ms reales y pasoTope', { options: { clasificador: 'reglas', sombra: 'haiku', topeMs: 1000 } }, async ($, on) => {
@@ -737,7 +736,7 @@ describe('historial y ventanas', () => {
       lista = store.get('historial:ses-1') as typeof lista
     }
     expect(lista?.length).toBe(1)
-    expect(lista![0]).toMatchObject({ sesion: 'ses-1', tarea: 'Tarea 6', tipo: 'review', modelo: 'opus', inicio: AHORA, fin: AHORA })
+    expect(lista![0]).toMatchObject({ sesion: 'ses-1', tarea: 'Tarea 6', tipo: 'review-small', modelo: 'opus', inicio: AHORA, fin: AHORA })
   })
 
   test('si store.set falla, turn.complete igual resuelve', async ($, on) => {
@@ -1016,7 +1015,7 @@ describe('avisos en el resultado de Agent', () => {
     mock.store(on)
     agentComoCore(on, id => $.agent.spawn({ ...SPAWN, tool_use_id: id }))
     const r = await $.tool.call(CALL)
-    expect(r.context).toEqual(['(router: corre en opus·xhigh — regla review)'])
+    expect(r.context).toEqual(['(router: corre en opus·medium — regla review · respaldo → review-small)'])
   })
 
   test('un spawn sin model que hereda opus y sale en opus no cuenta como reasignado', { options: { avisarAClaude: true } }, async ($, on) => {

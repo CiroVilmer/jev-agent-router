@@ -6,6 +6,7 @@ import type { EstadoPolitica } from './politica'
 import { subir } from './politica'
 import { clasificarPorReglas } from './reglas'
 import { resumir } from './resumen'
+import { tallaDeReview } from './tallaReview'
 import type { Tabla } from './taxonomia'
 import { BASE, ESCALERA, formatEscalon, TECHO, TIPOS, TOPE } from './taxonomia'
 
@@ -15,6 +16,8 @@ export type EntradaDecision = {
   subagentType: string
   modeloPedido: string | undefined
   fork: boolean
+  /** La talla del último build de la misma tarea en la sesión. */
+  tallaBuildDeTarea?: 'build-large' | 'build-small' | null
 }
 
 export type Contexto = { overrides: Overrides; politica: EstadoPolitica; clasificar: Clasificador; tabla?: Tabla; jevDecideReviews: boolean }
@@ -77,6 +80,13 @@ export async function decidir(e: EntradaDecision, c: Contexto): Promise<Decision
     const detalle = cl.detalle ? ` (${cl.detalle})` : ''
     const confianza = cl.confianza === undefined ? '' : ` (${cl.confianza.toFixed(2)})`
     motivos.push(`${cl.fuente}${detalle} → ${cl.tipo}${confianza}`)
+  }
+
+  // La review recibe su talla antes de fijados, base y política: todo usa el tipo final.
+  if (tipo === 'review') {
+    const t = await tallaDeReview(e, c.clasificar)
+    tipo = t.tipo
+    motivos.push(t.motivo)
   }
 
   let escalon: Escalon

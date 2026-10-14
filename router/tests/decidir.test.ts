@@ -36,10 +36,10 @@ describe('decidir', () => {
     expect(f.motivos).toEqual(['regla fix', 'política +2'])
   })
 
-  test('review en modo normal: opus·xhigh', async () => {
+  test('review en modo normal: sin build ni clasificador, review-small opus·medium', async () => {
     const d = await decidir(entrada(), ctx())
-    expect(d).toMatchObject({ tocar: true, tipo: 'review', escalon: { modelo: 'opus', esfuerzo: 'xhigh' } })
-    expect(d.motivos).toEqual(['regla review'])
+    expect(d).toMatchObject({ tocar: true, tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'medium' } })
+    expect(d.motivos).toEqual(['regla review', 'respaldo → review-small'])
   })
 
   test('build chico con 🔥 sube dos niveles: sonnet·medium → opus·medium', async () => {
@@ -55,8 +55,8 @@ describe('decidir', () => {
     expect(d.motivos).toEqual(['regla subagentType Explore', 'política +1', 'techo de explore'])
   })
 
-  test('review ya está arriba de todo: la política no lo pasa del tope', async () => {
-    const d = await decidir(entrada(), ctx({ politica: FUEGO }))
+  test('review-large ya está arriba de todo: la política no lo pasa del tope', async () => {
+    const d = await decidir(entrada({ tallaBuildDeTarea: 'build-large' }), ctx({ politica: FUEGO }))
     expect(d).toMatchObject({ escalon: { modelo: 'opus', esfuerzo: 'xhigh' } })
   })
 
@@ -134,8 +134,8 @@ const jevDice = (tipo: string, confianza: number, detalle?: string): Clasificado
 describe('Jev decide la familia review', () => {
   test('Jev seguro confirma la review', async () => {
     const d = await decidir(entrada(), ctx({ jevDecideReviews: true, clasificar: jevDice('review', 0.98) }))
-    expect(d).toMatchObject({ tocar: true, tipo: 'review' })
-    expect(d.motivos).toEqual(['regla review', 'jev → review (0.98)'])
+    expect(d).toMatchObject({ tocar: true, tipo: 'review-small' })
+    expect(d.motivos).toEqual(['regla review', 'jev → review (0.98)', 'jev → review (0.98)'])
   })
 
   test('Jev seguro cambia el tipo', async () => {
@@ -146,8 +146,8 @@ describe('Jev decide la familia review', () => {
 
   test('Jev con duda: queda la regla', async () => {
     const d = await decidir(entrada(), ctx({ jevDecideReviews: true, clasificar: jevDice('build-small', 0.55, 'sin umbral') }))
-    expect(d).toMatchObject({ tipo: 'review' })
-    expect(d.motivos).toEqual(['regla review', 'jev dudó (0.55): queda la regla'])
+    expect(d).toMatchObject({ tipo: 'review-small' })
+    expect(d.motivos).toEqual(['regla review', 'jev dudó (0.55): queda la regla', 'jev (sin umbral) → build-small (0.55)'])
   })
 
   test('respaldo por tope: queda la regla y lo dice', async () => {
@@ -159,22 +159,22 @@ describe('Jev decide la familia review', () => {
 
   test('Jev dice explore o write sin duda: una review no baja, queda la regla', async () => {
     const d = await decidir(entrada(), ctx({ jevDecideReviews: true, clasificar: jevDice('explore', 0.8) }))
-    expect(d).toMatchObject({ tipo: 'review' })
-    expect(d.motivos).toEqual(['regla review', 'jev → explore (0.80): queda la regla'])
+    expect(d).toMatchObject({ tipo: 'review-small' })
+    expect(d.motivos).toEqual(['regla review', 'jev → explore (0.80): queda la regla', 'jev → explore (0.80)'])
   })
 
-  test('clasificador reglas (respaldo sin detalle): queda la regla, sin motivo extra', async () => {
+  test('clasificador reglas (respaldo sin detalle): queda la regla y la talla sale del respaldo', async () => {
     const d = await decidir(entrada(), ctx({ jevDecideReviews: true }))
-    expect(d.motivos).toEqual(['regla review'])
+    expect(d.motivos).toEqual(['regla review', 'respaldo → review-small'])
   })
 
-  test('sin jevDecideReviews no se consulta y queda la regla', async () => {
-    let llamado = false
-    const espia: Clasificador = async () => { llamado = true; return { tipo: 'fix', ms: 600, fuente: 'haiku' } }
+  test('sin jevDecideReviews no se consulta por el tipo: queda la regla y el clasificador solo da la talla', async () => {
+    const etiquetas: (readonly string[])[] = []
+    const espia: Clasificador = async p => { etiquetas.push(p.etiquetas); return { tipo: 'fix', ms: 600, fuente: 'haiku' } }
     const d = await decidir(entrada(), ctx({ jevDecideReviews: false, clasificar: espia }))
-    expect(d).toMatchObject({ tipo: 'review' })
-    expect(d.motivos).toEqual(['regla review'])
-    expect(llamado).toBe(false)
+    expect(d).toMatchObject({ tipo: 'review-small' })
+    expect(d.motivos).toEqual(['regla review', 'haiku → fix'])
+    expect(etiquetas).toEqual([['review-large', 'review-small']])
   })
 
   test('regla de subagentType: no consulta', async () => {
@@ -202,8 +202,8 @@ describe('Jev decide la familia review', () => {
 describe('modelos de /config', () => {
   test('la base de un tipo sale de /config y el motivo lo dice', async () => {
     const d = await decidir(entrada(), ctx({ tabla: tablaDe({ modeloReview: 'opus·high' }) }))
-    expect(d).toMatchObject({ tocar: true, tipo: 'review', escalon: { modelo: 'opus', esfuerzo: 'high' } })
-    expect(d.motivos).toEqual(['regla review', 'base de /config: opus·high'])
+    expect(d).toMatchObject({ tocar: true, tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'high' } })
+    expect(d.motivos).toEqual(['regla review', 'respaldo → review-small', 'base de /config: opus·high'])
   })
 
   test('la política sube desde la base elegida', async () => {
@@ -212,8 +212,69 @@ describe('modelos de /config', () => {
   })
 
   test('/router fijar le gana a /config', async () => {
-    const overrides = { ...OVERRIDES_INICIAL, fijados: { review: { modelo: 'opus' as const, esfuerzo: 'max' as const } } }
+    const overrides = { ...OVERRIDES_INICIAL, fijados: { 'review-small': { modelo: 'opus' as const, esfuerzo: 'max' as const } } }
     const d = await decidir(entrada(), ctx({ tabla: tablaDe({ modeloReview: 'opus·high' }), overrides }))
     expect(d).toMatchObject({ escalon: { modelo: 'opus', esfuerzo: 'max' } })
+  })
+})
+
+describe('talla de la review', () => {
+  const dice = (tipo: string, confianza?: number): Clasificador => async () =>
+    ({ tipo: tipo as any, ms: 1, fuente: 'jev', ...(confianza === undefined ? {} : { confianza }) })
+
+  test('Review Task 3 con build grande: review-large, opus·xhigh', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review Task 3', tallaBuildDeTarea: 'build-large' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-large', escalon: { modelo: 'opus', esfuerzo: 'xhigh' } })
+    expect(d.motivos).toEqual(['regla review', 'talla del build de Task 3 (build-large)'])
+  })
+
+  test('con build chico: review-small, opus·medium', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review Task 3', tallaBuildDeTarea: 'build-small' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'medium' } })
+  })
+
+  test('el alcance gana al build chico', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review the feature flags block', tallaBuildDeTarea: 'build-small' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-large' })
+    expect(d.motivos).toEqual(['regla review', 'talla por alcance (feature)'])
+  })
+
+  test('Review Tasks 3-5 es review-large', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review Tasks 3-5' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-large' })
+  })
+
+  test('sin build, decide el clasificador', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review Task 3' }), ctx({ clasificar: dice('review-large', 0.9) }))
+    expect(d).toMatchObject({ tipo: 'review-large' })
+    expect(d.motivos).toEqual(['regla review', 'jev → review-large (0.90)'])
+  })
+
+  test('sin build y sin clasificador: review-small', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review Task 3' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-small' })
+    expect(d.motivos).toEqual(['regla review', 'respaldo → review-small'])
+  })
+
+  test('review-final y re-review no pasan por la talla', async () => {
+    let llamadas = 0
+    const espia: Clasificador = async () => { llamadas++; return { tipo: 'review-large', ms: 1, fuente: 'jev' } }
+    const f = await decidir(entrada({ descripcion: 'Revisión final', subagentType: 'revisor-final-opus-xhigh', tallaBuildDeTarea: 'build-small' }), ctx({ clasificar: espia }))
+    const r = await decidir(entrada({ descripcion: 'Re-review Task 2 fix round 1', tallaBuildDeTarea: 'build-small' }), ctx({ clasificar: espia }))
+    expect(f).toMatchObject({ tipo: 'review-final' })
+    expect(r).toMatchObject({ tipo: 're-review' })
+    expect(llamadas).toBe(0)
+  })
+
+  test('/router set review-small le gana a la tabla', async () => {
+    const overrides = { ...OVERRIDES_INICIAL, fijados: { 'review-small': { modelo: 'opus' as const, esfuerzo: 'high' as const } } }
+    const d = await decidir(entrada({ descripcion: 'Review Task 3' }), ctx({ overrides }))
+    expect(d).toMatchObject({ tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'high' } })
+    expect(d.motivos).toContain('fijado con /router: opus·high')
+  })
+
+  test('la política sube review-small: con 🔥 da opus·xhigh', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review Task 3' }), ctx({ politica: FUEGO }))
+    expect(d).toMatchObject({ tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'xhigh' } })
   })
 })
