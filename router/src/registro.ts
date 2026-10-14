@@ -43,7 +43,7 @@ export type MetricasSesion = {
   total: number
 }
 
-const REVISIONES: readonly (Tipo | null)[] = ['review', 'review-final', 're-review']
+const REVISIONES: readonly (Tipo | null)[] = ['review', 'review-large', 'review-small', 'review-final', 're-review']
 
 /** Mediana; con cantidad par, el promedio de los dos del medio. */
 export function mediana(xs: readonly number[]): number | null {
@@ -57,7 +57,7 @@ export function metricasDe(subs: readonly Subagente[], ahora: number): MetricasS
   const revisiones = subs.filter(s => REVISIONES.includes(s.tipo))
   const enOpus = revisiones.filter(s => (s.escalon ? s.escalon.modelo === 'opus' : /opus/i.test(s.modeloEfectivo ?? s.pedido))).length
   const tareas = agruparPorTarea(subs, ahora)
-  const revisadas = tareas.filter(t => t.pasos.some(p => p.tipo === 'review'))
+  const revisadas = tareas.filter(t => t.pasos.some(p => p.tipo === 'review' || p.tipo === 'review-large' || p.tipo === 'review-small'))
   const terminadas = tareas.filter(t => !t.activa)
   const promedio = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null)
   return {

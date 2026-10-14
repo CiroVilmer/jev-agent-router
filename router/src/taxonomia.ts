@@ -4,6 +4,11 @@ export const TIPOS: readonly Tipo[] = [
   'review-final', 'review', 're-review', 'build-large', 'build-small', 'fix', 'explore', 'research', 'write',
 ]
 
+/** Los tipos que el router asigna al final: `review` se parte en review-large y review-small. */
+export const TIPOS_FINALES: readonly Tipo[] = [
+  'review-final', 'review-large', 'review-small', 're-review', 'build-large', 'build-small', 'fix', 'explore', 'research', 'write',
+]
+
 export const ESCALERA: readonly Escalon[] = [
   { modelo: 'haiku', esfuerzo: 'low' },
   { modelo: 'haiku', esfuerzo: 'medium' },
@@ -22,6 +27,8 @@ export const TOPE = ESCALERA.length - 1
 export const BASE: Record<Tipo, number> = {
   'review-final': 8,
   review: 8,
+  'review-large': 8,
+  'review-small': 6,
   're-review': 6,
   'build-large': 6,
   'build-small': 4,
@@ -60,6 +67,8 @@ export type Tabla = { base: Record<Tipo, number>; techo: Partial<Record<Tipo, nu
 export const OPCION_DE_TIPO: Record<Tipo, string> = {
   'review-final': 'modeloReviewFinal',
   review: 'modeloReview',
+  'review-large': 'modeloReviewLarge',
+  'review-small': 'modeloReviewSmall',
   're-review': 'modeloReReview',
   'build-large': 'modeloBuildLarge',
   'build-small': 'modeloBuildSmall',
@@ -81,10 +90,12 @@ export const OPCIONES_MODELO: readonly string[] = [POR_DEFECTO, ...ESCALERA.map(
  */
 export function tablaDe(options: Readonly<Record<string, unknown>>): Tabla {
   const base = { ...BASE }
-  for (const tipo of TIPOS) {
-    const v = options[OPCION_DE_TIPO[tipo]]
-    if (typeof v !== 'string') continue
-    const i = ESCALERA.findIndex(e => formatEscalon(e) === v.trim().toLowerCase())
+  const indiceDe = (v: unknown) =>
+    typeof v === 'string' ? ESCALERA.findIndex(e => formatEscalon(e) === v.trim().toLowerCase()) : -1
+  for (const tipo of [...TIPOS, 'review-large', 'review-small'] as const) {
+    let i = indiceDe(options[OPCION_DE_TIPO[tipo]])
+    // modeloReview es legado: vale para las dos tallas si no se eligieron por separado.
+    if (i === -1 && (tipo === 'review-large' || tipo === 'review-small')) i = indiceDe(options[OPCION_DE_TIPO.review])
     if (i !== -1) base[tipo] = i
   }
   const techo: Partial<Record<Tipo, number>> = {}

@@ -114,8 +114,44 @@
     },
     "modeloReview": {
       "type": "string",
-      "title": "Modelo: review",
-      "description": "Modelo·esfuerzo base para review de una tarea (review). \"por defecto\" usa el del router (opus·xhigh). Con el modo hot, la política sube desde acá",
+      "title": "Modelo: review (legado)",
+      "description": "Legado: aplica a review-large y review-small si no se eligieron por separado. \"por defecto\" usa el del router. Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloReviewLarge": {
+      "type": "string",
+      "title": "Modelo: review-large",
+      "description": "Modelo·esfuerzo base para revisar un bloque, una feature, una fase o un cambio grande (review-large). \"por defecto\" usa el del router (opus·xhigh). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloReviewSmall": {
+      "type": "string",
+      "title": "Modelo: review-small",
+      "description": "Modelo·esfuerzo base para revisar una tarea o un cambio acotado (review-small). \"por defecto\" usa el del router (opus·medium). Con el modo hot, la política sube desde acá",
       "options": [
         "por defecto",
         "haiku·low",

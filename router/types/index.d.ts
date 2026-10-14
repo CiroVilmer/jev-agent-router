@@ -1,6 +1,8 @@
 export type Tipo =
   | 'review-final'
   | 'review'
+  | 'review-large'
+  | 'review-small'
   | 're-review'
   | 'build-large'
   | 'build-small'

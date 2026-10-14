@@ -115,6 +115,19 @@ describe('metricasDe', () => {
   })
 })
 
+describe('metricasDe con las tallas de review', () => {
+  test('un review-small en Opus cuenta como review y su tarea como revisada', () => {
+    const subs = [
+      sub({ agentId: '1', tarea: 'Tarea 1', tipo: 'build-small', inicio: 0, fin: 10 * MIN }),
+      sub({ agentId: '2', tarea: 'Tarea 1', tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'medium' }, inicio: 10 * MIN, fin: 20 * MIN }),
+      sub({ agentId: '3', tarea: 'Tarea 2', tipo: 'review-large', escalon: { modelo: 'sonnet', esfuerzo: 'high' }, inicio: 0, fin: 5 * MIN }),
+    ]
+    const m = metricasDe(subs, 60 * MIN)
+    expect(m.reviewsEnOpus).toBe(0.5)
+    expect(m.rondasPorTarea).not.toBe(null)
+  })
+})
+
 describe('mediana', () => {
   test('vacía, impar y par (promedio de los dos del medio)', () => {
     expect(mediana([])).toBe(null)

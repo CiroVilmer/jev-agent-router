@@ -11,7 +11,7 @@ const reloj = async () => (t += 120)
 
 describe('preguntas', () => {
   test('hay una descripción por tipo', () => {
-    expect(Object.keys(DESCRIPCION).sort()).toEqual([...TIPOS].sort())
+    expect(Object.keys(DESCRIPCION).sort()).toEqual([...TIPOS, 'review-large', 'review-small'].sort())
   })
 
   test('el texto para Haiku lista solo las etiquetas pedidas y lleva la tarea', () => {

@@ -1,5 +1,5 @@
 import type { Escalon, Modelo, Overrides, Tipo } from '../types'
-import { formatEscalon, MODELOS, parseEscalon, TIPOS } from './taxonomia'
+import { formatEscalon, MODELOS, parseEscalon, TIPOS_FINALES } from './taxonomia'
 
 export const OVERRIDES_INICIAL: Overrides = { activo: true, permitidos: null, fijados: {} }
 
@@ -83,8 +83,9 @@ export function parsearComando(args: string): Comando {
     case 'set':
     case 'fijar': {
       const [tipo, ...escalonTexto] = resto
-      if (tipo === undefined || !(TIPOS as readonly string[]).includes(tipo.toLowerCase())) {
-        return { accion: 'error', mensaje: `Tipo no válido: ${tipo ?? '(vacío)'}. Tipos: ${TIPOS.join(', ')}` }
+      const validos: readonly string[] = [...TIPOS_FINALES, 'review']
+      if (tipo === undefined || !validos.includes(tipo.toLowerCase())) {
+        return { accion: 'error', mensaje: `Tipo no válido: ${tipo ?? '(vacío)'}. Tipos: ${validos.join(', ')}` }
       }
       const escalon = parseEscalon(escalonTexto.join(' '))
       if (!escalon) {
@@ -124,6 +125,10 @@ export function aplicarComando(o: Overrides, c: Comando): Overrides {
     case 'permitir':
       return { ...o, permitidos: c.modelos }
     case 'fijar':
+      // `set review` (legado) fija las dos tallas.
+      if (c.tipo === 'review') {
+        return { ...o, fijados: { ...o.fijados, 'review-large': c.escalon, 'review-small': c.escalon } }
+      }
       return { ...o, fijados: { ...o.fijados, [c.tipo]: c.escalon } }
     default:
       return o
@@ -141,6 +146,9 @@ export function describirComando(c: Comando): string {
     case 'permitir':
       return `Router: en esta sesión solo se usan ${c.modelos.join(', ')}.`
     case 'fijar':
+      if (c.tipo === 'review') {
+        return `Router: review-large y review-small quedan fijados en ${formatEscalon(c.escalon)} para esta sesión.`
+      }
       return `Router: ${c.tipo} queda fijado en ${formatEscalon(c.escalon)} para esta sesión.`
     case 'error':
       return c.mensaje

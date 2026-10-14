@@ -4,6 +4,8 @@ import type { Tipo } from '../../types'
 export const DESCRIPCION: Record<Tipo, string> = {
   'review-final': 'Revisión final de toda una rama o de todo el trabajo, antes de mergear.',
   review: 'Revisar el trabajo de una tarea: que cumpla el spec y tenga buena calidad.',
+  'review-large': 'Revisar un bloque, una feature, una fase, una integración o varias tareas, o un cambio grande con muchos archivos.',
+  'review-small': 'Revisar una tarea o un cambio acotado.',
   're-review': 'Volver a revisar solo los arreglos de una revisión anterior.',
   'build-large': 'Implementar algo grande: varios archivos, integración, diseño o mucha lógica nueva. Suele traer un prompt de más de ~5k caracteres.',
   'build-small': 'Implementar algo chico o mediano y acotado: un cambio mecánico o una pieza bien delimitada. Suele traer un prompt de hasta ~5k caracteres.',

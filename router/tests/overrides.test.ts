@@ -74,11 +74,11 @@ describe('aplicarComando', () => {
 
   test('permitir y fijar se acumulan; reset vuelve al inicio', () => {
     let o = aplicarComando(OVERRIDES_INICIAL, { accion: 'permitir', modelos: ['sonnet', 'opus'] })
-    o = aplicarComando(o, { accion: 'fijar', tipo: 'review', escalon: { modelo: 'opus', esfuerzo: 'max' } })
+    o = aplicarComando(o, { accion: 'fijar', tipo: 'fix', escalon: { modelo: 'opus', esfuerzo: 'max' } })
     expect(o).toEqual({
       activo: true,
       permitidos: ['sonnet', 'opus'],
-      fijados: { review: { modelo: 'opus', esfuerzo: 'max' } },
+      fijados: { fix: { modelo: 'opus', esfuerzo: 'max' } },
     })
     expect(aplicarComando(o, { accion: 'reset' })).toEqual(OVERRIDES_INICIAL)
   })
@@ -89,8 +89,10 @@ describe('aplicarComando', () => {
   })
 
   test('describirComando confirma en una línea', () => {
+    expect(describirComando({ accion: 'fijar', tipo: 'fix', escalon: { modelo: 'opus', esfuerzo: 'max' } }))
+      .toBe('Router: fix queda fijado en opus·max para esta sesión.')
     expect(describirComando({ accion: 'fijar', tipo: 'review', escalon: { modelo: 'opus', esfuerzo: 'max' } }))
-      .toBe('Router: review queda fijado en opus·max para esta sesión.')
+      .toBe('Router: review-large y review-small quedan fijados en opus·max para esta sesión.')
     expect(describirComando({ accion: 'permitir', modelos: ['sonnet', 'opus'] }))
       .toBe('Router: en esta sesión solo se usan sonnet, opus.')
   })
@@ -193,5 +195,19 @@ describe('comandos en inglés (los de castellano siguen como alias)', () => {
 
   test('la ayuda nombra los comandos en inglés', () => {
     expect(AYUDA).toBe('Usage: /router · /router on|off|reset · /router hot on|off · /router allow sonnet,opus · /router set <type> <model>·<effort> · /router history [days] · /router bench')
+  })
+})
+
+describe('set con review-large y review-small', () => {
+  test('set review-small es válido', () => {
+    expect(parsearComando('set review-small opus·high'))
+      .toEqual({ accion: 'fijar', tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'high' } })
+    expect(parsearComando('set review-large opus·high').accion).toBe('fijar')
+  })
+
+  test('set review fija las dos tallas', () => {
+    const e = { modelo: 'opus', esfuerzo: 'max' } as const
+    const o = aplicarComando(OVERRIDES_INICIAL, { accion: 'fijar', tipo: 'review', escalon: e })
+    expect(o.fijados).toEqual({ 'review-large': e, 'review-small': e })
   })
 })

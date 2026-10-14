@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'claude-code/testing'
-import { BASE, ESCALERA, formatEscalon, OPCION_DE_TIPO, OPCIONES_MODELO, parseEscalon, tablaDe, TECHO, TIPOS, TOPE } from '../src/taxonomia'
+import { BASE, ESCALERA, formatEscalon, OPCION_DE_TIPO, OPCIONES_MODELO, parseEscalon, tablaDe, TECHO, TIPOS, TIPOS_FINALES, TOPE } from '../src/taxonomia'
 
 describe('taxonomia', () => {
   test('la escalera va de haiku·low a opus·xhigh, con tres escalones de Haiku', () => {
@@ -79,8 +79,40 @@ describe('tabla de /config', () => {
 
   test('las opciones son "por defecto" más los escalones de la escalera, una por tipo', () => {
     expect(OPCIONES_MODELO).toEqual(['por defecto', ...ESCALERA.map(formatEscalon)])
-    expect(Object.keys(OPCION_DE_TIPO).sort()).toEqual([...TIPOS].sort())
+    expect(Object.keys(OPCION_DE_TIPO).sort()).toEqual([...TIPOS, 'review-large', 'review-small'].sort())
+    expect(OPCION_DE_TIPO['review-large']).toBe('modeloReviewLarge')
+    expect(OPCION_DE_TIPO['review-small']).toBe('modeloReviewSmall')
     expect(OPCION_DE_TIPO['review-final']).toBe('modeloReviewFinal')
     expect(OPCION_DE_TIPO['re-review']).toBe('modeloReReview')
+  })
+})
+
+describe('review-large y review-small', () => {
+  const de = (t: ReturnType<typeof tablaDe>, tipo: 'review-large' | 'review-small') => formatEscalon(ESCALERA[t.base[tipo]]!)
+
+  test('TIPOS_FINALES tiene 10 tipos y no incluye review', () => {
+    expect(TIPOS_FINALES).toHaveLength(10)
+    expect(TIPOS_FINALES).not.toContain('review')
+    expect(TIPOS_FINALES).toContain('review-large')
+    expect(TIPOS_FINALES).toContain('review-small')
+    expect(TIPOS).toHaveLength(9)
+  })
+
+  test('sin opciones: large opus·xhigh y small opus·medium', () => {
+    const t = tablaDe({})
+    expect(de(t, 'review-large')).toBe('opus·xhigh')
+    expect(de(t, 'review-small')).toBe('opus·medium')
+  })
+
+  test('modeloReview (legado) aplica a las dos tallas', () => {
+    const t = tablaDe({ modeloReview: 'opus·high' })
+    expect(de(t, 'review-large')).toBe('opus·high')
+    expect(de(t, 'review-small')).toBe('opus·high')
+  })
+
+  test('la opción específica gana sobre el legado', () => {
+    const t = tablaDe({ modeloReview: 'opus·high', modeloReviewSmall: 'sonnet·high' })
+    expect(de(t, 'review-large')).toBe('opus·high')
+    expect(de(t, 'review-small')).toBe('sonnet·high')
   })
 })
