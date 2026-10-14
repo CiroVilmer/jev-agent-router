@@ -2,22 +2,30 @@
 
 [![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-blue.svg)](LICENSE)
 ![Claude Code ≥ 2.1.293](https://img.shields.io/badge/Claude%20Code-%E2%89%A5%202.1.293-orange)
-![Tests: 354](https://img.shields.io/badge/tests-354%20pasan-brightgreen)
+![Tests: 376](https://img.shields.io/badge/tests-376%20pasan-brightgreen)
 
 [English](README.md) · **Español**
 
 Un [mod de Claude Code](https://code.claude.com/docs/en/plugins/mods/overview) que elige el
-**modelo y el esfuerzo de cada subagente** según el tipo de tarea (review, build, fix,
-explore…). Con el modo hot prendido (`/router hot on`, viene apagado), además los sube cuando a
-tu ventana de uso de 5 horas le falta poco para el reset y todavía tiene margen. Nunca bloquea: con un clasificador prendido, un spawn espera como mucho `topeMs` (1 s por defecto).
+**modelo y el esfuerzo de cada subagente que Claude lanza mientras construye**, según el tipo de
+tarea de cada uno: review, build, fix, explore… Ayuda a Claude a elegir bien entre modelos y
+niveles de esfuerzo para cada tarea. Basta de reviews hechas con Sonnet o Haiku: empezá a routear
+tus agentes de verdad.
 
-```
-router · Review Task 3: parser → opus·xhigh · jev 0.98
-```
+**Pensado para subagent-driven development.** Cuando Claude avanza por un plan, implementando,
+revisando y arreglando tarea tras tarea, cada rol recibe el modelo que le corresponde: reviews en
+Opus con esfuerzo alto, builds según su tamaño, fixes e investigación en Sonnet, exploración y
+notas en Haiku, que es rápido. Las reviews encuentran más, los builds van rápido, y tu uso se
+gasta donde importa.
 
-*La línea debajo del prompt muestra la última decisión del router: qué subagente, el modelo y el
-esfuerzo que le tocaron, y quién decidió (acá, Jev con confianza 0.98). Un `+1` o `+2` al final
-quiere decir que la política de uso lo subió.*
+- **Lo configurás una vez.** Basta de repetir "usá Opus para las reviews" en cada sesión: decide
+  el router, siempre.
+- **Tu tabla, tus reglas.** Elegí el modelo y el esfuerzo de cada tipo de tarea en `/config`.
+- **Reglas más un clasificador.** Reglas rápidas reconocen la mayoría de las tareas; el
+  clasificador opcional [Jev](https://typesafe.ai) decide el resto, como el tamaño de un build.
+- **Modo hot.** Si querés, el uso que ibas a perder antes del reset de tu ventana de 5 horas se
+  gasta en modelos más fuertes.
+- **No estorba.** Nunca bloquea un subagente; con un clasificador, un spawn espera 1 s como mucho.
 
 ## Por qué
 
@@ -126,13 +134,11 @@ constancia, sobre todo cuando otras instrucciones le piden un modelo.
 | Comando | Qué hace |
 |---|---|
 | `/router` | Abre el panel con las pestañas **En curso**, **Métricas vs tu base** e **Historial** (teclas 1 a 3) |
-| `/router off` · `/router on` | Apaga o prende el router en esta sesión |
-| `/router permitir sonnet,opus` | Solo usa esos modelos en esta sesión |
-| `/router fijar review opus·max` | Fija un tipo de tarea en un modelo y esfuerzo, por encima de la política |
-| `/router reset` | Borra los overrides de la sesión |
+| `/router on` · `/router off` | Prende o apaga el router en esta sesión |
 | `/router hot on` · `/router hot off` | Prende o apaga el modo hot, para esta sesión y las siguientes (apagado por defecto). `/router hot` dice cómo está |
-| `/router historial [días]` | Exporta las decisiones de los últimos días (7 por defecto) a `~/.claude/router-historial.md` |
-| `/router banco` | Corre el banco del clasificador, desde un clon de este repo (ver [el banco](docs/benchmark.md)) |
+| `/router allow sonnet,opus` | Solo usa esos modelos en esta sesión |
+| `/router set review opus·max` | Fija un tipo de tarea en un modelo y esfuerzo para esta sesión, por encima de `/config` y de la política |
+| `/router reset` | Borra el `allow` y el `set` de la sesión |
 | `[pin]` en la description de un subagente | Respeta el modelo que pidió Claude |
 
 Cada decisión queda registrada con sus motivos:
@@ -142,6 +148,19 @@ review      inherit → opus·xhigh    "Review Task 7: política de reintentos" 
 build-large inherit → opus·high     "Implement Task 8: guarda de cotización"  regla build · jev → build-large (1.00) · política +1
 write       inherit → haiku·high    "Write Task 11: notas de la sesión"       regla write
 ```
+
+La línea debajo del prompt muestra la última, por ejemplo
+`router · Review Task 3: parser → opus·xhigh · jev 0.98`.
+
+<details>
+<summary><b>Más comandos</b>: exportar el historial y el banco del clasificador</summary>
+
+| Comando | Qué hace |
+|---|---|
+| `/router history [días]` | Exporta las decisiones de los últimos días (7 por defecto) a `~/.claude/router-historial.md` |
+| `/router bench` | Corre el banco del clasificador, desde un clon de este repo (ver [el banco](docs/benchmark.md)) |
+
+</details>
 
 ## Configuración
 
@@ -171,7 +190,7 @@ Referencia completa (en inglés): [docs/configuration.md](docs/configuration.md)
 
 Con `clasificador: jev`, el router le manda a Jev **solo la description del subagente y un
 resumen numérico de su prompt**: el largo, cuántos archivos y pasos nombra, y si menciona un
-spec. Nunca le manda el prompt. Lo mismo vale para `sombra: jev` y para `/router banco`. Con `reglas`
+spec. Nunca le manda el prompt. Lo mismo vale para `sombra: jev` y para `/router bench`. Con `reglas`
 o `haiku` y sin sombra de Jev, no sale nada de Claude Code.
 
 ## Cómo funciona

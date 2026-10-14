@@ -2,23 +2,28 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Claude Code ≥ 2.1.293](https://img.shields.io/badge/Claude%20Code-%E2%89%A5%202.1.293-orange)
-![Tests: 354](https://img.shields.io/badge/tests-354%20passing-brightgreen)
+![Tests: 376](https://img.shields.io/badge/tests-376%20passing-brightgreen)
 
 **English** · [Español](README.es.md)
 
 A [Claude Code mod](https://code.claude.com/docs/en/plugins/mods/overview) that picks the
-**model and effort of every subagent** from the kind of task it does (review, build, fix,
-explore…). With hot mode on (`/router hot on`, off by default), it also raises them when your
-5-hour usage window is about to reset with room to spare.
-It never blocks: with a classifier enabled, a spawn waits at most `topeMs` (1 s by default).
+**model and effort of every subagent Claude deploys while it builds**, from the kind of task each
+one does: review, build, fix, explore… It helps Claude choose well between models and effort
+levels for every task. No more Sonnet or Haiku doing your code reviews: start actually routing
+your agents.
 
-```
-router · Review Task 3: parser → opus·xhigh · jev 0.98
-```
+**Made for subagent-driven development.** When Claude works through a plan, implementing,
+reviewing and fixing task after task, every role gets the model it deserves: reviews on Opus at
+high effort, builds sized to the job, fixes and research on Sonnet, exploration and notes on fast
+Haiku. Reviewers catch more, builders stay fast, and your usage goes where it matters.
 
-*The line below the prompt shows the router's latest decision: which subagent, the model and effort
-it got, and who decided (here, Jev with 0.98 confidence). A trailing `+1` or `+2` means the usage
-policy raised it.*
+- **Set it once.** No more "use Opus for reviews" in every session: the router decides, every time.
+- **Your table, your rules.** Pick the model and effort of each task type in `/config`.
+- **Rules plus a classifier.** Fast rules recognize most tasks; the optional
+  [Jev](https://typesafe.ai) classifier decides the rest, like how big a build is.
+- **Hot mode.** Optionally spend the usage you'd lose before your 5-hour window resets on
+  stronger models.
+- **Never in the way.** It never blocks a subagent; with a classifier, a spawn waits 1 s at most.
 
 ## Why
 
@@ -126,13 +131,11 @@ especially when other instructions ask for a specific model.
 | Command | What it does |
 |---|---|
 | `/router` | Opens the panel: **En curso** (live), **Métricas vs tu base** (metrics vs your baseline) and **Historial** (history) tabs, keys 1–3 |
-| `/router off` · `/router on` | Turns the router off or on for this session |
-| `/router permitir sonnet,opus` | Only use these models in this session |
-| `/router fijar review opus·max` | Pin a task type to a model and effort, above the policy |
-| `/router reset` | Clears this session's overrides |
+| `/router on` · `/router off` | Turns the router on or off for this session |
 | `/router hot on` · `/router hot off` | Turns hot mode on or off, for this and future sessions (off by default). `/router hot` shows its state |
-| `/router historial [days]` | Exports the last days of decisions (7 by default) to `~/.claude/router-historial.md` |
-| `/router banco` | Runs the classifier bench, from a clone of this repo (see [the bench](docs/benchmark.md)) |
+| `/router allow sonnet,opus` | Only use these models in this session |
+| `/router set review opus·max` | Sets a task type to a model and effort for this session, above `/config` and the policy |
+| `/router reset` | Clears this session's `allow` and `set` |
 | `[pin]` in a subagent's description | Keeps the model Claude asked for |
 
 Every decision is recorded with its reasons:
@@ -143,9 +146,22 @@ build-large inherit → opus·high     "Implement Task 8: quote guard"    regla 
 write       inherit → haiku·high    "Write Task 11: session notes"     regla write
 ```
 
+The line below the prompt shows the latest one, for example
+`router · Review Task 3: parser → opus·xhigh · jev 0.98`.
+
+<details>
+<summary><b>More commands</b>: history export and the classifier bench</summary>
+
+| Command | What it does |
+|---|---|
+| `/router history [days]` | Exports the last days of decisions (7 by default) to `~/.claude/router-historial.md` |
+| `/router bench` | Runs the classifier bench, from a clone of this repo (see [the bench](docs/benchmark.md)) |
+
+</details>
+
 > [!NOTE]
-> The router's commands, panel and messages are in **Spanish** (`permitir`, `fijar`,
-> `historial`, motives like `regla review`). The documentation explains each one in English.
+> Commands are in English. The panel, messages and reasons are still in **Spanish** (for example
+> `regla review`); the documentation explains each one.
 
 ## Configuration
 
@@ -174,7 +190,7 @@ Full reference: [docs/configuration.md](docs/configuration.md).
 
 With `clasificador: jev`, the router sends Jev **only the subagent's description and a numeric
 summary of its prompt** (length, number of files and steps it names, whether it mentions a spec).
-It never sends the prompt. The same applies to `sombra: jev` and to `/router banco`. With
+It never sends the prompt. The same applies to `sombra: jev` and to `/router bench`. With
 `reglas` or `haiku` and no Jev shadow, nothing leaves Claude Code.
 
 ## How it works
