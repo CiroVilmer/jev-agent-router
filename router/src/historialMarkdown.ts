@@ -1,7 +1,7 @@
 import type { Cuenta, Registro } from './historial'
 import { filaDeRegistro, resumenDecisiones, ultimosDias } from './historial'
 
-// Puro: arma el texto del export de `/router historial`. Leer el store y escribir el archivo lo
+// Puro: arma el texto del export de `/router history`. Leer el store y escribir el archivo lo
 // hace hooks/register.tsx.
 
 const dos = (n: number) => String(n).padStart(2, '0')
@@ -57,7 +57,7 @@ function seccionTarea(titulo: string, registros: readonly Registro[]): string[] 
 }
 
 /**
- * El Markdown de `/router historial [días]`: un encabezado con la fecha, el rango y el resumen, y
+ * El Markdown de `/router history [days]`: un encabezado con la fecha, el rango y el resumen, y
  * una sección por sesión con una tabla por tarea (con su ciclo y sus rondas de re-review). El rango
  * es el de `ultimosDias`: `(ahora - dias, ahora]`, y una tarea entra o queda afuera entera.
  */

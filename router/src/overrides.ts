@@ -16,9 +16,9 @@ export type Comando =
   | { accion: 'error'; mensaje: string }
 
 export const AYUDA =
-  'Uso: /router · /router on|off|reset · /router hot on|off · /router permitir sonnet,opus · /router fijar <tipo> <modelo>·<esfuerzo> · /router banco · /router historial [días]'
+  'Usage: /router · /router on|off|reset · /router hot on|off · /router allow sonnet,opus · /router set <type> <model>·<effort> · /router history [days] · /router bench'
 
-const USO_BANCO = 'Uso: /router banco [--max N] [--solo haiku|jev]'
+const USO_BANCO = 'Usage: /router bench [--max N] [--solo haiku|jev]'
 
 function parsearBanco(resto: readonly string[]): Comando {
   let max: number | null = null
@@ -44,14 +44,14 @@ function parsearBanco(resto: readonly string[]): Comando {
   return { accion: 'banco', max, solo }
 }
 
-/** Días del export de `/router historial` cuando no se dicen. */
+/** Días del export de `/router history` cuando no se dicen. */
 export const DIAS_EXPORT = 7
 
 function parsearHistorial(resto: readonly string[]): Comando {
   if (resto.length === 0) return { accion: 'historial', dias: DIAS_EXPORT }
   const [dias] = resto
   if (resto.length > 1 || !/^\d+$/.test(dias!) || Number(dias) < 1) {
-    return { accion: 'error', mensaje: `Uso: /router historial [días], con días mayor que 0 (${DIAS_EXPORT} si no lo decís)` }
+    return { accion: 'error', mensaje: `Usage: /router history [days], con días mayor que 0 (${DIAS_EXPORT} si no lo decís)` }
   }
   return { accion: 'historial', dias: Number(dias) }
 }
@@ -68,17 +68,19 @@ export function parsearComando(args: string): Comando {
       return { accion: 'off' }
     case 'reset':
       return { accion: 'reset' }
+    case 'allow':
     case 'permitir': {
       const modelos = resto.join(',').split(',').map(s => s.trim().toLowerCase()).filter(Boolean)
       const malos = modelos.filter(m => !(MODELOS as readonly string[]).includes(m))
       if (modelos.length === 0) {
-        return { accion: 'error', mensaje: 'Decime qué modelos: /router permitir sonnet,opus' }
+        return { accion: 'error', mensaje: 'Decime qué modelos: /router allow sonnet,opus' }
       }
       if (malos.length > 0) {
         return { accion: 'error', mensaje: `Modelos no válidos: ${malos.join(', ')}. ${AYUDA}` }
       }
       return { accion: 'permitir', modelos: [...new Set(modelos)] as Modelo[] }
     }
+    case 'set':
     case 'fijar': {
       const [tipo, ...escalonTexto] = resto
       if (tipo === undefined || !(TIPOS as readonly string[]).includes(tipo.toLowerCase())) {
@@ -100,8 +102,10 @@ export function parsearComando(args: string): Comando {
       }
       return { accion: 'hot', valor: valor === undefined ? null : valor === 'on' }
     }
+    case 'bench':
     case 'banco':
       return parsearBanco(resto)
+    case 'history':
     case 'historial':
       return parsearHistorial(resto)
     default:

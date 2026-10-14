@@ -42,7 +42,7 @@ describe('parsearComando', () => {
   test('un verbo desconocido es un error con ayuda', () => {
     const c = parsearComando('bla')
     expect(c.accion).toBe('error')
-    expect(c.accion === 'error' && c.mensaje.includes('Uso: /router')).toBe(true)
+    expect(c.accion === 'error' && c.mensaje.includes('Usage: /router')).toBe(true)
   })
 })
 
@@ -150,7 +150,7 @@ describe('parsearComando historial', () => {
   })
 
   test('la ayuda lo menciona', () => {
-    expect(AYUDA).toContain('/router historial')
+    expect(AYUDA).toContain('/router history')
   })
 })
 
@@ -173,5 +173,25 @@ describe('/router hot', () => {
 
   test('no cambia los overrides de la sesión', () => {
     expect(aplicarComando(OVERRIDES_INICIAL, { accion: 'hot', valor: true })).toBe(OVERRIDES_INICIAL)
+  })
+})
+
+describe('comandos en inglés (los de castellano siguen como alias)', () => {
+  test('allow, set, history y bench', () => {
+    expect(parsearComando('allow sonnet,opus')).toEqual({ accion: 'permitir', modelos: ['sonnet', 'opus'] })
+    expect(parsearComando('set review opus·max')).toEqual({ accion: 'fijar', tipo: 'review', escalon: { modelo: 'opus', esfuerzo: 'max' } })
+    expect(parsearComando('history 3')).toEqual({ accion: 'historial', dias: 3 })
+    expect(parsearComando('bench --max 5')).toEqual({ accion: 'banco', max: 5, solo: null })
+  })
+
+  test('los alias en castellano siguen funcionando', () => {
+    expect(parsearComando('permitir sonnet').accion).toBe('permitir')
+    expect(parsearComando('fijar review opus·max').accion).toBe('fijar')
+    expect(parsearComando('historial').accion).toBe('historial')
+    expect(parsearComando('banco').accion).toBe('banco')
+  })
+
+  test('la ayuda nombra los comandos en inglés', () => {
+    expect(AYUDA).toBe('Usage: /router · /router on|off|reset · /router hot on|off · /router allow sonnet,opus · /router set <type> <model>·<effort> · /router history [days] · /router bench')
   })
 })

@@ -279,7 +279,7 @@ export function guardarVentana($: EngineInterface, lectura: LecturaUso): Promise
   return escribirEnCola($, 'ventanas', async actual => observarVentana(ventanasDe(actual), lectura, await $.clock.now()))
 }
 
-/** Adónde va el export de `/router historial`, dentro del home. */
+/** Adónde va el export de `/router history`, dentro del home. */
 export const ARCHIVO_HISTORIAL = ['.claude', 'router-historial.md'] as const
 
 /** `<home>/.claude/router-historial.md`, con el separador que ya usa el home (`\` en Windows). */
@@ -289,7 +289,7 @@ export function rutaHistorial(home: string): string {
 }
 
 /**
- * /router historial [días]: arma el Markdown con el historial guardado de todas las sesiones más lo
+ * /router history [days]: arma el Markdown con el historial guardado de todas las sesiones más lo
  * de esta que todavía no llegó al store, lo escribe en `<home>/.claude/router-historial.md`
  * (sobrescribe) y devuelve la línea de respuesta. Rechaza si no hay home o si la escritura falla.
  */
@@ -321,7 +321,7 @@ export function avisoReasignado(s: Subagente): string {
 export const LIMITE_BANCO_MS = 60_000
 
 /**
- * /router banco: corre Haiku y Jev sobre los casos de producción de bench/casos.json, por el
+ * /router bench: corre Haiku y Jev sobre los casos de producción de bench/casos.json, por el
  * mismo camino que producción pero sin tope ni sombra, y con umbral 0 para que Jev no se
  * descarte por duda (la confianza queda en la corrida). Guarda bench/corridas/<fecha>-<hora>-banco.json
  * cada 25 resultados y al final; devuelve el resumen de una línea.
@@ -405,7 +405,7 @@ export const register: Register = (on, options) => {
   on('session.start', async ($, e, next) => {
     await $.command.register({
       name: 'router',
-      description: 'Router de subagentes: panel, overrides (on, off, reset, permitir, fijar), modo hot, banco e historial',
+      description: 'Router de subagentes: panel, on, off, reset, hot, allow, set, history y bench',
     })
     return next(e)
   })

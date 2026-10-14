@@ -119,7 +119,7 @@ export function vistaPanel({ Box, Text, Button }: ElementosPanel, d: DatosPanel)
             </Box>
           ))}
         </Box>
-        <Text dimColor>/router historial [días] exporta el detalle a ~/.claude/router-historial.md</Text>
+        <Text dimColor>/router history [days] exporta el detalle a ~/.claude/router-historial.md</Text>
       </Box>
     )
   }
