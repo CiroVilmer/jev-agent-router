@@ -106,6 +106,7 @@ subagents", compete with the router's convention.
 | `jev dudó (0.55): queda la regla` | Jev was unsure about a review: the rule stays |
 | `respaldo (jev dudó (0.62)) → build-small` | Jev was unsure about a build's size: the fallback decided |
 | `respaldo (tardó más de 1000 ms) → …` | The classifier timed out |
+| `base de /config: opus·high` | The type's base step comes from your `/config` choice |
 | `política +1` · `techo de explore` | The policy raised the step; the type's cap stopped it |
 | `fijado con /router: opus·max` · `permitidos: sonnet,opus` | Session overrides |
 | `[pin]: respeta lo que pidió Claude` · `fork: hereda el modelo` · `router apagado` | Not touched |

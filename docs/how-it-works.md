@@ -20,7 +20,8 @@ the spawn's `model`. Later, on every `turn.step` of that subagent, it sets the c
    - no rule matched;
    - with `clasificador: jev`, to re-check (and maybe change) a review's type.
 4. **The step:** if `/router fijar <type> <model>·<effort>` pinned this type, that step is used.
-   Otherwise, the usage policy raises the type's base step by 0, 1 or 2, never past the type's cap.
+   Otherwise the type's base step is used (the router's table, or your `/config` choice), and,
+   with hot mode on, the usage policy raises it by 0, 1 or 2, never past the type's cap.
 5. **Allowed models:** if `/router permitir` restricts the models, the decision moves to the
    nearest allowed step.
 
@@ -95,7 +96,8 @@ are stored (the last 500), and the panel compares them: agreement, p50 and p95, 
 
 ## Base table and the ladder
 
-All steps live on one ladder:
+This is the router's default table. Each user can change the base step of any type in
+`/config` ([configuration.md](configuration.md#model-per-task-type)). All steps live on one ladder:
 
 ```
 haiku·low → haiku·medium → haiku·high → sonnet·low → sonnet·medium → sonnet·high → opus·medium → opus·high → opus·xhigh

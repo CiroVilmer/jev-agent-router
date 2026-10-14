@@ -79,7 +79,9 @@ describe('modo hot', () => {
 
   test('apagado: la política no sube aunque sea 🔥', () => {
     const p = politicaSegunHot(false, lectura, ahora, UMBRALES_DEFAULT)
-    expect(p).toMatchObject({ modo: 'normal', escalones: 0, motivo: 'modo hot apagado (/router hot on)' })
+    expect(p).toMatchObject({ modo: 'normal', escalones: 0, minutosAlReset: 24 })
+    // Sin perder el estado de la ventana: el panel lo sigue mostrando.
+    expect(p.motivo).toBe('modo hot apagado (/router hot on) · queda 62% de 5h y el reset es en 24m: lo que no uses se pierde')
   })
 
   test('prendido: la política de siempre', () => {

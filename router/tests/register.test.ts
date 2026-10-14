@@ -100,6 +100,21 @@ describe('register', () => {
     expect(modelo).toBe('sonnet')
   })
 
+  test('si el store falla, el modo hot queda apagado y el spawn sigue', async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    let modelo: string | undefined
+    on('store.get', async () => { throw new Error('store roto') })
+    on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: 'ag-hot-err' } })
+    on('session.measure', async (_$, e) => ({ changed: e.changed }))
+    await $.session.measure({
+      context: { window: 1_000_000 },
+      rateLimits: [{ kind: 'five_hour', percentUsed: 38, resetsAt: new Date(AHORA + 24 * 60_000).toISOString() }],
+      changed: ['rateLimits'],
+    })
+    await $.agent.spawn({ ...SPAWN, description: 'Implement Task 5b: fecha como marcador' })
+    expect(modelo).toBe('sonnet')
+  })
+
   test('/router hot on|off se guarda en el store y /router hot dice cómo está', async ($, on) => {
     mock.clock(on, { now: AHORA })
     const store = storeEnMemoria(on)

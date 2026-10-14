@@ -405,7 +405,7 @@ export const register: Register = (on, options) => {
   on('session.start', async ($, e, next) => {
     await $.command.register({
       name: 'router',
-      description: 'Router de subagentes: panel, overrides (on, off, reset, permitir, fijar), banco e historial',
+      description: 'Router de subagentes: panel, overrides (on, off, reset, permitir, fijar), modo hot, banco e historial',
     })
     return next(e)
   })
@@ -592,7 +592,7 @@ ${CONVENCION_AGENT}` }
 
   // El panel: este hook lee los atoms y src/ui/panel.tsx arma el árbol sin tocar $.
   on('ui.render', { component: 'Pane', requestId: PANE }, async ($, e) => {
-    const [pestana, subs, overrides, lectura, ahora, muestras, guardado, vistas, sesion] = await Promise.all([
+    const [pestana, subs, overrides, lectura, ahora, muestras, guardado, vistas, sesion, hot] = await Promise.all([
       read($, pestanaAtom), read($, subagentesAtom), read($, overridesAtom), read($, lecturaAtom), $.clock.now(),
       // Sin store (o si falla), el panel sale igual: sin la sección de sombra y con "—" en la
       // columna de 7 días y en la ventana sin usar.
@@ -600,6 +600,7 @@ ${CONVENCION_AGENT}` }
       leerHistoriales($).catch(() => [] as HistorialSesion[]),
       $.store.get('ventanas').catch(() => undefined),
       $.session.id().catch(() => null),
+      leerHot($),
     ])
     const historial = guardado.flatMap(s => s.registros ?? [])
     const ventanas = ventanasDe(vistas)
@@ -609,7 +610,7 @@ ${CONVENCION_AGENT}` }
       pestana,
       subs,
       overrides,
-      politica: politicaSegunHot(await leerHot($), lectura, ahora, umbrales),
+      politica: politicaSegunHot(hot, lectura, ahora, umbrales),
       ahora,
       bodyColumns: e.props.bodyColumns,
       sombra: estadisticasSombra(muestrasDe(muestras)),

@@ -8,8 +8,8 @@
 
 Un [mod de Claude Code](https://code.claude.com/docs/en/plugins/mods/overview) que elige el
 **modelo y el esfuerzo de cada subagente** según el tipo de tarea (review, build, fix,
-explore…). Además los sube cuando a tu ventana de uso de 5 horas le falta poco para el reset y
-todavía tiene margen. Nunca bloquea: con un clasificador prendido, un spawn espera como mucho `topeMs` (1 s por defecto).
+explore…). Con el modo hot prendido (`/router hot on`, viene apagado), además los sube cuando a
+tu ventana de uso de 5 horas le falta poco para el reset y todavía tiene margen. Nunca bloquea: con un clasificador prendido, un spawn espera como mucho `topeMs` (1 s por defecto).
 
 ```
 router · Review Task 3: parser → opus·xhigh · jev 0.98
@@ -183,7 +183,7 @@ flowchart LR
     B -->|"Build grande, re-review"| D["🧠 Opus · medium"]
     B -->|"Build chico, fix, research"| E["⚡ Sonnet"]
     B -->|"Explore, write"| F["🪶 Haiku"]
-    C & D & E & F --> G{"⏰ ¿Tu ventana de 5 horas se reinicia<br/>pronto y sobra uso?"}
+    C & D & E & F --> G{"⏰ ¿Modo hot prendido, y tu ventana de 5 horas<br/>se reinicia pronto con uso de sobra?"}
     G -->|"Sí"| H["⬆️ Sube uno o dos<br/>escalones"]
     G -->|"No"| I["✅ El subagente corre<br/>con ese modelo"]
     H --> I
@@ -193,9 +193,11 @@ flowchart LR
    Task 5: parser".
 2. **El router deduce el tipo de tarea** a partir de esa descripción. Cuando no está claro (por
    ejemplo, si un build es grande o chico), le pregunta a un clasificador como Jev.
-3. **Elige el modelo y el esfuerzo** para ese tipo, según la tabla de arriba.
-4. **Si tu ventana de uso está por reiniciarse y sobra uso**, sube uno o dos escalones, así el uso
-   que ibas a perder se aprovecha en mejores modelos. Nunca baja.
+3. **Elige el modelo y el esfuerzo** para ese tipo, según la tabla de arriba o lo que elegiste
+   en `/config`.
+4. **Con el modo hot prendido, si tu ventana de uso está por reiniciarse y sobra uso**, sube uno o
+   dos escalones, así el uso que ibas a perder se aprovecha en mejores modelos. Nunca baja. El modo
+   hot está apagado hasta que corrés `/router hot on`.
 
 El detalle técnico (reglas, clasificadores, la escalera completa), en inglés, está en
 [docs/how-it-works.md](docs/how-it-works.md). La historia del diseño, en castellano, está en

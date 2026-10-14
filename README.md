@@ -8,7 +8,8 @@
 
 A [Claude Code mod](https://code.claude.com/docs/en/plugins/mods/overview) that picks the
 **model and effort of every subagent** from the kind of task it does (review, build, fix,
-explore…), and raises them when your 5-hour usage window is about to reset with room to spare.
+explore…). With hot mode on (`/router hot on`, off by default), it also raises them when your
+5-hour usage window is about to reset with room to spare.
 It never blocks: with a classifier enabled, a spawn waits at most `topeMs` (1 s by default).
 
 ```
@@ -185,7 +186,7 @@ flowchart LR
     B -->|"Big build, re-review"| D["🧠 Opus · medium"]
     B -->|"Small build, fix, research"| E["⚡ Sonnet"]
     B -->|"Explore, write"| F["🪶 Haiku"]
-    C & D & E & F --> G{"⏰ Does your 5-hour window<br/>reset soon with usage to spare?"}
+    C & D & E & F --> G{"⏰ Hot mode on, and your 5-hour<br/>window resets soon with usage to spare?"}
     G -->|"Yes"| H["⬆️ Go one or two<br/>steps higher"]
     G -->|"No"| I["✅ The subagent runs<br/>with that model"]
     H --> I
@@ -195,9 +196,11 @@ flowchart LR
    Task 5: parser".
 2. **The router figures out the task type** from that description. When it isn't clear (for
    example, whether a build is big or small), it asks a classifier such as Jev.
-3. **It picks the model and effort** for that type from the table above.
-4. **If your usage window is about to reset with usage left over**, it goes one or two steps
-   higher, so the usage you'd lose is spent on better models. It never goes lower.
+3. **It picks the model and effort** for that type from the table above, or from your own
+   choice in `/config`.
+4. **With hot mode on, if your usage window is about to reset with usage left over**, it goes one
+   or two steps higher, so the usage you'd lose is spent on better models. It never goes lower.
+   Hot mode is off until you run `/router hot on`.
 
 The technical details (rules, classifiers, the full ladder) are in
 [docs/how-it-works.md](docs/how-it-works.md). The design history, in Spanish, is in

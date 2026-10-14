@@ -3,8 +3,9 @@
 > English documentation: [README](../README.md) · [how it works](../docs/how-it-works.md) · [configuration](../docs/configuration.md).
 > Este README es la referencia técnica del plugin, en castellano.
 
-Mod de Claude Code que elige el modelo y el esfuerzo de cada subagente según el tipo de tarea, y
-los sube cuando sobra ventana de 5 horas. Nunca frena el uso.
+Mod de Claude Code que elige el modelo y el esfuerzo de cada subagente según el tipo de tarea. Con
+el modo hot prendido (`/router hot on`, viene apagado), además los sube cuando sobra ventana de 5
+horas. Nunca frena el uso.
 
 ## Cargarlo
 
@@ -26,8 +27,9 @@ los sube cuando sobra ventana de 5 horas. Nunca frena el uso.
 | `/router historial [días]` | Exporta las decisiones de los últimos días (7 si no se dice) a `~/.claude/router-historial.md` |
 | `[pin]` en la description de un subagente | Respeta el modelo que pidió Claude |
 
-En `/config` se cambian los umbrales de la política (🔥 y ⬆️), los clasificadores (ver abajo) y
-`avisarAClaude` y `ensenarConvencion`.
+En `/config` se eligen el modelo·esfuerzo base de cada tipo de tarea (`modeloReview`, `modeloFix`…),
+los umbrales de la política (🔥 y ⬆️), los clasificadores (ver abajo), `avisarAClaude` y
+`ensenarConvencion`.
 
 ## Lo que ve Claude
 
