@@ -83,25 +83,13 @@ describe('register', () => {
     expect(modelo).toBe('opus')
   })
 
-  test('un spawn sin model que hereda opus y sale en opus no cuenta como reasignado', async ($, on) => {
+  test('la línea muestra la última decisión del router', async ($, on) => {
     mock.clock(on, { now: AHORA })
     const lineas: (string | undefined)[] = []
     on('ui.status', async (_$, e) => { lineas.push(e.text); return { value: undefined } })
-    let n = 0
-    on('agent.spawn', async (_$, e) => ({ model: e.model ?? 'inherit', agentId: `ag-h${++n}` }))
-    await $.agent.spawn({ ...SPAWN, model: undefined, parentModel: 'claude-opus-5-5' })
-    expect(lineas.at(-1)).toBe(undefined)
+    on('agent.spawn', async (_$, e) => ({ model: e.model ?? 'inherit', agentId: 'ag-linea' }))
     await $.agent.spawn(SPAWN)
-    expect(lineas.at(-1)).toBe('router · 1 de 2 subagentes reasignados · /router')
-  })
-
-  test('con el padre en alias (opus) tampoco cuenta como reasignado', async ($, on) => {
-    mock.clock(on, { now: AHORA })
-    const lineas: (string | undefined)[] = []
-    on('ui.status', async (_$, e) => { lineas.push(e.text); return { value: undefined } })
-    on('agent.spawn', async (_$, e) => ({ model: e.model ?? 'inherit', agentId: 'ag-alias' }))
-    await $.agent.spawn({ ...SPAWN, model: 'opus', parentModel: 'opus' })
-    expect(lineas.at(-1)).toBe(undefined)
+    expect(lineas.at(-1)).toBe('router · Review Task 6 (spec + quality) → opus·xhigh · regla')
   })
 
   test('nunca bloquea: si la decisión falla, el subagente sale con lo que pidió Claude', async ($, on) => {
@@ -156,20 +144,6 @@ describe('register', () => {
     const paso = $.turn.step({ turnId: 't-fb', index: 0, model: 'claude-sonnet-5-5', effort: 'medium', messageCount: 3, agentId: 'ag-fb' })
     for await (const _ of paso) { /* consumir */ }
     expect(esfuerzo).toBe('medium')
-  })
-
-  test('si session.start vuelve a dispararse, queda un solo refresco por minuto', async ($, on) => {
-    const reloj = mock.clock(on, { now: AHORA })
-    let refrescos = 0
-    on('ui.status', async () => { refrescos++; return { value: undefined } })
-    on('command.register', async () => ({ value: { command: 'router' } }))
-    on('session.start', async (_$, e) => ({ cwd: e.cwd }))
-    const inicio = { cwd: 'C:/x', surface: null, isInteractive: false }
-    await $.session.start(inicio)
-    await $.session.start(inicio)
-    refrescos = 0
-    await reloj.advance(60_000)
-    expect(refrescos).toBe(1)
   })
 
   test('el system prompt suma la línea del router', async ($, on) => {
@@ -991,6 +965,22 @@ describe('avisos en el resultado de Agent', () => {
     agentComoCore(on, id => $.agent.spawn({ ...SPAWN, tool_use_id: id }))
     const r = await $.tool.call(CALL)
     expect(r.context).toEqual(['(router: corre en opus·xhigh — regla review)'])
+  })
+
+  test('un spawn sin model que hereda opus y sale en opus no cuenta como reasignado', { options: { avisarAClaude: true } }, async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    agentComoCore(on, id => $.agent.spawn({ ...SPAWN, tool_use_id: id, model: undefined, parentModel: 'claude-opus-5-5' }))
+    const r = await $.tool.call({ ...CALL, model: undefined })
+    expect(r.context ?? []).toEqual([])
+  })
+
+  test('con el padre en alias (opus) tampoco cuenta como reasignado', { options: { avisarAClaude: true } }, async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    agentComoCore(on, id => $.agent.spawn({ ...SPAWN, tool_use_id: id, model: 'opus', parentModel: 'opus' }))
+    const r = await $.tool.call({ ...CALL, model: 'opus' })
+    expect(r.context ?? []).toEqual([])
   })
 
   test('prendido, sin reasignar no avisa', { options: { avisarAClaude: true } }, async ($, on) => {

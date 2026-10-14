@@ -32,9 +32,8 @@ import {
 } from '../src/historial'
 import { historialMarkdown } from '../src/historialMarkdown'
 import { aplicarComando, describirComando, LINEA_ROUTER, OVERRIDES_INICIAL, parsearComando } from '../src/overrides'
-import type { Umbrales } from '../src/politica'
 import { lecturaDe, politicaDe, umbralesDe } from '../src/politica'
-import { metricasDe, tareaDe } from '../src/registro'
+import { tareaDe } from '../src/registro'
 import { clasificarPorReglas } from '../src/reglas'
 import { formatEscalon } from '../src/taxonomia'
 import { textoLinea } from '../src/ui/linea'
@@ -52,10 +51,10 @@ export const lecturaAtom = atom({ plugin: 'agent-router', key: 'lectura' } as co
 export const pestanaAtom = atom({ plugin: 'agent-router', key: 'pestana' } as const, 'curso' as Pestana)
 
 // El cargador de hooks solo deja pasar $ a funciones declaradas en el nivel superior del
-// archivo: por eso refrescarLinea vive acá afuera y recibe los umbrales como argumento.
-export async function refrescarLinea($: EngineInterface, umbrales: Umbrales): Promise<void> {
-  const [subs, lectura, ahora] = await Promise.all([read($, subagentesAtom), read($, lecturaAtom), $.clock.now()])
-  $.ui.status(textoLinea(politicaDe(lectura, ahora, umbrales), metricasDe(subs, ahora)))
+// archivo: por eso refrescarLinea vive acá afuera.
+export async function refrescarLinea($: EngineInterface): Promise<void> {
+  // La última decisión del router: los subagentes se agregan en orden de spawn.
+  $.ui.status(textoLinea((await read($, subagentesAtom)).at(-1)))
 }
 
 // Cada aviso de que falta la key de Jev sale una sola vez por carga del módulo.
@@ -385,18 +384,11 @@ export async function correrBancoEnSesion(
 
 export const register: Register = (on, options) => {
   const umbrales = umbralesDe(options)
-  let refresco: { cancel: () => void } | undefined
 
   on('session.start', async ($, e, next) => {
     await $.command.register({
       name: 'router',
       description: 'Router de subagentes: panel, overrides (on, off, reset, permitir, fijar), banco e historial',
-    })
-    // La línea dice "reset en Nm": se refresca cada minuto aunque no pase nada. Si session.start
-    // vuelve a dispararse, el reloj anterior se cancela para no refrescar dos veces.
-    refresco?.cancel()
-    refresco = $.clock.every(60_000, () => {
-      refrescarLinea($, umbrales).catch(() => {})
     })
     return next(e)
   })
@@ -423,7 +415,7 @@ ${CONVENCION_AGENT}` }
       // En segundo plano y en cola: guardar la ventana nunca frena ni rompe la medición.
       void guardarVentana($, lectura)
     }
-    await refrescarLinea($, umbrales)
+    await refrescarLinea($)
     return next(e)
   })
 
@@ -474,7 +466,7 @@ ${CONVENCION_AGENT}` }
       }
       try {
         await update($, subagentesAtom, lista => [...lista, sub].slice(-200))
-        await refrescarLinea($, umbrales)
+        await refrescarLinea($)
       } catch {
         // Registrar es secundario: el subagente ya salió.
       }
@@ -534,7 +526,7 @@ ${CONVENCION_AGENT}` }
       })
       // Al historial, en segundo plano y en cola: guardarRegistro nunca rechaza ni frena el hook.
       if (terminado) void guardarRegistro($, terminado)
-      await refrescarLinea($, umbrales)
+      await refrescarLinea($)
     }
     return next(e)
   })
@@ -561,7 +553,7 @@ ${CONVENCION_AGENT}` }
     }
     if (comando.accion !== 'error') {
       await update($, overridesAtom, o => aplicarComando(o, comando))
-      await refrescarLinea($, umbrales)
+      await refrescarLinea($)
     }
     return { text: describirComando(comando) }
   })

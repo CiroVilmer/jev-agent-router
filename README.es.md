@@ -12,12 +12,12 @@ explore…). Además los sube cuando a tu ventana de uso de 5 horas le falta poc
 todavía tiene margen. Nunca bloquea: con un clasificador prendido, un spawn espera como mucho `topeMs` (1 s por defecto).
 
 ```
-router · ⬆️ subiendo un nivel hasta el reset (94m) · 3 de 4 subagentes reasignados · /router
+router · Review Task 3: parser → opus·xhigh · jev 0.98
 ```
 
-*Esa es la línea de estado debajo del prompt. En el ejemplo, la ventana de 5 horas se reinicia en
-94 minutos y sobra uso, así que los subagentes corren un escalón más arriba; 3 de 4 terminaron en
-un modelo distinto del que pidió Claude.*
+*La línea debajo del prompt muestra la última decisión del router: qué subagente, el modelo y el
+esfuerzo que le tocaron, y quién decidió (acá, Jev con confianza 0.98). Un `+1` o `+2` al final
+quiere decir que la política de uso lo subió.*
 
 ## Por qué
 
@@ -90,7 +90,7 @@ claude --plugin-dir ./jev-agent-router/router
 ```
 
 **Para comprobar que cargó:** corré `/router`. Se abre el panel, y la línea debajo del prompt
-aparece en cuanto el router reasigna un subagente.
+aparece con el primer subagente que decide el router.
 
 ### Recomendado: agregá esto a tu `CLAUDE.md`
 

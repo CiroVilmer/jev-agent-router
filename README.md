@@ -12,11 +12,12 @@ explore…), and raises them when your 5-hour usage window is about to reset wit
 It never blocks: with a classifier enabled, a spawn waits at most `topeMs` (1 s by default).
 
 ```
-router · ⬆️ subiendo un nivel hasta el reset (94m) · 3 de 4 subagentes reasignados · /router
+router · Review Task 3: parser → opus·xhigh · jev 0.98
 ```
 
-*The status line below the prompt: the 5-hour window resets in 94 minutes with usage to spare, so
-subagents run one step higher; 3 of 4 got a different model than Claude asked for.*
+*The line below the prompt shows the router's latest decision: which subagent, the model and effort
+it got, and who decided (here, Jev with 0.98 confidence). A trailing `+1` or `+2` means the usage
+policy raised it.*
 
 ## Why
 
@@ -90,7 +91,7 @@ claude --plugin-dir ./jev-agent-router/router
 ```
 
 **Check that it loaded:** run `/router`. The panel opens, and the line below the prompt appears
-as soon as the router reassigns a subagent.
+with the first subagent the router decides.
 
 ### Recommended: add this to your `CLAUDE.md`
 

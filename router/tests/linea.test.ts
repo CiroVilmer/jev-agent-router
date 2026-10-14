@@ -1,33 +1,62 @@
 import { describe, expect, test } from 'claude-code/testing'
-import { textoLinea } from '../src/ui/linea'
+import { motivoCorto, textoLinea } from '../src/ui/linea'
+import type { Subagente } from '../types'
 
-const pol = (modo: 'fuego' | 'sobra' | 'normal', minutos: number | null = 24) => ({
-  modo, escalones: modo === 'fuego' ? 2 : modo === 'sobra' ? 1 : 0, motivo: '', minutosAlReset: minutos,
-} as const)
+const sub = (cambios: Partial<Subagente> = {}): Subagente => ({
+  agentId: 'a1',
+  descripcion: 'Review Task 3: parser',
+  tarea: 'Tarea 3',
+  tipo: 'review',
+  pedido: 'inherit',
+  modeloEfectivo: 'claude-opus-5-5',
+  elegido: 'opus·xhigh',
+  escalon: { modelo: 'opus', esfuerzo: 'xhigh' },
+  motivos: ['regla review', 'jev → review (0.98)'],
+  reasignado: false,
+  inicio: 0,
+  fin: null,
+  ...cambios,
+})
 
 describe('línea informativa', () => {
-  test('normal y sin reasignaciones: no se muestra', () => {
-    expect(textoLinea(pol('normal'), { reasignados: 0, total: 3 })).toBe(undefined)
+  test('sin subagentes no se muestra', () => {
+    expect(textoLinea(undefined)).toBe(undefined)
   })
 
-  test('🔥 con reasignaciones', () => {
-    expect(textoLinea(pol('fuego'), { reasignados: 3, total: 4 })).toBe(
-      'router · 🔥 subiendo dos niveles hasta el reset (24m) · 3 de 4 subagentes reasignados · /router',
-    )
+  test('la última decisión: description, elegido y quién decidió', () => {
+    expect(textoLinea(sub())).toBe('router · Review Task 3: parser → opus·xhigh · jev 0.98')
   })
 
-  test('⬆️ sin reasignaciones', () => {
-    expect(textoLinea(pol('sobra', 95), { reasignados: 0, total: 0 })).toBe(
-      'router · ⬆️ subiendo un nivel hasta el reset (95m) · /router',
-    )
+  test('si la política subió, lo dice corto al final', () => {
+    const s = sub({ descripcion: 'Implement Task 8', elegido: 'opus·high', motivos: ['regla build', 'jev → build-large (1.00)', 'política +1'] })
+    expect(textoLinea(s)).toBe('router · Implement Task 8 → opus·high · jev 1.00 · +1')
   })
 
-  test('normal con reasignaciones', () => {
-    expect(textoLinea(pol('normal'), { reasignados: 2, total: 5 })).toBe('router · 2 de 5 subagentes reasignados · /router')
+  test('recorta descriptions largas a 40 caracteres', () => {
+    const t = textoLinea(sub({ descripcion: 'x'.repeat(60) }))!
+    expect(t.startsWith(`router · ${'x'.repeat(39)}… → `)).toBe(true)
   })
 
-  test('no repite el statusline: ni porcentaje de 5h ni de 7d', () => {
-    const t = textoLinea(pol('fuego'), { reasignados: 1, total: 1 }) ?? ''
-    expect(/%|7d|contexto/.test(t)).toBe(false)
+  test('sin tocar: el modelo pedido y por qué entre corchetes', () => {
+    const base = { escalon: null, tipo: null, elegido: 'sonnet', pedido: 'sonnet' } as const
+    expect(textoLinea(sub({ ...base, descripcion: 'Fix Task 2', motivos: ['[pin]: respeta lo que pidió Claude'] }))).toBe('router · Fix Task 2 → sonnet [pin]')
+    expect(textoLinea(sub({ ...base, motivos: ['router apagado'] }))!.endsWith('→ sonnet [off]')).toBe(true)
+    expect(textoLinea(sub({ ...base, motivos: ['fork: hereda el modelo'] }))!.endsWith('→ sonnet [fork]')).toBe(true)
+  })
+
+  test('no repite el statusline ni el modo de la política', () => {
+    const t = textoLinea(sub({ motivos: ['regla fix', 'política +2'] })) ?? ''
+    expect(/%|7d|contexto|reset|subiendo|reasignad/.test(t)).toBe(false)
+  })
+})
+
+describe('motivoCorto', () => {
+  test('quién decidió, en una palabra', () => {
+    expect(motivoCorto(['regla review', 'jev dudó (0.55): queda la regla'])).toBe('jev dudó')
+    expect(motivoCorto(['ninguna regla', 'jev (sin umbral) → review (0.55)'])).toBe('jev 0.55')
+    expect(motivoCorto(['regla build', 'respaldo (jev dudó (0.62)) → build-small'])).toBe('respaldo')
+    expect(motivoCorto(['regla review', 'fijado con /router: opus·max'])).toBe('fijado')
+    expect(motivoCorto(['regla fix', 'política +1'])).toBe('regla')
+    expect(motivoCorto([])).toBe('')
   })
 })
