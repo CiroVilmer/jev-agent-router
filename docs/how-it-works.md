@@ -19,10 +19,10 @@ the spawn's `model`. Later, on every `turn.step` of that subagent, it sets the c
    - every build, to pick its size;
    - no rule matched;
    - with `clasificador: jev`, to re-check (and maybe change) a review's type.
-4. **The step:** if `/router fijar <type> <model>·<effort>` pinned this type, that step is used.
+4. **The step:** if `/router set <type> <model>·<effort>` pinned this type, that step is used.
    Otherwise the type's base step is used (the router's table, or your `/config` choice), and,
    with hot mode on, the usage policy raises it by 0, 1 or 2, never past the type's cap.
-5. **Allowed models:** if `/router permitir` restricts the models, the decision moves to the
+5. **Allowed models:** if `/router allow` restricts the models, the decision moves to the
    nearest allowed step.
 
 **It never blocks.** If anything fails (a hook error, a classifier timeout, a missing key), the

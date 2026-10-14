@@ -19,12 +19,12 @@ horas. Nunca frena el uso.
 |---|---|
 | `/router` | Abre el panel: pestañas **En curso**, **Métricas vs tu base** e **Historial** (teclas 1, 2 y 3) |
 | `/router off` / `/router on` | Apaga o prende el router en esta sesión |
-| `/router permitir sonnet,opus` | Solo usa esos modelos en esta sesión |
-| `/router fijar review opus·max` | Fija un tipo por encima de la política |
+| `/router allow sonnet,opus` | Solo usa esos modelos en esta sesión |
+| `/router set review opus·max` | Fija un tipo por encima de la política |
 | `/router reset` | Borra los overrides de la sesión |
 | `/router hot on` · `/router hot off` | Prende o apaga el modo hot (se guarda para las próximas sesiones; apagado por defecto). `/router hot` dice cómo está |
-| `/router banco` | Corre el banco del clasificador (ver abajo) |
-| `/router historial [días]` | Exporta las decisiones de los últimos días (7 si no se dice) a `~/.claude/router-historial.md` |
+| `/router bench` | Corre el banco del clasificador (ver abajo) |
+| `/router history [días]` | Exporta las decisiones de los últimos días (7 si no se dice) a `~/.claude/router-historial.md` |
 | `[pin]` en la description de un subagente | Respeta el modelo que pidió Claude |
 
 En `/config` se eligen el modelo·esfuerzo base de cada tipo de tarea (`modeloReview`, `modeloFix`…),
@@ -91,7 +91,7 @@ respuestas en el store del plugin (las últimas 500). Los números se ven en `/r
 respaldo y cuántas respuestas de la sombra pasaron `topeMs`. Sirve para juntar números con
 tráfico real antes de cambiar `clasificador`.
 
-**Banco:** `/router banco [--max N] [--solo haiku|jev]` corre los clasificadores sobre los
+**Banco:** `/router bench [--max N] [--solo haiku|jev]` corre los clasificadores sobre los
 subagentes reales de `bench/casos.json` y `node bench/comparar.mjs` los compara contra una
 referencia y contra el respaldo. Cómo usarlo y cómo leer la tabla:
 [bench/README.md](../bench/README.md).
@@ -166,7 +166,7 @@ siguen corriendo, y las guardadas de todas las sesiones), cada una con hora, tar
 `pedido → elegido` y el modo, y los motivos debajo, atenuados. Con menos de 70 columnas no se
 muestran los motivos. El resumen cuenta por el momento del spawn.
 
-**`/router historial [días]`** escribe `<home>/.claude/router-historial.md` (el home sale de
+**`/router history [días]`** escribe `<home>/.claude/router-historial.md` (el home sale de
 `USERPROFILE` o `HOME`), lo sobrescribe en cada export y responde con la ruta. Tiene un
 encabezado con la fecha, el rango y el resumen (decisiones, reasignadas, por tipo → modelo, por
 modo) y una sección por sesión (id corto y fecha) con una tabla por tarea: hora, tipo,

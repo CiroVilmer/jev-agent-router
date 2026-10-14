@@ -74,4 +74,4 @@ That's why the router lets Jev decide reviews and build size, and keeps rules fo
 - **Most of the current policy's gain comes from the fallback.** Phase 5 with the new fallback,
   without Jev on build size or reviews, scores 90.4%: Jev's added value today is deciding, more than accuracy.
 - **Haiku numbers predate Haiku 5.5.** The `haiku` alias now resolves to Haiku 5.5, which thinks
-  by default; re-run `/router banco --solo haiku` before relying on them.
+  by default; re-run `/router bench --solo haiku` before relying on them.

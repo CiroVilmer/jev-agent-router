@@ -34,7 +34,10 @@ The key is `agent-router@<marketplace>`. When you load the mod with `--plugin-di
 
 One option per type. Values: `por defecto` (the router's table) or any ladder step, from
 `haiku·low` to `opus·xhigh`. The policy raises from your choice; if you pick an `explore` step
-above its cap, the cap rises with it. `/router fijar` still overrides it for a session.
+above its cap, the cap rises with it. `/router set` still overrides it for a session.
+
+The Spanish names of the commands (`permitir`, `fijar`, `historial`, `banco`) still work as
+aliases.
 
 | Option | Type | Router default |
 |---|---|---|
@@ -78,12 +81,12 @@ transcript.
 |---|---|
 | `/router` | Panel with three tabs: **En curso** (live decisions and task cycles), **Métricas vs tu base** (metrics, shadow mode) and **Historial** (recent decisions with reasons) |
 | `/router off` · `/router on` | Disable or enable the router for this session |
-| `/router permitir <models>` | Restrict models, e.g. `/router permitir sonnet,opus`. Decisions move to the nearest allowed step |
-| `/router fijar <type> <model>·<effort>` | Pin a type, e.g. `/router fijar review opus·max` or `/router fijar explore haiku·low`. `haiku` alone means `haiku·medium` |
+| `/router allow <models>` | Restrict models, e.g. `/router allow sonnet,opus`. Decisions move to the nearest allowed step |
+| `/router set <type> <model>·<effort>` | Set a type for this session, e.g. `/router set review opus·max` or `/router set explore haiku·low`. `haiku` alone means `haiku·medium` |
 | `/router reset` | Clear this session's overrides |
 | `/router hot on` · `/router hot off` · `/router hot` | Turn hot mode on or off (saved for future sessions), or show its state |
-| `/router historial [days]` | Write `~/.claude/router-historial.md` with the last N days (default 7): summary, and one table per session and task |
-| `/router banco [--max N] [--solo haiku\|jev]` | Run the classifier bench from the repo root (see [benchmark.md](benchmark.md)) |
+| `/router history [days]` | Write `~/.claude/router-historial.md` with the last N days (default 7): summary, and one table per session and task |
+| `/router bench [--max N] [--solo haiku\|jev]` | Run the classifier bench from the repo root (see [benchmark.md](benchmark.md)) |
 
 Per subagent: `[pin]` anywhere in the description keeps the model Claude asked for.
 

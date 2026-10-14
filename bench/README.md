@@ -26,7 +26,7 @@ Jev) contra una referencia etiquetada a mano, y cuánto tardan. Sirve para decid
    repo:
 
    ```
-   /router banco [--max N] [--solo haiku|jev]
+   /router bench [--max N] [--solo haiku|jev]
    ```
 
    Corre Haiku y Jev sobre los casos de producción por el mismo camino que usa el router, pero
@@ -87,7 +87,7 @@ Escribe `bench/corridas/<AAAA-MM-DD>-<HHMM>-jev-todos.json` (o `-jev-talla.json`
 simulada (fases 5 y 6).
 
 Las corridas `2026-10-09-1347-jev-talla-vieja` y `2026-10-09-1347-jev-todos-nueva` se hicieron con
-textos de talla distintos de los actuales. `/router banco` y `comparar.mjs` no miden las reviews
+textos de talla distintos de los actuales. `/router bench` y `comparar.mjs` no miden las reviews
 por description: para eso está este banco.
 
 ## La primera línea del prompt (`primera-linea.mjs`)

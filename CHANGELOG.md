@@ -15,8 +15,9 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- Commands are in English: `/router allow`, `/router set`, `/router history` and `/router bench`.
+  The Spanish names (`permitir`, `fijar`, `historial`, `banco`) still work as aliases.
 - Hot mode is **off by default**. Before, the policy was always on.
-
 - The line below the prompt now shows the router's latest decision (subagent, model·effort, who
   decided, and `+1`/`+2` when the usage policy raised it), instead of the policy mode and a
   count of reassigned subagents.
