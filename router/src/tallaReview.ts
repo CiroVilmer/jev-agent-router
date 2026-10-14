@@ -6,6 +6,8 @@ import { resumir } from './resumen'
 const ALCANCE_AMPLIO = /\b(bloque|block|feature|fase|phase|integraci[oó]n|integration|rama|branch|merge)\b/i
 // El segundo número no puede seguir con dígitos, letra ni decimal: "Task 3 - 2nd" y "Task 3 to 2.0" no son rangos.
 const FIN = '(?!\\d|[a-z]|\\.\\d)'
+// Una tarea numerada (la misma forma que lee tareaDe): con ella, las palabras sueltas no cuentan.
+const TAREA_NUMERADA = /\b(?:task|tarea)s?\s+\d+[a-z]?|\bT\d+[a-z]?\b/i
 const RANGOS = [
   new RegExp(`\\b(?:tasks?|tareas?)\\s+(\\d+)[a-z]?\\s*(?:-|–|a|to|y|and|,)\\s*(\\d+)${FIN}`, 'i'),
   new RegExp(`\\bT(\\d+)\\s*-\\s*T?(\\d+)${FIN}`, 'i'),
@@ -37,8 +39,8 @@ type EntradaTalla = {
 }
 
 /**
- * La talla de una review, en este orden: un rango de tareas; el build de la única tarea que nombra
- * (las palabras sueltas no cuentan); las palabras de alcance si no nombra ninguna tarea; el clasificador.
+ * La talla de una review, en este orden: un rango de tareas; el build de la tarea, si hay; las palabras de
+ * alcance, salvo que nombre una tarea numerada; el clasificador.
  */
 export async function tallaDeReview(
   e: EntradaTalla,
@@ -46,13 +48,11 @@ export async function tallaDeReview(
 ): Promise<{ tipo: 'review-large' | 'review-small'; motivo: string }> {
   const rango = rangoDeTareas(e.descripcion)
   if (rango !== null) return { tipo: 'review-large', motivo: `talla por alcance (${rango})` }
-  const tarea = tareaDe(e.descripcion)
-  if (tarea !== null) {
-    if (e.tallaBuildDeTarea) {
-      const tipo = e.tallaBuildDeTarea === 'build-large' ? 'review-large' : 'review-small'
-      return { tipo, motivo: `talla del build de ${tarea} (${e.tallaBuildDeTarea})` }
-    }
-  } else {
+  if (e.tallaBuildDeTarea) {
+    const tipo = e.tallaBuildDeTarea === 'build-large' ? 'review-large' : 'review-small'
+    return { tipo, motivo: `talla del build de ${tareaDe(e.descripcion) ?? 'la tarea'} (${e.tallaBuildDeTarea})` }
+  }
+  if (!TAREA_NUMERADA.test(e.descripcion)) {
     const palabra = palabraDeAlcance(e.descripcion)
     if (palabra !== null) return { tipo: 'review-large', motivo: `talla por alcance (${palabra})` }
   }

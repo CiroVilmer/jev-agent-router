@@ -234,8 +234,8 @@ describe('talla de la review', () => {
     expect(d).toMatchObject({ tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'medium' } })
   })
 
-  test('el alcance gana al build chico', async () => {
-    const d = await decidir(entrada({ descripcion: 'Review the feature flags block', tallaBuildDeTarea: 'build-small' }), ctx())
+  test('sin build, el alcance decide la talla', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review the feature flags block' }), ctx())
     expect(d).toMatchObject({ tipo: 'review-large' })
     expect(d.motivos).toEqual(['regla review', 'talla por alcance (feature)'])
   })
@@ -272,8 +272,31 @@ describe('talla de la review', () => {
     expect(d.motivos).toEqual(['regla review', 'respaldo → review-small'])
   })
 
+  test('con prefijo y sin tarea numerada, la palabra de alcance cuenta', async () => {
+    const d = await decidir(entrada({ descripcion: 'Code review: payments feature block' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-large' })
+    expect(d.motivos).toEqual(['regla review', 'talla por alcance (feature)'])
+  })
+
+  test('Review Task 3: merge sort sin build: decide el clasificador, no la palabra', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review Task 3: merge sort' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-small' })
+    expect(d.motivos).toEqual(['regla review', 'respaldo → review-small'])
+  })
+
+  test('Review Task 3: merge sort con build grande: review-large por el build', async () => {
+    const d = await decidir(entrada({ descripcion: 'Review Task 3: merge sort', tallaBuildDeTarea: 'build-large' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-large' })
+    expect(d.motivos).toEqual(['regla review', 'talla del build de Tarea 3 (build-large)'])
+  })
+
+  test('el build de una tarea con clave de prefijo también se hereda', async () => {
+    const d = await decidir(entrada({ descripcion: 'Code review: payments', tallaBuildDeTarea: 'build-small' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-small' })
+  })
+
   test('sin tarea, la palabra de alcance cuenta', async () => {
-    const d = await decidir(entrada({ descripcion: 'Review the payments feature', tallaBuildDeTarea: 'build-small' }), ctx())
+    const d = await decidir(entrada({ descripcion: 'Review the payments feature' }), ctx())
     expect(d).toMatchObject({ tipo: 'review-large' })
     expect(d.motivos).toEqual(['regla review', 'talla por alcance (feature)'])
   })
