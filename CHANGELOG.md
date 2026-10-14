@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-14
+
 ### Added
 
 - `/router hot on|off`: hot mode (the usage policy that raises models near the 5-hour reset) can
@@ -21,6 +23,8 @@ All notable changes to this project are documented here. The format follows
 - The line below the prompt now shows the router's latest decision (subagent, model·effort, who
   decided, and `+1`/`+2` when the usage policy raised it), instead of the policy mode and a
   count of reassigned subagents.
+- README: intro focused on subagent-driven development and on balancing quality and speed, a
+  Features section, the real-world case as a table, and the everyday commands first.
 
 ## [0.1.0] - 2026-10-09
 
@@ -46,5 +50,6 @@ First public release of the `router` mod.
 - Offline bench of 729 anonymized real subagents, with scripts to extract, label, compare and
   simulate policies.
 
-[Unreleased]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/CiroVilmer/jev-agent-router/releases/tag/v0.1.0

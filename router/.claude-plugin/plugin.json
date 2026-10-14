@@ -1,6 +1,6 @@
 {
   "name": "agent-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Picks the model and effort of every subagent from its task type; with hot mode on, raises them when the 5-hour window resets with usage to spare",
   "author": {
     "name": "Ciro Vilmer",
