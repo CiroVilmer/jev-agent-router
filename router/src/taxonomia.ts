@@ -52,3 +52,42 @@ export function parseEscalon(texto: string): Escalon | null {
   if (f === undefined || !(ESFUERZOS as readonly string[]).includes(f)) return null
   return { modelo, esfuerzo: f as Esfuerzo }
 }
+
+/** La base y los techos de cada tipo: los del router, o los que el usuario eligió en /config. */
+export type Tabla = { base: Record<Tipo, number>; techo: Partial<Record<Tipo, number>> }
+
+/** La opción de /config que elige el modelo·esfuerzo base de cada tipo. */
+export const OPCION_DE_TIPO: Record<Tipo, string> = {
+  'review-final': 'modeloReviewFinal',
+  review: 'modeloReview',
+  're-review': 'modeloReReview',
+  'build-large': 'modeloBuildLarge',
+  'build-small': 'modeloBuildSmall',
+  fix: 'modeloFix',
+  explore: 'modeloExplore',
+  research: 'modeloResearch',
+  write: 'modeloWrite',
+}
+
+export const POR_DEFECTO = 'por defecto'
+
+/** Lo que se puede elegir en cada opción: solo escalones de la escalera, para que la política pueda subir. */
+export const OPCIONES_MODELO: readonly string[] = [POR_DEFECTO, ...ESCALERA.map(formatEscalon)]
+
+/**
+ * La tabla con las elecciones de /config. Un valor que no es un escalón de la escalera (o "por
+ * defecto") deja la base del router. Si un tipo con techo queda por encima de su techo, el techo
+ * sube con él: lo eligió el usuario.
+ */
+export function tablaDe(options: Readonly<Record<string, unknown>>): Tabla {
+  const base = { ...BASE }
+  for (const tipo of TIPOS) {
+    const v = options[OPCION_DE_TIPO[tipo]]
+    if (typeof v !== 'string') continue
+    const i = ESCALERA.findIndex(e => formatEscalon(e) === v.trim().toLowerCase())
+    if (i !== -1) base[tipo] = i
+  }
+  const techo: Partial<Record<Tipo, number>> = {}
+  for (const [tipo, t] of Object.entries(TECHO) as [Tipo, number][]) techo[tipo] = Math.max(t, base[tipo])
+  return { base, techo }
+}

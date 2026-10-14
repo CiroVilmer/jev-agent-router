@@ -118,9 +118,10 @@ haiku·low → haiku·medium → haiku·high → sonnet·low → sonnet·medium 
 - The effort is applied on `turn.step` only while the step runs on the chosen model, so after a
   model fallback it doesn't force an effort meant for another model.
 
-## Usage policy
+## Usage policy (hot mode)
 
-The router reads the 5-hour window from `session.measure`: **U** is the percentage used and
+The policy only runs with **hot mode** on: `/router hot on`, saved for future sessions. It
+starts off; with it off, every type runs on its base step. When it's on, the router reads the 5-hour window from `session.measure`: **U** is the percentage used and
 **T** the minutes until `resetsAt`.
 
 | Mode | Condition | Steps |

@@ -21,6 +21,7 @@ los sube cuando sobra ventana de 5 horas. Nunca frena el uso.
 | `/router permitir sonnet,opus` | Solo usa esos modelos en esta sesión |
 | `/router fijar review opus·max` | Fija un tipo por encima de la política |
 | `/router reset` | Borra los overrides de la sesión |
+| `/router hot on` · `/router hot off` | Prende o apaga el modo hot (se guarda para las próximas sesiones; apagado por defecto). `/router hot` dice cómo está |
 | `/router banco` | Corre el banco del clasificador (ver abajo) |
 | `/router historial [días]` | Exporta las decisiones de los últimos días (7 si no se dice) a `~/.claude/router-historial.md` |
 | `[pin]` en la description de un subagente | Respeta el modelo que pidió Claude |

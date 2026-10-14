@@ -6,6 +6,7 @@ import type { EstadoPolitica } from './politica'
 import { subir } from './politica'
 import { clasificarPorReglas } from './reglas'
 import { resumir } from './resumen'
+import type { Tabla } from './taxonomia'
 import { BASE, ESCALERA, formatEscalon, TECHO, TIPOS, TOPE } from './taxonomia'
 
 export type EntradaDecision = {
@@ -16,7 +17,7 @@ export type EntradaDecision = {
   fork: boolean
 }
 
-export type Contexto = { overrides: Overrides; politica: EstadoPolitica; clasificar: Clasificador; jevDecideReviews: boolean }
+export type Contexto = { overrides: Overrides; politica: EstadoPolitica; clasificar: Clasificador; tabla?: Tabla; jevDecideReviews: boolean }
 
 export type Decision =
   | { tocar: false; motivos: string[] }
@@ -84,11 +85,13 @@ export async function decidir(e: EntradaDecision, c: Contexto): Promise<Decision
     escalon = fijado
     motivos.push(`fijado con /router: ${formatEscalon(fijado)}`)
   } else {
-    const deseado = BASE[tipo] + c.politica.escalones
-    const i = subir(BASE[tipo], c.politica.escalones, TECHO[tipo])
-    const mp = motivoPolitica(BASE[tipo], i)
+    const { base, techo } = c.tabla ?? { base: BASE, techo: TECHO }
+    if (base[tipo] !== BASE[tipo]) motivos.push(`base de /config: ${formatEscalon(ESCALERA[base[tipo]]!)}`)
+    const deseado = base[tipo] + c.politica.escalones
+    const i = subir(base[tipo], c.politica.escalones, techo[tipo])
+    const mp = motivoPolitica(base[tipo], i)
     if (mp !== null) motivos.push(mp)
-    if (TECHO[tipo] !== undefined && deseado > TECHO[tipo]!) motivos.push(`techo de ${tipo}`)
+    if (techo[tipo] !== undefined && deseado > techo[tipo]!) motivos.push(`techo de ${tipo}`)
     escalon = ESCALERA[i]!
   }
 

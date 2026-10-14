@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'claude-code/testing'
-import { BASE, ESCALERA, formatEscalon, parseEscalon, TECHO, TIPOS, TOPE } from '../src/taxonomia'
+import { BASE, ESCALERA, formatEscalon, OPCION_DE_TIPO, OPCIONES_MODELO, parseEscalon, tablaDe, TECHO, TIPOS, TOPE } from '../src/taxonomia'
 
 describe('taxonomia', () => {
   test('la escalera va de haiku·low a opus·xhigh, con tres escalones de Haiku', () => {
@@ -50,5 +50,37 @@ describe('taxonomia', () => {
 
   test('un escalón guardado sin esfuerzo se sigue mostrando', () => {
     expect(formatEscalon({ modelo: 'haiku' })).toBe('haiku')
+  })
+})
+
+describe('tabla de /config', () => {
+  test('sin opciones, la tabla del router', () => {
+    const t = tablaDe({})
+    expect(t.base).toEqual(BASE)
+    expect(t.techo).toEqual(TECHO)
+  })
+
+  test('cada tipo toma su modelo·esfuerzo de /config', () => {
+    const t = tablaDe({ modeloReview: 'opus·high', modeloWrite: 'sonnet·low' })
+    expect(formatEscalon(ESCALERA[t.base.review]!)).toBe('opus·high')
+    expect(formatEscalon(ESCALERA[t.base.write]!)).toBe('sonnet·low')
+    expect(t.base.fix).toBe(BASE.fix)
+  })
+
+  test('"por defecto" o un valor inválido dejan la tabla del router', () => {
+    expect(tablaDe({ modeloReview: 'por defecto', modeloFix: 'gpt·high', modeloWrite: 3 }).base).toEqual(BASE)
+  })
+
+  test('si explore queda por encima de su techo, el techo sube con él', () => {
+    const t = tablaDe({ modeloExplore: 'sonnet·medium' })
+    expect(formatEscalon(ESCALERA[t.base.explore]!)).toBe('sonnet·medium')
+    expect(t.techo.explore).toBe(t.base.explore)
+  })
+
+  test('las opciones son "por defecto" más los escalones de la escalera, una por tipo', () => {
+    expect(OPCIONES_MODELO).toEqual(['por defecto', ...ESCALERA.map(formatEscalon)])
+    expect(Object.keys(OPCION_DE_TIPO).sort()).toEqual([...TIPOS].sort())
+    expect(OPCION_DE_TIPO['review-final']).toBe('modeloReviewFinal')
+    expect(OPCION_DE_TIPO['re-review']).toBe('modeloReReview')
   })
 })

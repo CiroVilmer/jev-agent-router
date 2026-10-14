@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'claude-code/testing'
-import { lecturaDe, politicaDe, subir, UMBRALES_DEFAULT, umbralesDe } from '../src/politica'
+import { lecturaDe, politicaDe, politicaSegunHot, subir, UMBRALES_DEFAULT, umbralesDe } from '../src/politica'
 
 const AHORA = Date.parse('2026-10-06T12:00:00Z')
 const enMinutos = (m: number) => new Date(AHORA + m * 60_000).toISOString()
@@ -70,5 +70,19 @@ describe('política', () => {
   test('motivos de sobra y normal', () => {
     expect(pol(75, 100).motivo).toBe('queda 25% de 5h y el reset es en 100m')
     expect(pol(90, 200).motivo).toBe('usaste 90% de 5h, reset en 200m')
+  })
+})
+
+describe('modo hot', () => {
+  const lectura = { usado: 38, resetsAt: new Date(Date.parse('2026-10-06T12:00:00Z') + 24 * 60_000).toISOString() }
+  const ahora = Date.parse('2026-10-06T12:00:00Z')
+
+  test('apagado: la política no sube aunque sea 🔥', () => {
+    const p = politicaSegunHot(false, lectura, ahora, UMBRALES_DEFAULT)
+    expect(p).toMatchObject({ modo: 'normal', escalones: 0, motivo: 'modo hot apagado (/router hot on)' })
+  })
+
+  test('prendido: la política de siempre', () => {
+    expect(politicaSegunHot(true, lectura, ahora, UMBRALES_DEFAULT)).toEqual(politicaDe(lectura, ahora, UMBRALES_DEFAULT))
   })
 })

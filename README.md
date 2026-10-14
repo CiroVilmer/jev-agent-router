@@ -52,9 +52,10 @@ for reviews" in every session.
 - **An optional classifier for the rest.** For every build it picks the size, and when no rule
   matches it picks the type: [Jev](https://typesafe.ai) (recommended), Haiku, or a size heuristic.
   With Jev, it also re-checks (and may change) the type of reviews.
-- **Usage policy that only goes up.** Close to the reset of your 5-hour window, with usage to
-  spare, every subagent climbs one or two steps up the ladder (⬆️ +1, 🔥 +2). It never lowers
-  anything and never blocks.
+- **Optional hot mode.** Turn it on with `/router hot on`: close to the reset of your 5-hour
+  window, with usage to spare, every subagent climbs one or two steps up the ladder (⬆️ +1, 🔥 +2).
+  It never lowers anything and never blocks. It starts off, and your choice is saved.
+- **Your own table.** Pick the model and effort of each task type in `/config`.
 - **It teaches Claude the naming convention.** The router adds the convention to the Agent tool's
   description, and tells Claude when a description wasn't recognized.
 - **Measurement built in.** `/router` opens a panel with live decisions, metrics against your own
@@ -128,6 +129,7 @@ especially when other instructions ask for a specific model.
 | `/router permitir sonnet,opus` | Only use these models in this session |
 | `/router fijar review opus·max` | Pin a task type to a model and effort, above the policy |
 | `/router reset` | Clears this session's overrides |
+| `/router hot on` · `/router hot off` | Turns hot mode on or off, for this and future sessions (off by default). `/router hot` shows its state |
 | `/router historial [days]` | Exports the last days of decisions (7 by default) to `~/.claude/router-historial.md` |
 | `/router banco` | Runs the classifier bench, from a clone of this repo (see [the bench](docs/benchmark.md)) |
 | `[pin]` in a subagent's description | Keeps the model Claude asked for |
@@ -159,6 +161,11 @@ Change these in `/config` → plugins → agent-router, or with `/plugin configu
 | `sobraMinutos` · `sobraUsado` | `120` · `80` | ⬆️ +1 step when ≤ 120 min to the reset and ≤ 80% used |
 | `ensenarConvencion` | `true` | When no rule recognizes a description, Claude sees a one-line hint in the Agent result |
 | `avisarAClaude` | `false` | When the router reassigns a subagent, Claude sees the chosen model and why |
+
+**Model per task type.** Each type has its own option (`modeloReview`, `modeloReReview`,
+`modeloReviewFinal`, `modeloBuildLarge`, `modeloBuildSmall`, `modeloFix`, `modeloExplore`,
+`modeloResearch`, `modeloWrite`). Pick any step from `haiku·low` to `opus·xhigh`, or leave
+`por defecto` to keep the router's table. With hot mode on, the policy raises from your choice.
 
 Full reference: [docs/configuration.md](docs/configuration.md).
 
@@ -210,7 +217,8 @@ neutral and only the base table applies.
 <summary><b>Will it burn my usage?</b></summary>
 
 The base table is what you'd pick by hand. The policy only raises models when your window
-resets soon with usage left over, which you'd lose otherwise. Turn it off with `/router off`.
+resets soon with usage left over, and only with hot mode on (`/router hot on`); it's off by
+default.
 
 </details>
 

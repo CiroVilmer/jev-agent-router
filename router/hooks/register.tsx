@@ -32,10 +32,10 @@ import {
 } from '../src/historial'
 import { historialMarkdown } from '../src/historialMarkdown'
 import { aplicarComando, describirComando, LINEA_ROUTER, OVERRIDES_INICIAL, parsearComando } from '../src/overrides'
-import { lecturaDe, politicaDe, umbralesDe } from '../src/politica'
+import { lecturaDe, politicaSegunHot, umbralesDe } from '../src/politica'
 import { tareaDe } from '../src/registro'
 import { clasificarPorReglas } from '../src/reglas'
-import { formatEscalon } from '../src/taxonomia'
+import { formatEscalon, tablaDe } from '../src/taxonomia'
 import { textoLinea } from '../src/ui/linea'
 import { DECISIONES_EN_PANEL, vistaPanel } from '../src/ui/panel'
 import { observarVentana, resumenVentanas, ventanasDe } from '../src/ventanas'
@@ -382,8 +382,25 @@ export async function correrBancoEnSesion(
   return `Banco: ${elegidos.length} ${elegidos.length === 1 ? 'caso' : 'casos'}${partes} · ${relativa}${aviso}`
 }
 
+/** El modo hot se guarda en el store: vale para todas las sesiones. Arranca apagado. */
+const CLAVE_HOT = 'hot'
+
+export async function leerHot($: EngineInterface): Promise<boolean> {
+  try {
+    return (await $.store.get(CLAVE_HOT)) === true
+  } catch {
+    // Sin store (o si falla), apagado: la política nunca sube sin que el usuario la prenda.
+    return false
+  }
+}
+
+export async function guardarHot($: EngineInterface, valor: boolean): Promise<void> {
+  await $.store.set(CLAVE_HOT, valor)
+}
+
 export const register: Register = (on, options) => {
   const umbrales = umbralesDe(options)
+  const tabla = tablaDe(options)
 
   on('session.start', async ($, e, next) => {
     await $.command.register({
@@ -424,13 +441,13 @@ ${CONVENCION_AGENT}` }
     let decision: Decision
     let modo: Subagente['modo']
     try {
-      const [overrides, lectura] = await Promise.all([read($, overridesAtom), read($, lecturaAtom)])
-      const politica = politicaDe(lectura, ahora, umbrales)
+      const [overrides, lectura, hot] = await Promise.all([read($, overridesAtom), read($, lecturaAtom), leerHot($)])
+      const politica = politicaSegunHot(hot, lectura, ahora, umbrales)
       modo = politica.modo
       const { clasificar, jevDecideReviews } = await armarClasificador($, options, next.signal)
       decision = await decidir(
         { descripcion: e.description, prompt: e.prompt, subagentType: e.subagentType, modeloPedido: e.model, fork: e.fork },
-        { overrides, politica, clasificar, jevDecideReviews },
+        { overrides, politica, clasificar, jevDecideReviews, tabla },
       )
     } catch (error) {
       // Nunca bloquea: si el router falla, el subagente sale con lo que pidió Claude.
@@ -544,6 +561,21 @@ ${CONVENCION_AGENT}` }
         return { text: `Banco: falló (${error instanceof Error ? error.message : String(error)})` }
       }
     }
+    if (comando.accion === 'hot') {
+      if (comando.valor === null) {
+        return {
+          text: (await leerHot($))
+            ? 'Router: modo hot prendido. Apagalo con /router hot off.'
+            : 'Router: modo hot apagado. Prendelo con /router hot on.',
+        }
+      }
+      try {
+        await guardarHot($, comando.valor)
+      } catch (error) {
+        return { text: `Router: no pude guardar el modo hot (${error instanceof Error ? error.message : String(error)})` }
+      }
+      return { text: describirComando(comando) }
+    }
     if (comando.accion === 'historial') {
       try {
         return { text: await exportarHistorial($, comando.dias) }
@@ -577,7 +609,7 @@ ${CONVENCION_AGENT}` }
       pestana,
       subs,
       overrides,
-      politica: politicaDe(lectura, ahora, umbrales),
+      politica: politicaSegunHot(await leerHot($), lectura, ahora, umbrales),
       ahora,
       bodyColumns: e.props.bodyColumns,
       sombra: estadisticasSombra(muestrasDe(muestras)),

@@ -4,6 +4,7 @@ import { respaldo } from '../src/clasificadores'
 import { ajustarAPermitidos, decidir, motivoError, motivoPolitica } from '../src/decidir'
 import type { Contexto, EntradaDecision } from '../src/decidir'
 import { OVERRIDES_INICIAL } from '../src/overrides'
+import { tablaDe } from '../src/taxonomia'
 import type { EstadoPolitica } from '../src/politica'
 
 const NORMAL: EstadoPolitica = { modo: 'normal', escalones: 0, motivo: '', minutosAlReset: 200 }
@@ -195,5 +196,24 @@ describe('Jev decide la familia review', () => {
   test('la política se aplica sobre el tipo que decidió Jev', async () => {
     const d = await decidir(entrada(), ctx({ jevDecideReviews: true, clasificar: jevDice('build-small', 0.95), politica: FUEGO }))
     expect(d).toMatchObject({ tipo: 'build-small', escalon: { modelo: 'opus', esfuerzo: 'medium' } })
+  })
+})
+
+describe('modelos de /config', () => {
+  test('la base de un tipo sale de /config y el motivo lo dice', async () => {
+    const d = await decidir(entrada(), ctx({ tabla: tablaDe({ modeloReview: 'opus·high' }) }))
+    expect(d).toMatchObject({ tocar: true, tipo: 'review', escalon: { modelo: 'opus', esfuerzo: 'high' } })
+    expect(d.motivos).toEqual(['regla review', 'base de /config: opus·high'])
+  })
+
+  test('la política sube desde la base elegida', async () => {
+    const d = await decidir(entrada({ descripcion: 'Fix Task 2: hallazgos' }), ctx({ tabla: tablaDe({ modeloFix: 'sonnet·low' }), politica: FUEGO }))
+    expect(d).toMatchObject({ escalon: { modelo: 'sonnet', esfuerzo: 'high' } })
+  })
+
+  test('/router fijar le gana a /config', async () => {
+    const overrides = { ...OVERRIDES_INICIAL, fijados: { review: { modelo: 'opus' as const, esfuerzo: 'max' as const } } }
+    const d = await decidir(entrada(), ctx({ tabla: tablaDe({ modeloReview: 'opus·high' }), overrides }))
+    expect(d).toMatchObject({ escalon: { modelo: 'opus', esfuerzo: 'max' } })
   })
 })

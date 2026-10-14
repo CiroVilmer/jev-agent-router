@@ -93,6 +93,168 @@
       "title": "Enseñarle la convención a Claude",
       "description": "Cuando ninguna regla reconoce la description de un subagente, Claude ve una línea en el resultado de Agent con cómo nombrarlos",
       "default": true
+    },
+    "modeloReviewFinal": {
+      "type": "string",
+      "title": "Modelo: review-final",
+      "description": "Modelo·esfuerzo base para revisión final de toda la rama (review-final). \"por defecto\" usa el del router (opus·xhigh). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloReview": {
+      "type": "string",
+      "title": "Modelo: review",
+      "description": "Modelo·esfuerzo base para review de una tarea (review). \"por defecto\" usa el del router (opus·xhigh). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloReReview": {
+      "type": "string",
+      "title": "Modelo: re-review",
+      "description": "Modelo·esfuerzo base para re-review después de un arreglo (re-review). \"por defecto\" usa el del router (opus·medium). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloBuildLarge": {
+      "type": "string",
+      "title": "Modelo: build-large",
+      "description": "Modelo·esfuerzo base para build grande (build-large). \"por defecto\" usa el del router (opus·medium). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloBuildSmall": {
+      "type": "string",
+      "title": "Modelo: build-small",
+      "description": "Modelo·esfuerzo base para build chico o mediano (build-small). \"por defecto\" usa el del router (sonnet·medium). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloFix": {
+      "type": "string",
+      "title": "Modelo: fix",
+      "description": "Modelo·esfuerzo base para arreglo de hallazgos (fix). \"por defecto\" usa el del router (sonnet·high). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloExplore": {
+      "type": "string",
+      "title": "Modelo: explore",
+      "description": "Modelo·esfuerzo base para exploración de código (explore). \"por defecto\" usa el del router (haiku·medium). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloResearch": {
+      "type": "string",
+      "title": "Modelo: research",
+      "description": "Modelo·esfuerzo base para investigación fuera del repo (research). \"por defecto\" usa el del router (sonnet·medium). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
+    },
+    "modeloWrite": {
+      "type": "string",
+      "title": "Modelo: write",
+      "description": "Modelo·esfuerzo base para redacción de notas o docs (write). \"por defecto\" usa el del router (haiku·high). Con el modo hot, la política sube desde acá",
+      "options": [
+        "por defecto",
+        "haiku·low",
+        "haiku·medium",
+        "haiku·high",
+        "sonnet·low",
+        "sonnet·medium",
+        "sonnet·high",
+        "opus·medium",
+        "opus·high",
+        "opus·xhigh"
+      ],
+      "default": "por defecto"
     }
   }
 }

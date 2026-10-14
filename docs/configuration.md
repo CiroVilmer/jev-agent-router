@@ -30,7 +30,30 @@ The key is `agent-router@<marketplace>`. When you load the mod with `--plugin-di
 > On Windows, after setting `JEV_API_KEY` as a user environment variable, open a **new**
 > terminal. A terminal opened earlier doesn't see it, and Jev answers HTTP 401.
 
-## Usage policy
+## Model per task type
+
+One option per type. Values: `por defecto` (the router's table) or any ladder step, from
+`haiku·low` to `opus·xhigh`. The policy raises from your choice; if you pick an `explore` step
+above its cap, the cap rises with it. `/router fijar` still overrides it for a session.
+
+| Option | Type | Router default |
+|---|---|---|
+| `modeloReviewFinal` | `review-final` | opus·xhigh |
+| `modeloReview` | `review` | opus·xhigh |
+| `modeloReReview` | `re-review` | opus·medium |
+| `modeloBuildLarge` | `build-large` | opus·medium |
+| `modeloBuildSmall` | `build-small` | sonnet·medium |
+| `modeloFix` | `fix` | sonnet·high |
+| `modeloExplore` | `explore` | haiku·medium |
+| `modeloResearch` | `research` | sonnet·medium |
+| `modeloWrite` | `write` | haiku·high |
+
+The reasons show `base de /config: <step>` when a type uses your choice.
+
+## Usage policy (hot mode)
+
+Hot mode is **off by default**. Turn it on or off with `/router hot on|off`: the choice is saved
+in the plugin's store and applies to future sessions. These options tune it:
 
 | Option | Default | Description |
 |---|---|---|
@@ -58,6 +81,7 @@ transcript.
 | `/router permitir <models>` | Restrict models, e.g. `/router permitir sonnet,opus`. Decisions move to the nearest allowed step |
 | `/router fijar <type> <model>·<effort>` | Pin a type, e.g. `/router fijar review opus·max` or `/router fijar explore haiku·low`. `haiku` alone means `haiku·medium` |
 | `/router reset` | Clear this session's overrides |
+| `/router hot on` · `/router hot off` · `/router hot` | Turn hot mode on or off (saved for future sessions), or show its state |
 | `/router historial [days]` | Write `~/.claude/router-historial.md` with the last N days (default 7): summary, and one table per session and task |
 | `/router banco [--max N] [--solo haiku\|jev]` | Run the classifier bench from the repo root (see [benchmark.md](benchmark.md)) |
 

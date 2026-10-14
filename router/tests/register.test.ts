@@ -69,11 +69,13 @@ describe('register', () => {
     expect(modelo).toBe('sonnet')
   })
 
-  test('con 🔥 un build chico sube a opus·medium', async ($, on) => {
+  test('con 🔥 y el modo hot prendido, un build chico sube a opus·medium', async ($, on) => {
     mock.clock(on, { now: AHORA })
+    mock.store(on)
     let modelo: string | undefined
     on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: 'ag-4' } })
     on('session.measure', async (_$, e) => ({ changed: e.changed }))
+    await $.command.run({ command: 'router', args: 'hot on' })
     await $.session.measure({
       context: { window: 1_000_000 },
       rateLimits: [{ kind: 'five_hour', percentUsed: 38, resetsAt: new Date(AHORA + 24 * 60_000).toISOString() }],
@@ -81,6 +83,40 @@ describe('register', () => {
     })
     await $.agent.spawn({ ...SPAWN, description: 'Implement Task 5b: fecha como marcador' })
     expect(modelo).toBe('opus')
+  })
+
+  test('el modo hot arranca apagado: con 🔥 un build chico no sube', async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    let modelo: string | undefined
+    on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: 'ag-hot0' } })
+    on('session.measure', async (_$, e) => ({ changed: e.changed }))
+    await $.session.measure({
+      context: { window: 1_000_000 },
+      rateLimits: [{ kind: 'five_hour', percentUsed: 38, resetsAt: new Date(AHORA + 24 * 60_000).toISOString() }],
+      changed: ['rateLimits'],
+    })
+    await $.agent.spawn({ ...SPAWN, description: 'Implement Task 5b: fecha como marcador' })
+    expect(modelo).toBe('sonnet')
+  })
+
+  test('/router hot on|off se guarda en el store y /router hot dice cómo está', async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    const store = storeEnMemoria(on)
+    expect((await $.command.run({ command: 'router', args: 'hot' })).text).toBe('Router: modo hot apagado. Prendelo con /router hot on.')
+    await $.command.run({ command: 'router', args: 'hot on' })
+    expect(store.get('hot')).toBe(true)
+    expect((await $.command.run({ command: 'router', args: 'hot' })).text).toBe('Router: modo hot prendido. Apagalo con /router hot off.')
+    await $.command.run({ command: 'router', args: 'hot off' })
+    expect(store.get('hot')).toBe(false)
+  })
+
+  test('el modelo de cada tipo sale de /config', { options: { modeloBuildSmall: 'haiku·high' } }, async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    let modelo: string | undefined
+    on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: 'ag-cfg' } })
+    await $.agent.spawn({ ...SPAWN, description: 'Implement Task 5b: fecha como marcador' })
+    expect(modelo).toBe('haiku')
   })
 
   test('la línea muestra la última decisión del router', async ($, on) => {
@@ -858,6 +894,7 @@ describe('historial de decisiones', () => {
     on('session.measure', async (_$, e) => ({ changed: e.changed }))
     on('agent.spawn', async (_$, e) => ({ model: e.model ?? 'inherit', agentId: 'ag-d1' }))
     on('turn.complete', async (_$, e) => ({ text: e.answer }))
+    await $.command.run({ command: 'router', args: 'hot on' })
     // 🔥: faltan 24 minutos y se usó 38%.
     await $.session.measure({
       context: { window: 1_000_000 },

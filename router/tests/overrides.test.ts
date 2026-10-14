@@ -153,3 +153,25 @@ describe('parsearComando historial', () => {
     expect(AYUDA).toContain('/router historial')
   })
 })
+
+describe('/router hot', () => {
+  test('on, off y consulta', () => {
+    expect(parsearComando('hot on')).toEqual({ accion: 'hot', valor: true })
+    expect(parsearComando('HOT off')).toEqual({ accion: 'hot', valor: false })
+    expect(parsearComando('hot')).toEqual({ accion: 'hot', valor: null })
+    expect(parsearComando('hot quizas').accion).toBe('error')
+  })
+
+  test('cómo lo describe', () => {
+    expect(describirComando({ accion: 'hot', valor: true })).toBe(
+      'Router: modo hot prendido, también para las próximas sesiones. Cerca del reset de la ventana de 5 h, con uso de sobra, los subagentes suben uno o dos escalones.',
+    )
+    expect(describirComando({ accion: 'hot', valor: false })).toBe(
+      'Router: modo hot apagado, también para las próximas sesiones. Cada tipo de tarea corre en su modelo base.',
+    )
+  })
+
+  test('no cambia los overrides de la sesión', () => {
+    expect(aplicarComando(OVERRIDES_INICIAL, { accion: 'hot', valor: true })).toBe(OVERRIDES_INICIAL)
+  })
+})

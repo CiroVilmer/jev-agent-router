@@ -12,10 +12,11 @@ export type Comando =
   | { accion: 'fijar'; tipo: Tipo; escalon: Escalon }
   | { accion: 'banco'; max: number | null; solo: 'haiku' | 'jev' | null }
   | { accion: 'historial'; dias: number }
+  | { accion: 'hot'; valor: boolean | null }
   | { accion: 'error'; mensaje: string }
 
 export const AYUDA =
-  'Uso: /router · /router on|off|reset · /router permitir sonnet,opus · /router fijar <tipo> <modelo>·<esfuerzo> · /router banco · /router historial [días]'
+  'Uso: /router · /router on|off|reset · /router hot on|off · /router permitir sonnet,opus · /router fijar <tipo> <modelo>·<esfuerzo> · /router banco · /router historial [días]'
 
 const USO_BANCO = 'Uso: /router banco [--max N] [--solo haiku|jev]'
 
@@ -92,6 +93,13 @@ export function parsearComando(args: string): Comando {
       }
       return { accion: 'fijar', tipo: tipo.toLowerCase() as Tipo, escalon }
     }
+    case 'hot': {
+      const [valor, ...sobra] = resto.map(s => s.toLowerCase())
+      if (sobra.length > 0 || (valor !== undefined && valor !== 'on' && valor !== 'off')) {
+        return { accion: 'error', mensaje: 'Uso: /router hot on|off (sin nada, dice cómo está)' }
+      }
+      return { accion: 'hot', valor: valor === undefined ? null : valor === 'on' }
+    }
     case 'banco':
       return parsearBanco(resto)
     case 'historial':
@@ -136,6 +144,12 @@ export function describirComando(c: Comando): string {
       return 'Panel del router abierto.'
     case 'banco':
       return 'Router: corriendo el banco de prueba.'
+    case 'hot':
+      if (c.valor === true) {
+        return 'Router: modo hot prendido, también para las próximas sesiones. Cerca del reset de la ventana de 5 h, con uso de sobra, los subagentes suben uno o dos escalones.'
+      }
+      if (c.valor === false) return 'Router: modo hot apagado, también para las próximas sesiones. Cada tipo de tarea corre en su modelo base.'
+      return 'Uso: /router hot on|off'
     case 'historial':
       return `Router: exportando el historial de ${c.dias === 1 ? 'el último día' : `los últimos ${c.dias} días`}.`
   }

@@ -6,7 +6,16 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `/router hot on|off`: hot mode (the usage policy that raises models near the 5-hour reset) can
+  be turned on and off, and the choice is saved for future sessions. `/router hot` shows its state.
+- Per-type model options in `/config` (`modeloReview`, `modeloFix`, …): each user picks the base
+  model·effort of every task type.
+
 ### Changed
+
+- Hot mode is **off by default**. Before, the policy was always on.
 
 - The line below the prompt now shows the router's latest decision (subagent, model·effort, who
   decided, and `+1`/`+2` when the usage policy raised it), instead of the policy mode and a

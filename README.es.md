@@ -52,8 +52,10 @@ sesión.
 - **Un clasificador opcional para el resto.** Decide la talla de cada build y, cuando ninguna regla
   matchea, el tipo: [Jev](https://typesafe.ai) (el recomendado), Haiku, o una heurística de
   tamaño. Con Jev, además, revisa (y puede cambiar) el tipo de las reviews.
-- **Una política de uso que solo sube.** Cerca del reset de la ventana de 5 horas, si sobra uso,
-  cada subagente sube uno o dos escalones (⬆️ +1, 🔥 +2). Nunca baja ni bloquea nada.
+- **Modo hot opcional.** Se prende con `/router hot on`: cerca del reset de la ventana de 5 horas,
+  si sobra uso, cada subagente sube uno o dos escalones (⬆️ +1, 🔥 +2). Nunca baja ni bloquea
+  nada. Arranca apagado, y tu elección queda guardada.
+- **Tu propia tabla.** Elegí el modelo y el esfuerzo de cada tipo de tarea en `/config`.
 - **Le enseña a Claude la convención de nombres.** El router la agrega a la descripción de la tool
   Agent, y le avisa a Claude cuando no reconoce una description.
 - **Medición incluida.** `/router` abre un panel con las decisiones en curso, las métricas
@@ -128,6 +130,7 @@ constancia, sobre todo cuando otras instrucciones le piden un modelo.
 | `/router permitir sonnet,opus` | Solo usa esos modelos en esta sesión |
 | `/router fijar review opus·max` | Fija un tipo de tarea en un modelo y esfuerzo, por encima de la política |
 | `/router reset` | Borra los overrides de la sesión |
+| `/router hot on` · `/router hot off` | Prende o apaga el modo hot, para esta sesión y las siguientes (apagado por defecto). `/router hot` dice cómo está |
 | `/router historial [días]` | Exporta las decisiones de los últimos días (7 por defecto) a `~/.claude/router-historial.md` |
 | `/router banco` | Corre el banco del clasificador, desde un clon de este repo (ver [el banco](docs/benchmark.md)) |
 | `[pin]` en la description de un subagente | Respeta el modelo que pidió Claude |
@@ -155,6 +158,12 @@ Se cambia en `/config` → plugins → agent-router, o con `/plugin configure`.
 | `sobraMinutos` · `sobraUsado` | `120` · `80` | ⬆️ +1 escalón con 120 min o menos al reset y 80% de uso o menos |
 | `ensenarConvencion` | `true` | Si ninguna regla reconoce una description, Claude ve una línea con cómo nombrar en el resultado de Agent |
 | `avisarAClaude` | `false` | Si el router reasigna un subagente, Claude ve el modelo elegido y el motivo |
+
+**Modelo por tipo de tarea.** Cada tipo tiene su opción (`modeloReview`, `modeloReReview`,
+`modeloReviewFinal`, `modeloBuildLarge`, `modeloBuildSmall`, `modeloFix`, `modeloExplore`,
+`modeloResearch`, `modeloWrite`). Elegí cualquier escalón de `haiku·low` a `opus·xhigh`, o dejá
+`por defecto` para usar la tabla del router. Con el modo hot prendido, la política sube desde lo
+que elegiste.
 
 Referencia completa (en inglés): [docs/configuration.md](docs/configuration.md).
 
@@ -206,7 +215,8 @@ respuesta), la política queda neutra y se usa solo la tabla base.
 <summary><b>¿Me va a gastar el uso?</b></summary>
 
 La tabla base es lo que elegirías a mano. La política solo sube modelos cuando la ventana está
-por reiniciarse con uso de sobra, que de otro modo perderías. Se apaga con `/router off`.
+por reiniciarse con uso de sobra, y solo con el modo hot prendido (`/router hot on`); viene
+apagado.
 
 </details>
 

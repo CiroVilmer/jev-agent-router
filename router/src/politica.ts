@@ -52,3 +52,9 @@ export function politicaDe(lectura: LecturaUso | null, ahoraMs: number, u: Umbra
 export function subir(base: number, escalones: number, techo: number | undefined): number {
   return Math.min(base + escalones, techo ?? TOPE, TOPE)
 }
+
+/** El modo hot (`/router hot on|off`) prende o apaga la política. Apagado, nunca sube. */
+export function politicaSegunHot(hot: boolean, lectura: LecturaUso | null, ahoraMs: number, u: Umbrales): EstadoPolitica {
+  const p = politicaDe(lectura, ahoraMs, u)
+  return hot ? p : { modo: 'normal', escalones: 0, motivo: 'modo hot apagado (/router hot on)', minutosAlReset: p.minutosAlReset }
+}
