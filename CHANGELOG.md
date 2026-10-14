@@ -6,7 +6,7 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
-## [0.1.1] - 2026-10-14
+## [0.2.0] - 2026-10-14
 
 ### Added
 
@@ -50,6 +50,6 @@ First public release of the `router` mod.
 - Offline bench of 729 anonymized real subagents, with scripts to extract, label, compare and
   simulate policies.
 
-[Unreleased]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.1.1...HEAD
-[0.1.1]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.1.0...v0.1.1
+[Unreleased]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/CiroVilmer/jev-agent-router/releases/tag/v0.1.0
