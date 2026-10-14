@@ -1,19 +1,33 @@
-import type { Tipo } from '../types'
 import type { Clasificador } from './clasificadores'
 import { TALLAS_REVIEW } from './clasificadores'
+import { tareaDe } from './registro'
 import { resumir } from './resumen'
 
 const ALCANCE_AMPLIO = /\b(bloque|block|feature|fase|phase|integraci[oó]n|integration|rama|branch|merge)\b/i
-const VARIAS_TAREAS = /\b(?:tasks?|tareas?)\s+\d+[a-z]?\s*(?:-|–|a|to|y|and|,)\s*\d+/i
-const RANGO_T = /\bT\d+\s*-\s*T?\d+/i
+// El segundo número no puede seguir con dígitos, letra ni decimal: "Task 3 - 2nd" y "Task 3 to 2.0" no son rangos.
+const FIN = '(?!\\d|[a-z]|\\.\\d)'
+const RANGOS = [
+  new RegExp(`\\b(?:tasks?|tareas?)\\s+(\\d+)[a-z]?\\s*(?:-|–|a|to|y|and|,)\\s*(\\d+)${FIN}`, 'i'),
+  new RegExp(`\\bT(\\d+)\\s*-\\s*T?(\\d+)${FIN}`, 'i'),
+]
 
-/** La palabra de la description que nombra un alcance amplio (un bloque, una fase, varias tareas), o null. */
-export function alcanceDeReview(descripcion: string): string | null {
-  for (const re of [ALCANCE_AMPLIO, VARIAS_TAREAS, RANGO_T]) {
+/** El texto de la description que nombra varias tareas (el segundo número mayor que el primero), o null. */
+export function rangoDeTareas(descripcion: string): string | null {
+  for (const re of RANGOS) {
     const m = re.exec(descripcion)
-    if (m) return m[0]
+    if (m && Number(m[2]) > Number(m[1])) return m[0]
   }
   return null
+}
+
+/** La palabra de la description que nombra un alcance amplio (un bloque, una fase), o null. */
+export function palabraDeAlcance(descripcion: string): string | null {
+  return ALCANCE_AMPLIO.exec(descripcion)?.[0] ?? null
+}
+
+/** Lo que la description dice del alcance: un rango de tareas o una palabra de alcance, o null. */
+export function alcanceDeReview(descripcion: string): string | null {
+  return rangoDeTareas(descripcion) ?? palabraDeAlcance(descripcion)
 }
 
 type EntradaTalla = {
@@ -22,21 +36,30 @@ type EntradaTalla = {
   tallaBuildDeTarea?: 'build-large' | 'build-small' | null
 }
 
-/** La talla de una review: el alcance que nombra la description, el build de la misma tarea o el clasificador. */
+/**
+ * La talla de una review, en este orden: un rango de tareas; el build de la única tarea que nombra
+ * (las palabras sueltas no cuentan); las palabras de alcance si no nombra ninguna tarea; el clasificador.
+ */
 export async function tallaDeReview(
   e: EntradaTalla,
   clasificar: Clasificador,
 ): Promise<{ tipo: 'review-large' | 'review-small'; motivo: string }> {
-  const alcance = alcanceDeReview(e.descripcion)
-  if (alcance !== null) return { tipo: 'review-large', motivo: `talla por alcance (${alcance})` }
-  if (e.tallaBuildDeTarea) {
-    const tipo = e.tallaBuildDeTarea === 'build-large' ? 'review-large' : 'review-small'
-    const tarea = /\b(?:tasks?|tareas?)\s+\d+[a-z]?/i.exec(e.descripcion)?.[0] ?? 'la tarea'
-    return { tipo, motivo: `talla del build de ${tarea} (${e.tallaBuildDeTarea})` }
+  const rango = rangoDeTareas(e.descripcion)
+  if (rango !== null) return { tipo: 'review-large', motivo: `talla por alcance (${rango})` }
+  const tarea = tareaDe(e.descripcion)
+  if (tarea !== null) {
+    if (e.tallaBuildDeTarea) {
+      const tipo = e.tallaBuildDeTarea === 'build-large' ? 'review-large' : 'review-small'
+      return { tipo, motivo: `talla del build de ${tarea} (${e.tallaBuildDeTarea})` }
+    }
+  } else {
+    const palabra = palabraDeAlcance(e.descripcion)
+    if (palabra !== null) return { tipo: 'review-large', motivo: `talla por alcance (${palabra})` }
   }
   const cl = await clasificar({ descripcion: e.descripcion, resumen: resumir(e.prompt), etiquetas: TALLAS_REVIEW })
-  const tipo: Tipo = cl.tipo === 'review-large' ? 'review-large' : 'review-small'
   const detalle = cl.detalle ? ` (${cl.detalle})` : ''
   const confianza = cl.confianza === undefined ? '' : ` (${cl.confianza.toFixed(2)})`
-  return { tipo: tipo as 'review-large' | 'review-small', motivo: `${cl.fuente}${detalle} → ${cl.tipo}${confianza}` }
+  const valido = TALLAS_REVIEW.includes(cl.tipo)
+  const tipo = cl.tipo === 'review-large' ? 'review-large' : 'review-small'
+  return { tipo, motivo: `${cl.fuente}${detalle} → ${cl.tipo}${confianza}${valido ? '' : ': queda review-small'}` }
 }

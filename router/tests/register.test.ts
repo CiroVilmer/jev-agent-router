@@ -413,9 +413,16 @@ describe('clasificadores conectados', () => {
     let modelo: string | undefined
     on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: 'ag-review' } })
     await $.agent.spawn(SPAWN)
-    for (let i = 0; i < 5; i++) await reloj.settle()
+    let lista: { etiquetas: string[]; nombres: { principal: string; sombra: string } }[] | undefined
+    for (let i = 0; i < 20 && !lista?.length; i++) {
+      await reloj.settle()
+      lista = store.get('sombra') as typeof lista
+    }
     expect(modelo).toBe('opus')
     expect(clasificados).toBe(1)
+    // La única muestra es la de la talla: las dos etiquetas de review.
+    expect(lista?.length).toBe(1)
+    expect(lista![0]!.etiquetas).toEqual(['review-large', 'review-small'])
   })
 
   test('una sombra más lenta que topeMs guarda su tipo, sus ms reales y pasoTope', { options: { clasificador: 'reglas', sombra: 'haiku', topeMs: 1000 } }, async ($, on) => {

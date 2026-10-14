@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'claude-code/testing'
-import { alcanceDeReview } from '../src/tallaReview'
+import { alcanceDeReview, rangoDeTareas } from '../src/tallaReview'
 
 describe('alcanceDeReview', () => {
   test('palabras de alcance amplio', () => {
@@ -17,6 +17,12 @@ describe('alcanceDeReview', () => {
     expect(alcanceDeReview('Review tasks 2a to 4')).toBe('tasks 2a to 4')
     expect(alcanceDeReview('Review T3-T5')).toBe('T3-T5')
     expect(alcanceDeReview('Review T3 - 5')).toBe('T3 - 5')
+  })
+
+  test('un segundo número que no es un rango no cuenta', () => {
+    for (const d of ['Review Task 3 - 2nd pass', 'Review Task 3, 2 findings', 'Review Task 3 to 2.0 API', 'Review tarea 3 a 2 columnas', 'Review Tasks 5-3', 'Review Tasks 3-5a', 'Review Tasks 3-5.1'])
+      expect(rangoDeTareas(d)).toBe(null)
+    expect(rangoDeTareas('Review Tareas 3 a 5')).toBe('Tareas 3 a 5')
   })
 
   test('una sola tarea no tiene alcance', () => {
