@@ -6,6 +6,21 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Review sizes: a review is now `review-large` (Opus at xhigh effort) or `review-small` (Opus at
+  medium effort). The size comes from a range of tasks ("Tasks 3-5"), then the build of the same
+  task in the session, then scope words (block, feature, phase, integration, branch, merge) when no
+  numbered task is named, then a 2-label classifier that falls back to `review-small`.
+- `/config` options `modeloReviewLarge` and `modeloReviewSmall`. `modeloReview` stays as a legacy
+  option that applies to both sizes if they aren't chosen separately.
+- `/router set review <model>·<effort>` sets both sizes; `review-large` and `review-small` set
+  each one on its own.
+- New reasons in the history: `talla por alcance (…)`, `talla del build de Tarea 3 (build-large)`,
+  `jev → review-large (0.91)` and `respaldo → review-small`.
+- Review size bench (`bench/review-talla.mjs`): the policy with Jev gets 96% on 225 reviews.
+  33 hand-made labels are still unvalidated.
+
 ## [0.2.0] - 2026-10-14
 
 ### Added

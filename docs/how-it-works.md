@@ -18,7 +18,9 @@ the spawn's `model`. Later, on every `turn.step` of that subagent, it sets the c
 3. **A classifier** runs when the rules aren't enough:
    - every build, to pick its size;
    - no rule matched;
-   - with `clasificador: jev`, to re-check (and maybe change) a review's type.
+   - with `clasificador: jev`, to re-check (and maybe change) a review's type;
+   - a `review` gets its size (`review-large` or `review-small`) from scope, the task's build or
+     the classifier (see [Review size](#review-size)).
 4. **The step:** if `/router set <type> <model>·<effort>` pinned this type, that step is used.
    Otherwise the type's base step is used (the router's table, or your `/config` choice), and,
    with hot mode on, the usage policy raises it by 0, 1 or 2, never past the type's cap.
@@ -43,7 +45,7 @@ Otherwise, patterns on the description, in this order (English and Spanish):
 | 1 | `re-review`, `re-revisión` anywhere | `re-review` |
 | 2 | starts with `fix`, `arregl…`, `correg…` | `fix` |
 | 3 | `whole-branch`, or `final` next to review/revisión | `review-final` |
-| 4 | `review`, `revis…` anywhere; or starts with `verif…`, `valid…`, `audit…`, `check` | `review` |
+| 4 | `review`, `revis…` anywhere; or starts with `verif…`, `valid…`, `audit…`, `check` | `review` (then sized: `review-large` or `review-small`) |
 | 5 | starts with `research`, `investig…` | `research` |
 | 6 | starts with `explore`, `map`, `relevar` | `explore` |
 | 7 | starts with `implement…`, `task`, `tarea`, `T<n>` | build (size still unknown) |
@@ -94,6 +96,31 @@ Implement Task 11: the compiler · prompt 6.8k chars · 9 archivos · 14 pasos �
 other one runs too, in the background (60 s limit, it doesn't affect the decision). Both answers
 are stored (the last 500), and the panel compares them: agreement, p50 and p95, fallbacks.
 
+## Review size
+
+A `review` is not a single step: it is split in two sizes, `review-large` (opus·xhigh) and
+`review-small` (opus·medium). The router decides the size in this order, and the first step that
+applies wins:
+
+1. **A range of tasks.** If the description names a range ("Review Tasks 3-5"), it is
+   `review-large`. The reason is `talla por alcance (Tasks 3-5)`.
+2. **The build of the same task.** If the session already ran a build of the same task, the review
+   inherits its size: `build-large` gives `review-large`, `build-small` gives `review-small`. The
+   reason is `talla del build de Tarea 3 (build-large)`. The build must come before the review.
+3. **Scope words.** If the description doesn't name a numbered task, a scope word makes it
+   `review-large`: `bloque`/`block`, `feature`, `fase`/`phase`, `integración`/`integration`,
+   `rama`/`branch` or `merge`. With a numbered task ("Review Task 3 of the payments feature"),
+   the words don't count. The reason is `talla por alcance (feature)`.
+4. **The classifier.** If nothing above decides, the classifier answers a question with 2 labels
+   (`review-large` or `review-small`). If it doubts, fails, times out or there is no classifier,
+   the review is `review-small`. The reasons are `jev → review-large (0.91)` and
+   `respaldo → review-small`.
+
+Only `review` is sized. `review-final` and `re-review` keep their own steps.
+
+On the bench (`bench/review-talla.mjs`, 225 labeled reviews), this order with Jev at a 0.7
+threshold gets 96% (see [benchmark.md](benchmark.md#review-size)).
+
 ## Base table and the ladder
 
 This is the router's default table. Each user can change the base step of any type in
@@ -105,8 +132,8 @@ haiku·low → haiku·medium → haiku·high → sonnet·low → sonnet·medium 
 
 | Type | Base step | Cap |
 |---|---|---|
-| `review-final`, `review` | opus·xhigh | — |
-| `re-review`, `build-large` | opus·medium | — |
+| `review-final`, `review-large` | opus·xhigh | — |
+| `re-review`, `build-large`, `review-small` | opus·medium | — |
 | `build-small`, `research` | sonnet·medium | — |
 | `fix` | sonnet·high | — |
 | `write` | haiku·high | — |

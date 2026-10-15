@@ -18,6 +18,8 @@ The step-by-step guide, with every option of every script, is in Spanish in
 | `extraer.mjs` | Builds `casos.json` from your own `~/.claude/projects` transcripts |
 | `comparar.mjs` | Compares a bench run against the labels and the fallback |
 | `jev-todos.mjs` | Runs Jev on every case with all 9 labels, or `--talla` for the 2 size labels (needs `JEV_API_KEY`) |
+| `etiquetas-review.json` | The reference size of each review: `{ talla, fuente, seguro, nota? }`. 225 reviews; 33 labeled by hand are marked `seguro: false` |
+| `review-talla.mjs` | Measures the review size policy (scope, build of the same task, classifier) against those labels. Jev runs only with `JEV_API_KEY` |
 | `analizar-jev-todos.mjs` | Simulates routing policies on a `jev-todos` run |
 | `primera-linea.mjs` | Measures rules applied to a prompt's first line (re-reads transcripts, prints counts only) |
 | `linea-base.mjs` | Generates the pre-router baseline (`router/src/lineaBase.ts`) from transcripts |
@@ -66,6 +68,21 @@ That's why the router lets Jev decide reviews and build size, and keeps rules fo
 | Phase 5 (as it ran) | 88.5% | 98.9% | 88.9% |
 | Current (phase 6) | 90.5% | 99.2% | 95.4% |
 
+## Review size
+
+`bench/review-talla.mjs` measures `review-large` against `review-small` on 225 reviews (105 large, 120
+small). The size follows the order scope, build of the same task, classifier (see
+[how-it-works.md](how-it-works.md#review-size)).
+
+| Policy | Accuracy |
+|---|---|
+| Fallback alone (always `review-small`) | 53.3% |
+| Jev with 2 labels, 0.7 threshold, on all reviews | 64.0% |
+| Full policy with Jev, 0.7 threshold (current) | 96.0% |
+
+Most of the policy's accuracy comes from the build of the same task: 192 of the 225 reviews have an
+earlier build of the same task, and inherit its size. Jev only decides the 31 left over.
+
 ## Caveats
 
 - **The labels were made by an Opus subagent.** 96 are still marked uncertain.
@@ -73,5 +90,9 @@ That's why the router lets Jev decide reviews and build size, and keeps rules fo
   so part of the gain may be fitting the bench.
 - **Most of the current policy's gain comes from the fallback.** Phase 5 with the new fallback,
   without Jev on build size or reviews, scores 90.4%: Jev's added value today is deciding, more than accuracy.
+- **33 review size labels are still unvalidated.** The implementer labeled them by hand and they
+  are marked `seguro: false` until the user checks them. The other 192 take the size from the
+  build of the same task, so the build step is right on them by construction: it measures
+  coverage, not accuracy.
 - **Haiku numbers predate Haiku 5.5.** The `haiku` alias now resolves to Haiku 5.5, which thinks
   by default; re-run `/router bench --solo haiku` before relying on them.

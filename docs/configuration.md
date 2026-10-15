@@ -42,7 +42,9 @@ aliases.
 | Option | Type | Router default |
 |---|---|---|
 | `modeloReviewFinal` | `review-final` | opus·xhigh |
-| `modeloReview` | `review` | opus·xhigh |
+| `modeloReviewLarge` | `review-large` | opus·xhigh |
+| `modeloReviewSmall` | `review-small` | opus·medium |
+| `modeloReview` | both review sizes (legacy) | — |
 | `modeloReReview` | `re-review` | opus·medium |
 | `modeloBuildLarge` | `build-large` | opus·medium |
 | `modeloBuildSmall` | `build-small` | sonnet·medium |
@@ -50,6 +52,12 @@ aliases.
 | `modeloExplore` | `explore` | haiku·medium |
 | `modeloResearch` | `research` | sonnet·medium |
 | `modeloWrite` | `write` | haiku·high |
+
+Reviews come in two sizes, each with its own option: `modeloReviewLarge` (a block, a feature, a
+phase, several tasks) and `modeloReviewSmall` (one task). `modeloReview` is the legacy option: if you
+set it and leave a size on `por defecto`, it applies to that size. A size you choose on its own
+always wins over it. How the size is decided is explained in
+[how-it-works.md](how-it-works.md#review-size).
 
 The reasons show `base de /config: <step>` when a type uses your choice.
 
@@ -82,7 +90,7 @@ transcript.
 | `/router` | Panel with three tabs: **En curso** (live decisions and task cycles), **Métricas vs tu base** (metrics, shadow mode) and **Historial** (recent decisions with reasons) |
 | `/router off` · `/router on` | Disable or enable the router for this session |
 | `/router allow <models>` | Restrict models, e.g. `/router allow sonnet,opus`. Decisions move to the nearest allowed step |
-| `/router set <type> <model>·<effort>` | Set a type for this session, e.g. `/router set review opus·max` or `/router set explore haiku·low`. `haiku` alone means `haiku·medium` |
+| `/router set <type> <model>·<effort>` | Set a type for this session, e.g. `/router set review opus·max` or `/router set explore haiku·low`. `haiku` alone means `haiku·medium`. `review` sets both review sizes at once; `review-large` and `review-small` set each one on its own |
 | `/router reset` | Clear this session's overrides |
 | `/router hot on` · `/router hot off` · `/router hot` | Turn hot mode on or off (saved for future sessions), or show its state |
 | `/router history [days]` | Write `~/.claude/router-historial.md` with the last N days (default 7): summary, and one table per session and task |
@@ -107,6 +115,10 @@ subagents", compete with the router's convention.
 | `jev → build-large (0.93)` | Jev decided, with that confidence |
 | `jev (sin umbral) → review (0.55)` | No rule matched: Jev decided despite low confidence |
 | `jev dudó (0.55): queda la regla` | Jev was unsure about a review: the rule stays |
+| `talla por alcance (…)` | The review is `review-large` because the description names a range of tasks (`Tasks 3-5`) or a scope word (`feature`, `fase`…) |
+| `talla del build de Tarea 3 (build-large)` | The review inherits the size of the build of the same task |
+| `jev → review-large (0.91)` | Jev decided the review's size |
+| `respaldo → review-small` | The classifier doubted, failed or isn't set: the review is small |
 | `respaldo (jev dudó (0.62)) → build-small` | Jev was unsure about a build's size: the fallback decided |
 | `respaldo (tardó más de 1000 ms) → …` | The classifier timed out |
 | `base de /config: opus·high` | The type's base step comes from your `/config` choice |

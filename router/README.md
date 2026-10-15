@@ -20,14 +20,14 @@ horas. Nunca frena el uso.
 | `/router` | Abre el panel: pestañas **En curso**, **Métricas vs tu base** e **Historial** (teclas 1, 2 y 3) |
 | `/router off` / `/router on` | Apaga o prende el router en esta sesión |
 | `/router allow sonnet,opus` | Solo usa esos modelos en esta sesión |
-| `/router set review opus·max` | Fija un tipo por encima de la política |
+| `/router set review opus·max` | Fija un tipo por encima de la política. `review` fija las dos tallas; `review-large` y `review-small`, cada una por separado |
 | `/router reset` | Borra los overrides de la sesión |
 | `/router hot on` · `/router hot off` | Prende o apaga el modo hot (se guarda para las próximas sesiones; apagado por defecto). `/router hot` dice cómo está |
 | `/router bench` | Corre el banco del clasificador (ver abajo) |
 | `/router history [días]` | Exporta las decisiones de los últimos días (7 si no se dice) a `~/.claude/router-historial.md` |
 | `[pin]` en la description de un subagente | Respeta el modelo que pidió Claude |
 
-En `/config` se eligen el modelo·esfuerzo base de cada tipo de tarea (`modeloReview`, `modeloFix`…),
+En `/config` se eligen el modelo·esfuerzo base de cada tipo de tarea (`modeloReviewLarge`, `modeloReviewSmall`, `modeloFix`…),
 los umbrales de la política (🔥 y ⬆️), los clasificadores (ver abajo), `avisarAClaude` y
 `ensenarConvencion`.
 
@@ -108,7 +108,7 @@ referencia y contra el respaldo. Cómo usarlo y cómo leer la tabla:
 
 Qué mide cada fila:
 
-- **reviews en Opus:** de los subagentes `review`, `review-final` y `re-review`, la proporción
+- **reviews en Opus:** de los subagentes `review` (`review-large` y `review-small`), `review-final` y `re-review`, la proporción
   que corrió en Opus. Cuenta el modelo con el que corrió de verdad: el que eligió el router o, si
   el router no lo tocó (`[pin]`, `/router off`, un error), el `model` pedido o el del padre si
   hereda. Un subagente sin tocar toma el tipo de las reglas, como la base.
@@ -156,7 +156,7 @@ calcula cada número: el encabezado de `lineaBase.ts` y [bench/README.md](../ben
 Sirve para revisar que el router decida bien. Cada registro del historial guarda, además del
 modelo y los tiempos, la decisión: la `description` (hasta 100 caracteres), lo elegido
 (`opus·xhigh`, o lo pedido si el router no lo tocó), los motivos (`regla review`,
-`jev → build-large (0.83)`, `jev (sin umbral) → review (0.55)`, `jev → review (0.98)`, `jev dudó (0.55): queda la regla`, `política +2`, `[pin]: …`) y el modo de la política al lanzarlo
+`jev → build-large (0.83)`, `talla por alcance (feature)`, `talla del build de Tarea 3 (build-large)`, `jev → review-large (0.91)`, `respaldo → review-small`, `jev (sin umbral) → review (0.55)`, `jev → review (0.98)`, `jev dudó (0.55): queda la regla`, `política +2`, `[pin]: …`) y el modo de la política al lanzarlo
 (`fuego`, `sobra` o `normal`). Los registros de antes no tienen esos campos: se muestran con lo
 que hay.
 
@@ -173,9 +173,33 @@ modo) y una sección por sesión (id corto y fecha) con una tabla por tarea: hor
 description, pedido → elegido, modo y motivos, más el ciclo de la tarea y sus rondas de
 re-review. El rango es el de la columna de 7 días: una tarea entra o queda afuera entera.
 
+## Talla de las reviews (fase 7)
+
+Una review no es un solo escalón: son dos tallas, `review-large` (opus·xhigh) y `review-small`
+(opus·medium). El router decide la talla en este orden, y manda el primero que aplica:
+
+1. **Un rango de tareas.** Si la description nombra un rango ("Tasks 3-5"), es `review-large`.
+2. **El build de la misma tarea.** Si hubo un build de esa tarea en la sesión, la review hereda su
+   talla (`build-large` → `review-large`, `build-small` → `review-small`).
+3. **Las palabras de alcance.** Si la description no nombra una tarea numerada, `bloque`/`block`,
+   `feature`, `fase`/`phase`, `integración`/`integration`, `rama`/`branch` o `merge` la hacen
+   `review-large`.
+4. **El clasificador**, con 2 etiquetas. Si duda, falla o no hay clasificador, es `review-small`.
+
+Los motivos en el historial: `talla por alcance (…)`, `talla del build de Tarea 3 (build-large)`,
+`jev → review-large (0.91)` y `respaldo → review-small`.
+
+En `/config`: `modeloReviewLarge` (por defecto opus·xhigh) y `modeloReviewSmall` (por defecto
+opus·medium). `modeloReview` queda como legado: aplica a las dos tallas si no se eligieron por
+separado. `/router set review X` fija las dos; `/router set review-large X` y
+`/router set review-small X`, cada una por separado.
+
+El banco `bench/review-talla.mjs` mide esta política: con Jev da 96% sobre 225 reviews. Hay 33
+etiquetas manuales que todavía tiene que validar el usuario (ver [bench/README.md](../bench/README.md)).
+
 ## Tipos y base
 
-review-final y review: opus·xhigh · re-review y build-large: opus·medium · build-small y
+review-final y review-large: opus·xhigh · review-small, re-review y build-large: opus·medium · build-small y
 research: sonnet·medium · fix: sonnet·high · write: haiku·high · explore: haiku·medium (techo
 haiku·high). La escalera tiene tres escalones de Haiku 5.5: haiku·low, haiku·medium y
 haiku·high.
