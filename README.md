@@ -19,9 +19,10 @@ Haiku. Reviewers catch more, builders stay fast, and your usage goes where it ma
 
 **Quality and speed, not one or the other.** Each task type gets the step where it works best,
 not just the strongest model. Large builds run on Opus at medium effort: Opus-level code, and
-medium thinking keeps it fast; small ones go to Sonnet. Large reviews get Opus at xhigh effort, because that's where deep thinking pays
-off; task-sized reviews run on Opus at medium effort, which is fast and strong. Exploration runs on Haiku, because reading code doesn't need a slower model. The default
-table was tuned with a bench of ~700 real subagents, and you can change any of it.
+medium thinking keeps it fast; small ones go to Sonnet. Large reviews get Opus at xhigh effort,
+because that's where deep thinking pays off; task-sized reviews run on Opus at medium effort,
+which is fast and strong. Exploration runs on Haiku, because reading code doesn't need a slower
+model. The default table was tuned with a bench of ~700 real subagents, and you can change any of it.
 
 ## Features
 
@@ -70,9 +71,10 @@ for reviews" in every session.
 - **Rules first.** The task type comes from the subagent's `description` (English and Spanish
   verbs) and `subagent_type`. Rules resolve most subagents on their own, with ~97% accuracy on a
   bench of 729 real subagents.
-- **Reviews get a size.** A review is large or small: the router looks at the scope first (a range
-  of tasks, or words like feature or phase), then at the build of the same task, and then at the
-  classifier, which falls back to small.
+- **Reviews get a size.** A review is large or small. The router checks, in this order: a range of
+  tasks ("Tasks 3-5"); the build of the same task; scope words (feature, phase…), only if the
+  description doesn't name a numbered task; and last the classifier, which leaves it small if it
+  doubts. Details in [how it works](docs/how-it-works.md#review-size).
 - **An optional classifier for the rest.** For every build it picks the size, and when no rule
   matches it picks the type: [Jev](https://typesafe.ai) (recommended), Haiku, or a size heuristic.
   With Jev, it also re-checks (and may change) the type of reviews.

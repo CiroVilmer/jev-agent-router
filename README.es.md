@@ -20,9 +20,10 @@ gasta donde importa.
 
 **Calidad y velocidad, no una u otra.** Cada tipo de tarea va al escalón donde mejor rinde, no
 solo al modelo más fuerte. Los builds grandes corren en Opus con esfuerzo medium: código de nivel
-Opus, y el thinking medium lo mantiene rápido; los chicos van a Sonnet. Las reviews grandes van a Opus con esfuerzo xhigh, porque ahí pensar
-a fondo rinde; las del tamaño de una tarea corren en Opus con esfuerzo medium, que es rápido y fuerte. La exploración corre en Haiku, porque leer código no necesita un modelo más lento.
-La tabla por defecto se ajustó con un banco de ~700 subagentes reales, y podés cambiar cualquier
+Opus, y el thinking medium lo mantiene rápido; los chicos van a Sonnet. Las reviews grandes van a
+Opus con esfuerzo xhigh, porque ahí pensar a fondo rinde; las del tamaño de una tarea corren en
+Opus con esfuerzo medium, que es rápido y fuerte. La exploración corre en Haiku, porque leer
+código no necesita un modelo más lento. La tabla por defecto se ajustó con un banco de ~700 subagentes reales, y podés cambiar cualquier
 parte.
 
 ## Funciones
@@ -74,9 +75,10 @@ sesión.
 - **Primero las reglas.** El tipo sale de la `description` del subagente (verbos en castellano e
   inglés) y de su `subagent_type`. Las reglas resuelven solas la mayoría de los subagentes, con
   ~97% de acierto en un banco de 729 subagentes reales.
-- **Las reviews tienen talla.** Una review es grande o chica: el router mira primero el alcance (un
-  rango de tareas, o palabras como feature o fase), después el build de la misma tarea y después el
-  clasificador, que si duda la deja chica.
+- **Las reviews tienen talla.** Una review es grande o chica. El router mira, en este orden: un
+  rango de tareas ("Tasks 3-5"); el build de la misma tarea; las palabras de alcance (feature,
+  fase…), solo si la description no nombra una tarea numerada; y por último el clasificador, que si
+  duda la deja chica. El detalle está en [cómo funciona](docs/how-it-works.md#review-size).
 - **Un clasificador opcional para el resto.** Decide la talla de cada build y, cuando ninguna regla
   matchea, el tipo: [Jev](https://typesafe.ai) (el recomendado), Haiku, o una heurística de
   tamaño. Con Jev, además, revisa (y puede cambiar) el tipo de las reviews.
