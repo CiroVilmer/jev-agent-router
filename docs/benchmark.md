@@ -19,7 +19,7 @@ The step-by-step guide, with every option of every script, is in Spanish in
 | `comparar.mjs` | Compares a bench run against the labels and the fallback |
 | `jev-todos.mjs` | Runs Jev on every case with all 9 labels, or `--talla` for the 2 size labels (needs `JEV_API_KEY`) |
 | `etiquetas-review.json` | The reference size of each review: `{ talla, fuente, seguro, nota? }`. 225 reviews; 33 labeled by hand are marked `seguro: false` |
-| `review-talla.mjs` | Measures the review size policy (scope, build of the same task, classifier) against those labels. Jev runs only with `JEV_API_KEY` |
+| `review-talla.mjs` | Measures the review size policy (range of tasks, build of the same task, scope words, classifier) against those labels. Jev runs only with `JEV_API_KEY` |
 | `analizar-jev-todos.mjs` | Simulates routing policies on a `jev-todos` run |
 | `primera-linea.mjs` | Measures rules applied to a prompt's first line (re-reads transcripts, prints counts only) |
 | `linea-base.mjs` | Generates the pre-router baseline (`router/src/lineaBase.ts`) from transcripts |
@@ -71,8 +71,8 @@ That's why the router lets Jev decide reviews and build size, and keeps rules fo
 ## Review size
 
 `bench/review-talla.mjs` measures `review-large` against `review-small` on 225 reviews (105 large, 120
-small). The size follows the order scope, build of the same task, classifier (see
-[how-it-works.md](how-it-works.md#review-size)).
+small). The size follows the order range of tasks, build of the same task, scope words (only without a
+numbered task), classifier (see [how-it-works.md](how-it-works.md#review-size)).
 
 | Policy | Accuracy |
 |---|---|

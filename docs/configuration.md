@@ -22,7 +22,7 @@ The key is `agent-router@<marketplace>`. When you load the mod with `--plugin-di
 |---|---|---|---|
 | `clasificador` | `reglas` \| `haiku` \| `jev` | `reglas` | Who decides when rules aren't enough. With `jev` it also re-checks, and may change, the type of reviews. `jev` without a key falls back to `haiku` and shows a toast |
 | `jevApiKey` | string (sensitive) | — | Jev key from [TypeSafe AI](https://typesafe.ai). If empty, the router reads the `JEV_API_KEY` environment variable |
-| `jevUmbral` | number 0–1 | `0.7` | Jev's confidence threshold. For build size, below it the fallback decides. For reviews (with `jev`), below it the rule stays. With no rule at all, Jev decides anyway (`sin umbral`) |
+| `jevUmbral` | number 0–1 | `0.7` | Jev's confidence threshold. For build size, below it the fallback decides. For reviews (with `jev`), below it the rule stays. It also applies to the review's size: below it, the review is `review-small`. With no rule at all, Jev decides anyway (`sin umbral`) |
 | `topeMs` | number 50–8000 | `1000` | Classifier time budget. Past it, the fallback decides |
 | `sombra` | `off` \| `haiku` \| `jev` | `off` | Shadow mode: runs another classifier in the background and stores both answers (the last 500) to compare in the panel. `sombra: jev` without a key is disabled, with a toast |
 
@@ -117,9 +117,9 @@ subagents", compete with the router's convention.
 | `jev dudó (0.55): queda la regla` | Jev was unsure about a review: the rule stays |
 | `talla por alcance (…)` | The review is `review-large` because the description names a range of tasks (`Tasks 3-5`) or a scope word (`feature`, `fase`…) |
 | `talla del build de Tarea 3 (build-large)` | The review inherits the size of the build of the same task |
-| `jev → review-large (0.91)` | Jev decided the review's size. If its answer isn't a size, the reason ends with `: queda review-small` |
+| `jev → review-large (0.91)` | Jev decided the review's size. If its answer isn't a size, the reason ends with `: queda review-small` (a defense: Jev and Haiku reject labels that weren't asked for) |
 | `respaldo (jev dudó (0.62)) → review-small` | Jev was unsure about a review's size: the fallback decided |
-| `respaldo → review-small` | The classifier doubted, failed or isn't set: the review is small |
+| `respaldo → review-small` | The classifier doubted, failed or isn't set: the review is small. When it doubted or failed, the reason carries the detail in parentheses: `respaldo (jev dudó (0.62)) → review-small` |
 | `respaldo (jev dudó (0.62)) → build-small` | Jev was unsure about a build's size: the fallback decided |
 | `respaldo (tardó más de 1000 ms) → …` | The classifier timed out |
 | `base de /config: opus·high` | The type's base step comes from your `/config` choice |

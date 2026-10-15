@@ -19,8 +19,8 @@ the spawn's `model`. Later, on every `turn.step` of that subagent, it sets the c
    - every build, to pick its size;
    - no rule matched;
    - with `clasificador: jev`, to re-check (and maybe change) a review's type;
-   - a `review` gets its size (`review-large` or `review-small`) from scope, the task's build or
-     the classifier (see [Review size](#review-size)).
+   - a `review` gets its size (`review-large` or `review-small`) from a range of tasks, the task's
+     build, scope words or the classifier (see [Review size](#review-size)).
 4. **The step:** if `/router set <type> <model>·<effort>` pinned this type, that step is used.
    Otherwise the type's base step is used (the router's table, or your `/config` choice), and,
    with hot mode on, the usage policy raises it by 0, 1 or 2, never past the type's cap.
@@ -90,7 +90,8 @@ Implement Task 11: the compiler · prompt 6.8k chars · 9 archivos · 14 pasos �
 
 - a build is `build-large` when `chars > 5000 || (chars > 3000 && files >= 10)`, otherwise
   `build-small`;
-- a description with no rule is `build-small`.
+- a description with no rule is `build-small`;
+- a review's size is `review-small`, when the classifier doubts, fails or times out.
 
 **Shadow mode.** With `sombra: haiku` or `sombra: jev`, every time the main classifier runs, the
 other one runs too, in the background (60 s limit, it doesn't affect the decision). Both answers
@@ -119,7 +120,7 @@ applies wins:
 Only `review` is sized. `review-final` and `re-review` keep their own steps.
 
 On the bench (`bench/review-talla.mjs`, 225 labeled reviews), this order gets 96%, with Jev at
-a 0.7 threshold and also with the fallback alone, because most reviews take the build's size (see [benchmark.md](benchmark.md#review-size)).
+a 0.7 threshold and also with the fallback alone, because most reviews take the build's size (see [benchmark.md](benchmark.md#review-size)). 192 of the 225 are right by construction (the label comes from the same build); on the 33 hand-made ones the policy gets 24 right (72.7%).
 
 ## Base table and the ladder
 

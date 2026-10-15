@@ -54,7 +54,7 @@ build-small. Empezá la description con el verbo del tipo (...) y usá `Task N`.
 
 **`avisarAClaude`** (`/config`, apagado por defecto): cuando el router reasigna un subagente,
 Claude ve una línea corta en el resultado de la tool Agent, por ejemplo
-`(router: corre en opus·xhigh — regla review)`. Va como `context` del resultado (un hook
+`(router: corre en opus·medium — regla review)`. Va como `context` del resultado (un hook
 `tool.call` sobre Agent, unido al spawn por el `tool_use_id`): lo lee el modelo y no se muestra en
 el transcript. Sin reasignación no agrega nada.
 
@@ -68,7 +68,7 @@ regla) y, con `jev`, también para las reviews por description, decide un clasif
 | `clasificador` | `reglas` | Quién decide: `reglas` (el respaldo, sin modelo), `haiku` o `jev` |
 | `sombra` | `off` | Corre otro clasificador en paralelo, sin afectar la decisión: `off`, `haiku` o `jev` |
 | `jevApiKey` | (vacío) | La key de Jev (TypeSafe). Se guarda como dato sensible |
-| `jevUmbral` | `0.7` | En la talla de los builds, con menos confianza que esto decide el respaldo. También decide en las reviews por description cuando el clasificador es Jev: con menos confianza queda la regla. Sin regla, decide Jev igual y el motivo lo marca (`sin umbral`). Se acota a [0, 1]. Calibrado en el banco del 2026-10-07 para la talla y, para las reviews, en `bench/corridas/2026-10-09-1339-jev-todos-analisis.md` (0.7 simulado el 2026-10-09) |
+| `jevUmbral` | `0.7` | En la talla de los builds, con menos confianza que esto decide el respaldo. También decide en las reviews por description cuando el clasificador es Jev: con menos confianza queda la regla. Y se aplica a la talla de las reviews: con menos confianza queda `review-small`. Sin regla, decide Jev igual y el motivo lo marca (`sin umbral`). Se acota a [0, 1]. Calibrado en el banco del 2026-10-07 para la talla y, para las reviews, en `bench/corridas/2026-10-09-1339-jev-todos-analisis.md` (0.7 simulado el 2026-10-09) |
 | `topeMs` | `1000` | Si el clasificador tarda más, decide el respaldo. Se acota a [50, 8000] |
 
 **La key de Jev:** `/plugin configure` → `jevApiKey`, o la variable de entorno `JEV_API_KEY`.
@@ -77,7 +77,7 @@ avisan con un toast.
 
 **Reviews:** cuando una regla de description (no de `subagentType`) dice `review-final`, `review`
 o `re-review`, y `clasificador` es `jev` (con key), el router consulta a Jev con las 9 etiquetas.
-Con `reglas` o `haiku` como principal, aunque haya sombra, no consulta y queda la regla.
+Con `reglas` o `haiku` como principal, aunque haya sombra, no consulta a Jev por la familia y queda la regla; la talla de la review sí se consulta con `haiku` o con sombra.
 Si Jev está seguro (confianza ≥ `jevUmbral`), decide él, aunque cambie el tipo: motivo
 `jev → review (0.98)`. Si duda, queda la regla: `jev dudó (0.55): queda la regla`. Si el
 clasificador cayó al respaldo (tope o error), queda la regla y el motivo lo dice: `respaldo (tardó
@@ -198,7 +198,7 @@ separado. `/router set review X` fija las dos; `/router set review-large X` y
 `/router set review-small X`, cada una por separado.
 
 El banco `bench/review-talla.mjs` mide esta política: da 96% sobre 225 reviews con Jev
-y también con el respaldo solo (sin Jev): casi todo lo decide el build de la misma tarea. Hay 33
+y también con el respaldo solo (sin Jev): casi todo lo decide el build de la misma tarea. 192 de las 225 aciertan por construcción (la etiqueta sale del mismo build); en las 33 manuales la política acierta 24 (72,7%). Hay 33
 etiquetas manuales que todavía tiene que validar el usuario (ver
 [bench/README.md](../bench/README.md)).
 

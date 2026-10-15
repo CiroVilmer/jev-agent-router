@@ -73,7 +73,7 @@
     "jevUmbral": {
       "type": "number",
       "title": "Umbral de confianza de Jev",
-      "description": "En la talla de los builds, con menos confianza que esto decide el respaldo; con clasificador jev, también decide las reviews por description (con menos confianza queda la regla). Sin regla, decide Jev igual y el motivo lo marca (sin umbral). Entre 0 y 1; 0.7 sale del banco del 2026-10-07",
+      "description": "En la talla de los builds, con menos confianza que esto decide el respaldo; con clasificador jev, también decide las reviews por description (con menos confianza queda la regla); también se aplica a la talla de las reviews. Sin regla, decide Jev igual y el motivo lo marca (sin umbral). Entre 0 y 1; 0.7 sale del banco del 2026-10-07",
       "default": 0.7
     },
     "topeMs": {

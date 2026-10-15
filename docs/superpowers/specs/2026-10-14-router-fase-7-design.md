@@ -31,6 +31,8 @@ ya existe para `build` → `build-large` / `build-small`.
 
 ## 2. La talla de una review
 
+Orden final tras la review (2026-10-15): rango de tareas → build de la misma tarea → palabras de alcance solo si no se nombra una tarea numerada → clasificador.
+
 Corre después de decidir que el tipo es `review` (por regla o por Jev), en este orden:
 
 1. **Alcance en la description.** Si nombra un alcance grande, es `review-large`:

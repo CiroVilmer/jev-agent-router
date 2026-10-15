@@ -19,8 +19,17 @@ All notable changes to this project are documented here. The format follows
 - New reasons in the history: `talla por alcance (…)`, `talla del build de Tarea 3 (build-large)`,
   `jev → review-large (0.91)` and `respaldo → review-small`.
 - Review size bench (`bench/review-talla.mjs`): the policy gets 96% on 225 reviews, with Jev and also with
-  the fallback alone (most reviews take the size of the build of the same task). 33 hand-made
-  labels are still unvalidated.
+  the fallback alone (most reviews take the size of the build of the same task). 192 of the 225
+  are right by construction (the label comes from the same build); on the 33 hand-made labels,
+  still unvalidated, the policy gets 24 right (72.7%).
+
+### Changed
+
+- Reviews of a task drop from opus·xhigh to opus·medium (`review-small`), unless their build is
+  large or the scope is broad.
+- `modeloReview` becomes legacy, and `/router set review` sets both sizes.
+- With `clasificador: haiku` or with a shadow classifier, reviews also ask the classifier (or the
+  shadow) for their size.
 
 ## [0.2.0] - 2026-10-14
 

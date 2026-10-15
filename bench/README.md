@@ -103,7 +103,7 @@ tallaBuildDe del router (nunca miran un build posterior), y son seguras; las de
 fuente `manual` las etiquetó el implementador y quedan con `seguro: false` hasta que las valide el
 usuario. Imprime cuántas cubren y aciertan el alcance y el build de la misma tarea, Jev con las 2
 tallas (sin umbral y con umbral 0.7, respaldo `review-small`) y la política de `tallaDeReview`
-simulada (alcance, build, clasificador). Sin `JEV_API_KEY` no llama a Jev. Guarda la tabla en
+simulada (rango de tareas, build de la misma tarea, palabras de alcance solo si no se nombra una tarea numerada, clasificador). Sin `JEV_API_KEY` no llama a Jev. Guarda la tabla en
 `bench/corridas/<AAAA-MM-DD>-review-talla.md`. Los regex de alcance están copiados de
 `router/src/tallaReview.ts`: el script lee ese archivo como texto y avisa (`AVISO: …`) si alguno cambió;
 hay que actualizar la copia.
