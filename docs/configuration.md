@@ -117,7 +117,8 @@ subagents", compete with the router's convention.
 | `jev dudó (0.55): queda la regla` | Jev was unsure about a review: the rule stays |
 | `talla por alcance (…)` | The review is `review-large` because the description names a range of tasks (`Tasks 3-5`) or a scope word (`feature`, `fase`…) |
 | `talla del build de Tarea 3 (build-large)` | The review inherits the size of the build of the same task |
-| `jev → review-large (0.91)` | Jev decided the review's size |
+| `jev → review-large (0.91)` | Jev decided the review's size. If its answer isn't a size, the reason ends with `: queda review-small` |
+| `respaldo (jev dudó (0.62)) → review-small` | Jev was unsure about a review's size: the fallback decided |
 | `respaldo → review-small` | The classifier doubted, failed or isn't set: the review is small |
 | `respaldo (jev dudó (0.62)) → build-small` | Jev was unsure about a build's size: the fallback decided |
 | `respaldo (tardó más de 1000 ms) → …` | The classifier timed out |

@@ -18,8 +18,9 @@ All notable changes to this project are documented here. The format follows
   each one on its own.
 - New reasons in the history: `talla por alcance (…)`, `talla del build de Tarea 3 (build-large)`,
   `jev → review-large (0.91)` and `respaldo → review-small`.
-- Review size bench (`bench/review-talla.mjs`): the policy with Jev gets 96% on 225 reviews.
-  33 hand-made labels are still unvalidated.
+- Review size bench (`bench/review-talla.mjs`): the policy gets 96% on 225 reviews, with Jev and also with
+  the fallback alone (most reviews take the size of the build of the same task). 33 hand-made
+  labels are still unvalidated.
 
 ## [0.2.0] - 2026-10-14
 

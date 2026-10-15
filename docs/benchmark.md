@@ -79,9 +79,13 @@ small). The size follows the order scope, build of the same task, classifier (se
 | Fallback alone (always `review-small`) | 53.3% |
 | Jev with 2 labels, 0.7 threshold, on all reviews | 64.0% |
 | Full policy with Jev, 0.7 threshold (current) | 96.0% |
+| Full policy with the `reglas` fallback, no Jev | 96.0% |
+| Full policy with Jev, no threshold | 94.7% |
 
-Most of the policy's accuracy comes from the build of the same task: 192 of the 225 reviews have an
-earlier build of the same task, and inherit its size. Jev only decides the 31 left over.
+Most of the policy's accuracy comes from the build of the same task, not from Jev: 192 of the 225
+reviews have an earlier build of the same task and inherit its size, scope decides 2 more, and the
+classifier decides the other 31. On those 31, Jev at 0.7 gets 22 right (71.0%); the fallback alone
+ends at the same 96.0% overall.
 
 ## Caveats
 

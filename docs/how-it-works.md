@@ -118,8 +118,8 @@ applies wins:
 
 Only `review` is sized. `review-final` and `re-review` keep their own steps.
 
-On the bench (`bench/review-talla.mjs`, 225 labeled reviews), this order with Jev at a 0.7
-threshold gets 96% (see [benchmark.md](benchmark.md#review-size)).
+On the bench (`bench/review-talla.mjs`, 225 labeled reviews), this order gets 96%, with Jev at
+a 0.7 threshold and also with the fallback alone, because most reviews take the build's size (see [benchmark.md](benchmark.md#review-size)).
 
 ## Base table and the ladder
 
