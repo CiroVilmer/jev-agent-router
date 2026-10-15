@@ -1,0 +1,1157 @@
+{
+  "c0015": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "verificar una familia de formularios: un grupo acotado; dudoso"
+  },
+  "c0016": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "verificar una familia de formularios: un grupo acotado; dudoso"
+  },
+  "c0017": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "verificar una familia de formularios: un grupo acotado; dudoso"
+  },
+  "c0018": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "verificar una familia de formularios: un grupo acotado; dudoso"
+  },
+  "c0024": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0026": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0028": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0031": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0033": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0036": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0038": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0040": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0045": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar un fix"
+  },
+  "c0047": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar un fix puntual"
+  },
+  "c0049": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar un fix"
+  },
+  "c0058": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0059": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0060": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0061": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0068": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0069": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0073": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0078": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "un paso y una migración: cambio acotado"
+  },
+  "c0081": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0085": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0087": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0089": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0091": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0094": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0101": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0102": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar un filtro: cambio acotado"
+  },
+  "c0106": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0110": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0112": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0116": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0117": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0121": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0122": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0128": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0130": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una tarea de un plan (5.3)"
+  },
+  "c0133": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0136": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0138": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0140": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0142": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0146": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0153": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0155": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0158": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0159": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0162": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0165": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0166": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0169": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0173": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0174": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0177": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0185": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0186": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0187": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0191": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0194": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0196": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0198": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0200": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0201": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0204": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0207": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0212": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar fixes de una tarea"
+  },
+  "c0217": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar un fix"
+  },
+  "c0228": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0229": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0232": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0234": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0235": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0236": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0239": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0240": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0244": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0245": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0258": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0259": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0260": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0261": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0262": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0263": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0269": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0282": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0283": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0284": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0285": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0288": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0289": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0293": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0300": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0302": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0305": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0308": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0332": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0335": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0337": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0340": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0342": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0344": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0347": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0350": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0353": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0357": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0364": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "cambios sin commitear de toda la consola, nombra 22 archivos"
+  },
+  "c0373": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar las lecturas de datos reales: cambio acotado; dudoso"
+  },
+  "c0380": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0381": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0385": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0386": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0390": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0392": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0395": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0397": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0403": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0407": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0408": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0411": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0412": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0414": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0420": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0422": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0424": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0431": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0432": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0433": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0439": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0441": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0445": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0455": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0456": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0458": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0464": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0468": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una pestaña entera (una feature), nombra 26 archivos"
+  },
+  "c0469": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una pestaña entera (una feature), nombra 26 archivos"
+  },
+  "c0470": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una pestaña entera (una feature), nombra 22 archivos"
+  },
+  "c0471": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una pestaña entera (una feature), nombra 20 archivos"
+  },
+  "c0472": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una pestaña entera (una feature), nombra 21 archivos"
+  },
+  "c0477": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0480": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0482": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0485": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0488": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0491": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0494": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0497": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0500": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0503": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0514": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0515": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0516": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0517": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0521": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0522": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0526": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0532": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0537": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0538": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0540": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0543": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0546": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0552": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0554": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0556": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0560": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0561": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0563": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0565": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0568": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0574": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar un fix"
+  },
+  "c0576": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una integración"
+  },
+  "c0578": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "cambios de diseño en varias partes, nombra 17 archivos; dudoso"
+  },
+  "c0579": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "los cambios de una sección (una feature), nombra 14 archivos; dudoso"
+  },
+  "c0580": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "los cambios de una sección (una feature), nombra 15 archivos; dudoso"
+  },
+  "c0582": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0587": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0590": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0593": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0596": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0598": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0602": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0603": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0607": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0611": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0614": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0623": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0627": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0628": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0629": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0632": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0633": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0635": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0638": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0639": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0641": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0643": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0651": {
+    "talla": "review-large",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar la resolución de un merge"
+  },
+  "c0662": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0665": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0668": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0671": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0678": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una pieza (un componente)"
+  },
+  "c0680": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0682": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0684": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0687": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0689": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0691": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0693": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0695": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0698": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0700": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0705": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0707": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0710": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0712": {
+    "talla": "review-small",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0715": {
+    "talla": "review-large",
+    "fuente": "build",
+    "seguro": true
+  },
+  "c0718": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una tarea de un plan"
+  },
+  "c0719": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una tarea de un plan"
+  },
+  "c0720": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una tarea de un plan"
+  },
+  "c0721": {
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una tarea de un plan"
+  }
+}

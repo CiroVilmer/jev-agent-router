@@ -90,6 +90,22 @@ Las corridas `2026-10-09-1347-jev-talla-vieja` y `2026-10-09-1347-jev-todos-nuev
 textos de talla distintos de los actuales. `/router bench` y `comparar.mjs` no miden las reviews
 por description: para eso está este banco.
 
+## La talla de las reviews (`review-talla.mjs`)
+
+```
+[JEV_API_KEY=…] node bench/review-talla.mjs
+```
+
+Mide `review-large` contra `review-small` sobre las reviews de `casos.json`, con la referencia de
+`bench/etiquetas-review.json` (`{ id: { talla, fuente, seguro, nota? } }`). Las de fuente `build`
+toman la talla del build del mismo proyecto y la misma tarea (`tareaDe`) y son seguras; las de
+fuente `manual` las etiquetó el implementador y quedan con `seguro: false` hasta que las valide el
+usuario. Imprime cuántas cubren y aciertan el alcance y el build de la misma tarea, Jev con las 2
+tallas (sin umbral y con umbral 0.7, respaldo `review-small`) y la política de `tallaDeReview`
+simulada (alcance, build, clasificador). Sin `JEV_API_KEY` no llama a Jev. Guarda la tabla en
+`bench/corridas/<AAAA-MM-DD>-review-talla.md`. Los regex de alcance están copiados de
+`router/src/tallaReview.ts`: si cambian allá, hay que cambiarlos en el script.
+
 ## La primera línea del prompt (`primera-linea.mjs`)
 
 ```
