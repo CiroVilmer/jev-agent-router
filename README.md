@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Claude Code ≥ 2.1.293](https://img.shields.io/badge/Claude%20Code-%E2%89%A5%202.1.293-orange)
-![Tests: 376](https://img.shields.io/badge/tests-376%20passing-brightgreen)
+![Tests: 415](https://img.shields.io/badge/tests-415%20passing-brightgreen)
 
 **English** · [Español](README.es.md)
 
@@ -19,8 +19,8 @@ Haiku. Reviewers catch more, builders stay fast, and your usage goes where it ma
 
 **Quality and speed, not one or the other.** Each task type gets the step where it works best,
 not just the strongest model. Large builds run on Opus at medium effort: Opus-level code, and
-medium thinking keeps it fast; small ones go to Sonnet. Reviews get Opus at xhigh effort, because that's where deep thinking pays
-off. Exploration runs on Haiku, because reading code doesn't need a slower model. The default
+medium thinking keeps it fast; small ones go to Sonnet. Large reviews get Opus at xhigh effort, because that's where deep thinking pays
+off; task-sized reviews run on Opus at medium effort, which is fast and strong. Exploration runs on Haiku, because reading code doesn't need a slower model. The default
 table was tuned with a bench of ~700 real subagents, and you can change any of it.
 
 ## Features
@@ -57,7 +57,8 @@ for reviews" in every session.
 | Task type | Example description | Runs on |
 |---|---|---|
 | `review-final` | "Final whole-branch review" | Opus · xhigh |
-| `review` | "Review Task 3 (spec + quality)" | Opus · xhigh |
+| `review-large` | "Review the payments feature" | Opus · xhigh |
+| `review-small` | "Review Task 3 (spec + quality)" | Opus · medium |
 | `re-review` | "Re-review Task 6 fix round 2" | Opus · medium |
 | `build-large` | "Implement Task 11: the compiler" | Opus · medium |
 | `build-small` | "Implement Task 5b: date marker" | Sonnet · medium |
@@ -69,6 +70,9 @@ for reviews" in every session.
 - **Rules first.** The task type comes from the subagent's `description` (English and Spanish
   verbs) and `subagent_type`. Rules resolve most subagents on their own, with ~97% accuracy on a
   bench of 729 real subagents.
+- **Reviews get a size.** A review is large or small: the router looks at the scope first (a range
+  of tasks, or words like feature or phase), then at the build of the same task, and then at the
+  classifier, which falls back to small.
 - **An optional classifier for the rest.** For every build it picks the size, and when no rule
   matches it picks the type: [Jev](https://typesafe.ai) (recommended), Haiku, or a size heuristic.
   With Jev, it also re-checks (and may change) the type of reviews.
@@ -148,16 +152,16 @@ especially when other instructions ask for a specific model.
 | `/router on` · `/router off` | Turns the router on or off for this session |
 | `/router hot on` · `/router hot off` | Turns hot mode on or off, for this and future sessions (off by default). `/router hot` shows its state |
 | `/router allow sonnet,opus` | Only use these models in this session |
-| `/router set review opus·max` | Sets a task type to a model and effort for this session, above `/config` and the policy |
+| `/router set review opus·max` | Sets a task type to a model and effort for this session, above `/config` and the policy. `review` sets both review sizes |
 | `/router reset` | Clears this session's `allow` and `set` |
 | `[pin]` in a subagent's description | Keeps the model Claude asked for |
 
 Every decision is recorded with its reasons:
 
 ```
-review      inherit → opus·xhigh    "Review Task 7: retry policy"      regla review · jev → review (0.98)
-build-large inherit → opus·high     "Implement Task 8: quote guard"    regla build · jev → build-large (1.00) · política +1
-write       inherit → haiku·high    "Write Task 11: session notes"     regla write
+review-small inherit → opus·medium   "Review Task 7: retry policy"      regla review · talla del build de Tarea 7 (build-small)
+build-large  inherit → opus·high     "Implement Task 8: quote guard"    regla build · jev → build-large (1.00) · política +1
+write        inherit → haiku·high    "Write Task 11: session notes"     regla write
 ```
 
 The line below the prompt shows the latest one, for example
@@ -193,10 +197,11 @@ Change these in `/config` → plugins → agent-router, or with `/plugin configu
 | `ensenarConvencion` | `true` | When no rule recognizes a description, Claude sees a one-line hint in the Agent result |
 | `avisarAClaude` | `false` | When the router reassigns a subagent, Claude sees the chosen model and why |
 
-**Model per task type.** Each type has its own option (`modeloReview`, `modeloReReview`,
-`modeloReviewFinal`, `modeloBuildLarge`, `modeloBuildSmall`, `modeloFix`, `modeloExplore`,
+**Model per task type.** Each type has its own option (`modeloReviewLarge`, `modeloReviewSmall`,
+`modeloReReview`, `modeloReviewFinal`, `modeloBuildLarge`, `modeloBuildSmall`, `modeloFix`, `modeloExplore`,
 `modeloResearch`, `modeloWrite`). Pick any step from `haiku·low` to `opus·xhigh`, or leave
 `por defecto` to keep the router's table. With hot mode on, the policy raises from your choice.
+`modeloReview` is legacy: it applies to both review sizes if you don't choose them separately.
 
 Full reference: [docs/configuration.md](docs/configuration.md).
 
@@ -212,8 +217,8 @@ It never sends the prompt. The same applies to `sombra: jev` and to `/router ben
 ```mermaid
 flowchart LR
     A["🤖 Claude launches<br/>a subagent"] --> B{"🏷️ What kind of<br/>task is it?"}
-    B -->|"Review"| C["🧠 Opus · xhigh"]
-    B -->|"Big build, re-review"| D["🧠 Opus · medium"]
+    B -->|"Large review"| C["🧠 Opus · xhigh"]
+    B -->|"Small review, big build, re-review"| D["🧠 Opus · medium"]
     B -->|"Small build, fix, research"| E["⚡ Sonnet"]
     B -->|"Explore, write"| F["🪶 Haiku"]
     C & D & E & F --> G{"⏰ Hot mode on, and your 5-hour<br/>window resets soon with usage to spare?"}

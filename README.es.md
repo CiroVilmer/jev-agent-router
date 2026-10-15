@@ -2,7 +2,7 @@
 
 [![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-blue.svg)](LICENSE)
 ![Claude Code ≥ 2.1.293](https://img.shields.io/badge/Claude%20Code-%E2%89%A5%202.1.293-orange)
-![Tests: 376](https://img.shields.io/badge/tests-376%20pasan-brightgreen)
+![Tests: 415](https://img.shields.io/badge/tests-415%20pasan-brightgreen)
 
 [English](README.md) · **Español**
 
@@ -20,8 +20,8 @@ gasta donde importa.
 
 **Calidad y velocidad, no una u otra.** Cada tipo de tarea va al escalón donde mejor rinde, no
 solo al modelo más fuerte. Los builds grandes corren en Opus con esfuerzo medium: código de nivel
-Opus, y el thinking medium lo mantiene rápido; los chicos van a Sonnet. Las reviews van a Opus con esfuerzo xhigh, porque ahí pensar
-a fondo rinde. La exploración corre en Haiku, porque leer código no necesita un modelo más lento.
+Opus, y el thinking medium lo mantiene rápido; los chicos van a Sonnet. Las reviews grandes van a Opus con esfuerzo xhigh, porque ahí pensar
+a fondo rinde; las del tamaño de una tarea corren en Opus con esfuerzo medium, que es rápido y fuerte. La exploración corre en Haiku, porque leer código no necesita un modelo más lento.
 La tabla por defecto se ajustó con un banco de ~700 subagentes reales, y podés cambiar cualquier
 parte.
 
@@ -61,7 +61,8 @@ sesión.
 | Tipo de tarea | Description de ejemplo | Corre en |
 |---|---|---|
 | `review-final` | "Final whole-branch review" | Opus · xhigh |
-| `review` | "Review Task 3 (spec + quality)" | Opus · xhigh |
+| `review-large` | "Review the payments feature" | Opus · xhigh |
+| `review-small` | "Review Task 3 (spec + quality)" | Opus · medium |
 | `re-review` | "Re-review Task 6 fix round 2" | Opus · medium |
 | `build-large` | "Implement Task 11: el compilador" | Opus · medium |
 | `build-small` | "Implement Task 5b: fecha como marcador" | Sonnet · medium |
@@ -73,6 +74,9 @@ sesión.
 - **Primero las reglas.** El tipo sale de la `description` del subagente (verbos en castellano e
   inglés) y de su `subagent_type`. Las reglas resuelven solas la mayoría de los subagentes, con
   ~97% de acierto en un banco de 729 subagentes reales.
+- **Las reviews tienen talla.** Una review es grande o chica: el router mira primero el alcance (un
+  rango de tareas, o palabras como feature o fase), después el build de la misma tarea y después el
+  clasificador, que si duda la deja chica.
 - **Un clasificador opcional para el resto.** Decide la talla de cada build y, cuando ninguna regla
   matchea, el tipo: [Jev](https://typesafe.ai) (el recomendado), Haiku, o una heurística de
   tamaño. Con Jev, además, revisa (y puede cambiar) el tipo de las reviews.
@@ -153,16 +157,16 @@ constancia, sobre todo cuando otras instrucciones le piden un modelo.
 | `/router on` · `/router off` | Prende o apaga el router en esta sesión |
 | `/router hot on` · `/router hot off` | Prende o apaga el modo hot, para esta sesión y las siguientes (apagado por defecto). `/router hot` dice cómo está |
 | `/router allow sonnet,opus` | Solo usa esos modelos en esta sesión |
-| `/router set review opus·max` | Fija un tipo de tarea en un modelo y esfuerzo para esta sesión, por encima de `/config` y de la política |
+| `/router set review opus·max` | Fija un tipo de tarea en un modelo y esfuerzo para esta sesión, por encima de `/config` y de la política. `review` fija las dos tallas de review |
 | `/router reset` | Borra el `allow` y el `set` de la sesión |
 | `[pin]` en la description de un subagente | Respeta el modelo que pidió Claude |
 
 Cada decisión queda registrada con sus motivos:
 
 ```
-review      inherit → opus·xhigh    "Review Task 7: política de reintentos"  regla review · jev → review (0.98)
-build-large inherit → opus·high     "Implement Task 8: guarda de cotización"  regla build · jev → build-large (1.00) · política +1
-write       inherit → haiku·high    "Write Task 11: notas de la sesión"       regla write
+review-small inherit → opus·medium   "Review Task 7: política de reintentos"  regla review · talla del build de Tarea 7 (build-small)
+build-large  inherit → opus·high     "Implement Task 8: guarda de cotización"  regla build · jev → build-large (1.00) · política +1
+write        inherit → haiku·high    "Write Task 11: notas de la sesión"       regla write
 ```
 
 La línea debajo del prompt muestra la última, por ejemplo
@@ -194,11 +198,12 @@ Se cambia en `/config` → plugins → agent-router, o con `/plugin configure`.
 | `ensenarConvencion` | `true` | Si ninguna regla reconoce una description, Claude ve una línea con cómo nombrar en el resultado de Agent |
 | `avisarAClaude` | `false` | Si el router reasigna un subagente, Claude ve el modelo elegido y el motivo |
 
-**Modelo por tipo de tarea.** Cada tipo tiene su opción (`modeloReview`, `modeloReReview`,
-`modeloReviewFinal`, `modeloBuildLarge`, `modeloBuildSmall`, `modeloFix`, `modeloExplore`,
+**Modelo por tipo de tarea.** Cada tipo tiene su opción (`modeloReviewLarge`, `modeloReviewSmall`,
+`modeloReReview`, `modeloReviewFinal`, `modeloBuildLarge`, `modeloBuildSmall`, `modeloFix`, `modeloExplore`,
 `modeloResearch`, `modeloWrite`). Elegí cualquier escalón de `haiku·low` a `opus·xhigh`, o dejá
 `por defecto` para usar la tabla del router. Con el modo hot prendido, la política sube desde lo
-que elegiste.
+que elegiste. `modeloReview` es legado: aplica a las dos tallas de review si no las elegís por
+separado.
 
 Referencia completa (en inglés): [docs/configuration.md](docs/configuration.md).
 
@@ -214,8 +219,8 @@ o `haiku` y sin sombra de Jev, no sale nada de Claude Code.
 ```mermaid
 flowchart LR
     A["🤖 Claude lanza<br/>un subagente"] --> B{"🏷️ ¿Qué tipo de<br/>tarea es?"}
-    B -->|"Review"| C["🧠 Opus · xhigh"]
-    B -->|"Build grande, re-review"| D["🧠 Opus · medium"]
+    B -->|"Review grande"| C["🧠 Opus · xhigh"]
+    B -->|"Review chica, build grande, re-review"| D["🧠 Opus · medium"]
     B -->|"Build chico, fix, research"| E["⚡ Sonnet"]
     B -->|"Explore, write"| F["🪶 Haiku"]
     C & D & E & F --> G{"⏰ ¿Modo hot prendido, y tu ventana de 5 horas<br/>se reinicia pronto con uso de sobra?"}
