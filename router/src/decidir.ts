@@ -90,7 +90,8 @@ export async function decidir(e: EntradaDecision, c: Contexto): Promise<Decision
   }
 
   let escalon: Escalon
-  const fijado = c.overrides.fijados[tipo]
+  // Un `set review` viejo (guardado en el atom antes de las tallas) vale para las dos tallas.
+  const fijado = c.overrides.fijados[tipo] ?? ((tipo === 'review-large' || tipo === 'review-small') ? c.overrides.fijados.review : undefined)
   if (fijado) {
     escalon = fijado
     motivos.push(`fijado con /router: ${formatEscalon(fijado)}`)

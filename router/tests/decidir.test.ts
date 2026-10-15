@@ -229,9 +229,13 @@ describe('talla de la review', () => {
     expect(d.motivos).toEqual(['regla review', 'talla del build de Tarea 3 (build-large)'])
   })
 
-  test('con build chico: review-small, opus·medium', async () => {
-    const d = await decidir(entrada({ descripcion: 'Review Task 3', tallaBuildDeTarea: 'build-small' }), ctx())
+  test('con build chico: review-small, opus·medium, aunque el clasificador diga review-large', async () => {
+    const d = await decidir(
+      entrada({ descripcion: 'Review Task 3', tallaBuildDeTarea: 'build-small' }),
+      ctx({ clasificar: dice('review-large', 0.9) }),
+    )
     expect(d).toMatchObject({ tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'medium' } })
+    expect(d.motivos).toEqual(['regla review', 'talla del build de Tarea 3 (build-small)'])
   })
 
   test('sin build, el alcance decide la talla', async () => {
@@ -291,8 +295,36 @@ describe('talla de la review', () => {
   })
 
   test('el build de una tarea con clave de prefijo también se hereda', async () => {
-    const d = await decidir(entrada({ descripcion: 'Code review: payments', tallaBuildDeTarea: 'build-small' }), ctx())
+    const d = await decidir(
+      entrada({ descripcion: 'Code review: payments', tallaBuildDeTarea: 'build-small' }),
+      ctx({ clasificar: dice('review-large', 0.9) }),
+    )
     expect(d).toMatchObject({ tipo: 'review-small' })
+    expect(d.motivos).toHaveLength(2)
+    expect(d.motivos[1]).toMatch(/^talla del build de .* \(build-small\)$/)
+  })
+
+  test('con clave de prefijo, el build le gana a la palabra de alcance', async () => {
+    const d = await decidir(entrada({ descripcion: 'Code review: payments feature', tallaBuildDeTarea: 'build-small' }), ctx())
+    expect(d).toMatchObject({ tipo: 'review-small' })
+    expect(d.motivos[1]).toMatch(/^talla del build de/)
+  })
+
+  test('un set review viejo (fijados.review) se respeta cuando no hay fijado de la talla', async () => {
+    const overrides = { ...OVERRIDES_INICIAL, fijados: { review: { modelo: 'opus' as const, esfuerzo: 'high' as const } } }
+    const d = await decidir(entrada(), ctx({ overrides }))
+    expect(d).toMatchObject({ tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'high' } })
+    const g = await decidir(entrada({ tallaBuildDeTarea: 'build-large' }), ctx({ overrides }))
+    expect(g).toMatchObject({ tipo: 'review-large', escalon: { modelo: 'opus', esfuerzo: 'high' } })
+  })
+
+  test('el fijado de la talla le gana al set review viejo', async () => {
+    const overrides = { ...OVERRIDES_INICIAL, fijados: {
+      review: { modelo: 'opus' as const, esfuerzo: 'high' as const },
+      'review-small': { modelo: 'opus' as const, esfuerzo: 'max' as const },
+    } }
+    const d = await decidir(entrada(), ctx({ overrides }))
+    expect(d).toMatchObject({ escalon: { modelo: 'opus', esfuerzo: 'max' } })
   })
 
   test('sin tarea, la palabra de alcance cuenta', async () => {

@@ -82,6 +82,8 @@ export function conEsperaCortable(
   signal?: AbortSignal,
 ): Clasificador {
   return async p => {
+    // Si el hook ya se abandonó, no se arma la espera ni se hace el pedido: decide el respaldo.
+    if (signal?.aborted) return { ...(await respaldo(p)), detalle: 'abortado' }
     const corte = new AbortController()
     const cortar = () => corte.abort()
     signal?.addEventListener('abort', cortar)
