@@ -161,13 +161,13 @@ especially when other instructions ask for a specific model.
 Every decision is recorded with its reasons:
 
 ```
-review-small inherit → opus·medium   "Review Task 7: retry policy"      regla review · talla del build de Tarea 7 (build-small)
+review-small inherit → opus·medium   "Review Task 7: retry policy"      regla review · jev → review (0.98) · talla del build de Tarea 7 (build-small)
 build-large  inherit → opus·high     "Implement Task 8: quote guard"    regla build · jev → build-large (1.00) · política +1
 write        inherit → haiku·high    "Write Task 11: session notes"     regla write
 ```
 
 The line below the prompt shows the latest one, for example
-`router · Review Task 3: parser → opus·xhigh · jev 0.98`.
+`router · Review Task 3: parser → opus·medium · regla`.
 
 <details>
 <summary><b>More commands</b>: history export and the classifier bench</summary>
@@ -191,7 +191,7 @@ Change these in `/config` → plugins → agent-router, or with `/plugin configu
 |---|---|---|
 | `clasificador` | `reglas` | Who decides when rules aren't enough: `reglas` (size heuristic, no model), `haiku`, or `jev` |
 | `jevApiKey` | — | Jev key, stored as sensitive. Falls back to the `JEV_API_KEY` environment variable |
-| `jevUmbral` | `0.7` | Jev's confidence threshold: below it, the fallback decides a build's size and the rule keeps a review |
+| `jevUmbral` | `0.7` | Jev's confidence threshold: below it, the fallback decides a build's size, the rule keeps a review and a review's size is `review-small` |
 | `topeMs` | `1000` | Classifier time budget. If it takes longer, the fallback decides (50–8000) |
 | `sombra` | `off` | Shadow mode: runs another classifier in the background and stores both answers to compare |
 | `fuegoMinutos` · `fuegoUsado` | `60` · `70` | 🔥 +2 steps when ≤ 60 min to the reset and ≤ 70% used |

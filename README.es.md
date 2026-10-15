@@ -166,13 +166,13 @@ constancia, sobre todo cuando otras instrucciones le piden un modelo.
 Cada decisión queda registrada con sus motivos:
 
 ```
-review-small inherit → opus·medium   "Review Task 7: política de reintentos"  regla review · talla del build de Tarea 7 (build-small)
+review-small inherit → opus·medium   "Review Task 7: política de reintentos"  regla review · jev → review (0.98) · talla del build de Tarea 7 (build-small)
 build-large  inherit → opus·high     "Implement Task 8: guarda de cotización"  regla build · jev → build-large (1.00) · política +1
 write        inherit → haiku·high    "Write Task 11: notas de la sesión"       regla write
 ```
 
 La línea debajo del prompt muestra la última, por ejemplo
-`router · Review Task 3: parser → opus·xhigh · jev 0.98`.
+`router · Review Task 3: parser → opus·medium · regla`.
 
 <details>
 <summary><b>Más comandos</b>: exportar el historial y el banco del clasificador</summary>
@@ -192,7 +192,7 @@ Se cambia en `/config` → plugins → agent-router, o con `/plugin configure`.
 |---|---|---|
 | `clasificador` | `reglas` | Quién decide cuando las reglas no alcanzan: `reglas` (heurística de tamaño, sin modelo), `haiku` o `jev` |
 | `jevApiKey` | — | La key de Jev, guardada como dato sensible. Si falta, se usa la variable de entorno `JEV_API_KEY` |
-| `jevUmbral` | `0.7` | Umbral de confianza de Jev: por debajo, el respaldo decide la talla de un build y en una review queda la regla |
+| `jevUmbral` | `0.7` | Umbral de confianza de Jev: por debajo, el respaldo decide la talla de un build, en una review queda la regla y la talla de una review es `review-small` |
 | `topeMs` | `1000` | Tiempo máximo del clasificador. Si tarda más, decide el respaldo (50–8000) |
 | `sombra` | `off` | Modo sombra: corre otro clasificador en segundo plano y guarda las dos respuestas para comparar |
 | `fuegoMinutos` · `fuegoUsado` | `60` · `70` | 🔥 +2 escalones con 60 min o menos al reset y 70% de uso o menos |
