@@ -15,10 +15,27 @@ import { preguntaJev } from '../router/src/clasificadores/preguntas.ts'
 const ALCANCE_AMPLIO = /\b(bloque|block|feature|fase|phase|integraci[oó]n|integration|rama|branch|merge)\b/i
 const FIN = '(?!\\d|[a-z]|\\.\\d)'
 const TAREA_NUMERADA = /\b(?:task|tarea)s?\s+\d+[a-z]?|\bT\d+[a-z]?\b/i
-const RANGOS = [
-  new RegExp(`\\b(?:tasks?|tareas?)\\s+(\\d+)[a-z]?\\s*(?:-|–|a|to|y|and|,)\\s*(\\d+)${FIN}`, 'i'),
-  new RegExp(`\\bT(\\d+)\\s*-\\s*T?(\\d+)${FIN}`, 'i'),
+const RANGOS_TXT = [
+  String.raw`\b(?:tasks?|tareas?)\s+(\d+)[a-z]?\s*(?:-|–|a|to|y|and|,)\s*(\d+)`,
+  String.raw`\bT(\d+)\s*-\s*T?(\d+)`,
 ]
+const RANGOS = RANGOS_TXT.map(t => new RegExp(t + FIN, 'i'))
+
+// Avisa si lo copiado dejó de coincidir con router/src/tallaReview.ts (leído como texto, sin importarlo).
+{
+  const fuente = fs.readFileSync(fileURLToPath(new URL('../router/src/tallaReview.ts', import.meta.url)), 'utf8')
+  const doble = t => t.replace(/\\/g, '\\\\') // en el .ts están dentro de un string, con la barra duplicada
+  const esperados = {
+    ALCANCE_AMPLIO: `/${ALCANCE_AMPLIO.source}/i`,
+    TAREA_NUMERADA: `/${TAREA_NUMERADA.source}/i`,
+    FIN: `'${doble(FIN)}'`,
+    'RANGOS[0]': '`' + doble(RANGOS_TXT[0]) + '${FIN}`',
+    'RANGOS[1]': '`' + doble(RANGOS_TXT[1]) + '${FIN}`',
+  }
+  for (const [nombre, texto] of Object.entries(esperados)) {
+    if (!fuente.includes(texto)) console.warn(`AVISO: ${nombre} cambió en router/src/tallaReview.ts; actualizá la copia en bench/review-talla.mjs.`)
+  }
+}
 function rangoDeTareas(d) {
   for (const re of RANGOS) {
     const m = re.exec(d)
@@ -40,14 +57,16 @@ const { casos } = JSON.parse(fs.readFileSync(path.join(aqui, 'casos.json'), 'utf
 const etiquetas = JSON.parse(fs.readFileSync(path.join(aqui, 'etiquetas.json'), 'utf8'))
 const ref = JSON.parse(fs.readFileSync(path.join(aqui, 'etiquetas-review.json'), 'utf8'))
 
-/** La talla del build del mismo proyecto y la misma tareaDe: el más cercano anterior, si no el siguiente. */
+/**
+ * La talla del build del mismo proyecto y la misma tareaDe, como tallaBuildDe del router: el más cercano
+ * anterior a la review. El router en vivo solo ve los subagentes que ya corrieron, así que no mira hacia adelante.
+ */
 function tallaBuild(i) {
   const c = casos[i]
   const t = tareaDe(c.descripcion)
   if (!t) return null
   const es = b => b.proyecto === c.proyecto && /^build-/.test(etiquetas[b.id]?.tipo ?? '') && tareaDe(b.descripcion) === t
   for (let j = i - 1; j >= 0; j--) if (es(casos[j])) return etiquetas[casos[j].id].tipo
-  for (let j = i + 1; j < casos.length; j++) if (es(casos[j])) return etiquetas[casos[j].id].tipo
   return null
 }
 

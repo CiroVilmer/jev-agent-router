@@ -59,9 +59,10 @@
     "seguro": true
   },
   "c0040": {
-    "talla": "review-large",
-    "fuente": "build",
-    "seguro": true
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una sola tarea (Task 8), 5 archivos: cambio acotado"
   },
   "c0045": {
     "talla": "review-small",
@@ -547,9 +548,10 @@
     "seguro": true
   },
   "c0357": {
-    "talla": "review-large",
-    "fuente": "build",
-    "seguro": true
+    "talla": "review-small",
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una sola tarea (Task 11); toca 14 archivos pero sigue siendo una tarea; dudoso"
   },
   "c0364": {
     "talla": "review-large",
@@ -630,8 +632,9 @@
   },
   "c0414": {
     "talla": "review-small",
-    "fuente": "build",
-    "seguro": true
+    "fuente": "manual",
+    "seguro": false,
+    "nota": "revisar una sola tarea (Task 14), 5 archivos: cambio acotado"
   },
   "c0420": {
     "talla": "review-large",
