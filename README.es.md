@@ -109,22 +109,22 @@ umbral todavía no está calibrado: ver la [configuración](docs/configuration.m
 
 ### Cómo se comparan
 
-![Banco de clasificadores: acierto, latencia y política completa de reglas, Haiku 5.5 y Jev](docs/assets/selectors-benchmark.svg)
+![Banco de clasificadores: acierto y latencia de reglas, Haiku 5.5 y Jev](docs/assets/selectors-benchmark.svg)
 
 En el [banco](docs/benchmark.md#comparing-selectors) de 729 subagentes reales, una llamada por vez:
 
-| | Acierto solo | Dentro del tope de 1 s | Latencia mediana | Política completa | Costo cada 1.000 llamadas |
-|---|---|---|---|---|---|
-| Jev | 83,8% | 83,8% | 245 ms | 90,8% | ≈ USD 0,017 + salida |
-| Haiku 5.5 | 87,8% | 72,8% | 825 ms | 90,8% | ≈ USD 0,24 (cuota en Claude Max) |
-| Solo reglas | 16,0% | 16,0% | instantáneo | 90,0% | USD 0 |
+| | Acierto solo | Dentro del tope de 1 s | Latencia mediana | Costo cada 1.000 llamadas |
+|---|---|---|---|---|
+| Jev | 83,8% | 83,8% | 245 ms | ≈ USD 0,017 + salida |
+| Haiku 5.5 | 87,8% | 72,8% | 825 ms | ≈ USD 0,24 (cuota en Claude Max) |
+| Solo reglas | 16,0% | 16,0% | instantáneo | USD 0 |
 
 - **Jev es el más rápido y el único calibrado**: nunca pasó el tope de 1 s, y cuando dice 0,9 o
   más acierta el 95% de las veces.
 - **Haiku 5.5 es el que más sabe, pero piensa antes de contestar**: un tercio de sus llamadas tarda
   más de un segundo, y dentro del tope queda al nivel de Jev.
-- **Las reglas hacen casi todo el trabajo**: todas las opciones quedan cerca del 90% en la política
-  completa. El clasificador define velocidad, calibración y costo más que acierto.
+- **Primero deciden las reglas**: resuelven solas la mayoría de los subagentes, y el clasificador
+  solo se encarga del resto. Por eso la velocidad y la calibración importan tanto como el acierto.
 
 ## Requisitos
 
