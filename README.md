@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Claude Code ≥ 2.1.293](https://img.shields.io/badge/Claude%20Code-%E2%89%A5%202.1.293-orange)
-![Tests: 415](https://img.shields.io/badge/tests-415%20passing-brightgreen)
+![Tests: 452](https://img.shields.io/badge/tests-452%20passing-brightgreen)
 
 **English** · [Español](README.es.md)
 
@@ -86,6 +86,41 @@ for reviews" in every session.
   description, and tells Claude when a description wasn't recognized.
 - **Measurement built in.** `/router` opens a panel with live decisions, metrics against your own
   pre-router baseline, and the decision history.
+
+## Models
+
+The router decides most subagents with rules. For the rest (how big a build or a review is, or a
+task no rule recognizes) it asks a **classifier**. You choose which one, from cloud options to a
+model on your own hardware:
+
+| `clasificador` | Where it runs | What it is |
+|---|---|---|
+| `jev` (recommended) | Cloud | [Jev](https://typesafe.ai) by TypeSafe AI: a dedicated classifier with calibrated confidence. Needs an API key |
+| `haiku` | Cloud | Claude Haiku 5.5 through your Claude Code session. No extra key: it uses your subscription |
+| `local` (experimental) | Your machine or server | Any self-hosted model: decision models over the System One API ([llama.cpp](https://github.com/ggml-org/llama.cpp), [Ollama](https://ollama.com)), or an OpenAI-compatible server with logprobs |
+| `reglas` (default) | Nowhere | No model: a size heuristic decides |
+
+With `local`, nothing leaves the hardware you choose, and you can pick or fine-tune the model
+yourself. Its threshold isn't calibrated yet: see [configuration](docs/configuration.md#local-classifier-experimental).
+
+### How they compare
+
+![Classifier benchmark: accuracy, latency and full routing policy for rules, Haiku 5.5 and Jev](docs/assets/selectors-benchmark.svg)
+
+On the [bench](docs/benchmark.md#comparing-selectors) of 729 real subagents, one call at a time:
+
+| | Accuracy on its own | Within the 1 s budget | Median latency | Full routing policy | Cost per 1,000 calls |
+|---|---|---|---|---|---|
+| Jev | 83.8% | 83.8% | 245 ms | 90.8% | ≈ $0.017 + output |
+| Haiku 5.5 | 87.8% | 72.8% | 825 ms | 90.8% | ≈ $0.24 (quota on Claude Max) |
+| Rules only | 16.0% | 16.0% | instant | 90.0% | $0 |
+
+- **Jev is the fastest and the only calibrated one**: it never went over the 1 s budget, and when
+  it says 0.9 or more it is right 95% of the time.
+- **Haiku 5.5 knows the most, but thinks before it answers**: a third of its calls take over a
+  second, so within the budget it ends at Jev's level.
+- **The rules carry most of the work**: every option ends near 90% on the full policy. The
+  classifier decides speed, calibration and cost more than raw accuracy.
 
 ## Requirements
 

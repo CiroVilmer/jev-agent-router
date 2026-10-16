@@ -2,7 +2,7 @@
 
 [![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-blue.svg)](LICENSE)
 ![Claude Code ≥ 2.1.293](https://img.shields.io/badge/Claude%20Code-%E2%89%A5%202.1.293-orange)
-![Tests: 415](https://img.shields.io/badge/tests-415%20pasan-brightgreen)
+![Tests: 452](https://img.shields.io/badge/tests-452%20pasan-brightgreen)
 
 [English](README.md) · **Español**
 
@@ -90,6 +90,41 @@ sesión.
   Agent, y le avisa a Claude cuando no reconoce una description.
 - **Medición incluida.** `/router` abre un panel con las decisiones en curso, las métricas
   comparadas con tu propia línea base de antes del router, y el historial de decisiones.
+
+## Modelos
+
+El router decide la mayoría de los subagentes con reglas. Para el resto (qué tan grande es un build
+o una review, o una tarea que ninguna regla reconoce) consulta a un **clasificador**. Vos elegís
+cuál: desde opciones en la nube hasta un modelo en tu propio hardware.
+
+| `clasificador` | Dónde corre | Qué es |
+|---|---|---|
+| `jev` (recomendado) | Nube | [Jev](https://typesafe.ai), de TypeSafe AI: un clasificador dedicado con confianza calibrada. Necesita una API key |
+| `haiku` | Nube | Claude Haiku 5.5, por tu sesión de Claude Code. Sin key extra: usa tu suscripción |
+| `local` (experimental) | Tu máquina o tu servidor | Cualquier modelo self-hosted: decision models por la API System One ([llama.cpp](https://github.com/ggml-org/llama.cpp), [Ollama](https://ollama.com)), o un servidor compatible con OpenAI que devuelva logprobs |
+| `reglas` (por defecto) | Ningún lado | Sin modelo: decide una heurística de tamaño |
+
+Con `local`, nada sale del hardware que elijas, y podés elegir o ajustar el modelo vos mismo. Su
+umbral todavía no está calibrado: ver la [configuración](docs/configuration.md#local-classifier-experimental).
+
+### Cómo se comparan
+
+![Banco de clasificadores: acierto, latencia y política completa de reglas, Haiku 5.5 y Jev](docs/assets/selectors-benchmark.svg)
+
+En el [banco](docs/benchmark.md#comparing-selectors) de 729 subagentes reales, una llamada por vez:
+
+| | Acierto solo | Dentro del tope de 1 s | Latencia mediana | Política completa | Costo cada 1.000 llamadas |
+|---|---|---|---|---|---|
+| Jev | 83,8% | 83,8% | 245 ms | 90,8% | ≈ USD 0,017 + salida |
+| Haiku 5.5 | 87,8% | 72,8% | 825 ms | 90,8% | ≈ USD 0,24 (cuota en Claude Max) |
+| Solo reglas | 16,0% | 16,0% | instantáneo | 90,0% | USD 0 |
+
+- **Jev es el más rápido y el único calibrado**: nunca pasó el tope de 1 s, y cuando dice 0,9 o
+  más acierta el 95% de las veces.
+- **Haiku 5.5 es el que más sabe, pero piensa antes de contestar**: un tercio de sus llamadas tarda
+  más de un segundo, y dentro del tope queda al nivel de Jev.
+- **Las reglas hacen casi todo el trabajo**: todas las opciones quedan cerca del 90% en la política
+  completa. El clasificador define velocidad, calibración y costo más que acierto.
 
 ## Requisitos
 
