@@ -23,7 +23,7 @@ horas. Nunca frena el uso.
 | `/router set review opus·max` | Fija un tipo por encima de la política. `review` fija las dos tallas; `review-large` y `review-small`, cada una por separado |
 | `/router reset` | Borra los overrides de la sesión |
 | `/router hot on` · `/router hot off` | Prende o apaga el modo hot (se guarda para las próximas sesiones; apagado por defecto). `/router hot` dice cómo está |
-| `/router bench` | Corre el banco del clasificador (ver abajo) |
+| `/router bench` · `/router bench --suite tipos\|talla\|review\|todas` | Corre el banco del clasificador; con `--suite` guarda una corrida por selector y suite (ver abajo) |
 | `/router history [días]` | Exporta las decisiones de los últimos días (7 si no se dice) a `~/.claude/router-historial.md` |
 | `[pin]` en la description de un subagente | Respeta el modelo que pidió Claude |
 
@@ -61,14 +61,15 @@ el transcript. Sin reasignación no agrega nada.
 ## Clasificadores (fase 2)
 
 Cuando las reglas no alcanzan para saber el tipo (un build sin talla clara, o una description sin
-regla) y, con `jev`, también para las reviews por description, decide un clasificador. Se configura en `/config`:
+regla) y, con `jev` o `local`, también para las reviews por description, decide un clasificador. Se configura en `/config`:
 
 | Campo | Default | Qué hace |
 |---|---|---|
-| `clasificador` | `reglas` | Quién decide: `reglas` (el respaldo, sin modelo), `haiku` o `jev` |
-| `sombra` | `off` | Corre otro clasificador en paralelo, sin afectar la decisión: `off`, `haiku` o `jev` |
+| `clasificador` | `reglas` | Quién decide: `reglas` (el respaldo, sin modelo), `haiku`, `jev` o `local` (experimental) |
+| `sombra` | `off` | Corre otro clasificador en paralelo, sin afectar la decisión: `off`, `haiku`, `jev` o `local` |
 | `jevApiKey` | (vacío) | La key de Jev (TypeSafe). Se guarda como dato sensible |
 | `jevUmbral` | `0.7` | En la talla de los builds, con menos confianza que esto decide el respaldo. También decide en las reviews por description cuando el clasificador es Jev: con menos confianza queda la regla. Y se aplica a la talla de las reviews: con menos confianza queda `review-small`. Sin regla, decide Jev igual y el motivo lo marca (`sin umbral`). Se acota a [0, 1]. Calibrado en el banco del 2026-10-07 para la talla y, para las reviews, en `bench/corridas/2026-10-09-1339-jev-todos-analisis.md` (0.7 simulado el 2026-10-09) |
+| `localProtocolo`, `localUrl`, `localModelo`, `localApiKey`, `localUmbral` | `systemone`, —, —, —, `0.7` | El clasificador `local` (experimental, ver abajo) |
 | `topeMs` | `1000` | Si el clasificador tarda más, decide el respaldo. Se acota a [50, 8000] |
 
 **La key de Jev:** `/plugin configure` → `jevApiKey`, o la variable de entorno `JEV_API_KEY`.
@@ -76,14 +77,23 @@ Sin key, `clasificador: jev` usa Haiku y `sombra: jev` queda desactivada; las do
 avisan con un toast.
 
 **Reviews:** cuando una regla de description (no de `subagentType`) dice `review-final`, `review`
-o `re-review`, y `clasificador` es `jev` (con key), el router consulta a Jev con las 9 etiquetas.
+o `re-review`, y `clasificador` es `jev` (con key) o `local`, el router consulta a ese clasificador con las 9 etiquetas.
 Con `reglas` o `haiku` como principal, aunque haya sombra, no consulta a Jev por la familia y queda la regla; la talla de la review sí se consulta con `haiku` o con sombra.
 Si Jev está seguro (confianza ≥ `jevUmbral`), decide él, aunque cambie el tipo: motivo
 `jev → review (0.98)`. Si duda, queda la regla: `jev dudó (0.55): queda la regla`. Si el
 clasificador cayó al respaldo (tope o error), queda la regla y el motivo lo dice: `respaldo (tardó
 más de 1000 ms): queda la regla`.
 
-**Modo sombra:** con `sombra` en `haiku` o `jev`, cada vez que hace falta un clasificador corre
+**El clasificador `local` (experimental):** le pregunta a un modelo que corrés vos, por System One
+(la API de Jev, que sirven `llama-server` de llama.cpp y Ollama con decision models) o por OpenAI
+(`/v1/chat/completions` con logprobs). Decide como Jev, reviews por description incluidas, con su
+propio umbral `localUmbral` (0.7, sin calibrar). Sin `localUrl` o `localModelo` avisa con un toast
+y decide el respaldo, no Haiku. Los motivos dicen `local → …`, `local dudó (…)` y
+`local (sin umbral) → …`. Cómo configurarlo, con ejemplos para llama.cpp y Ollama, y cómo elegir
+el umbral: [docs/configuration.md](../docs/configuration.md#local-classifier-experimental) (en
+inglés).
+
+**Modo sombra:** con `sombra` en `haiku`, `jev` o `local`, cada vez que hace falta un clasificador corre
 también el de sombra, en segundo plano y con un límite de 60 s (no `topeMs`), y guarda las dos
 respuestas en el store del plugin (las últimas 500). Los números se ven en `/router` → pestaña
 **Métricas vs tu base** → **CLASIFICADORES**, por par principal→sombra: cuántas veces coinciden
@@ -93,8 +103,11 @@ tráfico real antes de cambiar `clasificador`.
 
 **Banco:** `/router bench [--max N] [--solo haiku|jev]` corre los clasificadores sobre los
 subagentes reales de `bench/casos.json` y `node bench/comparar.mjs` los compara contra una
-referencia y contra el respaldo. Cómo usarlo y cómo leer la tabla:
-[bench/README.md](../bench/README.md).
+referencia y contra el respaldo. Con `--suite tipos|talla|review|todas` (y `--solo haiku|jev|local`,
+`--concurrencia N`, `--tokens N`) guarda una corrida por selector y suite, y `node bench/informe.mjs`
+compara reglas, Haiku, Jev y local: acierto, latencia, calibración, política completa y precio.
+Jev y el local también se corren desde Node con `node bench/selectores.mjs`. Por defecto el banco
+hace una llamada a la vez. Cómo usarlo y cómo leer la tabla: [bench/README.md](../bench/README.md).
 
 ## Métricas (fase 3)
 

@@ -22,6 +22,17 @@ All notable changes to this project are documented here. The format follows
   the fallback alone (most reviews take the size of the build of the same task). 192 of the 225
   are right by construction (the label comes from the same build); on the 33 hand-made labels,
   still unvalidated, the policy gets 24 right (72.7%).
+- Experimental local classifier: `clasificador: local` and `sombra: local` ask a model you run
+  yourself, over System One or OpenAI chat completions (llama.cpp `llama-server`, Ollama). New
+  `/config` options `localProtocolo`, `localUrl`, `localModelo`, `localApiKey` (or `LOCAL_API_KEY`)
+  and `localUmbral` (0.7, not calibrated). It decides reviews by description like Jev, and the
+  history reasons read `local → …`, `local dudó (…)` and `local (sin umbral) → …`.
+- `/router bench --suite tipos|talla|review|todas`, with `--solo local`, `--concurrencia N` and
+  `--tokens N` (Haiku token sample): one run file per selector and suite.
+- `bench/selectores.mjs` runs Jev or a local server on the suites, and `bench/informe.mjs`
+  compares every selector: accuracy, latency, calibration, full policy simulation and price (from
+  `bench/precios.json`). `bench/lib/servidor-falso.mjs` is a fake server for testing, and
+  `bench/lib/politica.mjs` holds the policy simulations the scripts share.
 
 ### Changed
 
@@ -30,6 +41,13 @@ All notable changes to this project are documented here. The format follows
 - `modeloReview` becomes legacy, and `/router set review` sets both sizes.
 - With `clasificador: haiku` or with a shadow classifier, reviews also ask the classifier (or the
   shadow) for their size.
+- `/router bench` runs one call at a time by default (it was 3), so latencies are closer to
+  production. Use `--concurrencia N` to change it.
+
+### Removed
+
+- `bench/jev-todos.mjs`: `bench/selectores.mjs --selector jev` replaces it. The old runs stay in
+  `bench/corridas/` and `bench/analizar-jev-todos.mjs` still reads them.
 
 ## [0.2.0] - 2026-10-14
 

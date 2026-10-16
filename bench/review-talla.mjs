@@ -7,46 +7,13 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { tareaDe } from '../router/src/registro.ts'
 import { preguntaJev } from '../router/src/clasificadores/preguntas.ts'
+import { TALLAS_REVIEW as TALLAS, pasosDeReview, politicaTallaReview as politica, avisarSiDiverge } from './lib/politica.mjs'
 
-// Copiados de router/src/tallaReview.ts (ese archivo importa valores sin extensión y Node no lo
-// puede importar desde bench/). Si cambian allá, cambialos acá.
-const ALCANCE_AMPLIO = /\b(bloque|block|feature|fase|phase|integraci[oó]n|integration|rama|branch|merge)\b/i
-const FIN = '(?!\\d|[a-z]|\\.\\d)'
-const TAREA_NUMERADA = /\b(?:task|tarea)s?\s+\d+[a-z]?|\bT\d+[a-z]?\b/i
-const RANGOS_TXT = [
-  String.raw`\b(?:tasks?|tareas?)\s+(\d+)[a-z]?\s*(?:-|–|a|to|y|and|,)\s*(\d+)`,
-  String.raw`\bT(\d+)\s*-\s*T?(\d+)`,
-]
-const RANGOS = RANGOS_TXT.map(t => new RegExp(t + FIN, 'i'))
-
-// Avisa si lo copiado dejó de coincidir con router/src/tallaReview.ts (leído como texto, sin importarlo).
-{
-  const fuente = fs.readFileSync(fileURLToPath(new URL('../router/src/tallaReview.ts', import.meta.url)), 'utf8')
-  const doble = t => t.replace(/\\/g, '\\\\') // en el .ts están dentro de un string, con la barra duplicada
-  const esperados = {
-    ALCANCE_AMPLIO: `/${ALCANCE_AMPLIO.source}/i`,
-    TAREA_NUMERADA: `/${TAREA_NUMERADA.source}/i`,
-    FIN: `'${doble(FIN)}'`,
-    'RANGOS[0]': '`' + doble(RANGOS_TXT[0]) + '${FIN}`',
-    'RANGOS[1]': '`' + doble(RANGOS_TXT[1]) + '${FIN}`',
-  }
-  for (const [nombre, texto] of Object.entries(esperados)) {
-    if (!fuente.includes(texto)) console.warn(`AVISO: ${nombre} cambió en router/src/tallaReview.ts; actualizá la copia en bench/review-talla.mjs.`)
-  }
-}
-function rangoDeTareas(d) {
-  for (const re of RANGOS) {
-    const m = re.exec(d)
-    if (m && Number(m[2]) > Number(m[1])) return m[0]
-  }
-  return null
-}
+avisarSiDiverge()
 
 const JEV_URL = 'https://api.typesafe.ai/v1/systemone'
 const JEV_MODELO = 'jev-1.13.0'
-const TALLAS = ['review-large', 'review-small']
 const RESPALDO = 'review-small'
 const UMBRAL = 0.7
 const CONCURRENCIA = 3
@@ -57,29 +24,7 @@ const { casos } = JSON.parse(fs.readFileSync(path.join(aqui, 'casos.json'), 'utf
 const etiquetas = JSON.parse(fs.readFileSync(path.join(aqui, 'etiquetas.json'), 'utf8'))
 const ref = JSON.parse(fs.readFileSync(path.join(aqui, 'etiquetas-review.json'), 'utf8'))
 
-/**
- * La talla del build del mismo proyecto y la misma tareaDe, como tallaBuildDe del router: el más cercano
- * anterior a la review. El router en vivo solo ve los subagentes que ya corrieron, así que no mira hacia adelante.
- */
-function tallaBuild(i) {
-  const c = casos[i]
-  const t = tareaDe(c.descripcion)
-  if (!t) return null
-  const es = b => b.proyecto === c.proyecto && /^build-/.test(etiquetas[b.id]?.tipo ?? '') && tareaDe(b.descripcion) === t
-  for (let j = i - 1; j >= 0; j--) if (es(casos[j])) return etiquetas[casos[j].id].tipo
-  return null
-}
-
-const reviews = casos
-  .map((c, i) => ({ c, i }))
-  .filter(({ c }) => ref[c.id])
-  .map(({ c, i }) => {
-    const d = c.descripcion
-    const rango = rangoDeTareas(d)
-    const palabra = TAREA_NUMERADA.test(d) ? null : ALCANCE_AMPLIO.exec(d)?.[0] ?? null
-    const build = tallaBuild(i)
-    return { c, ref: ref[c.id], rango, palabra, build: build ? build.replace('build-', 'review-') : null }
-  })
+const reviews = pasosDeReview(casos, etiquetas, ref)
 const sinRef = casos.filter(c => etiquetas[c.id]?.tipo === 'review' && !ref[c.id]).length
 
 // --- Jev ---
@@ -121,14 +66,6 @@ const jevSin = id => jev.get(id)?.tipo ?? RESPALDO
 const jevCon = id => {
   const j = jev.get(id)
   return j?.tipo && j.confianza >= UMBRAL ? j.tipo : RESPALDO
-}
-
-// --- La política de tallaDeReview: rango → build → palabra (sin tarea numerada) → clasificador ---
-function politica(r, clasificador) {
-  if (r.rango) return { tipo: 'review-large', paso: 'alcance' }
-  if (r.build) return { tipo: r.build, paso: 'build' }
-  if (r.palabra) return { tipo: 'review-large', paso: 'alcance' }
-  return { tipo: clasificador(r.c.id), paso: 'clasificador' }
 }
 
 // --- Tabla ---

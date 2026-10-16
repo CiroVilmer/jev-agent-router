@@ -1,0 +1,5120 @@
+{
+ "fecha": "2026-10-16T12:30:33.988Z",
+ "selector": "haiku",
+ "suite": "tipos",
+ "modelo": "haiku",
+ "protocolo": null,
+ "url": null,
+ "hardware": null,
+ "concurrencia": 1,
+ "tokens": {
+  "muestra": 20,
+  "entrada": 824.85,
+  "salida": 323.55
+ },
+ "resultados": [
+  {
+   "id": "c0001",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 814,
+   "error": null
+  },
+  {
+   "id": "c0002",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 776,
+   "error": null
+  },
+  {
+   "id": "c0003",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 775,
+   "error": null
+  },
+  {
+   "id": "c0004",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 2120,
+   "error": null
+  },
+  {
+   "id": "c0005",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1988,
+   "error": null
+  },
+  {
+   "id": "c0006",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1819,
+   "error": null
+  },
+  {
+   "id": "c0007",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1293,
+   "error": null
+  },
+  {
+   "id": "c0008",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1590,
+   "error": null
+  },
+  {
+   "id": "c0009",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2774,
+   "error": null
+  },
+  {
+   "id": "c0010",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 739,
+   "error": null
+  },
+  {
+   "id": "c0011",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2274,
+   "error": null
+  },
+  {
+   "id": "c0012",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 3609,
+   "error": null
+  },
+  {
+   "id": "c0013",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2598,
+   "error": null
+  },
+  {
+   "id": "c0014",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2660,
+   "error": null
+  },
+  {
+   "id": "c0015",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1581,
+   "error": null
+  },
+  {
+   "id": "c0016",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1503,
+   "error": null
+  },
+  {
+   "id": "c0017",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 781,
+   "error": null
+  },
+  {
+   "id": "c0018",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1262,
+   "error": null
+  },
+  {
+   "id": "c0019",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1249,
+   "error": null
+  },
+  {
+   "id": "c0020",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1613,
+   "error": null
+  },
+  {
+   "id": "c0021",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1562,
+   "error": null
+  },
+  {
+   "id": "c0022",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1029,
+   "error": null
+  },
+  {
+   "id": "c0023",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 832,
+   "error": null
+  },
+  {
+   "id": "c0024",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 729,
+   "error": null
+  },
+  {
+   "id": "c0025",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 850,
+   "error": null
+  },
+  {
+   "id": "c0026",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 751,
+   "error": null
+  },
+  {
+   "id": "c0027",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1263,
+   "error": null
+  },
+  {
+   "id": "c0028",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 747,
+   "error": null
+  },
+  {
+   "id": "c0029",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 738,
+   "error": null
+  },
+  {
+   "id": "c0030",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 733,
+   "error": null
+  },
+  {
+   "id": "c0031",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 779,
+   "error": null
+  },
+  {
+   "id": "c0032",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 769,
+   "error": null
+  },
+  {
+   "id": "c0033",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 771,
+   "error": null
+  },
+  {
+   "id": "c0034",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 938,
+   "error": null
+  },
+  {
+   "id": "c0035",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1826,
+   "error": null
+  },
+  {
+   "id": "c0036",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 826,
+   "error": null
+  },
+  {
+   "id": "c0037",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1785,
+   "error": null
+  },
+  {
+   "id": "c0038",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 758,
+   "error": null
+  },
+  {
+   "id": "c0039",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 762,
+   "error": null
+  },
+  {
+   "id": "c0040",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 768,
+   "error": null
+  },
+  {
+   "id": "c0041",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 792,
+   "error": null
+  },
+  {
+   "id": "c0042",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1520,
+   "error": null
+  },
+  {
+   "id": "c0043",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 705,
+   "error": null
+  },
+  {
+   "id": "c0044",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1540,
+   "error": null
+  },
+  {
+   "id": "c0045",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 965,
+   "error": null
+  },
+  {
+   "id": "c0046",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 803,
+   "error": null
+  },
+  {
+   "id": "c0047",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1024,
+   "error": null
+  },
+  {
+   "id": "c0048",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1710,
+   "error": null
+  },
+  {
+   "id": "c0049",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1095,
+   "error": null
+  },
+  {
+   "id": "c0050",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 1543,
+   "error": null
+  },
+  {
+   "id": "c0051",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 728,
+   "error": null
+  },
+  {
+   "id": "c0052",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 861,
+   "error": null
+  },
+  {
+   "id": "c0053",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 769,
+   "error": null
+  },
+  {
+   "id": "c0054",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 767,
+   "error": null
+  },
+  {
+   "id": "c0055",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1827,
+   "error": null
+  },
+  {
+   "id": "c0056",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2173,
+   "error": null
+  },
+  {
+   "id": "c0057",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1750,
+   "error": null
+  },
+  {
+   "id": "c0058",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 923,
+   "error": null
+  },
+  {
+   "id": "c0059",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 772,
+   "error": null
+  },
+  {
+   "id": "c0060",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 995,
+   "error": null
+  },
+  {
+   "id": "c0061",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1160,
+   "error": null
+  },
+  {
+   "id": "c0062",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 757,
+   "error": null
+  },
+  {
+   "id": "c0063",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 767,
+   "error": null
+  },
+  {
+   "id": "c0064",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 754,
+   "error": null
+  },
+  {
+   "id": "c0065",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 3889,
+   "error": null
+  },
+  {
+   "id": "c0066",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2355,
+   "error": null
+  },
+  {
+   "id": "c0067",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2503,
+   "error": null
+  },
+  {
+   "id": "c0068",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 754,
+   "error": null
+  },
+  {
+   "id": "c0069",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 747,
+   "error": null
+  },
+  {
+   "id": "c0070",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1134,
+   "error": null
+  },
+  {
+   "id": "c0071",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 742,
+   "error": null
+  },
+  {
+   "id": "c0072",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 797,
+   "error": null
+  },
+  {
+   "id": "c0073",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 831,
+   "error": null
+  },
+  {
+   "id": "c0074",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 782,
+   "error": null
+  },
+  {
+   "id": "c0075",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 750,
+   "error": null
+  },
+  {
+   "id": "c0076",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 995,
+   "error": null
+  },
+  {
+   "id": "c0077",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 731,
+   "error": null
+  },
+  {
+   "id": "c0078",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1156,
+   "error": null
+  },
+  {
+   "id": "c0079",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1187,
+   "error": null
+  },
+  {
+   "id": "c0080",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 795,
+   "error": null
+  },
+  {
+   "id": "c0081",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 752,
+   "error": null
+  },
+  {
+   "id": "c0082",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 803,
+   "error": null
+  },
+  {
+   "id": "c0083",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 782,
+   "error": null
+  },
+  {
+   "id": "c0084",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2071,
+   "error": null
+  },
+  {
+   "id": "c0085",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 699,
+   "error": null
+  },
+  {
+   "id": "c0086",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 778,
+   "error": null
+  },
+  {
+   "id": "c0087",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 773,
+   "error": null
+  },
+  {
+   "id": "c0088",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 741,
+   "error": null
+  },
+  {
+   "id": "c0089",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 766,
+   "error": null
+  },
+  {
+   "id": "c0090",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2301,
+   "error": null
+  },
+  {
+   "id": "c0091",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 855,
+   "error": null
+  },
+  {
+   "id": "c0092",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 765,
+   "error": null
+  },
+  {
+   "id": "c0093",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1725,
+   "error": null
+  },
+  {
+   "id": "c0094",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 757,
+   "error": null
+  },
+  {
+   "id": "c0095",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 799,
+   "error": null
+  },
+  {
+   "id": "c0096",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 2316,
+   "error": null
+  },
+  {
+   "id": "c0097",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1758,
+   "error": null
+  },
+  {
+   "id": "c0098",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 779,
+   "error": null
+  },
+  {
+   "id": "c0099",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1410,
+   "error": null
+  },
+  {
+   "id": "c0100",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 884,
+   "error": null
+  },
+  {
+   "id": "c0101",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 900,
+   "error": null
+  },
+  {
+   "id": "c0102",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1275,
+   "error": null
+  },
+  {
+   "id": "c0103",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 961,
+   "error": null
+  },
+  {
+   "id": "c0104",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 996,
+   "error": null
+  },
+  {
+   "id": "c0105",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1280,
+   "error": null
+  },
+  {
+   "id": "c0106",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 753,
+   "error": null
+  },
+  {
+   "id": "c0107",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 864,
+   "error": null
+  },
+  {
+   "id": "c0108",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1278,
+   "error": null
+  },
+  {
+   "id": "c0109",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 775,
+   "error": null
+  },
+  {
+   "id": "c0110",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 739,
+   "error": null
+  },
+  {
+   "id": "c0111",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 773,
+   "error": null
+  },
+  {
+   "id": "c0112",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 759,
+   "error": null
+  },
+  {
+   "id": "c0113",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 730,
+   "error": null
+  },
+  {
+   "id": "c0114",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1052,
+   "error": null
+  },
+  {
+   "id": "c0115",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 769,
+   "error": null
+  },
+  {
+   "id": "c0116",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 764,
+   "error": null
+  },
+  {
+   "id": "c0117",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 795,
+   "error": null
+  },
+  {
+   "id": "c0118",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1127,
+   "error": null
+  },
+  {
+   "id": "c0119",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 827,
+   "error": null
+  },
+  {
+   "id": "c0120",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 801,
+   "error": null
+  },
+  {
+   "id": "c0121",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 813,
+   "error": null
+  },
+  {
+   "id": "c0122",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 732,
+   "error": null
+  },
+  {
+   "id": "c0123",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 766,
+   "error": null
+  },
+  {
+   "id": "c0124",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 789,
+   "error": null
+  },
+  {
+   "id": "c0125",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1066,
+   "error": null
+  },
+  {
+   "id": "c0126",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 744,
+   "error": null
+  },
+  {
+   "id": "c0127",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 793,
+   "error": null
+  },
+  {
+   "id": "c0128",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 711,
+   "error": null
+  },
+  {
+   "id": "c0129",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1164,
+   "error": null
+  },
+  {
+   "id": "c0130",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1135,
+   "error": null
+  },
+  {
+   "id": "c0131",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1209,
+   "error": null
+  },
+  {
+   "id": "c0132",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 749,
+   "error": null
+  },
+  {
+   "id": "c0133",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 754,
+   "error": null
+  },
+  {
+   "id": "c0134",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 742,
+   "error": null
+  },
+  {
+   "id": "c0135",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1172,
+   "error": null
+  },
+  {
+   "id": "c0136",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 758,
+   "error": null
+  },
+  {
+   "id": "c0137",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 749,
+   "error": null
+  },
+  {
+   "id": "c0138",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 757,
+   "error": null
+  },
+  {
+   "id": "c0139",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1339,
+   "error": null
+  },
+  {
+   "id": "c0140",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 999,
+   "error": null
+  },
+  {
+   "id": "c0141",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1404,
+   "error": null
+  },
+  {
+   "id": "c0142",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 728,
+   "error": null
+  },
+  {
+   "id": "c0143",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 859,
+   "error": null
+  },
+  {
+   "id": "c0144",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1222,
+   "error": null
+  },
+  {
+   "id": "c0145",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 838,
+   "error": null
+  },
+  {
+   "id": "c0146",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 838,
+   "error": null
+  },
+  {
+   "id": "c0147",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 744,
+   "error": null
+  },
+  {
+   "id": "c0148",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 940,
+   "error": null
+  },
+  {
+   "id": "c0149",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1212,
+   "error": null
+  },
+  {
+   "id": "c0150",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1075,
+   "error": null
+  },
+  {
+   "id": "c0151",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1369,
+   "error": null
+  },
+  {
+   "id": "c0152",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 741,
+   "error": null
+  },
+  {
+   "id": "c0153",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 881,
+   "error": null
+  },
+  {
+   "id": "c0154",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 756,
+   "error": null
+  },
+  {
+   "id": "c0155",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 730,
+   "error": null
+  },
+  {
+   "id": "c0156",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 717,
+   "error": null
+  },
+  {
+   "id": "c0157",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1290,
+   "error": null
+  },
+  {
+   "id": "c0158",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 784,
+   "error": null
+  },
+  {
+   "id": "c0159",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 773,
+   "error": null
+  },
+  {
+   "id": "c0160",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 920,
+   "error": null
+  },
+  {
+   "id": "c0161",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 782,
+   "error": null
+  },
+  {
+   "id": "c0162",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 820,
+   "error": null
+  },
+  {
+   "id": "c0163",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1097,
+   "error": null
+  },
+  {
+   "id": "c0164",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1987,
+   "error": null
+  },
+  {
+   "id": "c0165",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 800,
+   "error": null
+  },
+  {
+   "id": "c0166",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 783,
+   "error": null
+  },
+  {
+   "id": "c0167",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 775,
+   "error": null
+  },
+  {
+   "id": "c0168",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 3530,
+   "error": null
+  },
+  {
+   "id": "c0169",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 732,
+   "error": null
+  },
+  {
+   "id": "c0170",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1268,
+   "error": null
+  },
+  {
+   "id": "c0171",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1245,
+   "error": null
+  },
+  {
+   "id": "c0172",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 787,
+   "error": null
+  },
+  {
+   "id": "c0173",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 958,
+   "error": null
+  },
+  {
+   "id": "c0174",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 768,
+   "error": null
+  },
+  {
+   "id": "c0175",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 827,
+   "error": null
+  },
+  {
+   "id": "c0176",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 765,
+   "error": null
+  },
+  {
+   "id": "c0177",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 789,
+   "error": null
+  },
+  {
+   "id": "c0178",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 747,
+   "error": null
+  },
+  {
+   "id": "c0179",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 706,
+   "error": null
+  },
+  {
+   "id": "c0180",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 819,
+   "error": null
+  },
+  {
+   "id": "c0181",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 934,
+   "error": null
+  },
+  {
+   "id": "c0182",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 730,
+   "error": null
+  },
+  {
+   "id": "c0183",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1448,
+   "error": null
+  },
+  {
+   "id": "c0184",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 743,
+   "error": null
+  },
+  {
+   "id": "c0185",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 772,
+   "error": null
+  },
+  {
+   "id": "c0186",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 741,
+   "error": null
+  },
+  {
+   "id": "c0187",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 739,
+   "error": null
+  },
+  {
+   "id": "c0188",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2076,
+   "error": null
+  },
+  {
+   "id": "c0189",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 772,
+   "error": null
+  },
+  {
+   "id": "c0190",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1184,
+   "error": null
+  },
+  {
+   "id": "c0191",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 857,
+   "error": null
+  },
+  {
+   "id": "c0192",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 915,
+   "error": null
+  },
+  {
+   "id": "c0193",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 757,
+   "error": null
+  },
+  {
+   "id": "c0194",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 747,
+   "error": null
+  },
+  {
+   "id": "c0195",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 785,
+   "error": null
+  },
+  {
+   "id": "c0196",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 790,
+   "error": null
+  },
+  {
+   "id": "c0197",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1489,
+   "error": null
+  },
+  {
+   "id": "c0198",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 775,
+   "error": null
+  },
+  {
+   "id": "c0199",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 768,
+   "error": null
+  },
+  {
+   "id": "c0200",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 824,
+   "error": null
+  },
+  {
+   "id": "c0201",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 745,
+   "error": null
+  },
+  {
+   "id": "c0202",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 833,
+   "error": null
+  },
+  {
+   "id": "c0203",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1308,
+   "error": null
+  },
+  {
+   "id": "c0204",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 828,
+   "error": null
+  },
+  {
+   "id": "c0205",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1912,
+   "error": null
+  },
+  {
+   "id": "c0206",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 819,
+   "error": null
+  },
+  {
+   "id": "c0207",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 809,
+   "error": null
+  },
+  {
+   "id": "c0208",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 845,
+   "error": null
+  },
+  {
+   "id": "c0209",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 864,
+   "error": null
+  },
+  {
+   "id": "c0210",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 767,
+   "error": null
+  },
+  {
+   "id": "c0211",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 740,
+   "error": null
+  },
+  {
+   "id": "c0212",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 799,
+   "error": null
+  },
+  {
+   "id": "c0213",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1188,
+   "error": null
+  },
+  {
+   "id": "c0214",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1015,
+   "error": null
+  },
+  {
+   "id": "c0215",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 819,
+   "error": null
+  },
+  {
+   "id": "c0216",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1029,
+   "error": null
+  },
+  {
+   "id": "c0217",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1254,
+   "error": null
+  },
+  {
+   "id": "c0218",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 763,
+   "error": null
+  },
+  {
+   "id": "c0219",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1541,
+   "error": null
+  },
+  {
+   "id": "c0220",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 2117,
+   "error": null
+  },
+  {
+   "id": "c0221",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1447,
+   "error": null
+  },
+  {
+   "id": "c0222",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 716,
+   "error": null
+  },
+  {
+   "id": "c0223",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 967,
+   "error": null
+  },
+  {
+   "id": "c0224",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 735,
+   "error": null
+  },
+  {
+   "id": "c0225",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 783,
+   "error": null
+  },
+  {
+   "id": "c0226",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 762,
+   "error": null
+  },
+  {
+   "id": "c0227",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 758,
+   "error": null
+  },
+  {
+   "id": "c0228",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 762,
+   "error": null
+  },
+  {
+   "id": "c0229",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 797,
+   "error": null
+  },
+  {
+   "id": "c0230",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2312,
+   "error": null
+  },
+  {
+   "id": "c0231",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 752,
+   "error": null
+  },
+  {
+   "id": "c0232",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 774,
+   "error": null
+  },
+  {
+   "id": "c0233",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 799,
+   "error": null
+  },
+  {
+   "id": "c0234",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 841,
+   "error": null
+  },
+  {
+   "id": "c0235",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 868,
+   "error": null
+  },
+  {
+   "id": "c0236",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 769,
+   "error": null
+  },
+  {
+   "id": "c0237",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 744,
+   "error": null
+  },
+  {
+   "id": "c0238",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 792,
+   "error": null
+  },
+  {
+   "id": "c0239",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 759,
+   "error": null
+  },
+  {
+   "id": "c0240",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 769,
+   "error": null
+  },
+  {
+   "id": "c0241",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 876,
+   "error": null
+  },
+  {
+   "id": "c0242",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 774,
+   "error": null
+  },
+  {
+   "id": "c0243",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 771,
+   "error": null
+  },
+  {
+   "id": "c0244",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 773,
+   "error": null
+  },
+  {
+   "id": "c0245",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 765,
+   "error": null
+  },
+  {
+   "id": "c0246",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 716,
+   "error": null
+  },
+  {
+   "id": "c0247",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1320,
+   "error": null
+  },
+  {
+   "id": "c0248",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1038,
+   "error": null
+  },
+  {
+   "id": "c0249",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 725,
+   "error": null
+  },
+  {
+   "id": "c0250",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1114,
+   "error": null
+  },
+  {
+   "id": "c0251",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 868,
+   "error": null
+  },
+  {
+   "id": "c0252",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1993,
+   "error": null
+  },
+  {
+   "id": "c0253",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1909,
+   "error": null
+  },
+  {
+   "id": "c0254",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 765,
+   "error": null
+  },
+  {
+   "id": "c0255",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1684,
+   "error": null
+  },
+  {
+   "id": "c0256",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 790,
+   "error": null
+  },
+  {
+   "id": "c0257",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1577,
+   "error": null
+  },
+  {
+   "id": "c0258",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 871,
+   "error": null
+  },
+  {
+   "id": "c0259",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 925,
+   "error": null
+  },
+  {
+   "id": "c0260",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 853,
+   "error": null
+  },
+  {
+   "id": "c0261",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1100,
+   "error": null
+  },
+  {
+   "id": "c0262",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 807,
+   "error": null
+  },
+  {
+   "id": "c0263",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1090,
+   "error": null
+  },
+  {
+   "id": "c0264",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 718,
+   "error": null
+  },
+  {
+   "id": "c0265",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 733,
+   "error": null
+  },
+  {
+   "id": "c0266",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 898,
+   "error": null
+  },
+  {
+   "id": "c0267",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 745,
+   "error": null
+  },
+  {
+   "id": "c0268",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1090,
+   "error": null
+  },
+  {
+   "id": "c0269",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 783,
+   "error": null
+  },
+  {
+   "id": "c0270",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 983,
+   "error": null
+  },
+  {
+   "id": "c0271",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 763,
+   "error": null
+  },
+  {
+   "id": "c0272",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 732,
+   "error": null
+  },
+  {
+   "id": "c0273",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 712,
+   "error": null
+  },
+  {
+   "id": "c0274",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 832,
+   "error": null
+  },
+  {
+   "id": "c0275",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1423,
+   "error": null
+  },
+  {
+   "id": "c0276",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1235,
+   "error": null
+  },
+  {
+   "id": "c0277",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 970,
+   "error": null
+  },
+  {
+   "id": "c0278",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1413,
+   "error": null
+  },
+  {
+   "id": "c0279",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2563,
+   "error": null
+  },
+  {
+   "id": "c0280",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 2339,
+   "error": null
+  },
+  {
+   "id": "c0281",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1613,
+   "error": null
+  },
+  {
+   "id": "c0282",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 748,
+   "error": null
+  },
+  {
+   "id": "c0283",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1001,
+   "error": null
+  },
+  {
+   "id": "c0284",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 751,
+   "error": null
+  },
+  {
+   "id": "c0285",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 756,
+   "error": null
+  },
+  {
+   "id": "c0286",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2340,
+   "error": null
+  },
+  {
+   "id": "c0287",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 788,
+   "error": null
+  },
+  {
+   "id": "c0288",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 750,
+   "error": null
+  },
+  {
+   "id": "c0289",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 760,
+   "error": null
+  },
+  {
+   "id": "c0290",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 748,
+   "error": null
+  },
+  {
+   "id": "c0291",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1492,
+   "error": null
+  },
+  {
+   "id": "c0292",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 827,
+   "error": null
+  },
+  {
+   "id": "c0293",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1324,
+   "error": null
+  },
+  {
+   "id": "c0294",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 863,
+   "error": null
+  },
+  {
+   "id": "c0295",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1195,
+   "error": null
+  },
+  {
+   "id": "c0296",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 746,
+   "error": null
+  },
+  {
+   "id": "c0297",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1136,
+   "error": null
+  },
+  {
+   "id": "c0298",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1222,
+   "error": null
+  },
+  {
+   "id": "c0299",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 902,
+   "error": null
+  },
+  {
+   "id": "c0300",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 796,
+   "error": null
+  },
+  {
+   "id": "c0301",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 761,
+   "error": null
+  },
+  {
+   "id": "c0302",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 796,
+   "error": null
+  },
+  {
+   "id": "c0303",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 714,
+   "error": null
+  },
+  {
+   "id": "c0304",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 731,
+   "error": null
+  },
+  {
+   "id": "c0305",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 740,
+   "error": null
+  },
+  {
+   "id": "c0306",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 792,
+   "error": null
+  },
+  {
+   "id": "c0307",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 783,
+   "error": null
+  },
+  {
+   "id": "c0308",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 784,
+   "error": null
+  },
+  {
+   "id": "c0309",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 800,
+   "error": null
+  },
+  {
+   "id": "c0310",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 803,
+   "error": null
+  },
+  {
+   "id": "c0311",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 789,
+   "error": null
+  },
+  {
+   "id": "c0312",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 781,
+   "error": null
+  },
+  {
+   "id": "c0313",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 714,
+   "error": null
+  },
+  {
+   "id": "c0314",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 849,
+   "error": null
+  },
+  {
+   "id": "c0315",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1044,
+   "error": null
+  },
+  {
+   "id": "c0316",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 759,
+   "error": null
+  },
+  {
+   "id": "c0317",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1377,
+   "error": null
+  },
+  {
+   "id": "c0318",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1459,
+   "error": null
+  },
+  {
+   "id": "c0319",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 726,
+   "error": null
+  },
+  {
+   "id": "c0320",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1406,
+   "error": null
+  },
+  {
+   "id": "c0321",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 731,
+   "error": null
+  },
+  {
+   "id": "c0322",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 766,
+   "error": null
+  },
+  {
+   "id": "c0323",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1630,
+   "error": null
+  },
+  {
+   "id": "c0324",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 721,
+   "error": null
+  },
+  {
+   "id": "c0325",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 2252,
+   "error": null
+  },
+  {
+   "id": "c0326",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1410,
+   "error": null
+  },
+  {
+   "id": "c0327",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1007,
+   "error": null
+  },
+  {
+   "id": "c0328",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1671,
+   "error": null
+  },
+  {
+   "id": "c0329",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 2085,
+   "error": null
+  },
+  {
+   "id": "c0330",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 3438,
+   "error": null
+  },
+  {
+   "id": "c0331",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 792,
+   "error": null
+  },
+  {
+   "id": "c0332",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 784,
+   "error": null
+  },
+  {
+   "id": "c0333",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 876,
+   "error": null
+  },
+  {
+   "id": "c0334",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 812,
+   "error": null
+  },
+  {
+   "id": "c0335",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 846,
+   "error": null
+  },
+  {
+   "id": "c0336",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 735,
+   "error": null
+  },
+  {
+   "id": "c0337",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 952,
+   "error": null
+  },
+  {
+   "id": "c0338",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 826,
+   "error": null
+  },
+  {
+   "id": "c0339",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 760,
+   "error": null
+  },
+  {
+   "id": "c0340",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 771,
+   "error": null
+  },
+  {
+   "id": "c0341",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 764,
+   "error": null
+  },
+  {
+   "id": "c0342",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 700,
+   "error": null
+  },
+  {
+   "id": "c0343",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 863,
+   "error": null
+  },
+  {
+   "id": "c0344",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 763,
+   "error": null
+  },
+  {
+   "id": "c0345",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 792,
+   "error": null
+  },
+  {
+   "id": "c0346",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 759,
+   "error": null
+  },
+  {
+   "id": "c0347",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 856,
+   "error": null
+  },
+  {
+   "id": "c0348",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 823,
+   "error": null
+  },
+  {
+   "id": "c0349",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 851,
+   "error": null
+  },
+  {
+   "id": "c0350",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 962,
+   "error": null
+  },
+  {
+   "id": "c0351",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 908,
+   "error": null
+  },
+  {
+   "id": "c0352",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 868,
+   "error": null
+  },
+  {
+   "id": "c0353",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 767,
+   "error": null
+  },
+  {
+   "id": "c0354",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 767,
+   "error": null
+  },
+  {
+   "id": "c0355",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1644,
+   "error": null
+  },
+  {
+   "id": "c0356",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 743,
+   "error": null
+  },
+  {
+   "id": "c0357",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 738,
+   "error": null
+  },
+  {
+   "id": "c0358",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 753,
+   "error": null
+  },
+  {
+   "id": "c0359",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1021,
+   "error": null
+  },
+  {
+   "id": "c0360",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 963,
+   "error": null
+  },
+  {
+   "id": "c0361",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 749,
+   "error": null
+  },
+  {
+   "id": "c0362",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 825,
+   "error": null
+  },
+  {
+   "id": "c0363",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 953,
+   "error": null
+  },
+  {
+   "id": "c0364",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 794,
+   "error": null
+  },
+  {
+   "id": "c0365",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1340,
+   "error": null
+  },
+  {
+   "id": "c0366",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1251,
+   "error": null
+  },
+  {
+   "id": "c0367",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1020,
+   "error": null
+  },
+  {
+   "id": "c0368",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 981,
+   "error": null
+  },
+  {
+   "id": "c0369",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 750,
+   "error": null
+  },
+  {
+   "id": "c0370",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1201,
+   "error": null
+  },
+  {
+   "id": "c0371",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1134,
+   "error": null
+  },
+  {
+   "id": "c0372",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1280,
+   "error": null
+  },
+  {
+   "id": "c0373",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 797,
+   "error": null
+  },
+  {
+   "id": "c0374",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 814,
+   "error": null
+  },
+  {
+   "id": "c0375",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 711,
+   "error": null
+  },
+  {
+   "id": "c0376",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 736,
+   "error": null
+  },
+  {
+   "id": "c0377",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 918,
+   "error": null
+  },
+  {
+   "id": "c0378",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 741,
+   "error": null
+  },
+  {
+   "id": "c0379",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 780,
+   "error": null
+  },
+  {
+   "id": "c0380",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 731,
+   "error": null
+  },
+  {
+   "id": "c0381",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 735,
+   "error": null
+  },
+  {
+   "id": "c0382",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 764,
+   "error": null
+  },
+  {
+   "id": "c0383",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 754,
+   "error": null
+  },
+  {
+   "id": "c0384",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1101,
+   "error": null
+  },
+  {
+   "id": "c0385",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1195,
+   "error": null
+  },
+  {
+   "id": "c0386",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 798,
+   "error": null
+  },
+  {
+   "id": "c0387",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 713,
+   "error": null
+  },
+  {
+   "id": "c0388",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 861,
+   "error": null
+  },
+  {
+   "id": "c0389",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 838,
+   "error": null
+  },
+  {
+   "id": "c0390",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 790,
+   "error": null
+  },
+  {
+   "id": "c0391",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1684,
+   "error": null
+  },
+  {
+   "id": "c0392",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 784,
+   "error": null
+  },
+  {
+   "id": "c0393",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1048,
+   "error": null
+  },
+  {
+   "id": "c0394",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 783,
+   "error": null
+  },
+  {
+   "id": "c0395",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 929,
+   "error": null
+  },
+  {
+   "id": "c0396",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1011,
+   "error": null
+  },
+  {
+   "id": "c0397",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 756,
+   "error": null
+  },
+  {
+   "id": "c0398",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 897,
+   "error": null
+  },
+  {
+   "id": "c0399",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 824,
+   "error": null
+  },
+  {
+   "id": "c0400",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1245,
+   "error": null
+  },
+  {
+   "id": "c0401",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 920,
+   "error": null
+  },
+  {
+   "id": "c0402",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2164,
+   "error": null
+  },
+  {
+   "id": "c0403",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 756,
+   "error": null
+  },
+  {
+   "id": "c0404",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 742,
+   "error": null
+  },
+  {
+   "id": "c0405",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1542,
+   "error": null
+  },
+  {
+   "id": "c0406",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 758,
+   "error": null
+  },
+  {
+   "id": "c0407",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 769,
+   "error": null
+  },
+  {
+   "id": "c0408",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1141,
+   "error": null
+  },
+  {
+   "id": "c0409",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 818,
+   "error": null
+  },
+  {
+   "id": "c0410",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 708,
+   "error": null
+  },
+  {
+   "id": "c0411",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 839,
+   "error": null
+  },
+  {
+   "id": "c0412",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 718,
+   "error": null
+  },
+  {
+   "id": "c0413",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 783,
+   "error": null
+  },
+  {
+   "id": "c0414",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 752,
+   "error": null
+  },
+  {
+   "id": "c0415",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 712,
+   "error": null
+  },
+  {
+   "id": "c0416",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 793,
+   "error": null
+  },
+  {
+   "id": "c0417",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 713,
+   "error": null
+  },
+  {
+   "id": "c0418",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 853,
+   "error": null
+  },
+  {
+   "id": "c0419",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 913,
+   "error": null
+  },
+  {
+   "id": "c0420",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 832,
+   "error": null
+  },
+  {
+   "id": "c0421",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 860,
+   "error": null
+  },
+  {
+   "id": "c0422",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 721,
+   "error": null
+  },
+  {
+   "id": "c0423",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 829,
+   "error": null
+  },
+  {
+   "id": "c0424",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 843,
+   "error": null
+  },
+  {
+   "id": "c0425",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 963,
+   "error": null
+  },
+  {
+   "id": "c0426",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 750,
+   "error": null
+  },
+  {
+   "id": "c0427",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 770,
+   "error": null
+  },
+  {
+   "id": "c0428",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 854,
+   "error": null
+  },
+  {
+   "id": "c0429",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 719,
+   "error": null
+  },
+  {
+   "id": "c0430",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1257,
+   "error": null
+  },
+  {
+   "id": "c0431",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 799,
+   "error": null
+  },
+  {
+   "id": "c0432",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 887,
+   "error": null
+  },
+  {
+   "id": "c0433",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 752,
+   "error": null
+  },
+  {
+   "id": "c0434",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 757,
+   "error": null
+  },
+  {
+   "id": "c0435",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 855,
+   "error": null
+  },
+  {
+   "id": "c0436",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1079,
+   "error": null
+  },
+  {
+   "id": "c0437",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 743,
+   "error": null
+  },
+  {
+   "id": "c0438",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 741,
+   "error": null
+  },
+  {
+   "id": "c0439",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1135,
+   "error": null
+  },
+  {
+   "id": "c0440",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 695,
+   "error": null
+  },
+  {
+   "id": "c0441",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1268,
+   "error": null
+  },
+  {
+   "id": "c0442",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 960,
+   "error": null
+  },
+  {
+   "id": "c0443",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 739,
+   "error": null
+  },
+  {
+   "id": "c0444",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 775,
+   "error": null
+  },
+  {
+   "id": "c0445",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 973,
+   "error": null
+  },
+  {
+   "id": "c0446",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1285,
+   "error": null
+  },
+  {
+   "id": "c0447",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1714,
+   "error": null
+  },
+  {
+   "id": "c0448",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 785,
+   "error": null
+  },
+  {
+   "id": "c0449",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2034,
+   "error": null
+  },
+  {
+   "id": "c0450",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1701,
+   "error": null
+  },
+  {
+   "id": "c0451",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 722,
+   "error": null
+  },
+  {
+   "id": "c0452",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1145,
+   "error": null
+  },
+  {
+   "id": "c0453",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1279,
+   "error": null
+  },
+  {
+   "id": "c0454",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1393,
+   "error": null
+  },
+  {
+   "id": "c0455",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 750,
+   "error": null
+  },
+  {
+   "id": "c0456",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 767,
+   "error": null
+  },
+  {
+   "id": "c0457",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1894,
+   "error": null
+  },
+  {
+   "id": "c0458",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 758,
+   "error": null
+  },
+  {
+   "id": "c0459",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 722,
+   "error": null
+  },
+  {
+   "id": "c0460",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 855,
+   "error": null
+  },
+  {
+   "id": "c0461",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 767,
+   "error": null
+  },
+  {
+   "id": "c0462",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 772,
+   "error": null
+  },
+  {
+   "id": "c0463",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 816,
+   "error": null
+  },
+  {
+   "id": "c0464",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 731,
+   "error": null
+  },
+  {
+   "id": "c0465",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 2244,
+   "error": null
+  },
+  {
+   "id": "c0466",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 825,
+   "error": null
+  },
+  {
+   "id": "c0467",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 963,
+   "error": null
+  },
+  {
+   "id": "c0468",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 770,
+   "error": null
+  },
+  {
+   "id": "c0469",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 767,
+   "error": null
+  },
+  {
+   "id": "c0470",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 779,
+   "error": null
+  },
+  {
+   "id": "c0471",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 755,
+   "error": null
+  },
+  {
+   "id": "c0472",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 754,
+   "error": null
+  },
+  {
+   "id": "c0473",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 973,
+   "error": null
+  },
+  {
+   "id": "c0474",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 892,
+   "error": null
+  },
+  {
+   "id": "c0475",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1545,
+   "error": null
+  },
+  {
+   "id": "c0476",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2009,
+   "error": null
+  },
+  {
+   "id": "c0477",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 746,
+   "error": null
+  },
+  {
+   "id": "c0478",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 746,
+   "error": null
+  },
+  {
+   "id": "c0479",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1593,
+   "error": null
+  },
+  {
+   "id": "c0480",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 719,
+   "error": null
+  },
+  {
+   "id": "c0481",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1413,
+   "error": null
+  },
+  {
+   "id": "c0482",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 800,
+   "error": null
+  },
+  {
+   "id": "c0483",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 774,
+   "error": null
+  },
+  {
+   "id": "c0484",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1438,
+   "error": null
+  },
+  {
+   "id": "c0485",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 771,
+   "error": null
+  },
+  {
+   "id": "c0486",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 792,
+   "error": null
+  },
+  {
+   "id": "c0487",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 769,
+   "error": null
+  },
+  {
+   "id": "c0488",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 727,
+   "error": null
+  },
+  {
+   "id": "c0489",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 776,
+   "error": null
+  },
+  {
+   "id": "c0490",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 777,
+   "error": null
+  },
+  {
+   "id": "c0491",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 993,
+   "error": null
+  },
+  {
+   "id": "c0492",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 764,
+   "error": null
+  },
+  {
+   "id": "c0493",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 778,
+   "error": null
+  },
+  {
+   "id": "c0494",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 991,
+   "error": null
+  },
+  {
+   "id": "c0495",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 813,
+   "error": null
+  },
+  {
+   "id": "c0496",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 766,
+   "error": null
+  },
+  {
+   "id": "c0497",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 765,
+   "error": null
+  },
+  {
+   "id": "c0498",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 743,
+   "error": null
+  },
+  {
+   "id": "c0499",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 771,
+   "error": null
+  },
+  {
+   "id": "c0500",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 939,
+   "error": null
+  },
+  {
+   "id": "c0501",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 762,
+   "error": null
+  },
+  {
+   "id": "c0502",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 772,
+   "error": null
+  },
+  {
+   "id": "c0503",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 788,
+   "error": null
+  },
+  {
+   "id": "c0504",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 758,
+   "error": null
+  },
+  {
+   "id": "c0505",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1264,
+   "error": null
+  },
+  {
+   "id": "c0506",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1058,
+   "error": null
+  },
+  {
+   "id": "c0507",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 986,
+   "error": null
+  },
+  {
+   "id": "c0508",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1186,
+   "error": null
+  },
+  {
+   "id": "c0509",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 1552,
+   "error": null
+  },
+  {
+   "id": "c0510",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 3192,
+   "error": null
+  },
+  {
+   "id": "c0511",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1456,
+   "error": null
+  },
+  {
+   "id": "c0512",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1498,
+   "error": null
+  },
+  {
+   "id": "c0513",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1459,
+   "error": null
+  },
+  {
+   "id": "c0514",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 817,
+   "error": null
+  },
+  {
+   "id": "c0515",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 766,
+   "error": null
+  },
+  {
+   "id": "c0516",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 807,
+   "error": null
+  },
+  {
+   "id": "c0517",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 813,
+   "error": null
+  },
+  {
+   "id": "c0518",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2076,
+   "error": null
+  },
+  {
+   "id": "c0519",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 908,
+   "error": null
+  },
+  {
+   "id": "c0520",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2350,
+   "error": null
+  },
+  {
+   "id": "c0521",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 877,
+   "error": null
+  },
+  {
+   "id": "c0522",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 834,
+   "error": null
+  },
+  {
+   "id": "c0523",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 824,
+   "error": null
+  },
+  {
+   "id": "c0524",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 3153,
+   "error": null
+  },
+  {
+   "id": "c0525",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1015,
+   "error": null
+  },
+  {
+   "id": "c0526",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 991,
+   "error": null
+  },
+  {
+   "id": "c0527",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 784,
+   "error": null
+  },
+  {
+   "id": "c0528",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1220,
+   "error": null
+  },
+  {
+   "id": "c0529",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 3466,
+   "error": null
+  },
+  {
+   "id": "c0530",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 918,
+   "error": null
+  },
+  {
+   "id": "c0531",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1021,
+   "error": null
+  },
+  {
+   "id": "c0532",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 951,
+   "error": null
+  },
+  {
+   "id": "c0533",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1386,
+   "error": null
+  },
+  {
+   "id": "c0534",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1185,
+   "error": null
+  },
+  {
+   "id": "c0535",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1227,
+   "error": null
+  },
+  {
+   "id": "c0536",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1358,
+   "error": null
+  },
+  {
+   "id": "c0537",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 773,
+   "error": null
+  },
+  {
+   "id": "c0538",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1094,
+   "error": null
+  },
+  {
+   "id": "c0539",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 3525,
+   "error": null
+  },
+  {
+   "id": "c0540",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 742,
+   "error": null
+  },
+  {
+   "id": "c0541",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2284,
+   "error": null
+  },
+  {
+   "id": "c0542",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 784,
+   "error": null
+  },
+  {
+   "id": "c0543",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 817,
+   "error": null
+  },
+  {
+   "id": "c0544",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 768,
+   "error": null
+  },
+  {
+   "id": "c0545",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1082,
+   "error": null
+  },
+  {
+   "id": "c0546",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1090,
+   "error": null
+  },
+  {
+   "id": "c0547",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1250,
+   "error": null
+  },
+  {
+   "id": "c0548",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2812,
+   "error": null
+  },
+  {
+   "id": "c0549",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 890,
+   "error": null
+  },
+  {
+   "id": "c0550",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 747,
+   "error": null
+  },
+  {
+   "id": "c0551",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1229,
+   "error": null
+  },
+  {
+   "id": "c0552",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 755,
+   "error": null
+  },
+  {
+   "id": "c0553",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 3337,
+   "error": null
+  },
+  {
+   "id": "c0554",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 804,
+   "error": null
+  },
+  {
+   "id": "c0555",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 757,
+   "error": null
+  },
+  {
+   "id": "c0556",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 852,
+   "error": null
+  },
+  {
+   "id": "c0557",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 807,
+   "error": null
+  },
+  {
+   "id": "c0558",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 3747,
+   "error": null
+  },
+  {
+   "id": "c0559",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 2157,
+   "error": null
+  },
+  {
+   "id": "c0560",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 757,
+   "error": null
+  },
+  {
+   "id": "c0561",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 753,
+   "error": null
+  },
+  {
+   "id": "c0562",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 784,
+   "error": null
+  },
+  {
+   "id": "c0563",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 749,
+   "error": null
+  },
+  {
+   "id": "c0564",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 766,
+   "error": null
+  },
+  {
+   "id": "c0565",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 776,
+   "error": null
+  },
+  {
+   "id": "c0566",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 781,
+   "error": null
+  },
+  {
+   "id": "c0567",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 750,
+   "error": null
+  },
+  {
+   "id": "c0568",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 905,
+   "error": null
+  },
+  {
+   "id": "c0569",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 724,
+   "error": null
+  },
+  {
+   "id": "c0570",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 956,
+   "error": null
+  },
+  {
+   "id": "c0571",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 725,
+   "error": null
+  },
+  {
+   "id": "c0572",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 762,
+   "error": null
+  },
+  {
+   "id": "c0573",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1146,
+   "error": null
+  },
+  {
+   "id": "c0574",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 2038,
+   "error": null
+  },
+  {
+   "id": "c0575",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1438,
+   "error": null
+  },
+  {
+   "id": "c0576",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 659,
+   "error": null
+  },
+  {
+   "id": "c0577",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1653,
+   "error": null
+  },
+  {
+   "id": "c0578",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 775,
+   "error": null
+  },
+  {
+   "id": "c0579",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 807,
+   "error": null
+  },
+  {
+   "id": "c0580",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 794,
+   "error": null
+  },
+  {
+   "id": "c0581",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 791,
+   "error": null
+  },
+  {
+   "id": "c0582",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1158,
+   "error": null
+  },
+  {
+   "id": "c0583",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 881,
+   "error": null
+  },
+  {
+   "id": "c0584",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 749,
+   "error": null
+  },
+  {
+   "id": "c0585",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 877,
+   "error": null
+  },
+  {
+   "id": "c0586",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 857,
+   "error": null
+  },
+  {
+   "id": "c0587",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1292,
+   "error": null
+  },
+  {
+   "id": "c0588",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 750,
+   "error": null
+  },
+  {
+   "id": "c0589",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1964,
+   "error": null
+  },
+  {
+   "id": "c0590",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 857,
+   "error": null
+  },
+  {
+   "id": "c0591",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 920,
+   "error": null
+  },
+  {
+   "id": "c0592",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 777,
+   "error": null
+  },
+  {
+   "id": "c0593",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 971,
+   "error": null
+  },
+  {
+   "id": "c0594",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 824,
+   "error": null
+  },
+  {
+   "id": "c0595",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 781,
+   "error": null
+  },
+  {
+   "id": "c0596",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1011,
+   "error": null
+  },
+  {
+   "id": "c0597",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 763,
+   "error": null
+  },
+  {
+   "id": "c0598",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1384,
+   "error": null
+  },
+  {
+   "id": "c0599",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 788,
+   "error": null
+  },
+  {
+   "id": "c0600",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 795,
+   "error": null
+  },
+  {
+   "id": "c0601",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2866,
+   "error": null
+  },
+  {
+   "id": "c0602",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1492,
+   "error": null
+  },
+  {
+   "id": "c0603",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1234,
+   "error": null
+  },
+  {
+   "id": "c0604",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 960,
+   "error": null
+  },
+  {
+   "id": "c0605",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 967,
+   "error": null
+  },
+  {
+   "id": "c0606",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1357,
+   "error": null
+  },
+  {
+   "id": "c0607",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1290,
+   "error": null
+  },
+  {
+   "id": "c0608",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 914,
+   "error": null
+  },
+  {
+   "id": "c0609",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1179,
+   "error": null
+  },
+  {
+   "id": "c0610",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 783,
+   "error": null
+  },
+  {
+   "id": "c0611",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 869,
+   "error": null
+  },
+  {
+   "id": "c0612",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 1239,
+   "error": null
+  },
+  {
+   "id": "c0613",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1349,
+   "error": null
+  },
+  {
+   "id": "c0614",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 780,
+   "error": null
+  },
+  {
+   "id": "c0615",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 759,
+   "error": null
+  },
+  {
+   "id": "c0616",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1218,
+   "error": null
+  },
+  {
+   "id": "c0617",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 789,
+   "error": null
+  },
+  {
+   "id": "c0618",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 1739,
+   "error": null
+  },
+  {
+   "id": "c0619",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 3085,
+   "error": null
+  },
+  {
+   "id": "c0620",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1774,
+   "error": null
+  },
+  {
+   "id": "c0621",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2371,
+   "error": null
+  },
+  {
+   "id": "c0622",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1614,
+   "error": null
+  },
+  {
+   "id": "c0623",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1306,
+   "error": null
+  },
+  {
+   "id": "c0624",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 731,
+   "error": null
+  },
+  {
+   "id": "c0625",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1366,
+   "error": null
+  },
+  {
+   "id": "c0626",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1297,
+   "error": null
+  },
+  {
+   "id": "c0627",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1072,
+   "error": null
+  },
+  {
+   "id": "c0628",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 801,
+   "error": null
+  },
+  {
+   "id": "c0629",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1379,
+   "error": null
+  },
+  {
+   "id": "c0630",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 3149,
+   "error": null
+  },
+  {
+   "id": "c0631",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 734,
+   "error": null
+  },
+  {
+   "id": "c0632",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1286,
+   "error": null
+  },
+  {
+   "id": "c0633",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 751,
+   "error": null
+  },
+  {
+   "id": "c0634",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1805,
+   "error": null
+  },
+  {
+   "id": "c0635",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 984,
+   "error": null
+  },
+  {
+   "id": "c0636",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1402,
+   "error": null
+  },
+  {
+   "id": "c0637",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1357,
+   "error": null
+  },
+  {
+   "id": "c0638",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 742,
+   "error": null
+  },
+  {
+   "id": "c0639",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 823,
+   "error": null
+  },
+  {
+   "id": "c0640",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 839,
+   "error": null
+  },
+  {
+   "id": "c0641",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 759,
+   "error": null
+  },
+  {
+   "id": "c0642",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1194,
+   "error": null
+  },
+  {
+   "id": "c0643",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 749,
+   "error": null
+  },
+  {
+   "id": "c0644",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 808,
+   "error": null
+  },
+  {
+   "id": "c0645",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 934,
+   "error": null
+  },
+  {
+   "id": "c0646",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1321,
+   "error": null
+  },
+  {
+   "id": "c0647",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 925,
+   "error": null
+  },
+  {
+   "id": "c0648",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1029,
+   "error": null
+  },
+  {
+   "id": "c0649",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 738,
+   "error": null
+  },
+  {
+   "id": "c0650",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1231,
+   "error": null
+  },
+  {
+   "id": "c0651",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1299,
+   "error": null
+  },
+  {
+   "id": "c0652",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1335,
+   "error": null
+  },
+  {
+   "id": "c0653",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 715,
+   "error": null
+  },
+  {
+   "id": "c0654",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 995,
+   "error": null
+  },
+  {
+   "id": "c0655",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2556,
+   "error": null
+  },
+  {
+   "id": "c0656",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2656,
+   "error": null
+  },
+  {
+   "id": "c0657",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 756,
+   "error": null
+  },
+  {
+   "id": "c0658",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1115,
+   "error": null
+  },
+  {
+   "id": "c0659",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1488,
+   "error": null
+  },
+  {
+   "id": "c0660",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1382,
+   "error": null
+  },
+  {
+   "id": "c0661",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1341,
+   "error": null
+  },
+  {
+   "id": "c0662",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 964,
+   "error": null
+  },
+  {
+   "id": "c0663",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 743,
+   "error": null
+  },
+  {
+   "id": "c0664",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1630,
+   "error": null
+  },
+  {
+   "id": "c0665",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 914,
+   "error": null
+  },
+  {
+   "id": "c0666",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 812,
+   "error": null
+  },
+  {
+   "id": "c0667",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 2156,
+   "error": null
+  },
+  {
+   "id": "c0668",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 949,
+   "error": null
+  },
+  {
+   "id": "c0669",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 817,
+   "error": null
+  },
+  {
+   "id": "c0670",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1072,
+   "error": null
+  },
+  {
+   "id": "c0671",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1107,
+   "error": null
+  },
+  {
+   "id": "c0672",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 752,
+   "error": null
+  },
+  {
+   "id": "c0673",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 808,
+   "error": null
+  },
+  {
+   "id": "c0674",
+   "tipo": "explore",
+   "confianza": null,
+   "ms": 1671,
+   "error": null
+  },
+  {
+   "id": "c0675",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 863,
+   "error": null
+  },
+  {
+   "id": "c0676",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 1459,
+   "error": null
+  },
+  {
+   "id": "c0677",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 740,
+   "error": null
+  },
+  {
+   "id": "c0678",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 1025,
+   "error": null
+  },
+  {
+   "id": "c0679",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 785,
+   "error": null
+  },
+  {
+   "id": "c0680",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 744,
+   "error": null
+  },
+  {
+   "id": "c0681",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1050,
+   "error": null
+  },
+  {
+   "id": "c0682",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 754,
+   "error": null
+  },
+  {
+   "id": "c0683",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 779,
+   "error": null
+  },
+  {
+   "id": "c0684",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 702,
+   "error": null
+  },
+  {
+   "id": "c0685",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 795,
+   "error": null
+  },
+  {
+   "id": "c0686",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 784,
+   "error": null
+  },
+  {
+   "id": "c0687",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 794,
+   "error": null
+  },
+  {
+   "id": "c0688",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 810,
+   "error": null
+  },
+  {
+   "id": "c0689",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 804,
+   "error": null
+  },
+  {
+   "id": "c0690",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1341,
+   "error": null
+  },
+  {
+   "id": "c0691",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 801,
+   "error": null
+  },
+  {
+   "id": "c0692",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 729,
+   "error": null
+  },
+  {
+   "id": "c0693",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 747,
+   "error": null
+  },
+  {
+   "id": "c0694",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 711,
+   "error": null
+  },
+  {
+   "id": "c0695",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 814,
+   "error": null
+  },
+  {
+   "id": "c0696",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 794,
+   "error": null
+  },
+  {
+   "id": "c0697",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1471,
+   "error": null
+  },
+  {
+   "id": "c0698",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 774,
+   "error": null
+  },
+  {
+   "id": "c0699",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 784,
+   "error": null
+  },
+  {
+   "id": "c0700",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 767,
+   "error": null
+  },
+  {
+   "id": "c0701",
+   "tipo": "review-final",
+   "confianza": null,
+   "ms": 810,
+   "error": null
+  },
+  {
+   "id": "c0702",
+   "tipo": "fix",
+   "confianza": null,
+   "ms": 776,
+   "error": null
+  },
+  {
+   "id": "c0703",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 755,
+   "error": null
+  },
+  {
+   "id": "c0704",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 766,
+   "error": null
+  },
+  {
+   "id": "c0705",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 842,
+   "error": null
+  },
+  {
+   "id": "c0706",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1286,
+   "error": null
+  },
+  {
+   "id": "c0707",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 791,
+   "error": null
+  },
+  {
+   "id": "c0708",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 762,
+   "error": null
+  },
+  {
+   "id": "c0709",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1380,
+   "error": null
+  },
+  {
+   "id": "c0710",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 773,
+   "error": null
+  },
+  {
+   "id": "c0711",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1163,
+   "error": null
+  },
+  {
+   "id": "c0712",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 881,
+   "error": null
+  },
+  {
+   "id": "c0713",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 755,
+   "error": null
+  },
+  {
+   "id": "c0714",
+   "tipo": "build-large",
+   "confianza": null,
+   "ms": 2573,
+   "error": null
+  },
+  {
+   "id": "c0715",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 769,
+   "error": null
+  },
+  {
+   "id": "c0716",
+   "tipo": "re-review",
+   "confianza": null,
+   "ms": 842,
+   "error": null
+  },
+  {
+   "id": "c0717",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 1275,
+   "error": null
+  },
+  {
+   "id": "c0718",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 728,
+   "error": null
+  },
+  {
+   "id": "c0719",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 983,
+   "error": null
+  },
+  {
+   "id": "c0720",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 823,
+   "error": null
+  },
+  {
+   "id": "c0721",
+   "tipo": "review",
+   "confianza": null,
+   "ms": 761,
+   "error": null
+  },
+  {
+   "id": "c0722",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 891,
+   "error": null
+  },
+  {
+   "id": "c0723",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 738,
+   "error": null
+  },
+  {
+   "id": "c0724",
+   "tipo": "research",
+   "confianza": null,
+   "ms": 861,
+   "error": null
+  },
+  {
+   "id": "c0725",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 828,
+   "error": null
+  },
+  {
+   "id": "c0726",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 742,
+   "error": null
+  },
+  {
+   "id": "c0727",
+   "tipo": "write",
+   "confianza": null,
+   "ms": 1357,
+   "error": null
+  },
+  {
+   "id": "c0728",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 817,
+   "error": null
+  },
+  {
+   "id": "c0729",
+   "tipo": "build-small",
+   "confianza": null,
+   "ms": 747,
+   "error": null
+  }
+ ]
+}

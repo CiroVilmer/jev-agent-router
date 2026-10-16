@@ -1,4 +1,6 @@
 import type { Escalon, Modelo, Overrides, Tipo } from '../types'
+import type { Suite } from './banco'
+import { SUITES } from './banco'
 import { formatEscalon, MODELOS, parseEscalon, TIPOS_FINALES } from './taxonomia'
 
 export const OVERRIDES_INICIAL: Overrides = { activo: true, permitidos: null, fijados: {} }
@@ -10,7 +12,7 @@ export type Comando =
   | { accion: 'reset' }
   | { accion: 'permitir'; modelos: Modelo[] }
   | { accion: 'fijar'; tipo: Tipo; escalon: Escalon }
-  | { accion: 'banco'; max: number | null; solo: 'haiku' | 'jev' | null }
+  | { accion: 'banco'; max: number | null; solo: 'haiku' | 'jev' | 'local' | null; suite: Suite | 'todas' | null; concurrencia: number | null; tokens: number | null }
   | { accion: 'historial'; dias: number }
   | { accion: 'hot'; valor: boolean | null }
   | { accion: 'error'; mensaje: string }
@@ -18,30 +20,43 @@ export type Comando =
 export const AYUDA =
   'Usage: /router · /router on|off|reset · /router hot on|off · /router allow sonnet,opus · /router set <type> <model>·<effort> · /router history [days] · /router bench'
 
-const USO_BANCO = 'Usage: /router bench [--max N] [--solo haiku|jev]'
+const USO_BANCO = 'Usage: /router bench [--suite tipos|talla|review|todas] [--solo haiku|jev|local] [--max N] [--concurrencia N] [--tokens N]'
 
 function parsearBanco(resto: readonly string[]): Comando {
   let max: number | null = null
-  let solo: 'haiku' | 'jev' | null = null
+  let solo: 'haiku' | 'jev' | 'local' | null = null
+  let suite: Suite | 'todas' | null = null
+  let concurrencia: number | null = null
+  let tokens: number | null = null
+  const entero = (valor: string | undefined) => (valor !== undefined && /^\d+$/.test(valor) && Number(valor) >= 1 ? Number(valor) : null)
   for (let i = 0; i < resto.length; i += 2) {
-    const opcion = resto[i]!
+    const opcion = resto[i]!.toLowerCase()
     const valor = resto[i + 1]
-    if (opcion.toLowerCase() === '--max') {
-      if (valor === undefined || !/^\d+$/.test(valor) || Number(valor) < 1) {
-        return { accion: 'error', mensaje: `--max pide un número de casos mayor que 0. ${USO_BANCO}` }
-      }
-      max = Number(valor)
-    } else if (opcion.toLowerCase() === '--solo') {
+    if (opcion === '--max') {
+      max = entero(valor)
+      if (max === null) return { accion: 'error', mensaje: `--max pide un número de casos mayor que 0. ${USO_BANCO}` }
+    } else if (opcion === '--concurrencia') {
+      concurrencia = entero(valor)
+      if (concurrencia === null) return { accion: 'error', mensaje: `--concurrencia pide un número mayor que 0. ${USO_BANCO}` }
+    } else if (opcion === '--tokens') {
+      tokens = entero(valor)
+      if (tokens === null) return { accion: 'error', mensaje: `--tokens pide un número de casos mayor que 0. ${USO_BANCO}` }
+    } else if (opcion === '--solo') {
       const v = valor?.toLowerCase()
-      if (v !== 'haiku' && v !== 'jev') {
-        return { accion: 'error', mensaje: `--solo es haiku o jev, no "${valor ?? ''}". ${USO_BANCO}` }
-      }
+      if (v !== 'haiku' && v !== 'jev' && v !== 'local') return { accion: 'error', mensaje: `--solo es haiku, jev o local, no "${valor ?? ''}". ${USO_BANCO}` }
       solo = v
+    } else if (opcion === '--suite') {
+      const v = valor?.toLowerCase()
+      if (v !== 'todas' && !(SUITES as readonly string[]).includes(v ?? '')) return { accion: 'error', mensaje: `--suite es tipos, talla, review o todas, no "${valor ?? ''}". ${USO_BANCO}` }
+      suite = v as Suite | 'todas'
     } else {
-      return { accion: 'error', mensaje: `Opción desconocida: ${opcion}. ${USO_BANCO}` }
+      return { accion: 'error', mensaje: `Opción desconocida: ${resto[i]}. ${USO_BANCO}` }
     }
   }
-  return { accion: 'banco', max, solo }
+  // El banco viejo (sin --suite) solo conoce haiku y jev, y no toma muestra de tokens.
+  if (suite === null && solo === 'local') return { accion: 'error', mensaje: `--solo local pide --suite. ${USO_BANCO}` }
+  if (suite === null && tokens !== null) return { accion: 'error', mensaje: `--tokens pide --suite. ${USO_BANCO}` }
+  return { accion: 'banco', max, solo, suite, concurrencia, tokens }
 }
 
 /** Días del export de `/router history` cuando no se dicen. */

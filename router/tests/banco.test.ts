@@ -1,8 +1,10 @@
 import { describe, expect, test } from 'claude-code/testing'
 import type { Clasificador } from '../src/clasificadores'
-import { TALLAS } from '../src/clasificadores'
+import { TALLAS, TALLAS_REVIEW } from '../src/clasificadores'
+import { TIPOS } from '../src/taxonomia'
 import type { Caso, ResultadoBanco } from '../src/banco'
-import { casosDeProduccion, colaEnOrden, conLimite, correrBanco, nombreCorrida } from '../src/banco'
+import { separarUrlLocal, taparSecretos } from '../src/clasificadores/urlLocal'
+import { casosDeProduccion, colaEnOrden, conLimite, correrBanco, correrSuite, itemsDeSuite, nombreCorrida, nombreCorridaSuite, urlSinCredenciales } from '../src/banco'
 
 const RESUMEN = { chars: 1200, archivos: 1, pasos: 2, mencionaSpec: false }
 const CASOS: Caso[] = [
@@ -123,4 +125,57 @@ describe('conLimite', () => {
     const r = await conLimite(haiku, 60_000, () => new Promise(() => {}))({ descripcion: 'x', resumen: RESUMEN, etiquetas: TALLAS })
     expect(r).toEqual({ tipo: 'build-large', ms: 120, fuente: 'haiku' })
   })
+})
+
+const SUITE = [
+  { id: 'a', descripcion: 'Implement Task 1', resumen: RESUMEN, regla: 'build' },
+  { id: 'b', descripcion: 'Review Task 1', resumen: RESUMEN, regla: 'review' },
+  { id: 'c', descripcion: 'Research X', resumen: RESUMEN, regla: 'research' },
+]
+
+describe('itemsDeSuite', () => {
+  test('tipos: todos con las 9; talla: los build; review: los de la referencia', () => {
+    expect(itemsDeSuite(SUITE, 'tipos', new Set()).map(i => [i.id, i.etiquetas])).toEqual([['a', TIPOS], ['b', TIPOS], ['c', TIPOS]])
+    expect(itemsDeSuite(SUITE, 'talla', new Set()).map(i => [i.id, i.etiquetas])).toEqual([['a', TALLAS]])
+    expect(itemsDeSuite(SUITE, 'review', new Set(['b'])).map(i => [i.id, i.etiquetas])).toEqual([['b', TALLAS_REVIEW]])
+  })
+})
+
+describe('correrSuite', () => {
+  test('un resultado por item, en orden, con los errores atrapados', async () => {
+    const c: Clasificador = async ({ descripcion, etiquetas }) => {
+      if (descripcion.startsWith('Research')) throw new Error('local: HTTP 500')
+      return { tipo: etiquetas[0]!, confianza: 0.9, ms: 40, fuente: 'local' }
+    }
+    const rs = await correrSuite(itemsDeSuite(SUITE, 'tipos', new Set()), c, { concurrencia: 2 })
+    expect(rs).toEqual([
+      { id: 'a', tipo: TIPOS[0], confianza: 0.9, ms: 40, error: null },
+      { id: 'b', tipo: TIPOS[0], confianza: 0.9, ms: 40, error: null },
+      { id: 'c', tipo: null, confianza: null, ms: 0, error: 'local: HTTP 500' },
+    ])
+  })
+})
+
+test('nombreCorridaSuite', () => {
+  expect(nombreCorridaSuite(new Date(2026, 9, 15, 9, 5), 'haiku', 'talla')).toBe('bench/corridas/2026-10-15-0905-sel-haiku-talla.json')
+})
+
+test('urlSinCredenciales', () => {
+  expect(urlSinCredenciales('http://user:tok@host:8080/v1/systemone?api_key=x')).toBe('http://host:8080/v1/systemone')
+  expect(urlSinCredenciales('http://127.0.0.1:9931/v1/systemone')).toBe('http://127.0.0.1:9931/v1/systemone')
+  expect(urlSinCredenciales('no es una url')).toBe(null)
+})
+
+test('separarUrlLocal: sin credenciales la URL queda igual; con ellas, Basic y URL limpia', () => {
+  expect(separarUrlLocal('http://127.0.0.1:9931/v1/systemone')).toEqual({ urlPedido: 'http://127.0.0.1:9931/v1/systemone', basic: null, secretos: ['http://127.0.0.1:9931/v1/systemone'] })
+  const r = separarUrlLocal('http://usr:p%40ss@host:8080/v1/x?api_key=Q')
+  expect(r.urlPedido).toBe('http://host:8080/v1/x?api_key=Q')
+  expect(r.basic).toBe(btoa('usr:p@ss'))
+  expect(separarUrlLocal('no es una url')).toEqual({ urlPedido: 'no es una url', basic: null, secretos: ['no es una url'] })
+})
+
+test('taparSecretos tapa key, URL y credenciales, y se salta los vacíos', () => {
+  const r = separarUrlLocal('http://usr:pw@host/v1')
+  const msg = `falló ${'http://usr:pw@host/v1'} y ${r.urlPedido} con usr:pw, clave K`
+  expect(taparSecretos(msg, ['K', null, undefined, ...r.secretos])).toBe('falló *** y *** con ***, clave ***')
 })

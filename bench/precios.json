@@ -1,0 +1,19 @@
+{
+ "consultado": "2026-10-15",
+ "haiku": {
+  "modelo": "claude-haiku-5-5",
+  "entradaPorMTok": 0.10,
+  "salidaPorMTok": 0.50,
+  "fuente": "Precio de lista de la API de Anthropic (cacheado 2026-10-06). El thinking se cobra como salida.",
+  "nota": "Con Claude Max no se paga por llamada: consume cuota de la ventana de 5 h."
+ },
+ "jev": {
+  "modelo": "jev-1.13.0",
+  "entradaPorMTok": 0.042,
+  "salidaPorMTok": null,
+  "fuente": "typesafe.ai ($42 por mil millones de tokens de entrada), consultado 2026-10-15.",
+  "nota": "No publica precio de salida. Los tokens de entrada se estiman: caracteres del pedido / 4."
+ },
+ "local": { "fuente": "$0 marginal: corre en hardware propio.", "nota": "Ver el hardware de cada corrida." },
+ "reglas": { "fuente": "$0: no hay modelo." }
+}

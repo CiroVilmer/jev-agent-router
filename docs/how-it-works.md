@@ -18,7 +18,7 @@ the spawn's `model`. Later, on every `turn.step` of that subagent, it sets the c
 3. **A classifier** runs when the rules aren't enough:
    - every build, to pick its size;
    - no rule matched;
-   - with `clasificador: jev`, to re-check (and maybe change) a review's type;
+   - with `clasificador: jev` or `local`, to re-check (and maybe change) a review's type;
    - a `review` gets its size (`review-large` or `review-small`) from a range of tasks, the task's
      build, scope words or the classifier (see [Review size](#review-size)).
 4. **The step:** if `/router set <type> <model>·<effort>` pinned this type, that step is used.
@@ -56,13 +56,14 @@ bench of 729 real subagents, the rules resolve 462 on their own with 96.5% accur
 
 ## The classifier
 
-There are three implementations behind one interface:
+There are four implementations behind one interface (`local` is experimental):
 
 | `clasificador` | What decides | Latency |
 |---|---|---|
 | `reglas` (default) | No model: a size heuristic (the "fallback") | 0 ms |
 | `haiku` | Haiku through `$.model.classify` | ~645 ms (p50, bench) |
 | `jev` | [Jev](https://typesafe.ai) (TypeSafe AI, model `jev-1.13.0`), with a calibrated confidence | ~250–275 ms (p50, bench) |
+| `local` (experimental) | A model you run yourself, over System One or OpenAI-style logprobs; its threshold is not calibrated | depends on your server |
 
 **Input.** The subagent's description plus a numeric summary of its prompt, never the prompt
 itself:
@@ -78,8 +79,8 @@ Implement Task 11: the compiler · prompt 6.8k chars · 9 archivos · 14 pasos �
   10 or more files, is large.
 - **No rule matched:** any of the 9 types. Here Jev decides even with low confidence, and the
   reason says so: `jev (sin umbral) → review (0.55)`.
-- **Review family, only with `clasificador: jev` and a key:** if a description rule said
-  `review-final`, `review` or `re-review`, Jev is asked with all 9 labels.
+- **Review family, only with `clasificador: jev` and a key, or `clasificador: local`:** if a description rule said
+  `review-final`, `review` or `re-review`, Jev (or the local classifier) is asked with all 9 labels.
   - If Jev's confidence is at least `jevUmbral` (0.7), Jev decides, even if it changes the type.
     The one exception: if Jev says `explore` or `write`, the rule stays, so a review never drops
     to Haiku.
@@ -93,7 +94,7 @@ Implement Task 11: the compiler · prompt 6.8k chars · 9 archivos · 14 pasos �
 - a description with no rule is `build-small`;
 - a review's size is `review-small`, when the classifier doubts, fails or times out.
 
-**Shadow mode.** With `sombra: haiku` or `sombra: jev`, every time the main classifier runs, the
+**Shadow mode.** With `sombra: haiku`, `sombra: jev` or `sombra: local`, every time the main classifier runs, the
 other one runs too, in the background (60 s limit, it doesn't affect the decision). Both answers
 are stored (the last 500), and the panel compares them: agreement, p50 and p95, fallbacks.
 
@@ -215,7 +216,7 @@ Data lives in the plugin's store (a JSON file in Claude Code's config folder):
 | `router/hooks/register.tsx` | The only file that knows Claude Code's events, state and store |
 | `router/src/decidir.ts` | The decision pipeline (pure) |
 | `router/src/reglas.ts`, `taxonomia.ts`, `politica.ts`, `overrides.ts` | Rules, ladder and base table, usage policy, `/router` commands |
-| `router/src/clasificadores/` | Fallback, Haiku, Jev, time limit, shadow mode, question texts |
+| `router/src/clasificadores/` | Fallback, Haiku, Jev, local (`systemone.ts`, `openai.ts`, `protocolos.ts`, `urlLocal.ts`), time limit, shadow mode, question texts |
 | `router/src/convencion.ts` | Text added to the Agent tool, and the hint line |
 | `router/src/historial.ts`, `registro.ts`, `ventanas.ts`, `lineaBase.ts` | History, tasks and metrics, 5-hour windows, baseline |
 | `router/src/ui/` | Status line and panel |

@@ -2,13 +2,14 @@ import type { Subagente } from '../../types'
 
 const LARGO_DESCRIPCION = 40
 
-/** El motivo en una palabra: quién decidió el tipo (`jev 0.98`, `jev dudó`, `regla`…). */
+/** El motivo en una palabra: quién decidió el tipo (`jev 0.98`, `local dudó`, `regla`…). */
 export function motivoCorto(motivos: readonly string[]): string {
-  const jev = motivos.find(m => m.startsWith('jev'))
-  if (jev) {
-    if (jev.startsWith('jev dudó')) return 'jev dudó'
-    const confianza = jev.match(/\((\d\.\d\d)\)/g)?.at(-1)
-    return confianza ? `jev ${confianza.slice(1, -1)}` : 'jev'
+  const modelo = motivos.find(m => m.startsWith('jev') || m.startsWith('local'))
+  if (modelo) {
+    const nombre = modelo.startsWith('jev') ? 'jev' : 'local'
+    if (modelo.startsWith(`${nombre} dudó`)) return `${nombre} dudó`
+    const confianza = modelo.match(/\((\d\.\d\d)\)/g)?.at(-1)
+    return confianza ? `${nombre} ${confianza.slice(1, -1)}` : nombre
   }
   if (motivos.some(m => m.startsWith('respaldo'))) return 'respaldo'
   if (motivos.some(m => m.startsWith('haiku'))) return 'haiku'

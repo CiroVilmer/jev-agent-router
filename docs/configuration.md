@@ -20,15 +20,52 @@ The key is `agent-router@<marketplace>`. When you load the mod with `--plugin-di
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `clasificador` | `reglas` \| `haiku` \| `jev` | `reglas` | Who decides when rules aren't enough. With `jev` it also re-checks, and may change, the type of reviews. `jev` without a key falls back to `haiku` and shows a toast |
+| `clasificador` | `reglas` \| `haiku` \| `jev` \| `local` | `reglas` | Who decides when rules aren't enough. With `jev` or `local` it also re-checks, and may change, the type of reviews. `jev` without a key falls back to `haiku` and shows a toast. `local` is **experimental**: see [below](#local-classifier-experimental) |
 | `jevApiKey` | string (sensitive) | — | Jev key from [TypeSafe AI](https://typesafe.ai). If empty, the router reads the `JEV_API_KEY` environment variable |
 | `jevUmbral` | number 0–1 | `0.7` | Jev's confidence threshold. For build size, below it the fallback decides. For reviews (with `jev`), below it the rule stays. It also applies to the review's size: below it, the review is `review-small`. With no rule at all, Jev decides anyway (`sin umbral`) |
 | `topeMs` | number 50–8000 | `1000` | Classifier time budget. Past it, the fallback decides |
-| `sombra` | `off` \| `haiku` \| `jev` | `off` | Shadow mode: runs another classifier in the background and stores both answers (the last 500) to compare in the panel. `sombra: jev` without a key is disabled, with a toast |
+| `sombra` | `off` \| `haiku` \| `jev` \| `local` | `off` | Shadow mode: runs another classifier in the background and stores both answers (the last 500) to compare in the panel. `sombra: jev` without a key is disabled, with a toast; `sombra: local` without a URL or model, too |
 
 > [!TIP]
 > On Windows, after setting `JEV_API_KEY` as a user environment variable, open a **new**
 > terminal. A terminal opened earlier doesn't see it, and Jev answers HTTP 401.
+
+## Local classifier (experimental)
+
+`clasificador: local` (or `sombra: local`) asks a model you run yourself. It is **experimental**
+and its threshold is **uncalibrated**: measure it before trusting it (see
+[benchmark.md](benchmark.md#comparing-selectors)). It decides like Jev does, reviews by
+description included. It needs a server that speaks System One (Jev's API) or OpenAI's chat
+completions with logprobs.
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `localProtocolo` | `systemone` \| `openai` | `systemone` | `systemone`: the System One API. `openai`: `/v1/chat/completions`, with the confidence read from the logprobs |
+| `localUrl` | string | — | The full endpoint URL, path included. A `user:password@` in it is sent as Basic auth (a key, if set, wins with Bearer) and never appears in errors, history or run files |
+| `localModelo` | string | — | The model's name on the server |
+| `localApiKey` | string (sensitive) | — | Optional. If empty, the router reads `LOCAL_API_KEY`. With neither, no `Authorization` header is sent |
+| `localUmbral` | number 0–1 | `0.7` | Confidence threshold, applied like `jevUmbral`. **Not calibrated** |
+
+Without `localUrl` or `localModelo`, the router shows one toast and the fallback decides (not
+Haiku).
+
+**llama.cpp.** `llama-server` serves `/v1/systemone` with decision models. Pass the port explicitly:
+
+```
+llama-server -m <decision-model>.gguf --port 9931
+```
+
+Set `localProtocolo: systemone`, `localUrl: http://127.0.0.1:9931/v1/systemone` and `localModelo`
+to the model's name.
+
+**Ollama** 0.35 or later serves `/v1/systemone` and `/v1/chat/completions` on port 11434. Use
+`http://127.0.0.1:11434/v1/systemone` with `systemone`, or
+`http://127.0.0.1:11434/v1/chat/completions` with `openai`.
+
+**Choosing `localUmbral`.** Run the suites against your server with `bench/selectores.mjs`, then
+`node bench/informe.mjs`. Its calibration table shows how often the model is right in each
+confidence bucket: pick the lowest threshold from which it beats the fallback, and check it with
+`--umbral-local`. Until then, 0.7 is only Jev's number.
 
 ## Model per task type
 
@@ -94,7 +131,7 @@ transcript.
 | `/router reset` | Clear this session's overrides |
 | `/router hot on` · `/router hot off` · `/router hot` | Turn hot mode on or off (saved for future sessions), or show its state |
 | `/router history [days]` | Write `~/.claude/router-historial.md` with the last N days (default 7): summary, and one table per session and task |
-| `/router bench [--max N] [--solo haiku\|jev]` | Run the classifier bench from the repo root (see [benchmark.md](benchmark.md)) |
+| `/router bench [--suite tipos\|talla\|review\|todas] [--solo haiku\|jev\|local] [--max N] [--concurrencia N] [--tokens N]` | Run the classifier bench from the repo root (see [benchmark.md](benchmark.md#comparing-selectors)). Without `--suite` it keeps its old behavior; with it, it saves one run per selector and suite. Concurrency defaults to 1. `--tokens` (default 20) samples Haiku's token usage. `--solo local` and `--tokens` need `--suite` |
 
 Per subagent: `[pin]` anywhere in the description keeps the model Claude asked for.
 
@@ -115,6 +152,7 @@ subagents", compete with the router's convention.
 | `jev → build-large (0.93)` | Jev decided, with that confidence |
 | `jev (sin umbral) → review (0.55)` | No rule matched: Jev decided despite low confidence |
 | `jev dudó (0.55): queda la regla` | Jev was unsure about a review: the rule stays |
+| `local → build-large (0.93)` · `local dudó (…)` · `local (sin umbral) → …` | The same three cases, when the local classifier decided |
 | `talla por alcance (…)` | The review is `review-large` because the description names a range of tasks (`Tasks 3-5`) or a scope word (`feature`, `fase`…) |
 | `talla del build de Tarea 3 (build-large)` | The review inherits the size of the build of the same task |
 | `jev → review-large (0.91)` | Jev decided the review's size. If its answer isn't a size, the reason ends with `: queda review-small` (a defense: Jev and Haiku reject labels that weren't asked for) |

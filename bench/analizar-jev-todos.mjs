@@ -1,10 +1,11 @@
-// Analiza una corrida de jev-todos.mjs contra etiquetas.json: ¿puede Jev decidir el tipo de todos
+// Analiza una corrida vieja de jev-todos (el script ya no existe; ahora se usa selectores.mjs) contra etiquetas.json: ¿puede Jev decidir el tipo de todos
 // los subagentes, o al menos de las reviews y los builds, sin perder contra las reglas?
 //   node bench/analizar-jev-todos.mjs [bench/corridas/<archivo>-jev-todos.json]
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { clasificarPorReglas } from '../router/src/reglas.ts'
+import { TALLAS, REVIEWS, respaldoTalla, respaldoAnterior } from './lib/politica.mjs'
 
 const aqui = path.dirname(fileURLToPath(import.meta.url))
 const dir = path.join(aqui, 'corridas')
@@ -19,11 +20,8 @@ const jevActual = new Map((actual.resultados ?? actual).filter(r => r.fuente ===
 // La corrida de talla con los textos nuevos (fase 6), para la fila "fase 6".
 const tallaNueva = new Map(JSON.parse(fs.readFileSync(path.join(dir, '2026-10-09-1347-jev-talla-nueva.json'), 'utf8')).resultados.map(r => [r.id, r]))
 
-const TALLAS = ['build-large', 'build-small']
 const UMBRAL = 0.7
 const porId = new Map(resultados.map(r => [r.id, r]))
-const respaldoTalla = c => (c.resumen.chars > 5000 || (c.resumen.chars > 3000 && c.resumen.archivos >= 10) ? 'build-large' : 'build-small')
-const respaldoAnterior = c => (c.resumen.chars > 5000 || c.resumen.archivos > 6 ? 'build-large' : 'build-small')
 const pct = (a, n) => (n ? `${((100 * a) / n).toFixed(1)}%` : '—')
 
 // El pipeline de la fase 5 (con el respaldo de talla que se le pasa): regla si no es build; build → Jev talla con umbral (si no, respaldo);
@@ -46,7 +44,6 @@ function jevPrimero(c, regla, u) {
 // Híbrido: Jev (9 etiquetas) decide todo lo que toque la familia review (por su elección o por la
 // regla), con umbral; los builds siguen con la talla de Jev (2 etiquetas); fix, explore, research y
 // write, por reglas.
-const REVIEWS = ['review-final', 'review', 're-review']
 function hibrido(c, regla, u) {
   const j = porId.get(c.id)
   const tocaReview = (j?.tipo && REVIEWS.includes(j.tipo) && j.confianza >= u) || (regla && REVIEWS.includes(regla.tipo))

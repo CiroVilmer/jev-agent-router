@@ -1,14 +1,18 @@
 import { atom, read, update } from 'claude-code'
 import type { EngineInterface, PluginOptions, Register } from 'claude-code'
 import type { LecturaUso, Pestana, Subagente } from '../types'
-import type { Caso, ResultadoBanco } from '../src/banco'
-import { casosDeProduccion, colaEnOrden, conLimite, correrBanco, nombreCorrida } from '../src/banco'
+import type { Caso, CasoSuite, ItemSuite, ResultadoBanco, ResultadoSuite, Suite } from '../src/banco'
+import { casosDeProduccion, colaEnOrden, conLimite, correrBanco, correrSuite, itemsDeSuite, nombreCorrida, nombreCorridaSuite, SUITES, urlSinCredenciales } from '../src/banco'
 import type { Clasificador } from '../src/clasificadores'
 import { limitesDe, respaldo } from '../src/clasificadores'
 import { crearHaiku } from '../src/clasificadores/haiku'
-import { crearJev, JEV_URL } from '../src/clasificadores/jev'
+import { crearJev, JEV_MODELO, JEV_URL } from '../src/clasificadores/jev'
+import { crearOpenAI } from '../src/clasificadores/openai'
 import type { Muestra } from '../src/clasificadores/sombra'
 import { agregarMuestra, conSombra, estadisticasSombra, muestrasDe } from '../src/clasificadores/sombra'
+import { textoParaHaiku } from '../src/clasificadores/preguntas'
+import { crearSystemOne } from '../src/clasificadores/systemone'
+import { separarUrlLocal, taparSecretos } from '../src/clasificadores/urlLocal'
 import { conTope } from '../src/clasificadores/tope'
 import { avisoConvencion, CONVENCION_AGENT } from '../src/convencion'
 import type { Decision } from '../src/decidir'
@@ -33,6 +37,7 @@ import {
 import { historialMarkdown } from '../src/historialMarkdown'
 import { aplicarComando, describirComando, LINEA_ROUTER, OVERRIDES_INICIAL, parsearComando } from '../src/overrides'
 import { lecturaDe, politicaSegunHot, umbralesDe } from '../src/politica'
+import { textoResumen } from '../src/resumen'
 import { tallaBuildDe, tareaDe } from '../src/registro'
 import { clasificarPorReglas } from '../src/reglas'
 import { formatEscalon, tablaDe } from '../src/taxonomia'
@@ -144,45 +149,103 @@ export function avisarSinKey($: EngineInterface, consecuencia: string): void {
   $.ui.toast(texto)
 }
 
+const avisosSinLocal = new Set<string>()
+
+/** La key del servidor local, de /config o de LOCAL_API_KEY; null si no hay (un servidor local suele no pedirla). */
+export async function keyLocal($: EngineInterface, options: PluginOptions): Promise<string | null> {
+  return (typeof options.localApiKey === 'string' && options.localApiKey) || (await $.env.get('LOCAL_API_KEY')) || null
+}
+
+/**
+ * El POST al servidor local. Una URL con usuario y contraseña se pide sin ellos y con Basic (la key,
+ * si hay, gana con Bearer). Si falla, el mensaje sale sin la key, la URL ni las credenciales.
+ */
+export async function postLocal($: EngineInterface, url: string, key: string | null, cuerpo: string) {
+  const { urlPedido, basic, secretos } = separarUrlLocal(url)
+  try {
+    return await $.http.fetch(urlPedido, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...(key ? { Authorization: `Bearer ${key}` } : basic ? { Authorization: `Basic ${basic}` } : {}) },
+      body: cuerpo,
+    })
+  } catch (error) {
+    const mensaje = error instanceof Error ? error.message : String(error)
+    throw new Error(`local: ${taparSecretos(mensaje, [key, ...secretos])}`)
+  }
+}
+
+/**
+ * El clasificador local (experimental), sin tope: System One (por defecto) u OpenAI con logprobs.
+ * null si falta la URL o el modelo.
+ */
+export async function armarLocal($: EngineInterface, options: PluginOptions, umbral: number): Promise<Clasificador | null> {
+  const url = typeof options.localUrl === 'string' ? options.localUrl.trim() : ''
+  const modelo = typeof options.localModelo === 'string' ? options.localModelo.trim() : ''
+  if (!url || !modelo) return null
+  const key = await keyLocal($, options)
+  const post = (cuerpo: string) => postLocal($, url, key, cuerpo)
+  const ahora = () => $.clock.now()
+  return options.localProtocolo === 'openai'
+    ? crearOpenAI({ post, ahora, modelo, umbral })
+    : crearSystemOne({ post, ahora, modelo, umbral, fuente: 'local' })
+}
+
+export function avisarSinLocal($: EngineInterface, consecuencia: string): void {
+  const texto = `Router: falta la URL o el modelo del clasificador local (/config); ${consecuencia}`
+  if (avisosSinLocal.has(texto)) return
+  avisosSinLocal.add(texto)
+  $.ui.toast(texto)
+}
+
 // Arma el clasificador según /config. $ entra acá (función de nivel superior) y sale capturado
 // en closures: decidir recibe un Clasificador y no conoce $.
 export async function armarClasificador(
   $: EngineInterface,
   options: PluginOptions,
   signal?: AbortSignal,
-): Promise<{ clasificar: Clasificador; jevDecideReviews: boolean }> {
-  const principalReglas = options.clasificador !== 'haiku' && options.clasificador !== 'jev'
+): Promise<{ clasificar: Clasificador; decideReviews: boolean }> {
+  const conModelo = (v: unknown) => v === 'haiku' || v === 'jev' || v === 'local'
   // Con reglas y sin sombra no hace falta nada más: decide el respaldo, sin modelo.
-  if (principalReglas && options.sombra !== 'haiku' && options.sombra !== 'jev') {
-    return { clasificar: respaldo, jevDecideReviews: false }
+  if (!conModelo(options.clasificador) && !conModelo(options.sombra)) {
+    return { clasificar: respaldo, decideReviews: false }
   }
-  const { topeMs, jevUmbral } = limitesDe(options)
+  const { topeMs, jevUmbral, localUmbral } = limitesDe(options)
   const ahora = () => $.clock.now()
 
-  // La key se busca solo si alguien va a usar Jev.
+  // La key de Jev se busca solo si alguien va a usar Jev.
   const key = options.clasificador === 'jev' || options.sombra === 'jev' ? await keyJev($, options) : null
 
-  // El principal: reglas (el respaldo, sin tope: no espera a nadie, y así se juntan muestras de
-  // un clasificador antes de pasarse a él), haiku, o jev con su umbral. Jev sin key cae a haiku.
-  let principal: { nombre: string; c: Clasificador }
-  if (principalReglas) principal = { nombre: 'reglas', c: respaldo }
-  else if (options.clasificador === 'haiku') principal = { nombre: 'haiku', c: armarHaiku($) }
-  else if (key) principal = { nombre: 'jev', c: armarJevConKey($, key, jevUmbral) }
-  else {
-    avisarSinKey($, 'uso Haiku')
-    principal = { nombre: 'haiku', c: armarHaiku($) }
+  // El principal: reglas (el respaldo, sin tope), haiku, jev con su umbral (sin key cae a haiku) o
+  // local con el suyo (sin URL o modelo decide el respaldo: un local mal configurado no gasta Haiku).
+  let principal: { nombre: string; c: Clasificador } = { nombre: 'reglas', c: respaldo }
+  if (options.clasificador === 'haiku') principal = { nombre: 'haiku', c: armarHaiku($) }
+  else if (options.clasificador === 'jev') {
+    if (key) principal = { nombre: 'jev', c: armarJevConKey($, key, jevUmbral) }
+    else {
+      avisarSinKey($, 'uso Haiku')
+      principal = { nombre: 'haiku', c: armarHaiku($) }
+    }
+  } else if (options.clasificador === 'local') {
+    const local = await armarLocal($, options, localUmbral)
+    if (local) principal = { nombre: 'local', c: local }
+    else avisarSinLocal($, 'uso el respaldo')
   }
-  // Las reviews por description consultan a Jev solo si Jev es el principal y hay key.
-  const jevDecideReviews = principal.nombre === 'jev'
-  const decide = principalReglas ? respaldo : conTopeVivo($, principal.c, topeMs, signal)
+  // Las reviews por description consultan al principal solo si es jev o local (con confianza calibrable).
+  const decideReviews = principal.nombre === 'jev' || principal.nombre === 'local'
+  const decide = principal.nombre === 'reglas' ? respaldo : conTopeVivo($, principal.c, topeMs, signal)
 
-  // La sombra: Jev con umbral 0, para guardar su elección y su confianza reales. Jev sin key no
-  // se reemplaza por otro: la sombra queda desactivada.
+  // La sombra, con umbral 0 para guardar la elección y la confianza reales. Sin key o sin
+  // configuración no se reemplaza por otra: queda desactivada.
   let sombra: { nombre: string; c: Clasificador } | null = null
   if (options.sombra === 'haiku') sombra = { nombre: 'haiku', c: armarHaiku($) }
   else if (options.sombra === 'jev' && key) sombra = { nombre: 'jev', c: armarJevConKey($, key, 0) }
   else if (options.sombra === 'jev' && options.clasificador !== 'jev') avisarSinKey($, 'sombra desactivada')
-  if (!sombra || sombra.nombre === principal.nombre) return { clasificar: decide, jevDecideReviews }
+  else if (options.sombra === 'local') {
+    const local = await armarLocal($, options, 0)
+    if (local) sombra = { nombre: 'local', c: local }
+    else if (options.clasificador !== 'local') avisarSinLocal($, 'sombra desactivada')
+  }
+  if (!sombra || sombra.nombre === principal.nombre) return { clasificar: decide, decideReviews }
 
   // La sombra no lleva el signal del hook ni el tope de producción: sigue en segundo plano después
   // de que el spawn sale, con un límite generoso, y guarda sus ms reales y si pasó topeMs.
@@ -190,7 +253,7 @@ export async function armarClasificador(
     principal: principal.nombre,
     sombra: sombra.nombre,
   }, topeMs)
-  return { clasificar, jevDecideReviews }
+  return { clasificar, decideReviews }
 }
 
 // Una cola de escrituras por clave del store: dos escrituras que llegan juntas (dos sombras, dos
@@ -331,16 +394,18 @@ export const LIMITE_BANCO_MS = 60_000
 export async function correrBancoEnSesion(
   $: EngineInterface,
   options: PluginOptions,
-  comando: { max: number | null; solo: 'haiku' | 'jev' | null },
+  comando: { max: number | null; solo: 'haiku' | 'jev' | 'local' | null; suite: Suite | 'todas' | null; concurrencia: number | null; tokens: number | null },
 ): Promise<string> {
+  if (comando.suite !== null) return correrSuitesEnSesion($, options, { ...comando, suite: comando.suite })
+  const solo = comando.solo as 'haiku' | 'jev' | null
   const cwd = await $.session.cwd()
   const { casos } = JSON.parse(String(await $.fs.read(`${cwd}/bench/casos.json`))) as { casos: Caso[] }
   const elegidos = casosDeProduccion(casos).slice(0, comando.max ?? undefined)
 
   const clasificadores: Partial<Record<'haiku' | 'jev', Clasificador>> = {}
   let aviso = ''
-  if (comando.solo !== 'jev') clasificadores.haiku = armarHaiku($)
-  if (comando.solo !== 'haiku') {
+  if (solo !== 'jev') clasificadores.haiku = armarHaiku($)
+  if (solo !== 'haiku') {
     const jev = await armarJev($, options, 0)
     if (jev) {
       clasificadores.jev = jev
@@ -367,7 +432,7 @@ export async function correrBancoEnSesion(
     enCola(() => $.fs.write(`${cwd}/${relativa}`, JSON.stringify({ fecha, clasificadores: nombres, resultados }, null, 1) + '\n'))
 
   const resultados = await correrBanco(elegidos, conLimites, {
-    concurrencia: 3,
+    concurrencia: comando.concurrencia ?? 1,
     alAvanzar: async (hechos, _total, parciales) => {
       // Un guardado parcial que falla no corta el banco: el final vuelve a intentar.
       if (hechos % 25 === 0) await guardar(parciales).catch(() => {})
@@ -382,6 +447,75 @@ export async function correrBancoEnSesion(
   }
   const partes = (['haiku', 'jev'] as const).filter(f => clasificadores[f]).map(cuenta).join('')
   return `Banco: ${elegidos.length} ${elegidos.length === 1 ? 'caso' : 'casos'}${partes} · ${relativa}${aviso}`
+}
+
+/** Muestra de tokens de Haiku con $.model.complete (classify no devuelve usage): el mismo texto, sin el prompt fijo de classify. */
+export async function muestraTokens($: EngineInterface, items: readonly ItemSuite[]): Promise<{ muestra: number; entrada: number; salida: number } | null> {
+  const usos: { entrada: number; salida: number }[] = []
+  for (const it of items) {
+    const texto = textoParaHaiku(textoResumen(it.descripcion, it.resumen), it.etiquetas)
+    const r = await $.model.complete({ model: 'haiku', prompt: `${texto}\n\nRespondé solo con una de estas etiquetas: ${it.etiquetas.join(', ')}` }).catch(() => null)
+    if (r?.isAnswered) {
+      const u = r.usage
+      usos.push({ entrada: u.input_tokens + u.cache_read_input_tokens + u.cache_creation_input_tokens, salida: u.output_tokens })
+    }
+  }
+  if (!usos.length) return null
+  const media = (f: (u: { entrada: number; salida: number }) => number) => usos.reduce((a, u) => a + f(u), 0) / usos.length
+  return { muestra: usos.length, entrada: media(u => u.entrada), salida: media(u => u.salida) }
+}
+
+/** /router bench --suite: cada selector sobre cada suite, una corrida bench/corridas/<fecha>-sel-<selector>-<suite>.json. */
+export async function correrSuitesEnSesion(
+  $: EngineInterface,
+  options: PluginOptions,
+  comando: { max: number | null; solo: 'haiku' | 'jev' | 'local' | null; suite: Suite | 'todas'; concurrencia: number | null; tokens: number | null },
+): Promise<string> {
+  const cwd = await $.session.cwd()
+  const { casos } = JSON.parse(String(await $.fs.read(`${cwd}/bench/casos.json`))) as { casos: CasoSuite[] }
+  const suites: Suite[] = comando.suite === 'todas' ? [...SUITES] : [comando.suite]
+  const idsReview = suites.includes('review')
+    ? new Set(Object.keys(JSON.parse(String(await $.fs.read(`${cwd}/bench/etiquetas-review.json`))) as Record<string, unknown>))
+    : new Set<string>()
+  const concurrencia = comando.concurrencia ?? 1
+
+  // Los selectores: sin --solo, los que estén configurados. Umbral 0: la confianza queda en la corrida.
+  const selectores: { nombre: 'haiku' | 'jev' | 'local'; c: Clasificador; meta: Record<string, unknown> }[] = []
+  const avisos: string[] = []
+  if (comando.solo === null || comando.solo === 'haiku') selectores.push({ nombre: 'haiku', c: armarHaiku($), meta: { modelo: 'haiku', protocolo: null, url: null } })
+  if (comando.solo === null || comando.solo === 'jev') {
+    const jev = await armarJev($, options, 0)
+    if (jev) selectores.push({ nombre: 'jev', c: jev, meta: { modelo: JEV_MODELO, protocolo: 'systemone', url: JEV_URL } })
+    else if (comando.solo === 'jev') avisos.push('sin key de Jev')
+  }
+  if (comando.solo === null || comando.solo === 'local') {
+    const local = await armarLocal($, options, 0)
+    if (local) selectores.push({ nombre: 'local', c: local, meta: { modelo: String(options.localModelo).trim(), protocolo: options.localProtocolo === 'openai' ? 'openai' : 'systemone', url: urlSinCredenciales(String(options.localUrl).trim()) } })
+    else if (comando.solo === 'local') avisos.push('falta la URL o el modelo del clasificador local')
+  }
+
+  const ahora = new Date(await $.clock.now())
+  const partes: string[] = []
+  for (const suite of suites) {
+    const items = itemsDeSuite(casos, suite, idsReview).slice(0, comando.max ?? undefined)
+    for (const s of selectores) {
+      const relativa = nombreCorridaSuite(ahora, s.nombre, suite)
+      const tokens = s.nombre === 'haiku' ? await muestraTokens($, items.slice(0, comando.tokens ?? 20)) : null
+      const enCola = colaEnOrden()
+      const guardar = (resultados: readonly ResultadoSuite[]) =>
+        enCola(() => $.fs.write(`${cwd}/${relativa}`, JSON.stringify({ fecha: ahora.toISOString(), selector: s.nombre, suite, ...s.meta, hardware: null, concurrencia, tokens, resultados }, null, 1) + '\n'))
+      const c = conEsperaCortable($, dormir => conLimite(s.c, LIMITE_BANCO_MS, dormir))
+      const resultados = await correrSuite(items, c, {
+        concurrencia,
+        alAvanzar: async (hechos, _total, parciales) => { if (hechos % 25 === 0) await guardar(parciales).catch(() => {}) },
+      })
+      await guardar(resultados)
+      const errores = resultados.filter(r => r.error !== null).length
+      partes.push(`${s.nombre} ${resultados.length - errores} ok / ${errores} error`)
+    }
+  }
+  const aviso = avisos.length ? ` · ${avisos.join(' · ')}` : ''
+  return `Banco: ${suites.join('+')} · ${partes.join(' · ') || 'sin selectores'}${aviso}`
 }
 
 /** El modo hot se guarda en el store: vale para todas las sesiones. Arranca apagado. */
@@ -446,13 +580,13 @@ ${CONVENCION_AGENT}` }
       const [overrides, lectura, hot, subs] = await Promise.all([read($, overridesAtom), read($, lecturaAtom), leerHot($), read($, subagentesAtom)])
       const politica = politicaSegunHot(hot, lectura, ahora, umbrales)
       modo = politica.modo
-      const { clasificar, jevDecideReviews } = await armarClasificador($, options, next.signal)
+      const { clasificar, decideReviews } = await armarClasificador($, options, next.signal)
       decision = await decidir(
         {
           descripcion: e.description, prompt: e.prompt, subagentType: e.subagentType, modeloPedido: e.model, fork: e.fork,
           tallaBuildDeTarea: tallaBuildDe(subs, tareaDe(e.description)),
         },
-        { overrides, politica, clasificar, jevDecideReviews, tabla },
+        { overrides, politica, clasificar, decideReviews, tabla },
       )
     } catch (error) {
       // Nunca bloquea: si el router falla, el subagente sale con lo que pidió Claude.

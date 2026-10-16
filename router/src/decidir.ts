@@ -20,7 +20,7 @@ export type EntradaDecision = {
   tallaBuildDeTarea?: 'build-large' | 'build-small' | null
 }
 
-export type Contexto = { overrides: Overrides; politica: EstadoPolitica; clasificar: Clasificador; tabla?: Tabla; jevDecideReviews: boolean }
+export type Contexto = { overrides: Overrides; politica: EstadoPolitica; clasificar: Clasificador; tabla?: Tabla; decideReviews: boolean }
 
 export type Decision =
   | { tocar: false; motivos: string[] }
@@ -33,15 +33,17 @@ export function motivoError(error: unknown): string {
 
 const REVIEWS: readonly Tipo[] = ['review-final', 'review', 're-review']
 
-/** Lo que pasó al consultar a Jev por una review: el tipo final y, si corresponde, el motivo. */
-export function revisarConJev(regla: Tipo, cl: Clasificacion): { tipo: Tipo; motivo: string | null } {
+/** Lo que pasó al consultar al clasificador principal (jev o local) por una review: el tipo final y, si corresponde, el motivo. */
+export function revisarConClasificador(regla: Tipo, cl: Clasificacion): { tipo: Tipo; motivo: string | null } {
   const conf = cl.confianza === undefined ? '' : ` (${cl.confianza.toFixed(2)})`
-  // Una review no baja a Haiku por Jev: explore y write dejan la regla.
-  if (cl.fuente === 'jev' && cl.detalle === undefined && (cl.tipo === 'explore' || cl.tipo === 'write'))
-    return { tipo: regla, motivo: `jev → ${cl.tipo}${conf}: queda la regla` }
-  if (cl.fuente === 'jev' && cl.detalle === undefined) return { tipo: cl.tipo, motivo: `jev → ${cl.tipo}${conf}` }
-  if (cl.fuente === 'jev') return { tipo: regla, motivo: `jev dudó${conf}: queda la regla` }
-  // Hoy inalcanzable (solo se consulta con Jev como clasificador principal); queda como defensa.
+  if (cl.fuente === 'jev' || cl.fuente === 'local') {
+    // Una review no baja a Haiku por el clasificador: explore y write dejan la regla.
+    if (cl.detalle === undefined && (cl.tipo === 'explore' || cl.tipo === 'write'))
+      return { tipo: regla, motivo: `${cl.fuente} → ${cl.tipo}${conf}: queda la regla` }
+    if (cl.detalle === undefined) return { tipo: cl.tipo, motivo: `${cl.fuente} → ${cl.tipo}${conf}` }
+    return { tipo: regla, motivo: `${cl.fuente} dudó${conf}: queda la regla` }
+  }
+  // Hoy inalcanzable (solo se consulta con jev o local como principal); queda como defensa.
   if (cl.fuente === 'haiku') return { tipo: regla, motivo: `haiku → ${cl.tipo}: queda la regla` }
   return { tipo: regla, motivo: cl.detalle ? `respaldo (${cl.detalle}): queda la regla` : null }
 }
@@ -62,10 +64,10 @@ export async function decidir(e: EntradaDecision, c: Contexto): Promise<Decision
   if (regla && regla.tipo !== 'build') {
     tipo = regla.tipo
     motivos.push(`regla ${regla.regla}`)
-    // Jev decide la familia review (le gana a las reglas en el banco): si está seguro, manda él.
-    if (c.jevDecideReviews && REVIEWS.includes(regla.tipo) && !regla.regla.startsWith('subagentType')) {
+    // El clasificador principal (jev o local) decide la familia review: si está seguro, manda él.
+    if (c.decideReviews && REVIEWS.includes(regla.tipo) && !regla.regla.startsWith('subagentType')) {
       const cl = await c.clasificar({ descripcion: e.descripcion, resumen: resumir(e.prompt), etiquetas: TIPOS })
-      const r = revisarConJev(regla.tipo, cl)
+      const r = revisarConClasificador(regla.tipo, cl)
       tipo = r.tipo
       if (r.motivo) motivos.push(r.motivo)
     }

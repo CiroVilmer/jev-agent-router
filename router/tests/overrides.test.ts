@@ -121,13 +121,22 @@ describe('pin', () => {
 })
 
 describe('parsearComando banco', () => {
+  test('suite, concurrencia, tokens y solo local', () => {
+    expect(parsearComando('bench --suite todas --solo local --concurrencia 2')).toEqual({ accion: 'banco', max: null, solo: 'local', suite: 'todas', concurrencia: 2, tokens: null })
+    expect(parsearComando('bench --suite talla --solo haiku --tokens 20')).toEqual({ accion: 'banco', max: null, solo: 'haiku', suite: 'talla', concurrencia: null, tokens: 20 })
+    expect(parsearComando('bench --suite gpt')).toMatchObject({ accion: 'error' })
+    expect(parsearComando('bench --solo local')).toMatchObject({ accion: 'error' })
+    expect(parsearComando('bench --tokens 5')).toMatchObject({ accion: 'error' })
+    expect(parsearComando('bench --concurrencia 0')).toMatchObject({ accion: 'error' })
+  })
+
   test('sin opciones', () => {
-    expect(parsearComando('banco')).toEqual({ accion: 'banco', max: null, solo: null })
+    expect(parsearComando('banco')).toEqual({ accion: 'banco', max: null, solo: null, suite: null, concurrencia: null, tokens: null })
   })
 
   test('con --max y --solo', () => {
-    expect(parsearComando('banco --max 50 --solo jev')).toEqual({ accion: 'banco', max: 50, solo: 'jev' })
-    expect(parsearComando('banco --solo HAIKU')).toEqual({ accion: 'banco', max: null, solo: 'haiku' })
+    expect(parsearComando('banco --max 50 --solo jev')).toEqual({ accion: 'banco', max: 50, solo: 'jev', suite: null, concurrencia: null, tokens: null })
+    expect(parsearComando('banco --solo HAIKU')).toEqual({ accion: 'banco', max: null, solo: 'haiku', suite: null, concurrencia: null, tokens: null })
   })
 
   test('rechaza opciones inválidas', () => {
@@ -183,7 +192,7 @@ describe('comandos en inglés (los de castellano siguen como alias)', () => {
     expect(parsearComando('allow sonnet,opus')).toEqual({ accion: 'permitir', modelos: ['sonnet', 'opus'] })
     expect(parsearComando('set review opus·max')).toEqual({ accion: 'fijar', tipo: 'review', escalon: { modelo: 'opus', esfuerzo: 'max' } })
     expect(parsearComando('history 3')).toEqual({ accion: 'historial', dias: 3 })
-    expect(parsearComando('bench --max 5')).toEqual({ accion: 'banco', max: 5, solo: null })
+    expect(parsearComando('bench --max 5')).toEqual({ accion: 'banco', max: 5, solo: null, suite: null, concurrencia: null, tokens: null })
   })
 
   test('los alias en castellano siguen funcionando', () => {

@@ -1,5 +1,7 @@
 import type { Tipo } from '../types'
 import type { Clasificador } from './clasificadores'
+import { TALLAS, TALLAS_REVIEW } from './clasificadores'
+import { TIPOS } from './taxonomia'
 import type { Resumen } from './resumen'
 
 export type Caso = { id: string; descripcion: string; resumen: Resumen; etiquetasProduccion: Tipo[] | null }
@@ -75,5 +77,63 @@ export function conLimite(c: Clasificador, ms: number, dormir: (ms: number) => P
     const r = await Promise.race([c(p), dormir(ms).then(() => 'tarde' as const)])
     if (r === 'tarde') throw new Error(`tardó más de ${Math.round(ms / 1000)} s`)
     return r
+  }
+}
+
+export type Suite = 'tipos' | 'talla' | 'review'
+export const SUITES: readonly Suite[] = ['tipos', 'talla', 'review']
+export type CasoSuite = { id: string; descripcion: string; resumen: Resumen; regla?: string | null }
+export type ItemSuite = { id: string; descripcion: string; resumen: Resumen; etiquetas: readonly Tipo[] }
+export type ResultadoSuite = { id: string; tipo: string | null; confianza: number | null; ms: number; error: string | null }
+
+/** Los casos de una suite, con las etiquetas que se le ofrecen al selector (§3 del spec). */
+export function itemsDeSuite(casos: readonly CasoSuite[], suite: Suite, idsReview: ReadonlySet<string>): ItemSuite[] {
+  const con = (c: CasoSuite, etiquetas: readonly Tipo[]): ItemSuite => ({ id: c.id, descripcion: c.descripcion, resumen: c.resumen, etiquetas })
+  if (suite === 'tipos') return casos.map(c => con(c, TIPOS))
+  if (suite === 'talla') return casos.filter(c => c.regla === 'build').map(c => con(c, TALLAS))
+  return casos.filter(c => idsReview.has(c.id)).map(c => con(c, TALLAS_REVIEW))
+}
+
+/** Corre una suite con un selector, sin tope (mide la latencia real); los errores quedan en `error`. */
+export async function correrSuite(
+  items: readonly ItemSuite[],
+  c: Clasificador,
+  opciones: { concurrencia: number; alAvanzar?: (hechos: number, total: number, parciales: readonly ResultadoSuite[]) => Promise<void> },
+): Promise<ResultadoSuite[]> {
+  const resultados: (ResultadoSuite | undefined)[] = new Array(items.length)
+  let siguiente = 0
+  let hechos = 0
+  const trabajador = async () => {
+    while (siguiente < items.length) {
+      const i = siguiente++
+      const it = items[i]!
+      try {
+        const r = await c({ descripcion: it.descripcion, resumen: it.resumen, etiquetas: it.etiquetas })
+        resultados[i] = { id: it.id, tipo: r.tipo, confianza: r.confianza ?? null, ms: r.ms, error: null }
+      } catch (e) {
+        resultados[i] = { id: it.id, tipo: null, confianza: null, ms: 0, error: e instanceof Error ? e.message : String(e) }
+      }
+      hechos++
+      await opciones.alAvanzar?.(hechos, items.length, resultados.filter((r): r is ResultadoSuite => r !== undefined))
+    }
+  }
+  await Promise.all(Array.from({ length: Math.max(1, opciones.concurrencia) }, trabajador))
+  return resultados as ResultadoSuite[]
+}
+
+export function nombreCorridaSuite(fechaLocal: Date, selector: string, suite: Suite): string {
+  return nombreCorrida(fechaLocal).replace(/-banco\.json$/, `-sel-${selector}-${suite}.json`)
+}
+
+/** La URL de un selector sin credenciales ni query (pueden traer keys); null si no se puede parsear. */
+export function urlSinCredenciales(url: string): string | null {
+  try {
+    const u = new URL(url)
+    u.username = ''
+    u.password = ''
+    u.search = ''
+    return u.toString()
+  } catch {
+    return null
   }
 }

@@ -189,11 +189,12 @@ Change these in `/config` → plugins → agent-router, or with `/plugin configu
 
 | Option | Default | What it does |
 |---|---|---|
-| `clasificador` | `reglas` | Who decides when rules aren't enough: `reglas` (size heuristic, no model), `haiku`, or `jev` |
+| `clasificador` | `reglas` | Who decides when rules aren't enough: `reglas` (size heuristic, no model), `haiku`, `jev`, or `local` (experimental, your own server) |
 | `jevApiKey` | — | Jev key, stored as sensitive. Falls back to the `JEV_API_KEY` environment variable |
 | `jevUmbral` | `0.7` | Jev's confidence threshold: below it, the fallback decides a build's size, the rule keeps a review and a review's size is `review-small` |
 | `topeMs` | `1000` | Classifier time budget. If it takes longer, the fallback decides (50–8000) |
-| `sombra` | `off` | Shadow mode: runs another classifier in the background and stores both answers to compare |
+| `sombra` | `off` | Shadow mode: runs another classifier (`haiku`, `jev` or `local`) in the background and stores both answers to compare |
+| `localProtocolo` · `localUrl` · `localModelo` · `localApiKey` · `localUmbral` | `systemone` · — · — · — · `0.7` | The experimental `local` classifier: protocol (`systemone` or `openai`), endpoint, model, optional key and confidence threshold (not calibrated). See [docs/configuration.md](docs/configuration.md#local-classifier-experimental) |
 | `fuegoMinutos` · `fuegoUsado` | `60` · `70` | 🔥 +2 steps when ≤ 60 min to the reset and ≤ 70% used |
 | `sobraMinutos` · `sobraUsado` | `120` · `80` | ⬆️ +1 step when ≤ 120 min to the reset and ≤ 80% used |
 | `ensenarConvencion` | `true` | When no rule recognizes a description, Claude sees a one-line hint in the Agent result |
@@ -212,7 +213,9 @@ Full reference: [docs/configuration.md](docs/configuration.md).
 With `clasificador: jev`, the router sends Jev **only the subagent's description and a numeric
 summary of its prompt** (length, number of files and steps it names, whether it mentions a spec).
 It never sends the prompt. The same applies to `sombra: jev` and to `/router bench`. With
-`reglas` or `haiku` and no Jev shadow, nothing leaves Claude Code.
+`reglas` or `haiku` and no Jev or local shadow, nothing leaves Claude Code. With `clasificador: local` or
+`sombra: local`, that same description and numeric summary go to the `localUrl` you configured, which
+can be a remote server.
 
 ## How it works
 

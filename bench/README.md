@@ -26,7 +26,7 @@ Jev) contra una referencia etiquetada a mano, y cuánto tardan. Sirve para decid
    repo:
 
    ```
-   /router bench [--max N] [--solo haiku|jev]
+   /router bench [--max N] [--solo haiku|jev] [--concurrencia N]
    ```
 
    Corre Haiku y Jev sobre los casos de producción por el mismo camino que usa el router, pero
@@ -37,9 +37,10 @@ Jev) contra una referencia etiquetada a mano, y cuánto tardan. Sirve para decid
    resultados y al final. `--max N` corre solo los primeros N casos; `--solo` corre uno de los
    dos. Sin key de Jev (`/config` o `JEV_API_KEY`) corre solo Haiku y lo dice.
 
-   El banco hace hasta **3 llamadas a la vez** (concurrencia 3). Eso puede inflar el p50 y el
-   p95 frente a producción, donde cada spawn hace una sola llamada: tomá la latencia del banco
-   como una cota pesimista. Después:
+   Sin `--suite`, el banco hace **1 llamada a la vez** (antes eran 3; se cambia con `--concurrencia N`).
+   Con más concurrencia el p50 y el p95 se inflan frente a producción, donde cada spawn hace una
+   sola llamada: tomá esa latencia como una cota pesimista. Para comparar selectores con las
+   suites mirá la sección de `/router bench --suite`, más abajo. Después:
 
    ```
    node bench/comparar.mjs [bench/corridas/<archivo>-banco.json] [--tope <ms>]
@@ -71,24 +72,115 @@ Si algún número da `null`, no escribe nada.
 Es una foto congelada: Claude Code poda los transcripts a los ~30 días, así que correrlo más
 adelante da otra base. Regenerala solo a propósito y revisá el diff de `lineaBase.ts`.
 
-## Jev sobre todos los casos (`jev-todos.mjs`, `analizar-jev-todos.mjs`)
+## Jev sobre todos los casos (corridas viejas)
+
+`bench/jev-todos.mjs` ya no existe: lo reemplaza `selectores.mjs` (más abajo). Las corridas
+que dejó (`*-jev-todos.json`, `*-jev-talla.json`) siguen en `bench/corridas/` y se analizan
+igual que antes:
 
 ```
-JEV_API_KEY=… node bench/jev-todos.mjs [--max N] [--talla]
 node bench/analizar-jev-todos.mjs [bench/corridas/<archivo>-jev-todos.json]
 ```
 
-`jev-todos.mjs` manda a Jev todos los casos de `casos.json` con las 9 etiquetas y sin pistas de
-las reglas (solo description y resumen, nunca el prompt), con umbral 0: guarda la elección y la
-confianza. Con `--talla` manda solo los casos con regla `build` y las 2 tallas, como producción.
-Escribe `bench/corridas/<AAAA-MM-DD>-<HHMM>-jev-todos.json` (o `-jev-talla.json` con `--talla`).
-`analizar-jev-todos.mjs` lo compara contra `etiquetas.json` y escribe al lado
-`<archivo>-analisis.md`: Jev solo por tipo, dónde deciden hoy las reglas, calibración y la política
-simulada (fases 5 y 6).
+`analizar-jev-todos.mjs` compara la corrida contra `etiquetas.json` y escribe al lado
+`<archivo>-analisis.md`: Jev solo por tipo, dónde deciden hoy las reglas, calibración y la
+política simulada (fases 5 y 6). Las corridas `2026-10-09-1347-jev-talla-vieja` y
+`2026-10-09-1347-jev-todos-nueva` se hicieron con textos de talla distintos de los actuales.
+`/router bench` y `comparar.mjs` no miden las reviews por description: para eso está
+`review-talla.mjs`, o las suites de abajo.
 
-Las corridas `2026-10-09-1347-jev-talla-vieja` y `2026-10-09-1347-jev-todos-nueva` se hicieron con
-textos de talla distintos de los actuales. `/router bench` y `comparar.mjs` no miden las reviews
-por description: para eso está este banco.
+## Comparar selectores (suites)
+
+Un **selector** es lo que decide un tipo o una talla cuando las reglas no alcanzan: las reglas
+solas, Haiku, Jev o un modelo local. Tres **suites** los miden sobre los mismos casos:
+
+| Suite | Casos | Etiquetas que se ofrecen | Referencia |
+|---|---|---|---|
+| `tipos` | los 729 | los 9 tipos | `etiquetas.json` |
+| `talla` | los builds (regla `build`) | `build-large`, `build-small` | `etiquetas.json` |
+| `review` | las 225 reviews etiquetadas | `review-large`, `review-small` | `etiquetas-review.json` |
+
+El pedido se arma como en producción (solo description y resumen, nunca el prompt) y sin umbral:
+la corrida guarda la confianza y el informe aplica el umbral después.
+
+### `selectores.mjs`: Jev y el local, desde Node
+
+```
+[JEV_API_KEY=…] [LOCAL_API_KEY=…] node bench/selectores.mjs --selector jev|local \
+  --suite tipos|talla|review|todas [--protocolo systemone|openai] [--url U] [--modelo M] \
+  [--hardware H] [--max N] [--concurrencia N]
+```
+
+- `jev` pide `JEV_API_KEY`. `local` pide `--url` (el endpoint completo), `--modelo` y
+  `--protocolo` (`systemone` por defecto u `openai`); la key del local es opcional
+  (`LOCAL_API_KEY`) y sin ella no se manda header.
+- `--hardware` es texto libre (por ejemplo la GPU): queda en la corrida y el informe lo cita.
+- `--max` y `--concurrencia` (por defecto 1) tienen que ser enteros positivos; si no, el script
+  sale con el uso.
+- Una llamada que no responde en 60 s queda como error y el script sigue.
+- Escribe una corrida por suite, `bench/corridas/<AAAA-MM-DD>-<HHMM>-sel-<selector>-<suite>.json`,
+  cada 50 resultados y al final, con la fecha, el selector, la suite, el modelo, el protocolo, la
+  URL (sin usuario, contraseña ni query), el hardware, la concurrencia y, por caso, `id`, `tipo`,
+  `confianza`, `ms` y `error`. `selectores.mjs` e `informe.mjs` **nunca pisan un archivo anterior**: si el nombre existe,
+  agregan `-2`, `-3`…
+- Las keys no se imprimen ni se guardan, ni siquiera dentro de un error.
+
+### `/router bench --suite`: Haiku, dentro de Claude Code
+
+```
+/router bench [--suite tipos|talla|review|todas] [--solo haiku|jev|local] [--max N] [--concurrencia N] [--tokens N]
+```
+
+Con `--suite` escribe una corrida por selector y suite con el mismo formato y nombre que
+`selectores.mjs`, pero sin el `-2`: dos corridas del mismo selector y suite en el mismo minuto
+se pisan. `--solo local` y `--tokens` piden `--suite`. Sin `--suite` el comando queda
+como antes (mismo archivo `-banco.json`). `--tokens N` (20 por defecto) toma una muestra de N
+llamadas de Haiku por `$.model.complete` y guarda el uso medio de tokens de entrada y de salida,
+que el informe necesita para el precio. El local toma la configuración de `/config` (`localUrl`,
+`localModelo`, `localProtocolo`…).
+
+### `informe.mjs`
+
+```
+node bench/informe.mjs [--tope 1000] [--umbral-local 0.7] [corridas…]
+```
+
+Lee las corridas `-sel-` de `bench/corridas/` (la más nueva por selector, modelo, protocolo y
+suite, o las que listes), imprime el informe y lo guarda como
+`<AAAA-MM-DD>-<HHMM>-informe-selectores.md`, sin pisar uno anterior (`-2`…). `--tope` es el
+`topeMs` simulado (1000) y `--umbral-local` el umbral del local (0.7). Trae:
+
+- **Una tabla por suite**, con una fila por selector (`reglas` es la base) y las columnas `n`,
+  `acierta`, `seguros` (solo etiquetas con `seguro: true`), `con umbral` (por debajo del umbral
+  decide el respaldo), `con tope` (una llamada con error o más lenta que `--tope` cuenta como el
+  respaldo), `p50`, `p95`, `máx`, `> tope` (llamadas que pasan el tope), `errores` y
+  `USD / 1.000` pedidos.
+- **Calibración**: acierto por tramo de confianza, para los selectores que la informan. Con eso
+  se elige `localUmbral`.
+- **Política completa simulada**: los 729 casos ruteados con la política actual y cada selector, y
+  la talla de las 225 reviews, con y sin tope.
+- **Precios** y **advertencias** (etiquetas dudosas, tallas sin validar, hardware del local y
+  umbral sin calibrar). Una suite sin corrida sale como `sin dato`.
+
+### `precios.json`
+
+Precios por 1.000.000 de tokens, con la fuente y la fecha: Haiku 5.5 a USD 0,10 de entrada y
+USD 0,50 de salida (precio de lista de Anthropic, cacheado el 2026-10-06; el thinking se cobra
+como salida) sobre la muestra de `--tokens`; Jev a USD 42 por mil millones de tokens de entrada
+(typesafe.ai, consultado el 2026-10-15) sobre los tokens estimados del pedido (caracteres / 4),
+sin dato de salida; el local y las reglas, USD 0. Con Claude Max no se paga por llamada: Haiku
+consume cuota de la ventana de 5 h. Si cambia un precio, editá el archivo y la fecha.
+
+### Servidor falso (`lib/servidor-falso.mjs`)
+
+```
+node bench/lib/servidor-falso.mjs [--puerto 9931] [--logprobs no] [--demora MS]
+```
+
+Un servidor local que habla System One (`/v1/systemone`) y OpenAI (`/v1/chat/completions`) y
+siempre elige la primera opción. Sirve para probar el clasificador `local` y `selectores.mjs` sin
+un modelo de verdad: `--logprobs no` responde sin logprobs y `--demora` agrega milisegundos de
+espera para probar el tope. Sus números no miden nada.
 
 ## La talla de las reviews (`review-talla.mjs`)
 

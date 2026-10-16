@@ -190,11 +190,12 @@ Se cambia en `/config` → plugins → agent-router, o con `/plugin configure`.
 
 | Opción | Default | Qué hace |
 |---|---|---|
-| `clasificador` | `reglas` | Quién decide cuando las reglas no alcanzan: `reglas` (heurística de tamaño, sin modelo), `haiku` o `jev` |
+| `clasificador` | `reglas` | Quién decide cuando las reglas no alcanzan: `reglas` (heurística de tamaño, sin modelo), `haiku`, `jev` o `local` (experimental, tu propio servidor) |
 | `jevApiKey` | — | La key de Jev, guardada como dato sensible. Si falta, se usa la variable de entorno `JEV_API_KEY` |
 | `jevUmbral` | `0.7` | Umbral de confianza de Jev: por debajo, el respaldo decide la talla de un build, en una review queda la regla y la talla de una review es `review-small` |
 | `topeMs` | `1000` | Tiempo máximo del clasificador. Si tarda más, decide el respaldo (50–8000) |
-| `sombra` | `off` | Modo sombra: corre otro clasificador en segundo plano y guarda las dos respuestas para comparar |
+| `sombra` | `off` | Modo sombra: corre otro clasificador (`haiku`, `jev` o `local`) en segundo plano y guarda las dos respuestas para comparar |
+| `localProtocolo` · `localUrl` · `localModelo` · `localApiKey` · `localUmbral` | `systemone` · — · — · — · `0.7` | El clasificador `local`, experimental: protocolo (`systemone` u `openai`), endpoint, modelo, key opcional y umbral de confianza (sin calibrar). Ver [docs/configuration.md](docs/configuration.md#local-classifier-experimental) |
 | `fuegoMinutos` · `fuegoUsado` | `60` · `70` | 🔥 +2 escalones con 60 min o menos al reset y 70% de uso o menos |
 | `sobraMinutos` · `sobraUsado` | `120` · `80` | ⬆️ +1 escalón con 120 min o menos al reset y 80% de uso o menos |
 | `ensenarConvencion` | `true` | Si ninguna regla reconoce una description, Claude ve una línea con cómo nombrar en el resultado de Agent |
@@ -214,7 +215,9 @@ Referencia completa (en inglés): [docs/configuration.md](docs/configuration.md)
 Con `clasificador: jev`, el router le manda a Jev **solo la description del subagente y un
 resumen numérico de su prompt**: el largo, cuántos archivos y pasos nombra, y si menciona un
 spec. Nunca le manda el prompt. Lo mismo vale para `sombra: jev` y para `/router bench`. Con `reglas`
-o `haiku` y sin sombra de Jev, no sale nada de Claude Code.
+o `haiku` y sin sombra de Jev ni local, no sale nada de Claude Code. Con `clasificador: local` o
+`sombra: local`, esa misma description y ese resumen numérico van a la `localUrl` que configuraste,
+que puede ser un servidor remoto.
 
 ## Cómo funciona
 

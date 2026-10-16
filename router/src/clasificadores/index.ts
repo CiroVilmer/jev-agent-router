@@ -2,7 +2,7 @@ import type { Tipo } from '../../types'
 import type { Resumen } from '../resumen'
 import { tamanoPorRespaldo } from '../resumen'
 
-export type Clasificacion = { tipo: Tipo; confianza?: number; ms: number; fuente: 'respaldo' | 'haiku' | 'jev'; detalle?: string }
+export type Clasificacion = { tipo: Tipo; confianza?: number; ms: number; fuente: 'respaldo' | 'haiku' | 'jev' | 'local'; detalle?: string }
 
 export type PedidoClasificacion = { descripcion: string; resumen: Resumen; etiquetas: readonly Tipo[] }
 
@@ -32,13 +32,20 @@ export const TOPE_MS = { min: 50, max: 8000, porDefecto: 1000 } as const
 // bench/corridas/2026-10-07-1032-comparacion.md.
 export const JEV_UMBRAL = { min: 0, max: 1, porDefecto: 0.7 } as const
 
+// Sin calibrar: experimental hasta medir el local en el banco (bench/informe.mjs, tabla de calibración).
+export const LOCAL_UMBRAL = { min: 0, max: 1, porDefecto: 0.7 } as const
+
 const acotar = (x: unknown, l: { min: number; max: number; porDefecto: number }) =>
   typeof x === 'number' && Number.isFinite(x) ? Math.min(l.max, Math.max(l.min, x)) : l.porDefecto
 
 /**
  * Los límites de /config, acotados: `topeMs` a [50, 8000] porque el hook tiene 10 s de
- * presupuesto y la espera cuenta; `jevUmbral` a [0, 1]. Un valor que no es número toma el default.
+ * presupuesto y la espera cuenta; `jevUmbral` y `localUmbral` a [0, 1]. Un valor que no es número toma el default.
  */
-export function limitesDe(options: { topeMs?: unknown; jevUmbral?: unknown }): { topeMs: number; jevUmbral: number } {
-  return { topeMs: acotar(options.topeMs, TOPE_MS), jevUmbral: acotar(options.jevUmbral, JEV_UMBRAL) }
+export function limitesDe(options: { topeMs?: unknown; jevUmbral?: unknown; localUmbral?: unknown }): { topeMs: number; jevUmbral: number; localUmbral: number } {
+  return {
+    topeMs: acotar(options.topeMs, TOPE_MS),
+    jevUmbral: acotar(options.jevUmbral, JEV_UMBRAL),
+    localUmbral: acotar(options.localUmbral, LOCAL_UMBRAL),
+  }
 }

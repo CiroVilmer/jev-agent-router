@@ -205,10 +205,10 @@ describe('estadísticas', () => {
 
 describe('limitesDe', () => {
   test('acota topeMs a [50, 8000] y jevUmbral a [0, 1]', () => {
-    expect(limitesDe({})).toEqual({ topeMs: 1000, jevUmbral: 0.7 })
-    expect(limitesDe({ topeMs: 1, jevUmbral: -2 })).toEqual({ topeMs: 50, jevUmbral: 0 })
-    expect(limitesDe({ topeMs: 99_999, jevUmbral: 5 })).toEqual({ topeMs: 8000, jevUmbral: 1 })
-    expect(limitesDe({ topeMs: 1500, jevUmbral: 0.7 })).toEqual({ topeMs: 1500, jevUmbral: 0.7 })
-    expect(limitesDe({ topeMs: 'mucho', jevUmbral: Number.NaN })).toEqual({ topeMs: 1000, jevUmbral: 0.7 })
+    expect(limitesDe({})).toEqual({ topeMs: 1000, jevUmbral: 0.7, localUmbral: 0.7 })
+    expect(limitesDe({ topeMs: 1, jevUmbral: -2 })).toEqual({ topeMs: 50, jevUmbral: 0, localUmbral: 0.7 })
+    expect(limitesDe({ topeMs: 99_999, jevUmbral: 5 })).toEqual({ topeMs: 8000, jevUmbral: 1, localUmbral: 0.7 })
+    expect(limitesDe({ topeMs: 1500, jevUmbral: 0.7 })).toEqual({ topeMs: 1500, jevUmbral: 0.7, localUmbral: 0.7 })
+    expect(limitesDe({ topeMs: 'mucho', jevUmbral: Number.NaN })).toEqual({ topeMs: 1000, jevUmbral: 0.7, localUmbral: 0.7 })
   })
 })

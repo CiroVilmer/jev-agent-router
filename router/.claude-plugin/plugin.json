@@ -45,11 +45,12 @@
     "clasificador": {
       "type": "string",
       "title": "Clasificador",
-      "description": "Quién decide el tipo cuando las reglas no alcanzan y, si es jev, también las reviews por description: reglas (sin modelo), haiku o jev",
+      "description": "Quién decide el tipo cuando las reglas no alcanzan y, si es jev o local, también las reviews por description: reglas (sin modelo), haiku, jev o local (experimental: un modelo propio por System One u OpenAI)",
       "options": [
         "reglas",
         "haiku",
-        "jev"
+        "jev",
+        "local"
       ],
       "default": "reglas"
     },
@@ -60,7 +61,8 @@
       "options": [
         "off",
         "haiku",
-        "jev"
+        "jev",
+        "local"
       ],
       "default": "off"
     },
@@ -74,6 +76,38 @@
       "type": "number",
       "title": "Umbral de confianza de Jev",
       "description": "En la talla de los builds, con menos confianza que esto decide el respaldo; con clasificador jev, también decide las reviews por description (con menos confianza queda la regla); también se aplica a la talla de las reviews. Sin regla, decide Jev igual y el motivo lo marca (sin umbral). Entre 0 y 1; 0.7 sale del banco del 2026-10-07",
+      "default": 0.7
+    },
+    "localProtocolo": {
+      "type": "string",
+      "title": "Local: protocolo (experimental)",
+      "description": "Experimental. Cómo hablarle al servidor local: systemone (la API de Jev, que sirven llama.cpp y Ollama con decision models) u openai (/v1/chat/completions con logprobs)",
+      "options": [
+        "systemone",
+        "openai"
+      ],
+      "default": "systemone"
+    },
+    "localUrl": {
+      "type": "string",
+      "title": "Local: URL (experimental)",
+      "description": "Experimental. URL completa del endpoint, por ejemplo http://127.0.0.1:9931/v1/systemone o http://127.0.0.1:11434/v1/chat/completions"
+    },
+    "localModelo": {
+      "type": "string",
+      "title": "Local: modelo (experimental)",
+      "description": "Experimental. Nombre del modelo en el servidor"
+    },
+    "localApiKey": {
+      "type": "string",
+      "title": "Local: API key (experimental)",
+      "description": "Experimental y opcional. Si falta, se usa la variable de entorno LOCAL_API_KEY; sin ninguna, no se manda header",
+      "sensitive": true
+    },
+    "localUmbral": {
+      "type": "number",
+      "title": "Local: umbral de confianza (experimental)",
+      "description": "Experimental, sin calibrar: funciona como jevUmbral. Elegilo con la tabla de calibración de bench/informe.mjs. Entre 0 y 1",
       "default": 0.7
     },
     "topeMs": {

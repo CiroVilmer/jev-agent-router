@@ -60,3 +60,9 @@ describe('motivoCorto', () => {
     expect(motivoCorto([])).toBe('')
   })
 })
+
+test('motivoCorto con local', () => {
+  expect(motivoCorto(['regla review', 'local → review (0.98)'])).toBe('local 0.98')
+  expect(motivoCorto(['regla review', 'local dudó (0.55): queda la regla'])).toBe('local dudó')
+  expect(motivoCorto(['ninguna regla', 'local (sin umbral) → review (0.55)'])).toBe('local 0.55')
+})

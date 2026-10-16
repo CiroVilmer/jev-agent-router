@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'claude-code/testing'
 import type { Clasificador } from '../src/clasificadores'
 import { respaldo } from '../src/clasificadores'
-import { ajustarAPermitidos, decidir, motivoError, motivoPolitica } from '../src/decidir'
+import { ajustarAPermitidos, decidir, motivoError, motivoPolitica, revisarConClasificador } from '../src/decidir'
 import type { Contexto, EntradaDecision } from '../src/decidir'
 import { OVERRIDES_INICIAL } from '../src/overrides'
 import { tablaDe } from '../src/taxonomia'
@@ -10,7 +10,7 @@ import type { EstadoPolitica } from '../src/politica'
 const NORMAL: EstadoPolitica = { modo: 'normal', escalones: 0, motivo: '', minutosAlReset: 200 }
 const FUEGO: EstadoPolitica = { modo: 'fuego', escalones: 2, motivo: '', minutosAlReset: 20 }
 const ctx = (cambios: Partial<Contexto> = {}): Contexto => ({
-  overrides: OVERRIDES_INICIAL, politica: NORMAL, clasificar: respaldo, jevDecideReviews: false, ...cambios,
+  overrides: OVERRIDES_INICIAL, politica: NORMAL, clasificar: respaldo, decideReviews: false, ...cambios,
 })
 const entrada = (cambios: Partial<EntradaDecision> = {}): EntradaDecision => ({
   descripcion: 'Review Task 6 (spec + quality)',
@@ -134,45 +134,45 @@ const jevDice = (tipo: string, confianza: number, detalle?: string): Clasificado
 
 describe('Jev decide la familia review', () => {
   test('Jev seguro confirma la review', async () => {
-    const d = await decidir(entrada(), ctx({ jevDecideReviews: true, clasificar: jevDice('review', 0.98) }))
+    const d = await decidir(entrada(), ctx({ decideReviews: true, clasificar: jevDice('review', 0.98) }))
     expect(d).toMatchObject({ tocar: true, tipo: 'review-large' })
     expect(d.motivos).toEqual(['regla review', 'jev → review (0.98)', 'jev → review-large (0.98)'])
   })
 
   test('Jev seguro cambia el tipo', async () => {
-    const d = await decidir(entrada(), ctx({ jevDecideReviews: true, clasificar: jevDice('build-large', 0.93) }))
+    const d = await decidir(entrada(), ctx({ decideReviews: true, clasificar: jevDice('build-large', 0.93) }))
     expect(d).toMatchObject({ tocar: true, tipo: 'build-large', escalon: { modelo: 'opus', esfuerzo: 'medium' } })
     expect(d.motivos).toEqual(['regla review', 'jev → build-large (0.93)'])
   })
 
   test('Jev con duda: queda la regla', async () => {
-    const d = await decidir(entrada(), ctx({ jevDecideReviews: true, clasificar: jevDice('build-small', 0.55, 'sin umbral') }))
+    const d = await decidir(entrada(), ctx({ decideReviews: true, clasificar: jevDice('build-small', 0.55, 'sin umbral') }))
     expect(d).toMatchObject({ tipo: 'review-small' })
     expect(d.motivos).toEqual(['regla review', 'jev dudó (0.55): queda la regla', 'jev (sin umbral) → review-small (0.55)'])
   })
 
   test('respaldo por tope: queda la regla y lo dice', async () => {
     const tope: Clasificador = async () => ({ tipo: 'build-small', ms: 1000, fuente: 'respaldo', detalle: 'tardó más de 1000 ms' })
-    const d = await decidir(entrada({ descripcion: 'Re-review Task 2 fix round 1' }), ctx({ jevDecideReviews: true, clasificar: tope }))
+    const d = await decidir(entrada({ descripcion: 'Re-review Task 2 fix round 1' }), ctx({ decideReviews: true, clasificar: tope }))
     expect(d).toMatchObject({ tipo: 're-review' })
     expect(d.motivos).toEqual(['regla re-review', 'respaldo (tardó más de 1000 ms): queda la regla'])
   })
 
   test('Jev dice explore o write sin duda: una review no baja, queda la regla', async () => {
-    const d = await decidir(entrada(), ctx({ jevDecideReviews: true, clasificar: jevDice('explore', 0.8) }))
+    const d = await decidir(entrada(), ctx({ decideReviews: true, clasificar: jevDice('explore', 0.8) }))
     expect(d).toMatchObject({ tipo: 'review-large' })
     expect(d.motivos).toEqual(['regla review', 'jev → explore (0.80): queda la regla', 'jev → review-large (0.80)'])
   })
 
   test('clasificador reglas (respaldo sin detalle): queda la regla y la talla sale del respaldo', async () => {
-    const d = await decidir(entrada(), ctx({ jevDecideReviews: true }))
+    const d = await decidir(entrada(), ctx({ decideReviews: true }))
     expect(d.motivos).toEqual(['regla review', 'respaldo → review-small'])
   })
 
-  test('sin jevDecideReviews no se consulta por el tipo: queda la regla y el clasificador solo da la talla', async () => {
+  test('sin decideReviews no se consulta por el tipo: queda la regla y el clasificador solo da la talla', async () => {
     const etiquetas: (readonly string[])[] = []
     const espia: Clasificador = async p => { etiquetas.push(p.etiquetas); return { tipo: 'review-large', ms: 600, fuente: 'haiku' } }
-    const d = await decidir(entrada(), ctx({ jevDecideReviews: false, clasificar: espia }))
+    const d = await decidir(entrada(), ctx({ decideReviews: false, clasificar: espia }))
     expect(d).toMatchObject({ tipo: 'review-large' })
     expect(d.motivos).toEqual(['regla review', 'haiku → review-large'])
     expect(etiquetas).toEqual([['review-large', 'review-small']])
@@ -181,7 +181,7 @@ describe('Jev decide la familia review', () => {
   test('regla de subagentType: no consulta', async () => {
     let llamado = false
     const espia: Clasificador = async () => { llamado = true; return { tipo: 'fix', confianza: 1, ms: 1, fuente: 'jev' } }
-    const d = await decidir(entrada({ descripcion: 'Revisión final', subagentType: 'revisor-final-opus-xhigh' }), ctx({ jevDecideReviews: true, clasificar: espia }))
+    const d = await decidir(entrada({ descripcion: 'Revisión final', subagentType: 'revisor-final-opus-xhigh' }), ctx({ decideReviews: true, clasificar: espia }))
     expect(d).toMatchObject({ tipo: 'review-final' })
     expect(llamado).toBe(false)
   })
@@ -190,12 +190,12 @@ describe('Jev decide la familia review', () => {
     let llamadas = 0
     const espia: Clasificador = async () => { llamadas++; return { tipo: 'review', confianza: 1, ms: 1, fuente: 'jev' } }
     for (const descripcion of ['Fix Task 3: hallazgos', 'Explore router src', 'Write the vault note'])
-      await decidir(entrada({ descripcion }), ctx({ jevDecideReviews: true, clasificar: espia }))
+      await decidir(entrada({ descripcion }), ctx({ decideReviews: true, clasificar: espia }))
     expect(llamadas).toBe(0)
   })
 
   test('la política se aplica sobre el tipo que decidió Jev', async () => {
-    const d = await decidir(entrada(), ctx({ jevDecideReviews: true, clasificar: jevDice('build-small', 0.95), politica: FUEGO }))
+    const d = await decidir(entrada(), ctx({ decideReviews: true, clasificar: jevDice('build-small', 0.95), politica: FUEGO }))
     expect(d).toMatchObject({ tipo: 'build-small', escalon: { modelo: 'opus', esfuerzo: 'medium' } })
   })
 })
@@ -375,5 +375,13 @@ describe('talla de la review', () => {
   test('la política sube review-small: con 🔥 da opus·xhigh', async () => {
     const d = await decidir(entrada({ descripcion: 'Review Task 3' }), ctx({ politica: FUEGO }))
     expect(d).toMatchObject({ tipo: 'review-small', escalon: { modelo: 'opus', esfuerzo: 'xhigh' } })
+  })
+})
+
+describe('revisarConClasificador con local', () => {
+  test('local decide la review igual que jev', () => {
+    expect(revisarConClasificador('review', { tipo: 'review-final', confianza: 0.95, ms: 10, fuente: 'local' })).toEqual({ tipo: 'review-final', motivo: 'local → review-final (0.95)' })
+    expect(revisarConClasificador('review', { tipo: 'explore', confianza: 0.95, ms: 10, fuente: 'local' })).toEqual({ tipo: 'review', motivo: 'local → explore (0.95): queda la regla' })
+    expect(revisarConClasificador('review', { tipo: 'fix', confianza: 0.55, ms: 10, fuente: 'local', detalle: 'sin umbral' })).toEqual({ tipo: 'review', motivo: 'local dudó (0.55): queda la regla' })
   })
 })

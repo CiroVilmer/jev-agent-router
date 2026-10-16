@@ -1,6 +1,6 @@
 import { describe, expect, mock, test } from 'claude-code/testing'
 import type { On } from 'claude-code'
-import { nombreCorrida } from '../src/banco'
+import { nombreCorrida, nombreCorridaSuite } from '../src/banco'
 import { CONVENCION_AGENT } from '../src/convencion'
 import { LINEA_ROUTER } from '../src/overrides'
 import { TIPOS } from '../src/taxonomia'
@@ -392,6 +392,136 @@ describe('clasificadores conectados', () => {
     await ui.unmount()
   })
 
+  test('local por System One con la URL y el modelo de /config', { options: { clasificador: 'local', localUrl: 'http://127.0.0.1:9931/v1/systemone', localModelo: 'laya' } }, async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    mock.env(on, {})
+    let url = ''
+    let cuerpo: any
+    let autorizacion: string | undefined = 'sin mirar'
+    on('http.fetch', async (_$, e) => {
+      url = e.url
+      cuerpo = JSON.parse(e.init?.body ?? '{}')
+      autorizacion = e.init?.headers?.Authorization
+      return { value: { status: 200, ok: true, headers: {}, text: respuestaJev('build-large', 0.9) } }
+    })
+    let modelo: string | undefined
+    on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: 'ag-loc' } })
+    await $.agent.spawn(BUILD)
+    expect(url).toBe('http://127.0.0.1:9931/v1/systemone')
+    expect(cuerpo.model).toBe('laya')
+    expect(autorizacion).toBe(undefined)
+    expect(modelo).toBe('opus')
+    const ui = await $.ui.mount({ plugin: 'agent-router', surface: 'terminal', component: 'Pane', requestId: 'router', props: PANE_PROPS })
+    expect(await ui.find({ text: /local → build-large \(0\.90\)/ })).toBeDefined()
+    await ui.unmount()
+  })
+
+  test('local por OpenAI manda el header con la key y nunca la muestra', { options: { clasificador: 'local', localProtocolo: 'openai', localUrl: 'http://srv:8080/v1/chat/completions', localModelo: 'qwen3', localApiKey: 'secreta' } }, async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    mock.env(on, {})
+    let autorizacion: string | undefined
+    on('http.fetch', async (_$, e) => { autorizacion = e.init?.headers?.Authorization; return { deny: 'conexión rechazada con secreta' } })
+    on('agent.spawn', async (_$, e) => ({ model: e.model ?? 'inherit', agentId: 'ag-oai' }))
+    await $.agent.spawn(BUILD)
+    expect(autorizacion).toBe('Bearer secreta')
+    const ui = await $.ui.mount({ plugin: 'agent-router', surface: 'terminal', component: 'Pane', requestId: 'router', props: PANE_PROPS })
+    expect(await ui.find({ text: /secreta/ })).toBe(undefined)
+    expect(await ui.find({ text: /respaldo/ })).toBeDefined()
+    expect(await ui.find({ text: /respaldo [(]local: .*conexión rechazada con [*]{3}/ })).toBeDefined()
+    await ui.unmount()
+  })
+
+  test('local con usuario y contraseña en la URL: se pide sin ellos, con Basic, y ningún error los lleva', { options: { clasificador: 'local', localUrl: 'http://usr:pw@127.0.0.1:9931/v1/systemone', localModelo: 'laya' } }, async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    mock.env(on, {})
+    let url = ''
+    let autorizacion: string | undefined
+    on('http.fetch', async (_$, e) => { url = e.url; autorizacion = e.init?.headers?.Authorization; return { deny: `no se pudo pedir ${'http://usr:pw@127.0.0.1:9931/v1/systemone'} (usr:pw)` } })
+    on('agent.spawn', async (_$, e) => ({ model: e.model ?? 'inherit', agentId: 'ag-bas' }))
+    await $.agent.spawn(BUILD)
+    expect(url).toBe('http://127.0.0.1:9931/v1/systemone')
+    expect(autorizacion).toBe(`Basic ${btoa('usr:pw')}`)
+    const ui = await $.ui.mount({ plugin: 'agent-router', surface: 'terminal', component: 'Pane', requestId: 'router', props: PANE_PROPS })
+    expect(await ui.find({ text: /pw/ })).toBe(undefined)
+    expect(await ui.find({ text: /usr/ })).toBe(undefined)
+    expect(await ui.find({ text: /respaldo [(]local: .*no se pudo pedir [*]{3}/ })).toBeDefined()
+    await ui.unmount()
+  })
+
+  test('local sin URL: decide el respaldo y avisa una vez', { options: { clasificador: 'local', localModelo: 'laya' } }, async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    mock.env(on, {})
+    const toasts: string[] = []
+    on('ui.toast', async (_$, e) => { toasts.push(e.text); return { value: undefined } })
+    let pedidos = 0
+    on('http.fetch', async () => { pedidos++; return { value: { status: 200, ok: true, headers: {}, text: '' } } })
+    on('model.classify', async () => { pedidos++; return { value: 'build-large' } })
+    on('agent.spawn', async (_$, e) => ({ model: e.model ?? 'inherit', agentId: `ag-${toasts.length}` }))
+    await $.agent.spawn(BUILD)
+    await $.agent.spawn(BUILD)
+    expect(pedidos).toBe(0)
+    expect(toasts.filter(t => t.includes('clasificador local')).length).toBe(1)
+  })
+
+  test('local decide las reviews por description', { options: { clasificador: 'local', localUrl: 'http://127.0.0.1:9931/v1/systemone', localModelo: 'laya' } }, async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.store(on)
+    mock.env(on, {})
+    on('http.fetch', async () => ({ value: { status: 200, ok: true, headers: {}, text: respuestaJev('review-final', 0.95) } }))
+    let modelo: string | undefined
+    on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: 'ag-rv' } })
+    await $.agent.spawn({ ...BUILD, description: 'Review the parser' })
+    expect(modelo).toBe('opus')
+    const ui = await $.ui.mount({ plugin: 'agent-router', surface: 'terminal', component: 'Pane', requestId: 'router', props: PANE_PROPS })
+    expect(await ui.find({ text: /local → review-final \(0\.95\)/ })).toBeDefined()
+    await ui.unmount()
+  })
+
+  test('un local que no contesta se corta por topeMs y decide el respaldo', { options: { clasificador: 'local', localUrl: 'http://127.0.0.1:9931/v1/systemone', localModelo: 'laya', topeMs: 100 } }, async ($, on) => {
+    const reloj = mock.clock(on, { now: AHORA })
+    mock.store(on)
+    mock.env(on, {})
+    // Nunca responde.
+    on('http.fetch', async () => new Promise<never>(() => {}))
+    let modelo: string | undefined
+    on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: 'ag-lento' } })
+    const spawn = $.agent.spawn(BUILD)
+    await reloj.settle()
+    await reloj.advance(100)
+    const r = await spawn
+    expect(r.agentId).toBe('ag-lento')
+    expect(modelo).toBe('sonnet')
+    const ui = await $.ui.mount({ plugin: 'agent-router', surface: 'terminal', component: 'Pane', requestId: 'router', props: PANE_PROPS })
+    expect(await ui.find({ text: /respaldo \(tardó más de 100 ms\) → build-small/ })).toBeDefined()
+    await ui.unmount()
+  })
+
+  test('sombra local junta muestras sin cambiar la decisión', { options: { clasificador: 'reglas', sombra: 'local', localUrl: 'http://127.0.0.1:9931/v1/systemone', localModelo: 'laya' } }, async ($, on) => {
+    const reloj = mock.clock(on, { now: AHORA })
+    const store = new Map<string, unknown>()
+    on('store.get', async (_$, e) => ({ value: store.get(e.key) }))
+    on('store.set', async (_$, e) => { store.set(e.key, e.value); return { value: undefined } })
+    mock.env(on, {})
+    on('http.fetch', async () => ({ value: { status: 200, ok: true, headers: {}, text: respuestaJev('build-small', 0.8) } }))
+    let modelo: string | undefined
+    on('agent.spawn', async (_$, e) => { modelo = e.model; return { model: e.model ?? 'inherit', agentId: 'ag-sb' } })
+    await $.agent.spawn(BUILD)
+    expect(modelo).toBe('sonnet')
+    // La sombra corre en segundo plano: se espera a que la muestra llegue al store.
+    let lista: { nombres: { principal: string; sombra: string }; sombra: { fuente: string } }[] | undefined
+    for (let i = 0; i < 20 && !lista?.length; i++) {
+      await reloj.settle()
+      lista = store.get('sombra') as typeof lista
+    }
+    expect(lista?.length).toBe(1)
+    expect(lista![0]!.nombres).toEqual({ principal: 'reglas', sombra: 'local' })
+    expect(lista![0]!.sombra.fuente).toBe('local')
+  })
+
   test('modo sombra: guarda las dos respuestas', { options: { clasificador: 'haiku', sombra: 'jev' } }, async ($, on) => {
     const reloj = mock.clock(on, { now: AHORA })
     // El $ del test no tiene store (es del plugin): un store en memoria propio deja leer lo que
@@ -641,6 +771,34 @@ const CASOS_BANCO = JSON.stringify({
 
 // El nombre va en hora local: se calcula con el mismo helper para no depender del huso del test.
 const ARCHIVO = nombreCorrida(new Date(AHORA))
+
+const CASOS_SUITE = JSON.stringify({
+  casos: [
+    { id: 'c1', descripcion: 'Implement Task 1', resumen: RESUMEN_BANCO, regla: 'build', etiquetasProduccion: ['build-large', 'build-small'] },
+    { id: 'c2', descripcion: 'Research X', resumen: RESUMEN_BANCO, regla: 'research', etiquetasProduccion: null },
+    { id: 'c3', descripcion: 'Implement Task 3', resumen: RESUMEN_BANCO, regla: 'build', etiquetasProduccion: ['build-large', 'build-small'] },
+  ],
+})
+
+describe('/router bench --suite', () => {
+  test('talla con el local escribe una corrida por selector y suite', { options: { localUrl: 'http://127.0.0.1:9931/v1/systemone', localModelo: 'laya' } }, async ($, on) => {
+    mock.clock(on, { now: AHORA })
+    mock.env(on, {})
+    on('session.cwd', async () => ({ value: 'C:/proyecto' }))
+    const barras = (p: string) => p.replaceAll('\\', '/')
+    on('fs.read', async (_$, e) => ({ value: barras(e.path).endsWith('etiquetas-review.json') ? '{}' : CASOS_SUITE }))
+    const escrito: Record<string, string> = {}
+    on('fs.write', async (_$, e) => { escrito[barras(e.path)] = e.text; return { value: undefined } })
+    on('http.fetch', async () => ({ value: { status: 200, ok: true, headers: {}, text: respuestaJev('build-large', 0.9) } }))
+
+    const out = await $.command.run({ command: 'router', args: 'bench --suite talla --solo local' })
+    expect(out.text.startsWith('Banco: talla')).toBe(true)
+    const archivo = nombreCorridaSuite(new Date(AHORA), 'local', 'talla')
+    const corrida = JSON.parse(escrito[`C:/proyecto/${archivo}`]!)
+    expect(corrida).toMatchObject({ selector: 'local', suite: 'talla', modelo: 'laya', protocolo: 'systemone', url: 'http://127.0.0.1:9931/v1/systemone', concurrencia: 1 })
+    expect(corrida.resultados.map((r: { id: string }) => r.id)).toEqual(['c1', 'c3'])
+  })
+})
 
 describe('/router banco', () => {
   test('corre haiku y jev sin tope ni umbral y escribe la corrida', { options: { clasificador: 'reglas', topeMs: 1, jevUmbral: 0.99 } }, async ($, on) => {
