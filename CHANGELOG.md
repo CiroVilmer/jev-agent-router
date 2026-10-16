@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-16
+
 ### Added
 
 - Review sizes: a review is now `review-large` (Opus at xhigh effort) or `review-small` (Opus at
@@ -43,6 +45,9 @@ All notable changes to this project are documented here. The format follows
   shadow) for their size.
 - `/router bench` runs one call at a time by default (it was 3), so latencies are closer to
   production. Use `--concurrencia N` to change it.
+- README: a Models section with the cloud (Jev, Haiku) and self-hosted (`local`) classifiers, and a
+  chart of the selector benchmark (accuracy and latency of rules, Haiku 5.5 and Jev). The
+  benchmark results are in `docs/benchmark.md`.
 
 ### Removed
 
@@ -93,6 +98,7 @@ First public release of the `router` mod.
 - Offline bench of 729 anonymized real subagents, with scripts to extract, label, compare and
   simulate policies.
 
-[Unreleased]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/CiroVilmer/jev-agent-router/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/CiroVilmer/jev-agent-router/releases/tag/v0.1.0
